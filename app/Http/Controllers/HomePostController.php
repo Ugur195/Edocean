@@ -6,6 +6,7 @@ use App\Models\ContactUs;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class HomePostController extends Controller
@@ -35,26 +36,31 @@ class HomePostController extends Controller
             'password' => 'required|min:6',
         ]);
 
-        if ($request->password === $request->retain_password) {
-            $user = new User();
-            $user->fin = $request->fin;
-            $user->author = $request->radio;
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->password = Hash::make($request->password);
-            $user->slug = Str::slug($request->name);
-            $user->status = 0;
-            $user->save();
-        }else{
-            //swet alert
-        }
+//        if ($request->password === $request->retain_password) {
+        $user = new User();
+        $user->fin = $request->fin;
+        $user->author = $request->radio;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->slug = Str::slug($request->name);
+        $user->status = 0;
+        $user->save();
+//        } else {
+//            //swet alert
+//        }
 
-        return redirect(' / sign_in');
+        Mail::send('emails.mesaj_gonder', ['msg' => 'Message: ' . 'Qeydiyyatdan ugurlu kecdiz'], function ($message) use ($request) {
+            $message->to($request->email, $request->name)->subject('Mail linki');
+            $message->from('edocean_course@mail.ru', 'Edocean Course');
+        });
+
+        return redirect('/sign_in');
 
     }
 
     public function PostSignIn()
     {
-        return redirect(' / index');
+        return redirect('/index');
     }
 }
