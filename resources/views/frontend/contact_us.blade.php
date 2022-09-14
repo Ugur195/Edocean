@@ -1,6 +1,7 @@
 @extends('frontend.app')
 
 @section('css')
+    <link rel="stylesheet" href="{{asset('cssValidate/sweetalert2.css')}}"/>
 @endsection
 
 @section('content')
@@ -21,7 +22,7 @@
             <div class="container">
                 <div class="contact-form">
                     <h3>Bizə mesaj yazın</h3>
-                    <form action="{{url('/contact_us')}}" method="POST">
+                    <form id="formContactUs" action="{{url('/contact_us')}}" method="POST">
                         {{csrf_field()}}
                         <div class="input-and-label">
                             <label for=""> Full name</label>
@@ -29,15 +30,15 @@
                         </div>
                         <div class="input-and-label">
                             <label for="">Email</label>
-                            <input name="email" id="email" type="email"/>
+                            <input name="email" id="email" type="email" required/>
                         </div>
                         <div class="input-and-label">
                             <label for="">Subject</label>
-                            <input name="subject" id="subject" type="text"/>
+                            <input name="subject" id="subject" type="text" required/>
                         </div>
                         <div class="input-and-label">
                             <label for="">Your message</label>
-                            <textarea name="message" id="message" class="contact-textarea" cols="30"
+                            <textarea name="message" id="message" required class="contact-textarea" cols="30"
                                       rows="10"></textarea>
                         </div>
                         <a href="">
@@ -79,4 +80,26 @@
 @endsection
 
 @section('js')
+    <script src="{{asset('jsValidate/jquery.form.js')}}"></script>
+    <script src="{{asset('jsValidate/sweetalert2.js')}}"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#formContactUs').ajaxForm({
+                success: function (response) {
+                    Swal.fire({
+                            title: response.title,
+                            text: response.message,
+                            icon: response.status,
+                            allowOutsideClick: false,
+                        }
+                    )
+                    if (response.status == 'success') {
+                        window.location.href = '/contact_us';
+                    }
+                }
+            });
+        });
+    </script>
+
 @endsection
