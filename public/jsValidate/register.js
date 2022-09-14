@@ -6,7 +6,6 @@ let userM = document.getElementById("user_email")
 let btnSubmit = document.getElementById("submit-btn")
 
 btnSubmit.addEventListener("click", function (e) {
-    // e.preventDefault()
     value1 = passWordd.value
     value2 = repassWordd.value
     value3 = userFin.value
