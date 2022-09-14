@@ -15,7 +15,7 @@
             <div class="login-form-div">
                 <div>
                     <label for="">Ad, Soyad</label>
-                    <input type="text" name="name" id="user_name" >
+                    <input type="text" name="name" id="user_name">
                 </div>
 
                 <div>
@@ -24,15 +24,26 @@
                 </div>
                 <div>
                     <label for="">Email</label>
-                    <input type="email" name="email" id="user_email" >
+                    <input type="email" name="email" id="user_email">
                 </div>
+
                 <div>
                     <label for="">Şifrə</label>
-                    <input type="password" name="password" id="passwordd" >
+                    <div class="input-and-iconn">
+                        <input type="password" name="password" id="passwordd">
+                        <ion-icon class="show-pass" name="eye"></ion-icon>
+
+                    </div>
+
                 </div>
                 <div>
+
                     <label for="">Şifrəni təstiqləyin</label>
-                    <input type="password" name="retain_password" id="re-passwordd" >
+                    <div class="input-and-iconn">
+                        <input type="password" name="retain_password" id="re-passwordd">
+                        <ion-icon class="show-repass" name="eye"></ion-icon>
+                    </div>
+
                 </div>
 
 
