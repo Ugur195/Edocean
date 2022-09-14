@@ -15,24 +15,24 @@
             <div class="login-form-div">
                 <div>
                     <label for="">Ad, Soyad</label>
-                    <input type="text" name="name" required>
+                    <input type="text" name="name" id="user_name" >
                 </div>
 
                 <div>
                     <label for="">Fin</label>
-                    <input type="text" name="fin" required>
+                    <input type="text" name="fin" id="user_fin">
                 </div>
                 <div>
                     <label for="">Email</label>
-                    <input type="email" name="email" required>
+                    <input type="email" name="email" id="user_email" >
                 </div>
                 <div>
                     <label for="">Şifrə</label>
-                    <input type="password" name="password" id="passwordd" required>
+                    <input type="password" name="password" id="passwordd" >
                 </div>
                 <div>
                     <label for="">Şifrəni təstiqləyin</label>
-                    <input type="password" name="retain_password" id="re-password" required>
+                    <input type="password" name="retain_password" id="re-passwordd" >
                 </div>
 
 
@@ -65,6 +65,8 @@
 @section('js')
     <script src="{{asset('jsValidate/jquery.form.js')}}"></script>
     <script src="{{asset('jsValidate/sweetalert2.js')}}"></script>
+    <script src="{{asset('jsValidate/register.js')}}"></script>
+
 
     <script>
         $(document).ready(function () {
