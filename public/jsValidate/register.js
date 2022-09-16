@@ -46,21 +46,21 @@ let showPass= document.querySelector(".show-pass")
 showPass.addEventListener("click", function(){
     if(passWordd.type==="password"){
         passWordd.type="text"
-        showPass.name="eye-off"
+        showPass.name="eye"
     }
     else {
         passWordd.type="password"
-        showPass.name="eye"
+        showPass.name="eye-off"
     }
 })
 let showrePass= document.querySelector(".show-repass")
 showrePass.addEventListener("click", function(){
     if(repassWordd.type==="password"){
         repassWordd.type="text"
-        showrePass.name="eye-off"
+        showrePass.name="eye"
     }
     else{
         repassWordd.type="password"
-        showrePass.name="eye"
+        showrePass.name="eye-off"
     }
 })

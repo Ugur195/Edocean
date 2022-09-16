@@ -31,7 +31,7 @@
                     <label for="">Şifrə</label>
                     <div class="input-and-iconn">
                         <input type="password" name="password" id="passwordd">
-                        <ion-icon class="show-pass" name="eye"></ion-icon>
+                        <ion-icon class="show-pass" name="eye-off"></ion-icon>
 
                     </div>
 
@@ -41,7 +41,7 @@
                     <label for="">Şifrəni təstiqləyin</label>
                     <div class="input-and-iconn">
                         <input type="password" name="retain_password" id="re-passwordd">
-                        <ion-icon class="show-repass" name="eye"></ion-icon>
+                        <ion-icon class="show-repass" name="eye-off"></ion-icon>
                     </div>
 
                 </div>
