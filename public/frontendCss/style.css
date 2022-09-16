@@ -677,7 +677,9 @@ ion-icon[name="eye-off"] {
 .red-border {
     border: 1px solid red !important;
 }
-
+.border-none{
+    border: none !important;
+}
 @media (max-width: 1200px) {
     .man-1 {
         left: 10%;

@@ -19,25 +19,44 @@ btnSubmit.addEventListener("click", function (e) {
         passWordd.classList = "red-border"
         repassWordd.classList = "red-border"
     }
+    else{
+        passWordd.classList = "border-none"
+        repassWordd.classList = "border-none"
+    }
     if (value1 == '') {
         passWordd.classList = "red-border"
 
+    }
+    else {
+        passWordd.classList="border-none"
     }
     if (value2 == '') {
         repassWordd.classList = "red-border"
 
     }
+    else {
+        repassWordd.classList="border-none"
+    }
     if (value3 == '') {
         userFin.classList = "red-border"
 
+    }
+    else {
+        userFin.classList="border-none"
     }
     if (value4 == '') {
         userName.classList = "red-border"
 
     }
+    else {
+        userName.classList="border-none"
+    }
     if (value5 == '') {
         userM.classList = "red-border"
 
+    }
+    else {
+        userM.classList="border-none"
     }
 
 })

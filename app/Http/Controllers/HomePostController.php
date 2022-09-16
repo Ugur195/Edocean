@@ -38,7 +38,7 @@ class HomePostController extends Controller
             $request->validate([
                 'fin' => 'required',
                 'name' => 'required',
-                'email' => 'required|email|unique:users',
+                'email' => 'required',
                 'password' => 'required|min:6',
             ]);
 
