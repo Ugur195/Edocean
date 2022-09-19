@@ -1,1 +1,399 @@
-salam
+@extends('frontend.app')
+
+@section('css')
+    <link rel="stylesheet" href="{{asset('cssValidate/sweetalert2.css')}}"/>
+@endsection
+
+{{--//--}}
+@section('content')
+    <main class="ed-main">
+        <section class="video-section">
+            <div id="ed-video">
+                <video  class="video-ed" id="myVideo"  autoplay loop muted>
+                    <source src="./frontendCss/images/tanitim.mp4" type="video/mp4">
+                </video>
+                <div class="fabs" id="muted">
+                    <button class="ed-video-mute" ><ion-icon name="volume-mute-outline"></ion-icon></button>
+                    <button class="ed-video-volume" ><ion-icon name="volume-high-outline"></ion-icon></button>
+                </div>
+            </div>
+        </section>
+        <section class="course-section">
+            <div class="container course-container">
+                <h1>VİP Kurslar</h1>
+                <ul class="categories-course">
+                    <li class="active-li" catid="*">Hamisi</li>
+                    <li catid="master">Magistr</li>
+                    <li catid="development">Web development </li>
+
+                </ul >
+                <div class="course-row ">
+                    <a href="" class="course-a development"><div class="course ">
+                            <img src="./frontendCss/images/course.jpg" alt="">
+                            <div>
+                                <h3>MilliSoft</h3>
+                                <p>Web Development</p>
+                            </div>
+                        </div></a>
+                    <a href="" class="course-a master" >
+                        <div class="course ">
+                            <img src="./frontendCss/images/masterschool.webp" alt="">
+                            <div>
+                                <h3>Master School</h3>
+                                <p>Magistr Kursları</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="" class="course-a master">
+                        <div class="course ">
+                            <img src="./frontendCss/images/masterschool.webp" alt="">
+                            <div>
+                                <h3>Master School</h3>
+                                <p>Magistr Kursları</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="" class="course-a development">
+                        <div class="course ">
+                            <img src="./frontendCss/images/nantech.png" alt="">
+                            <div>
+                                <h3>NaNTech</h3>
+                                <p>Full Stack Development</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="" class="course-a master">
+                        <div class="course  ">
+                            <img src="./frontendCss/images/masterschool.webp" alt="">
+                            <div>
+                                <h3>Master School</h3>
+                                <p>Magistr Kursları</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="" class="course-a development"><div class="course ">
+                            <img src="./frontendCss/images/course.jpg" alt="">
+                            <div>
+                                <h3>MilliSoft</h3>
+                                <p>Web Development</p>
+                            </div>
+                        </div></a>
+                    <a href="" class="course-a master">
+                        <div class="course ">
+                            <img src="./frontendCss/images/masterschool.webp" alt="">
+                            <div>
+                                <h3>Master School</h3>
+                                <p>Magistr Kursları</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="" class="course-a development">
+                        <div class="course ">
+                            <img src="./frontendCss/images/course.jpg" alt="">
+                            <div>
+                                <h3>MilliSoft</h3>
+                                <p>Web Development</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="" class="course-a development">
+                        <div class="course ">
+                            <img src="./frontendCss/images/nantech.png" alt="">
+                            <div>
+                                <h3>NaNTech</h3>
+                                <p>Full Stack Development</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="" class="course-a development">
+                        <div class="course ">
+                            <img src="./frontendCss/images/course.jpg" alt="">
+                            <div>
+                                <h3>MilliSoft</h3>
+                                <p>Web Development</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <a href="#" class="see-all-href"><button class="see-all-button">Bütün kurslar</button></a>
+            </div>
+        </section>
+        <section class="teacher-section">
+            <div class="container teacher-container">
+                <h1>VİP Müəllimlər</h1>
+                <ul class="categories-techer">
+                    <li class="active-li" catid="*">Hamisi</li>
+                    <li catid="riyaziyyat">Riyaziyyat</li>
+                    <li catid="fizika">Fizika </li>
+
+                </ul >
+                <div class="teacher-row">
+                    <div class="vip teacher fizika">
+                        <img class="teacher-card-img" src="./frontendCss/images/teacher-card-img.jpg" alt="">
+                        <div class="details">
+                            <div class="details-1">
+                                <div class="rating-and-views">
+                                    <p><ion-icon name="eye"></ion-icon> 43 Baxış</p>
+                                    <p><ion-icon name="star"></ion-icon> 4.6(50)</p>
+                                </div>
+                                <h5>Fizika üzrə abituriyent hazırlığı</h5>
+                                <div class="name-and-img">
+                                    <img src="./frontendCss/images/kanan.png" alt="">
+                                    <p>Kənan Məmmədov</p>
+                                </div>
+                            </div>
+                            <div class="date-and-button">
+                                <p><ion-icon name="calendar-number"></ion-icon>28.06.2022</p>
+                                <a href=""><button>Daha Ətraflı<ion-icon name="arrow-forward"></ion-icon></button></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vip teacher riyaziyyat">
+                        <img class="teacher-card-img" src="./frontendCss/images/teacher-card-img.jpg" alt="">
+                        <div class="details">
+                            <div class="details-1">
+                                <div class="rating-and-views">
+                                    <p><ion-icon name="eye"></ion-icon> 43 Baxış</p>
+                                    <p><ion-icon name="star"></ion-icon> 4.6 (50)</p>
+                                </div>
+                                <h5>Riyaziyyat üzrə abituriyent hazırlığı</h5>
+                                <div class="name-and-img">
+                                    <img src="./frontendCss/images/kanan.png" alt="">
+                                    <p>Kənan Məmmədov</p>
+                                </div>
+                            </div>
+                            <div class="date-and-button">
+                                <p><ion-icon name="calendar-number"></ion-icon>28.06.2022</p>
+                                <a href=""><button>Daha Ətraflı<ion-icon name="arrow-forward"></ion-icon></button></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vip teacher riyaziyyat">
+                        <img class="teacher-card-img" src="./frontendCss/images/teacher-card-img.jpg" alt="">
+                        <div class="details">
+                            <div class="details-1">
+                                <div class="rating-and-views">
+                                    <p><ion-icon name="eye"></ion-icon> 43 Baxış</p>
+                                    <p><ion-icon name="star"></ion-icon> 4.6 (50)</p>
+                                </div>
+                                <h5>Riyaziyyat üzrə abituriyent hazırlığı</h5>
+                                <div class="name-and-img">
+                                    <img src="./frontendCss/images/kanan.png" alt="">
+                                    <p>Kənan Məmmədov</p>
+                                </div>
+                            </div>
+                            <div class="date-and-button">
+                                <p><ion-icon name="calendar-number"></ion-icon>28.06.2022</p>
+                                <a href=""><button>Daha Ətraflı<ion-icon name="arrow-forward"></ion-icon></button></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vip teacher riyaziyyat">
+                        <img class="teacher-card-img" src="./frontendCss/images/teacher-card-img.jpg" alt="">
+                        <div class="details">
+                            <div class="details-1">
+                                <div class="rating-and-views">
+                                    <p><ion-icon name="eye"></ion-icon> 43 Baxış</p>
+                                    <p><ion-icon name="star"></ion-icon> 4.6(50)</p>
+                                </div>
+                                <h5>Riyaziyyat üzrə abituriyent hazırlığı</h5>
+                                <div class="name-and-img">
+                                    <img src="./frontendCss/images/kanan.png" alt="">
+                                    <p>Kənan Məmmədov</p>
+                                </div>
+                            </div>
+                            <div class="date-and-button">
+                                <p><ion-icon name="calendar-number"></ion-icon>28.06.2022</p>
+                                <a href=""><button>Daha Ətraflı<ion-icon name="arrow-forward"></ion-icon></button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <h1>Reytinqi yüksək olan müəllimlər</h1>
+                <ul class="categories-teacher T-R">
+                    <li class="active-li" catid="*">Hamisi</li>
+                    <li catid="riyaziyyat">Riyaziyyat</li>
+                    <li catid="fizika">Fizika </li>
+
+                </ul >
+                <div class="teacher-row">
+                    <div class="reyting teacher fizika">
+                        <img class="teacher-card-img" src="./frontendCss/images/teacher-card-img.jpg" alt="">
+                        <div class="details">
+                            <div class="details-1">
+                                <div class="rating-and-views">
+                                    <p><ion-icon name="eye"></ion-icon> 43 Baxış</p>
+                                    <p><ion-icon name="star"></ion-icon> 4.6(50)</p>
+                                </div>
+                                <h5>Fizika üzrə abituriyent hazırlığı</h5>
+                                <div class="name-and-img">
+                                    <img src="./frontendCss/images/kanan.png" alt="">
+                                    <p>Kənan Məmmədov</p>
+                                </div>
+                            </div>
+                            <div class="date-and-button">
+                                <p><ion-icon name="calendar-number"></ion-icon>28.06.2022</p>
+                                <a href=""><button>Daha Ətraflı<ion-icon name="arrow-forward"></ion-icon></button></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reyting teacher riyaziyyat">
+                        <img class="teacher-card-img" src="./frontendCss/images/teacher-card-img.jpg" alt="">
+                        <div class="details">
+                            <div class="details-1">
+                                <div class="rating-and-views">
+                                    <p><ion-icon name="eye"></ion-icon> 43 Baxış</p>
+                                    <p><ion-icon name="star"></ion-icon> 4.6 (50)</p>
+                                </div>
+                                <h5>Riyaziyyat üzrə abituriyent hazırlığı</h5>
+                                <div class="name-and-img">
+                                    <img src="./frontendCss/images/kanan.png" alt="">
+                                    <p>Kənan Məmmədov</p>
+                                </div>
+                            </div>
+                            <div class="date-and-button">
+                                <p><ion-icon name="calendar-number"></ion-icon>28.06.2022</p>
+                                <a href=""><button>Daha Ətraflı<ion-icon name="arrow-forward"></ion-icon></button></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reyting teacher riyaziyyat">
+                        <img class="teacher-card-img" src="./frontendCss/images/teacher-card-img.jpg" alt="">
+                        <div class="details">
+                            <div class="details-1">
+                                <div class="rating-and-views">
+                                    <p><ion-icon name="eye"></ion-icon> 43 Baxış</p>
+                                    <p><ion-icon name="star"></ion-icon> 4.6 (50)</p>
+                                </div>
+                                <h5>Riyaziyyat üzrə abituriyent hazırlığı</h5>
+                                <div class="name-and-img">
+                                    <img src="./frontendCss/images/kanan.png" alt="">
+                                    <p>Kənan Məmmədov</p>
+                                </div>
+                            </div>
+                            <div class="date-and-button">
+                                <p><ion-icon name="calendar-number"></ion-icon>28.06.2022</p>
+                                <a href=""><button>Daha Ətraflı<ion-icon name="arrow-forward"></ion-icon></button></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reyting teacher fizika">
+                        <img class="teacher-card-img" src="./frontendCss/images/teacher-card-img.jpg" alt="">
+                        <div class="details">
+                            <div class="details-1">
+                                <div class="rating-and-views">
+                                    <p><ion-icon name="eye"></ion-icon> 43 Baxış</p>
+                                    <p><ion-icon name="star"></ion-icon> 4.6(50)</p>
+                                </div>
+                                <h5>Fizika üzrə abituriyent hazırlığı</h5>
+                                <div class="name-and-img">
+                                    <img src="./frontendCss/images/kanan.png" alt="">
+                                    <p>Kənan Məmmədov</p>
+                                </div>
+                            </div>
+                            <div class="date-and-button">
+                                <p><ion-icon name="calendar-number"></ion-icon>28.06.2022</p>
+                                <a href=""><button>Daha Ətraflı<ion-icon name="arrow-forward"></ion-icon></button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="see-all-href"><button class="see-all-button">Bütün müəllimlər</button></a>
+            </div>
+        </section>
+        <section class="teacher-section student-section">
+            <div class="container teacher-container">
+                <h1>VİP Tələbələr</h1>
+                <ul class="categories-ul student-ul">
+                    <li class="active-li" catid="*">Hamisi</li>
+                    <li catid="riyaziyyat">Riyaziyyat</li>
+                    <li catid="fizika">Fizika </li>
+
+                </ul >
+                <div class="teacher-row ">
+                    <div class="teacher student fizika ">
+                        <div class="details">
+                            <div class="details-1">
+                                <div class="rating-and-views">
+                                    <p><ion-icon name="eye"></ion-icon> 43 Baxış</p>
+                                </div>
+                                <h5>Fizika üzrə abituriyent hazırlayan kurs və ya müəllim axtarıram</h5>
+                                <div class="name-and-img">
+                                    <img src="./frontendCss/images/kanan.png" alt="">
+                                    <p>Kənan Məmmədov</p>
+                                </div>
+                            </div>
+                            <div class="date-and-button">
+                                <p><ion-icon name="calendar-number"></ion-icon>28.06.2022</p>
+                                <a href=""><button>Daha Ətraflı<ion-icon name="arrow-forward"></ion-icon></button></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="teacher student riyaziyyat">
+                        <div class="details">
+                            <div class="details-1">
+                                <div class="rating-and-views">
+                                    <p><ion-icon name="eye"></ion-icon> 43 Baxış</p>
+                                </div>
+                                <h5>Riyaziyyat üzrə abituriyent hazırlayan kurs və ya müəllim axtarıram</h5>
+                                <div class="name-and-img">
+                                    <img src="./frontendCss/images/kanan.png" alt="">
+                                    <p>Kənan Məmmədov</p>
+                                </div>
+                            </div>
+                            <div class="date-and-button">
+                                <p><ion-icon name="calendar-number"></ion-icon>28.06.2022</p>
+                                <a href=""><button>Daha Ətraflı<ion-icon name="arrow-forward"></ion-icon></button></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="teacher student riyaziyyat">
+                        <div class="details">
+                            <div class="details-1">
+                                <div class="rating-and-views">
+                                    <p><ion-icon name="eye"></ion-icon> 43 Baxış</p>
+                                </div>
+                                <h5>Riyaziyyat üzrə abituriyent hazırlayan kurs və ya müəllim axtarıram</h5>
+                                <div class="name-and-img">
+                                    <img src="./frontendCss/images/kanan.png" alt="">
+                                    <p>Kənan Məmmədov</p>
+                                </div>
+                            </div>
+                            <div class="date-and-button">
+                                <p><ion-icon name="calendar-number"></ion-icon>28.06.2022</p>
+                                <a href=""><button>Daha Ətraflı<ion-icon name="arrow-forward"></ion-icon></button></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="teacher student riyaziyyat">
+                        <div class="details">
+                            <div class="details-1">
+                                <div class="rating-and-views">
+                                    <p><ion-icon name="eye"></ion-icon> 43 Baxış</p>
+                                </div>
+                                <h5>Riyaziyyat üzrə abituriyent hazırlayan kurs və ya müəllim axtarıram</h5>
+                                <div class="name-and-img">
+                                    <img src="./frontendCss/images/kanan.png" alt="">
+                                    <p>Kənan Məmmədov</p>
+                                </div>
+                            </div>
+                            <div class="date-and-button">
+                                <p><ion-icon name="calendar-number"></ion-icon>28.06.2022</p>
+                                <a href=""><button>Daha Ətraflı<ion-icon name="arrow-forward"></ion-icon></button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="see-all-href"><button class="see-all-button">Bütün tələbələr</button></a>
+            </div>
+        </section>
+    </main>
+
+@endsection
+
+@section('js')
+@endsection
