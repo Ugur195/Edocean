@@ -6,6 +6,19 @@ use Illuminate\Http\Request;
 
 class HomeGetController extends Controller
 {
+
+    public function welcome()
+    {
+        $name = 'Ugur';
+        return view('welcome')->with('ad', $name);
+    }
+
+    public function home()
+    {
+        return view('frontend.index');
+    }
+
+
     public function GetContactUs()
     {
         return view('frontend.contact_us');

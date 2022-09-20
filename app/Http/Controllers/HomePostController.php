@@ -46,34 +46,30 @@ class HomePostController extends Controller
             $userforfin = User::where('fin', $request->fin)->first();
             $userforemail = User::where('email', $request->email)->first();
 
+            if ($userforfin == null && $userforemail == null) {
+                $user = new User();
+                $user->fin = $request->fin;
+                $user->author = $request->radio;
+                $user->name = $request->name;
+                $user->email = $request->email;
+                $user->password = Hash::make($request->password);
+                $user->slug = Str::slug($request->name);
+                $user->status = 0;
+                $user->save();
 
-            if ($request->password == $request->retain_password) {
-                if ($userforfin == null && $userforemail == null) {
-                    $user = new User();
-                    $user->fin = $request->fin;
-                    $user->author = $request->radio;
-                    $user->name = $request->name;
-                    $user->email = $request->email;
-                    $user->password = Hash::make($request->password);
-                    $user->slug = Str::slug($request->name);
-                    $user->status = 0;
-                    $user->save();
+                Mail::send('emails.mesaj_gonder', ['msg' => 'Message: ' . '<a href="aa.com">Qeydiyyatdan ugurlu kecdiz</a>'], function ($message) use ($request) {
+                    $message->to($request->email, $request->name)->subject('Mail linki');
+                    $message->from('edocean_course@mail.ru', 'Edocean Course');
+                    $message->setBody('<a href="/aaaaa.com">salam</a>', 'text/html');
+                });
+                return response(['title' => 'Ugurlu!', 'message' => 'Qeydiyyatdan ugurlu kecdiz', 'status' => 'success']);
 
-                    Mail::send('emails.mesaj_gonder', ['msg' => 'Message: ' . '<a href="aa.com">Qeydiyyatdan ugurlu kecdiz</a>'], function ($message) use ($request) {
-                        $message->to($request->email, $request->name)->subject('Mail linki');
-                        $message->from('edocean_course@mail.ru', 'Edocean Course');
-                        $message->setBody('<a href="/aaaaa.com">salam</a>', 'text/html');
-                    });
-                    return response(['title' => 'Ugurlu!', 'message' => 'Qeydiyyatdan ugurlu kecdiz', 'status' => 'success']);
-
-                } else if ($userforfin !== null) {
-                    return response(['title' => 'Ugursuz!', 'message' => 'Bele fin artiq movcudur', 'status' => 'error']);
-                } else {
-                    return response(['title' => 'Ugursuz!', 'message' => 'Bele email artiq movcudur', 'status' => 'error']);
-                }
+            } else if ($userforfin !== null) {
+                return response(['title' => 'Ugursuz!', 'message' => 'Bele fin artiq movcudur', 'status' => 'error']);
             } else {
-                return response(['title' => 'Ugursuz!', 'message' => 'Sifreler uyusmur!', 'status' => 'error']);
+                return response(['title' => 'Ugursuz!', 'message' => 'Bele email artiq movcudur', 'status' => 'error']);
             }
+
 
         } catch (\Exception $exception) {
             return response(['title' => 'Ugursuz!', 'message' => 'Qeydiyyatdan kecmek mumkun olmadi', 'status' => 'error']);
@@ -81,8 +77,7 @@ class HomePostController extends Controller
 
     }
 
-    public
-    function PostSignIn()
+    public function PostSignIn()
     {
         return redirect('/index');
     }

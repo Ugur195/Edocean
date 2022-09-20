@@ -17,11 +17,13 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 // front end
+Route::get('/', [HomeGetController::class, 'home']);
+Route::get('/index', [HomeGetController::class, 'home']);
 Route::get('/contact_us', [HomeGetController::class, 'GetContactUs']);
 Route::get('/sign_in', [HomeGetController::class, 'GetSignIn']);
 Route::get('/sign_up', [HomeGetController::class, 'GetSignUp']);

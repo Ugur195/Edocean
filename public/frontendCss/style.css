@@ -571,7 +571,7 @@ ion-icon[name="calendar-number"]{
     position: relative;
     display: block !important;
 }
-ion-icon[name="eye"]{
+ion-icon[name="eye-off"]{
     position: absolute;
     right: 20px;
     top: 12px;
