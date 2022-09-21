@@ -33,7 +33,7 @@
             <div class="collapse navbar-collapse" id="mynavbar">
                 <ul class="navbar-nav m-auto">
                     <li class="nav-item me-2">
-                        <a class="nav-link" href="./index.html">Ana Səhifə</a>
+                        <a class="nav-link" href="/index">Ana Səhifə</a>
                     </li>
                     <li class="nav-item me-2">
                         <a class="nav-link" href="">Müəllimlər</a>
@@ -51,7 +51,7 @@
                         <a class="nav-link" href="">Haqqımızda</a>
                     </li>
                     <li class="nav-item me-2">
-                        <a class="nav-link" href="./contact.html">Əlaqə</a>
+                        <a class="nav-link" href="/contact_us">Əlaqə</a>
                     </li>
                 </ul>
                 <form class="d-flex search-ed">
