@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use PHPUnit\Exception;
 
@@ -36,12 +37,23 @@ class HomePostController extends Controller
     public function PostSignUp(Request $request)
     {
         try {
-            $request->validate([
+//            $request->validate([
+//                'fin' => 'required',
+//                'name' => 'required',
+//                'email' => 'required|email|unique:users,email',
+//                'password' => 'required|min:6',
+//            ]);
+
+            $validate = Validator::make($request->all(), [
                 'fin' => 'required',
                 'name' => 'required',
-                'email' => 'required',
+                'email' => 'required|email|unique:users,email',
                 'password' => 'required|min:6',
             ]);
+
+            if ($validate->fails()) {
+                return response(['title' => 'Ugursuz!', 'message' => 'Sekil formati jpg,jpeg,png,gif  olmalidir!', 'status' => 'error']);
+            }
 
 
             $user = new User();

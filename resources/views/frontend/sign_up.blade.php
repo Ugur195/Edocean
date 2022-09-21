@@ -79,23 +79,33 @@
     <script src="{{asset('jsValidate/register.js')}}"></script>
 
 
+
+
     <script>
         $(document).ready(function () {
             $('#formSignUp').ajaxForm({
                 success: function (response) {
-                    Swal.fire({
-                            title: response.title,
-                            text: response.message,
-                            icon: response.status,
-                            allowOutsideClick: false,
-                        }
-                    )
+
                     if (response.status == 'success') {
+                        Swal.fire({
+                                title: response.title,
+                                text: response.message,
+                                icon: response.status,
+                                allowOutsideClick: false,
+                            }
+                        )
                         window.location.href = '/sign_in';
+                    }else{
+                        document.getElementById('user_email').value=' email var';
+                        document.getElementById('user_fin').value='fin var';
                     }
                 }
             });
         });
     </script>
+
+
+
+
 @endsection
 
