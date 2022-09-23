@@ -579,9 +579,14 @@ ion-icon[name="eye-off"]{
     color: #14427C;
     cursor: pointer;
 }
-.red-border{
+.red-border, .is-invalid {
     border:1px solid red !important;
 }
+
+.hide {
+    display: none;
+}
+
 @media (max-width:1200px){
     .man-1{
         left: 10%;

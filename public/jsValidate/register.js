@@ -12,7 +12,6 @@ btnSubmit.addEventListener("click", function (e) {
     value4 = userName.value
     value5 = userM.value
     if (value1 !== value2) {
-
         passWordd.value = ""
         repassWordd.value = ""
 

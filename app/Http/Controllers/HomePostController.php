@@ -36,25 +36,20 @@ class HomePostController extends Controller
 
     public function PostSignUp(Request $request)
     {
+        $validate = Validator::make($request->all(), [
+            'fin' => 'required|string|min:7|unique:users,fin',
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|confirmed|min:6',
+        ]);
+
+
+        if ($validate->fails()) {
+            return response(['title' => 'Ugursuz!', 'message' => 'Sekil formati jpg,jpeg,png,gif  olmalidir!', 'status' => 'error',
+                'errors' => $validate->errors()]);
+        }
+
         try {
-//            $request->validate([
-//                'fin' => 'required',
-//                'name' => 'required',
-//                'email' => 'required|email|unique:users,email',
-//                'password' => 'required|min:6',
-//            ]);
-
-            $validate = Validator::make($request->all(), [
-                'fin' => 'required',
-                'name' => 'required',
-                'email' => 'required|email|unique:users,email',
-                'password' => 'required|min:6',
-            ]);
-
-            if ($validate->fails()) {
-                return response(['title' => 'Ugursuz!', 'message' => 'Sekil formati jpg,jpeg,png,gif  olmalidir!', 'status' => 'error']);
-            }
-
 
             $user = new User();
             $user->fin = $request->fin;
@@ -67,7 +62,6 @@ class HomePostController extends Controller
             $user->save();
 
 
-
             Mail::send('emails.mesaj_gonder', ['msg' => 'Message: ' . '<a href="aa.com">Qeydiyyatdan ugurlu kecdiz</a>'], function ($message) use ($request) {
                 $message->to($request->email, $request->name)->subject('Mail linki');
                 $message->from('edocean_course@mail.ru', 'Edocean Course');
@@ -76,7 +70,7 @@ class HomePostController extends Controller
             return response(['title' => 'Ugurlu!', 'message' => 'Qeydiyyatdan ugurlu kecdiz', 'status' => 'success']);
 
         } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => 'Qeydiyyatdan kecmek mumkun olmadi', 'status' => 'error']);
+            return response(['title' => 'Ugursuz!', 'message' => 'Qeydiyyatdan kecmek mumkun olmadi' . $exception->getMessage(), 'status' => 'error']);
         }
 
     }

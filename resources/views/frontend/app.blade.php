@@ -93,7 +93,7 @@
                         </a>
                         <a href="">
                             <ion-icon name="logo-twitter"></ion-icon>
-                            </ion-icon></a>
+                        </a>
                     </div>
                 </div>
                 <div class="site-map col-lg-2 col-md-3 col-sm-6 mb-5">
