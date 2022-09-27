@@ -10,4 +10,11 @@ class AdminGetController extends Controller
     {
         return view('backend.index');
     }
+
+    public function ContactUs()
+    {
+        return view('backend.contact_us');
+    }
+
+
 }

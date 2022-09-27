@@ -37,7 +37,10 @@ Route::post('/sign_in', [HomePostController::class, 'PostSignIn']);
 Route::post('/sign_up', [HomePostController::class, 'PostSignUp']);
 
 //back end
-Route::get('/backend', [AdminGetController::class, 'home']);
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/index', [AdminGetController::class, 'home']);
+    Route::get('/contact_us', [AdminGetController::class, 'ContactUs']);
+});
 
 
 
