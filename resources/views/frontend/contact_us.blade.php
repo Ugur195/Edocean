@@ -26,23 +26,24 @@
                         {{csrf_field()}}
                         <div class="input-and-label">
                             <label for=""> Full name</label>
-                            <input name="full_name" id="full_name" type="text"/>
+                            <input name="full_name" id="full_name" type="text" class="form-control"/>
                         </div>
                         <div class="input-and-label">
                             <label for="">Email</label>
-                            <input name="email" id="email" type="email" required/>
+                            <input name="email" id="email" type="email" class="form-control"/>
                         </div>
                         <div class="input-and-label">
                             <label for="">Subject</label>
-                            <input name="subject" id="subject" type="text" required/>
+                            <input name="subject" id="subject" type="text" class="form-control"/>
                         </div>
                         <div class="input-and-label">
                             <label for="">Your message</label>
-                            <textarea name="message" id="message" required class="contact-textarea" cols="30"
+                            <textarea name="message" id="message" class="contact-textarea " class="form-control"
+                                      cols="30"
                                       rows="10"></textarea>
                         </div>
                         <a href="">
-                            <button class="btn-submit">Send Message</button>
+                            <button class="btn-submit" id="submit-btn">Send Message</button>
                         </a>
                     </form>
                 </div>
@@ -85,21 +86,46 @@
 
     <script>
         $(document).ready(function () {
-            $('#formContactUs').ajaxForm({
-                success: function (response) {
-                    Swal.fire({
-                            title: response.title,
-                            text: response.message,
-                            icon: response.status,
-                            allowOutsideClick: false,
+
+            $('#submit-btn').click(function (e) {
+                e.preventDefault()
+                $.ajax({
+                    'url': $('#formContactUs').attr('action'),
+                    'type': 'post',
+                    'data': $('#formContactUs').serialize(),
+                    success: function (response) {
+                        console.log({response})
+                        if (response.status == 'validation-error') {
+                            $('#formContactUs .invalid-feedback').remove();
+                            $('#formContactUs input').removeClass('is-invalid')
+                            $.each(response.errors, function (key, value) {
+                                if (key == 'author') {
+                                    $('#formContactUs .autor').append('<span class="invalid-feedback d-block">' + value[0] + '</span>')
+
+                                } else
+                                    $('#formContactUs input[name="' + key + '"]').addClass('is-invalid').after('<br><span class="invalid-feedback d-block">' + value[0] + '</span>')
+
+                            })
+                        } else {
+                            $('.invalid-feedback').remove();
+                            Swal.fire({
+                                title: response.title,
+                                text: response.message,
+                                icon: response.status,
+                                allowOutsideClick: false,
+                            })
+                            if (response.status === 'success') {
+                                setTimeout(function () {
+                                    window.location.href = '/contact_us';
+                                }, 500)
+                            }
                         }
-                    )
-                    if (response.status == 'success') {
-                        window.location.href = '/contact_us';
                     }
-                }
-            });
+                })
+            })
+
         });
     </script>
+
 
 @endsection

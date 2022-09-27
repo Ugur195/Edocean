@@ -84,10 +84,6 @@
     <script>
         $(document).ready(function () {
 
-            let userFin = document.getElementById("user_fin");
-            let user_email = document.getElementById("user_email");
-            let spanFin = document.getElementById("spanFin");
-            let spanEmail = document.getElementById("spanEmail");
             $('#submit-btn').click(function (e) {
                 e.preventDefault()
                 $.ajax({
@@ -101,10 +97,10 @@
                             $('#formSignUp input').removeClass('is-invalid')
                             $.each(response.errors, function (key, value) {
                               if(key == 'author') {
-                                $('#formSignUp .autor').append('<span class="invalid-feedback d-block">' + value[0] + '</span>') 
-                              } else 
+                                $('#formSignUp .autor').append('<span class="invalid-feedback d-block">' + value[0] + '</span>')
+                              } else
                                 $('#formSignUp input[name="' + key + '"]').addClass('is-invalid').after('<br><span class="invalid-feedback d-block">' + value[0] + '</span>')
-                            
+
                             })
                         } else {
                             $('.invalid-feedback').remove();
@@ -123,33 +119,7 @@
                     }
                 })
             })
-            // $('#formSignUp').ajaxForm({
-            //     success: function (response) {
-            //
-            //         // Swal.fire({
-            //         //         title: response.title,
-            //         //         text: response.message,
-            //         //         icon: response.status,
-            //         //         allowOutsideClick: false,
-            //         //     }
-            //         // )
-            //         // if (response.status == 'success') {
-            //         //     Swal.fire({
-            //         //             title: response.title,
-            //         //             text: response.message,
-            //         //             icon: response.status,
-            //         //             allowOutsideClick: false,
-            //         //         }
-            //         //     )
-            //         //     window.location.href = '/sign_in';
-            //         // } else {
-            //         //     userFin.classList = "red-border";
-            //         //     user_email.classList = "red-border";
-            //         //     spanFin.innerHTML = "<p style='color: red'>Bu fin artiq var</p>";
-            //         //     spanEmail.innerHTML = "<p style='color: red'>Bu email artiq var</p>";
-            //         // }
-            //     }
-            // });
+
         });
     </script>
 

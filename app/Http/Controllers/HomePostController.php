@@ -17,6 +17,19 @@ class HomePostController extends Controller
     public function PostContactUs(Request $request)
     {
         try {
+
+            $validate = Validator::make($request->all(), [
+                'full_name' => 'required|string',
+                'email' => 'required|email|unique:contact_us,email',
+                'subject' => 'required|string',
+                'message' => 'required|string'
+            ]);
+
+
+            if ($validate->fails()) {
+                return response(['title' => 'Ugursuz!', 'message' => 'Melumat gondermek mumkun olmadi', 'status' => 'validation-error',
+                    'errors' => $validate->errors()]);
+            }
             $contact_us = new ContactUs();
             $contact_us->full_name = $request->full_name;
             $contact_us->subject = $request->subject;
@@ -41,12 +54,13 @@ class HomePostController extends Controller
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|confirmed|min:6',
+            'password_confirmation' => 'required|min:6',
             'author' => 'required|numeric'
         ]);
 
 
         if ($validate->fails()) {
-            return response(['title' => 'Ugursuz!', 'message' => 'Sekil formati jpg,jpeg,png,gif  olmalidir!', 'status' => 'validation-error',
+            return response(['title' => 'Ugursuz!', 'message' => 'Melumat gondermek mumkun olmadi', 'status' => 'validation-error',
                 'errors' => $validate->errors()]);
         }
 
@@ -63,7 +77,7 @@ class HomePostController extends Controller
             $user->save();
 
             try {
-                $mail = Mail::send('emails.mesaj_gonder', ['msg' => 'Message: ' . '<a href="aa.com">Qeydiyyatdan ugurlu kecdiz</a>'], function ($message) use ($request) {
+                 Mail::send('emails.mesaj_gonder', ['msg' => 'Message: ' . '<a href="aa.com">Qeydiyyatdan ugurlu kecdiz</a>'], function ($message) use ($request) {
                     $message->to($request->email, $request->name)->subject('Mail linki');
                     $message->from('edocean_course@mail.ru', 'Edocean Course');
                     $message->setBody('<a href="/aaaaa.com">salam</a>', 'text/html');
