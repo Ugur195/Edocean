@@ -50,15 +50,15 @@
                 <div>
                     <div class="autor">
                         <div>
-                            <input type="radio" value="4" name="radio" id="student">
+                            <input type="radio" value="4" name="author" id="student" checked>
                             <label for="student">Tələbə</label>
                         </div>
                         <div>
-                            <input type="radio" value="3" name="radio" id="teacher">
+                            <input type="radio" value="3" name="author" id="teacher">
                             <label for="teacher">Müəllim</label>
                         </div>
                         <div>
-                            <input type="radio" value="2" name="radio" id="course">
+                            <input type="radio" value="2" name="author" id="course">
                             <label for="course">Kurs</label>
                         </div>
 
@@ -96,23 +96,29 @@
                     'data': $('#formSignUp').serialize(),
                     success: function (response) {
                         console.log({response})
-                        if (response.status == 'error') {
+                        if (response.status == 'validation-error') {
                             $('#formSignUp .invalid-feedback').remove();
                             $('#formSignUp input').removeClass('is-invalid')
                             $.each(response.errors, function (key, value) {
-                                $('#formSignUp input[name="' + key + '"]').addClass('is-invalid').after('<span class="invalid-feedback d-block">' + value[0] + '</span>')
+                              if(key == 'author') {
+                                $('#formSignUp .autor').append('<span class="invalid-feedback d-block">' + value[0] + '</span>') 
+                              } else 
+                                $('#formSignUp input[name="' + key + '"]').addClass('is-invalid').after('<br><span class="invalid-feedback d-block">' + value[0] + '</span>')
+                            
                             })
                         } else {
-                            $('#formSignUp span').addClass('hide')
+                            $('.invalid-feedback').remove();
                             Swal.fire({
                                     title: response.title,
                                     text: response.message,
                                     icon: response.status,
                                     allowOutsideClick: false,
                                 })
-                            setTimeout(function () {
-                                window.location.href = '/sign_in';
-                            }, 500)
+                                if(response.status === 'success') {
+                                    setTimeout(function () {
+                                        window.location.href = '/sign_in';
+                                    }, 500)
+                                }
                         }
                     }
                 })

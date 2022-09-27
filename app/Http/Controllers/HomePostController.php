@@ -41,11 +41,12 @@ class HomePostController extends Controller
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|confirmed|min:6',
+            'author' => 'required|numeric'
         ]);
 
 
         if ($validate->fails()) {
-            return response(['title' => 'Ugursuz!', 'message' => 'Sekil formati jpg,jpeg,png,gif  olmalidir!', 'status' => 'error',
+            return response(['title' => 'Ugursuz!', 'message' => 'Sekil formati jpg,jpeg,png,gif  olmalidir!', 'status' => 'validation-error',
                 'errors' => $validate->errors()]);
         }
 
@@ -53,7 +54,7 @@ class HomePostController extends Controller
 
             $user = new User();
             $user->fin = $request->fin;
-            $user->author = $request->radio;
+            $user->author = $request->author;
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
@@ -61,12 +62,15 @@ class HomePostController extends Controller
             $user->status = 0;
             $user->save();
 
-
-            Mail::send('emails.mesaj_gonder', ['msg' => 'Message: ' . '<a href="aa.com">Qeydiyyatdan ugurlu kecdiz</a>'], function ($message) use ($request) {
-                $message->to($request->email, $request->name)->subject('Mail linki');
-                $message->from('edocean_course@mail.ru', 'Edocean Course');
-                $message->setBody('<a href="/aaaaa.com">salam</a>', 'text/html');
-            });
+            try {
+                $mail = Mail::send('emails.mesaj_gonder', ['msg' => 'Message: ' . '<a href="aa.com">Qeydiyyatdan ugurlu kecdiz</a>'], function ($message) use ($request) {
+                    $message->to($request->email, $request->name)->subject('Mail linki');
+                    $message->from('edocean_course@mail.ru', 'Edocean Course');
+                    $message->setBody('<a href="/aaaaa.com">salam</a>', 'text/html');
+                });
+            } catch (\Exception $exception) {
+                return response(['title' => 'Ugursuz!', 'message' => 'Mail xetasi! Bele email movcud deyil!', 'status' => 'error']);
+            }
             return response(['title' => 'Ugurlu!', 'message' => 'Qeydiyyatdan ugurlu kecdiz', 'status' => 'success']);
 
         } catch (\Exception $exception) {
