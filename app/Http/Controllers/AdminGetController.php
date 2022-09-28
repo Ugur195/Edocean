@@ -16,5 +16,10 @@ class AdminGetController extends Controller
         return view('backend.contact_us');
     }
 
+    public function Setting()
+    {
+        return view('backend.setting');
+    }
+
 
 }
