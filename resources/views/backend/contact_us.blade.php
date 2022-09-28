@@ -1,1 +1,10 @@
-salam
+@extends('backend.app')@section('css')
+@endsection
+
+@section('content')
+
+
+@endsection
+
+@section('js')
+@endsection
