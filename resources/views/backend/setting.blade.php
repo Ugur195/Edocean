@@ -20,28 +20,19 @@
                 <div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
                     <form class="form">
                         <div class="form-group row">
-                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Logo</label>
+                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Avatar</label>
                             <div class="col-lg-9 col-xl-9">
-                                <div class="image-input image-input-outline" id="kt_contacts_edit_avatar"
-                                     style="background-image: url('/backendCssJs/assets/media/users/blank.png')">
-                                    <div class="image-input-wrapper"
-                                         style="background-image: url('/backendCssJs/assets/media/users/100_3.jpg')"></div>
-                                    <label
-                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                        data-action="change" data-toggle="tooltip" title=""
-                                        data-original-title="Change avatar">
+                                <div class="image-input image-input-outline" id="kt_contacts_edit_avatar" style="background-image: url(assets/media/users/blank.png)">
+                                    <div class="image-input-wrapper" style="background-image: url('/backendCssJs/assets/media/users/100_2.jpg')"></div>
+                                    <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
                                         <i class="fa fa-pen icon-sm text-muted"></i>
-                                        <input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg"/>
-                                        <input type="hidden" name="profile_avatar_remove"/>
+                                        <input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg" />
+                                        <input type="hidden" name="profile_avatar_remove" />
                                     </label>
-                                    <span
-                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                        data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                    <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
 																	<i class="ki ki-bold-close icon-xs text-muted"></i>
 																</span>
-                                    <span
-                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                        data-action="remove" data-toggle="tooltip" title="Remove avatar">
+                                    <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="remove" data-toggle="tooltip" title="Remove avatar">
 																	<i class="ki ki-bold-close icon-xs text-muted"></i>
 																</span>
                                 </div>
@@ -53,21 +44,21 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Url</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value=""/>
+                                       value="{{$setting->url}}"/>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Title</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value=""/>
+                                       value="{{$setting->title}}"/>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Description</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value=""/>
+                                       value="{{$setting->description}}"/>
                             </div>
                         </div>
 
@@ -75,7 +66,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Description_RU</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value=""/>
+                                       value="{{$setting->description_ru}}"/>
                             </div>
                         </div>
 
@@ -83,7 +74,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Description_EN</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value=""/>
+                                       value="{{$setting->description_en}}"/>
                             </div>
                         </div>
 
@@ -91,7 +82,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Keywords</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value=""/>
+                                       value="{{$setting->keywords}}"/>
                             </div>
                         </div>
 
@@ -99,7 +90,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Analytics</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value=""/>
+                                       value="{{$setting->analytics}}"/>
                             </div>
                         </div>
 
@@ -107,7 +98,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Author</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value=""/>
+                                       value="{{$setting->author}}"/>
                             </div>
                         </div>
 
@@ -121,7 +112,7 @@
 																	</span>
                                     </div>
                                     <input type="text" class="form-control form-control-lg form-control-solid"
-                                           value="" />
+                                           value="{{$setting->phone}}"/>
                                 </div>
                             </div>
                         </div>
@@ -130,7 +121,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Fax</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value=""/>
+                                       value="{{$setting->fax}}"/>
                             </div>
                         </div>
 
@@ -144,7 +135,7 @@
 																	</span>
                                     </div>
                                     <input type="text" class="form-control form-control-lg form-control-solid"
-                                           value="" placeholder=""/>
+                                           value="" placeholder="{{$setting->email}}"/>
                                 </div>
                             </div>
                         </div>
@@ -153,7 +144,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Facebook</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value=""/>
+                                       value="{{$setting->facebook}}"/>
                             </div>
                         </div>
 
@@ -161,7 +152,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Twitter</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value=""/>
+                                       value="{{$setting->twitter}}"/>
                             </div>
                         </div>
 
@@ -169,7 +160,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Instagram</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value=""/>
+                                       value="{{$setting->instagram}}"/>
                             </div>
                         </div>
 
@@ -177,7 +168,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Youtube</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value=""/>
+                                       value="{{$setting->youtube}}"/>
                             </div>
                         </div>
 
@@ -185,7 +176,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Whatsapp</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value=""/>
+                                       value="{{$setting->whatsapp}}"/>
                             </div>
                         </div>
 
@@ -194,7 +185,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Google</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value=""/>
+                                       value="{{$setting->google}}"/>
                             </div>
                         </div>
 
@@ -203,7 +194,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Address</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value=""/>
+                                       value="{{$setting->address}}"/>
                             </div>
                         </div>
 
@@ -211,7 +202,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Country</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value=""/>
+                                       value="{{$setting->country}}"/>
                             </div>
                         </div>
 
@@ -219,7 +210,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">City</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value=""/>
+                                       value="{{$setting->city}}"/>
                             </div>
                         </div>
 
@@ -227,7 +218,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Maps</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value=""/>
+                                       value="{{$setting->maps}}"/>
                             </div>
                         </div>
 
@@ -235,7 +226,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Smpt_User</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value=""/>
+                                       value="{{$setting->smpt_user}}"/>
                             </div>
                         </div>
 
@@ -243,7 +234,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Smpt_Password</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value=""/>
+                                       value="{{$setting->smpt_password}}"/>
                             </div>
                         </div>
 
@@ -251,14 +242,14 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Host</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value=""/>
+                                       value="{{$setting->host}}"/>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Port</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value=""/>
+                                       value="{{$setting->port}}"/>
                             </div>
                         </div>
 
@@ -295,5 +286,6 @@
 @endsection
 
 @section('js')
+    <script src="{{asset('backendCssJs/assets/js/pages/custom/contacts/edit-contact.js')}}"></script>
 
 @endsection

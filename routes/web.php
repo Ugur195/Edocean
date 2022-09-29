@@ -41,6 +41,24 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/index', [AdminGetController::class, 'home']);
     Route::get('/contact_us', [AdminGetController::class, 'ContactUs']);
     Route::get('/setting', [AdminGetController::class, 'Setting']);
+
+
+
+
+
+
+
+
+    Route::post('/setting', [AdminPostController::class, 'Setting']);
+
+
+
+
+
+
+
+
+
 });
 
 
