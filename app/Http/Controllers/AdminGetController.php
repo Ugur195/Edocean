@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class AdminGetController extends Controller
@@ -18,7 +19,8 @@ class AdminGetController extends Controller
 
     public function Setting()
     {
-        return view('backend.setting');
+        $setting = Setting::find(1);
+        return view('backend.setting')->with(['setting' => $setting]);
     }
 
 
