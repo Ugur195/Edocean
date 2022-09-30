@@ -25,31 +25,33 @@
                         {{csrf_field()}}
                         <input name="id" class="form-control form-control-lg form-control-solid" hidden type="text"
                                value="{{$setting->id}}"/>
+
+
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Logo</label>
                             <div class="col-lg-9 col-xl-9">
                                 <div class="image-input image-input-outline" id="kt_contacts_edit_avatar"
                                      style="background-image: url(assets/media/users/blank.png)">
+
                                     <div class="image-input-wrapper"
-                                         style="background-image: url('/backendCssJs/assets/media/users/100_2.jpg')"></div>
+                                         style="background-image: url('data:image/jpeg;base64,{{base64_encode($setting->logo)}}')">
+                                    </div>
                                     <label
                                         class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
                                         data-action="change" data-toggle="tooltip" title=""
                                         data-original-title="Change avatar">
                                         <i class="fa fa-pen icon-sm text-muted"></i>
-                                        <input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg"/>
+                                        <input type="file" name="logo" id="file" accept=".png, .jpg, .jpeg" />
                                         <input type="hidden" name="profile_avatar_remove"/>
                                     </label>
+
+
                                     <span
                                         class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
                                         data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
-                        																	<i class="ki ki-bold-close icon-xs text-muted"></i>
-                        																</span>
-                                    <span
-                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                        data-action="remove" data-toggle="tooltip" title="Remove avatar">
-                        																	<i class="ki ki-bold-close icon-xs text-muted"></i>
-                        																</span>
+                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                    </span>
+
                                 </div>
                             </div>
                         </div>
@@ -281,7 +283,7 @@
                                            class="btn btn-success font-weight-bolder text-uppercase px-9 py-4"
                                            data-wizard-type="action-submit">Back
                                         </a>
-                                        <button  class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4"
+                                        <button class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4"
                                                 data-wizard-type="action-next">Update
                                         </button>
 
@@ -306,27 +308,27 @@
     <script src="{{asset('jsValidate/jquery.form.js')}}"></script>
 
 
-        <script>
-            $(document).ready(function () {
-                $('#mySetting').ajaxForm({
-                    beforeSubmit: function () {
-                    },
-                    success: function (response) {
-                        Swal.fire({
-                                title: response.title,
-                                text: response.message,
-                                icon: response.status,
-                                allowOutsideClick: false
-                            }
-                        )
-                        if (response.status === 'success') {
-                            setTimeout(function () {
-                                window.location.href = '/admin/setting';
-                            }, 500)
+    <script>
+        $(document).ready(function () {
+            $('#mySetting').ajaxForm({
+                beforeSubmit: function () {
+                },
+                success: function (response) {
+                    Swal.fire({
+                            title: response.title,
+                            text: response.message,
+                            icon: response.status,
+                            allowOutsideClick: false
                         }
+                    )
+                    if (response.status === 'success') {
+                        setTimeout(function () {
+                            window.location.href = '/admin/setting';
+                        }, 500)
                     }
-                });
+                }
             });
-        </script>
+        });
+    </script>
 
 @endsection
