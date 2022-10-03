@@ -6,7 +6,7 @@
     <base href="">
     <meta charset="utf-8"/>
     <meta name="csrf-token" content="{{csrf_token()}}">
-    <title>Admin Panel | Edocean</title>
+    <title>Admin Panel | Student</title>
     <meta name="description"
           content="Metronic admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets."/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
@@ -83,7 +83,7 @@
     <div class="d-flex flex-row flex-column-fluid page">
         <div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
             <div class="brand flex-column-auto" id="kt_brand">
-                <a href="" class="brand-logo">
+                <a href="#" class="brand-logo">
 {{--                                        <img class="entry-logo img-responsive"--}}
 {{--                                             src="data:image/jpeg;base64,{{base64_encode($setting->logo)}}" alt="logo"--}}
 {{--                                             title="logo"/>--}}
@@ -129,9 +129,9 @@
                 <div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1"
                      data-menu-dropdown-timeout="500">
                     <ul class="menu-nav">
-                        <li class="menu-item  @if(Request::url()==url('admin/index')) menu-item-active @endif "
+                        <li class="menu-item  @if(Request::url()==url('admin/student/index')) menu-item-active @endif "
                             aria-haspopup="true">
-                            <a href="{{url('admin/index')}}" class="menu-link">
+                            <a href="{{url('admin/student/index')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
                                        <svg xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
@@ -153,39 +153,13 @@
                                        </g>
                                       </svg>
                                 </span>
-                                <span class="menu-text">Home</span>
-                            </a>
-                        </li>
-                        <li class="menu-item   @if(Request::url()==url('admin/contact_us')) menu-item-active @endif ">
-                            <a href="{{url('admin/contact_us')}}" class="menu-link">
-                                <span class="svg-icon menu-icon">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                            viewBox="0 0 24 24" version="1.1">
-                                           <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                         <rect x="0" y="0" width="24" height="24"/>
-                                          <path d="M5,6 L19,6 C20.1045695,6 21,6.8954305 21,8 L21,17 C21,18.1045695 20.1045695,
-                                            19 19,19 L5,19 C3.8954305,19 3,18.1045695 3,17 L3,8 C3,6.8954305 3.8954305,
-                                               6 5,6 Z M18.1444251,7.83964668 L12,11.1481833 L5.85557487,
-                                               7.83964668 C5.4908718,7.6432681 5.03602525,
-                                              7.77972206 4.83964668,8.14442513 C4.6432681,
-                                                  8.5091282 4.77972206,8.96397475 5.14442513,
-                                                9.16035332 L11.6444251,12.6603533 C11.8664074,
-                                                12.7798822 12.1335926,12.7798822 12.3555749,
-                                               12.6603533 L18.8555749,9.16035332 C19.2202779,
-                                                  8.96397475 19.3567319,8.5091282 19.1603533,
-                                                 8.14442513 C18.9639747,7.77972206 18.5091282,
-                                                7.6432681 18.1444251,7.83964668 Z" fill="#000000"/>
-                                          </g>
-                                     </svg><!--end::Svg Icon-->
-                                </span>
-                                <span class="menu-text">Messages</span>
+                                <span class="menu-text">Student</span>
                             </a>
                         </li>
 
-                        <li class="menu-item   @if(Request::url()==url('admin/about_us')) menu-item-active @endif">
-                            <a href="{{url('admin/about_us')}}" class="menu-link">
+
+                        <li class="menu-item   @if(Request::url()==url('admin/student/student_attendance')) menu-item-active @endif">
+                            <a href="{{url('admin/student/student_attendance')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
                                         <svg style="height: 19px" xmlns="http://www.w3.org/2000/svg"
                                              xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
@@ -219,13 +193,13 @@
                                                </g>
                                         </svg>
                                 </span>
-                                <span class="menu-text">About Us</span>
+                                <span class="menu-text">Student Attendance</span>
                             </a>
                         </li>
 
-                        <li class="menu-item   @if(Request::url()==url('admin/setting')) menu-item-active @endif ">
+                        <li class="menu-item   @if(Request::url()==url('admin/student/student_schedule')) menu-item-active @endif ">
 
-                            <a href="{{url('admin/setting')}}" class="menu-link">
+                            <a href="{{url('admin/student/student_schedule')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                              xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -241,7 +215,7 @@
                                          </g>
                                         </svg><!--end::Svg Icon-->
                                 </span>
-                                <span class="menu-text">Setting</span>
+                                <span class="menu-text">Student Schedule</span>
                             </a>
 
                         </li>

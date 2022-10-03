@@ -5,6 +5,10 @@ use App\Http\Controllers\HomeGetController;
 use App\Http\Controllers\HomePostController;
 use App\Http\Controllers\AdminGetController;
 use App\Http\Controllers\AdminPostController;
+use App\Http\Controllers\StudentGetController;
+use App\Http\Controllers\StudentPostController;
+use App\Http\Controllers\TeacherGetController;
+use App\Http\Controllers\TeacherPostController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,7 +40,7 @@ Route::post('/contact_us', [HomePostController::class, 'PostContactUs']);
 Route::post('/sign_in', [HomePostController::class, 'PostSignIn']);
 Route::post('/sign_up', [HomePostController::class, 'PostSignUp']);
 
-//back end
+//admin
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/index', [AdminGetController::class, 'home']);
     Route::get('/contact_us', [AdminGetController::class, 'ContactUs']);
@@ -44,21 +48,24 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/setting', [AdminGetController::class, 'Setting']);
 
 
-
-
-
-
-
-
     Route::post('/about_us', [AdminPostController::class, 'AboutUs']);
     Route::post('/setting', [AdminPostController::class, 'Setting']);
 
 
+});
+
+//student
+Route::group(['prefix' => 'admin/student'], function () {
+    Route::get('/index', [StudentGetController::class, 'Student']);
+    Route::get('/student_attendance', [StudentGetController::class, 'StudentAttendance']);
+    Route::get('/student_schedule', [StudentGetController::class, 'StudentSchedule']);
 
 
+});
 
-
-
+Route::group(['prefix' => 'admin/teacher'], function () {
+    Route::get('/index', [TeacherGetController::class, 'Teacher']);
+    Route::get('/teacher_schedule', [TeacherGetController::class, 'TeacherSchedule']);
 
 
 });

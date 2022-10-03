@@ -30,5 +30,23 @@ class AdminGetController extends Controller
         return view('backend.about_us')->with(['about_us' => $about_us]);
     }
 
+    public function HomeStudent()
+    {
+        return view('student.index');
+    }
+
+    public function StudentAttendance()
+    {
+        return view('student.student_attendance');
+    }
+
+    public function StudentSchedule()
+    {
+        return view('student.student_schedule');
+    }
+
+
+
+
 
 }
