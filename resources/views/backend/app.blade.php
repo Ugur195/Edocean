@@ -129,16 +129,14 @@
                 <div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1"
                      data-menu-dropdown-timeout="500">
                     <ul class="menu-nav">
-                        <li class="menu-item  menu-item-active "
+                        <li class="menu-item  @if(Request::url()==url('admin/index')) menu-item-active @endif "
                             aria-haspopup="true">
                             <a href="{{url('admin/index')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
-                                   <span class="svg-icon svg-icon-primary svg-icon-2x">
                                        <svg xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
                                             viewBox="0 0 24 24" version="1.1">
                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                       <rect x="0" y="0" width="24" height="24"/>
                                        <path
                                            d="M3.95709826,8.41510662 L11.47855,3.81866389 C11.7986624,
                                            3.62303967 12.2013376,3.62303967 12.52145,3.81866389 L20.0429,
@@ -153,13 +151,14 @@
                                            17.5522847 15,17 L15,14 C15,13.4477153 14.5522847,13 14,13 L10,13 Z"
                                            fill="#000000"/>
                                        </g>
-                                      </svg></span>
+                                      </svg>
                                 </span>
                                 <span class="menu-text">Home</span>
                             </a>
+                        </li>
+                        <li class="menu-item   @if(Request::url()==url('admin/contact_us')) menu-item-active @endif ">
                             <a href="{{url('admin/contact_us')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
-                                    <span class="svg-icon svg-icon-primary svg-icon-2x">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
@@ -179,45 +178,44 @@
                                                  8.14442513 C18.9639747,7.77972206 18.5091282,
                                                 7.6432681 18.1444251,7.83964668 Z" fill="#000000"/>
                                           </g>
-                                     </svg><!--end::Svg Icon--></span>
+                                     </svg><!--end::Svg Icon-->
                                 </span>
                                 <span class="menu-text">Messages</span>
                             </a>
+                        </li>
+
+                        <li class="menu-item   @if(Request::url()==url('admin/about_us')) menu-item-active @endif">
 
                             <a href="{{url('admin/about_us')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
-                                    <span class="svg-icon svg-icon-primary svg-icon-2x">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <polygon points="0 0 24 0 24 24 0 24"/>
-                                             <path d="M18,14 C16.3431458,14 15,12.6568542 15,
-                                             11 C15,9.34314575 16.3431458,8 18,8 C19.6568542
-                                             ,8 21,9.34314575 21,11 C21,12.6568542 19.6568542,
-                                             14 18,14 Z M9,11 C6.790861,11 5,9.209139 5,7 C5
-                                             ,4.790861 6.790861,3 9,3 C11.209139,
-                                             3 13,4.790861 13,7 C13,9.209139 11.209139,11 9,
-                                             11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
-                                        <path d="M17.6011961,15.0006174 C21.0077043,15.0378534 23.7891749,
-                                        16.7601418 23.9984937,20.4 C24.0069246,20.5466056 23.9984937,
-                                        21 23.4559499,21 L19.6,21 C19.6,18.7490654 18.8562935,
-                                        16.6718327 17.6011961,15.0006174 Z M0.00065168429,
-                                        20.1992055 C0.388258525,15.4265159 4.26191235,
-                                        13 8.98334134,13 C13.7712164,13 17.7048837,
-                                        15.2931929 17.9979143,20.2 C18.0095879,
-                                        20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,
-                                        21 0.727502227,21 C0.476712155,21 -0.0204617505,
-                                        20.45918 0.00065168429,20.1992055 Z" fill="#000000" fill-rule="nonzero"/>
-                                            </g>
-                                        </svg><!--end::Svg Icon--></span>
+                                        <svg style="height: 20px" xmlns="http://www.w3.org/2000/svg"
+                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                             viewBox="0 0 24 24" version="1.1">
+                                               <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+	                                                  <path d="M11.812,0C5.289,0,0,5.289,0,11.812s5.289,11.813,11.812,11.813s11.813-5.29,11.813-11.813
+		                                               S18.335,0,11.812,0z M14.271,18.307c-0.608,0.24-1.092,0.422-1.455,0.548c-0.362,0.126-0.783,0.189-1.262,0.189
+		                                               c-0.736,0-1.309-0.18-1.717-0.539s-0.611-0.814-0.611-1.367c0-0.215,0.015-0.435,0.045-0.659c0.031-0.224,0.08-0.476,0.147-0.759
+		                                               l0.761-2.688c0.067-0.258,0.125-0.503,0.171-0.731c0.046-0.23,0.068-0.441,0.068-0.633c0-0.342-0.071-0.582-0.212-0.717
+		                                               c-0.143-0.135-0.412-0.201-0.813-0.201c-0.196,0-0.398,0.029-0.605,0.09c-0.205,0.063-0.383,0.12-0.529,0.176l0.201-0.828
+		                                               c0.498-0.203,0.975-0.377,1.43-0.521c0.455-0.146,0.885-0.218,1.29-0.218c0.731,0,1.295,0.178,1.692,0.53
+		                                               c0.395,0.353,0.594,0.812,0.594,1.376c0,0.117-0.014,0.323-0.041,0.617c-0.027,0.295-0.078,0.564-0.152,0.811l-0.757,2.68
+		                                               c-0.062,0.215-0.117,0.461-0.167,0.736c-0.049,0.275-0.073,0.485-0.073,0.626c0,0.356,0.079,0.599,0.239,0.728
+		                                               c0.158,0.129,0.435,0.194,0.827,0.194c0.185,0,0.392-0.033,0.626-0.097c0.232-0.064,0.4-0.121,0.506-0.17L14.271,18.307z
+		                                                M14.137,7.429c-0.353,0.328-0.778,0.492-1.275,0.492c-0.496,0-0.924-0.164-1.28-0.492c-0.354-0.328-0.533-0.727-0.533-1.193
+		                                               c0-0.465,0.18-0.865,0.533-1.196c0.356-0.332,0.784-0.497,1.28-0.497c0.497,0,0.923,0.165,1.275,0.497
+		                                               c0.353,0.331,0.53,0.731,0.53,1.196C14.667,6.703,14.49,7.101,14.137,7.429z"
+                                                            fill="#000000" />
+                                               </g>
+                                        </svg><!--end::Svg Icon-->
                                 </span>
                                 <span class="menu-text">About Us</span>
                             </a>
+                        </li>
 
+                        <li class="menu-item   @if(Request::url()==url('admin/setting')) menu-item-active @endif ">
 
                             <a href="{{url('admin/setting')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
-                                    <span class="svg-icon svg-icon-primary svg-icon-2x">
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                              xmlns:xlink="http://www.w3.org/1999/xlink"
                                              width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -230,11 +228,10 @@
                                            10.3431458 13.6568542,9 12,9 C10.3431458,9 9,10.3431458 9,12 C9,
                                            13.6568542 10.3431458,15 12,15 Z" fill="#000000"/>
                                          </g>
-                                        </svg><!--end::Svg Icon--></span>
+                                        </svg><!--end::Svg Icon-->
                                 </span>
                                 <span class="menu-text">Setting</span>
                             </a>
-
 
                         </li>
                     </ul>
