@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AboutUs;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use PharIo\Version\Exception;
 
 class AdminPostController extends Controller
 {
@@ -11,7 +13,6 @@ class AdminPostController extends Controller
     public function Setting(Request $request)
     {
         try {
-
             Setting::where('id', $request->id)->update(['url' => $request->url, 'title' => $request->title, 'description' => $request->description,
                 'description_ru' => $request->description_ru, 'description_en' => $request->description_en, 'keywords' => $request->keywords,
                 'author' => $request->author, 'phone' => $request->phone, 'fax' => $request->fax, 'email' => $request->email, 'address' => $request->address,
@@ -27,7 +28,21 @@ class AdminPostController extends Controller
             return response(['title' => 'Ugursuz!', 'message' => 'Update ugursuz alindi!', 'status' => 'error']);
         }
 
+    }
 
+    public function AboutUs(Request $request)
+    {
+        try {
+            AboutUs::where('id', $request->id)->update(['our_responsib' => $request->our_responsib, 'our_responsib_ru' => $request->our_responsib_ru,
+                'our_responsib_en' => $request->our_responsib_en, 'content_az' => $request->content_az, 'content_ru' => $request->content_ru, 'content_en' =>
+                    $request->content_en, 'video_link' => $request->video_link, 'video_sub_title' => $request->video_sub_title, 'video_sub_title_ru' => $request->
+                video_sub_title_ru, 'video_sub_title_en' => $request->video_sub_title_en, 'our_purpose' => $request->our_purpose,
+                'our_purpose_ru' => $request->our_purpose_ru, 'our_purpose_en' => $request->our_purpose_en]);
+            return response(['title' => 'Ugurlu!', 'message' => 'About Us update oldu', 'status' => 'success']);
+
+        } catch (\Exception $exception) {
+            return response(['title' => 'Ugursuz!', 'message' => 'Update ugursuz alindi!', 'status' => 'error']);
+        }
     }
 
 }

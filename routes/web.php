@@ -40,6 +40,7 @@ Route::post('/sign_up', [HomePostController::class, 'PostSignUp']);
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/index', [AdminGetController::class, 'home']);
     Route::get('/contact_us', [AdminGetController::class, 'ContactUs']);
+    Route::get('/about_us', [AdminGetController::class, 'AboutUs']);
     Route::get('/setting', [AdminGetController::class, 'Setting']);
 
 
@@ -49,6 +50,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 
 
+    Route::post('/about_us', [AdminPostController::class, 'AboutUs']);
     Route::post('/setting', [AdminPostController::class, 'Setting']);
 
 
