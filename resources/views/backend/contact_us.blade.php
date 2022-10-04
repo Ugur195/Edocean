@@ -108,7 +108,6 @@
 @endsection
 
 @section('js')
-    <script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script>
     <script src="{{asset('backendCssJs/assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
     <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/search-options/column-search.js')}}"></script>
 @endsection

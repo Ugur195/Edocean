@@ -317,9 +317,9 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 }
 
 // Initialize KTApp class on document ready
-$(document).ready(function() {
-    KTApp.init(KTAppSettings);
-});
+// $(document).ready(function() {
+//     KTApp.init(KTAppSettings);
+// });
 
 // CSS3 Transitions only after page load(.page-loading class added to body tag and remove with JS on page load)
 window.onload = function() {
@@ -824,7 +824,7 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 
 "use strict";
 
-// Component Definition 
+// Component Definition
 var KTDialog = function(options) {
     // Main object
     var the = this;
@@ -1219,7 +1219,7 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 
 "use strict";
 
-// Component Definition 
+// Component Definition
 var KTImageInput = function(elementId, options) {
     // Main object
     var the = this;
@@ -4832,13 +4832,13 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 }
 
 // Initialize KTUtil class on document ready
-KTUtil.ready(function() {
-	if (typeof KTAppSettings !== 'undefined') {
-		KTUtil.init(KTAppSettings);
-	} else {
-		KTUtil.init();
-	}
-});
+// KTUtil.ready(function() {
+// 	if (typeof KTAppSettings !== 'undefined') {
+// 		KTUtil.init(KTAppSettings);
+// 	} else {
+// 		KTUtil.init();
+// 	}
+// });
 
 "use strict";
 
@@ -9703,7 +9703,7 @@ var KTLayoutHeaderMenu = function() {
 				state: 'mobile-toggle-active'
 			}
 		});
-		
+
 		_menuObject = new KTMenu(_menuElement, {
 			submenu: {
 				desktop: 'dropdown',

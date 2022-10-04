@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AboutUs;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminGetController extends Controller
 {
@@ -45,8 +46,11 @@ class AdminGetController extends Controller
         return view('student.student_schedule');
     }
 
-
-
+    public function getContactUs()
+    {
+        $contact_us = DB::table('edocean.contact_us')->select(DB::raw('contact_us.*'))->get();
+        return json_encode($contact_us);
+    }
 
 
 }

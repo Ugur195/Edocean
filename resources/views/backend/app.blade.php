@@ -84,13 +84,13 @@
         <div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
             <div class="brand flex-column-auto" id="kt_brand">
                 <a href="" class="brand-logo">
-{{--                                        <img class="entry-logo img-responsive"--}}
-{{--                                             src="data:image/jpeg;base64,{{base64_encode($setting->logo)}}" alt="logo"--}}
-{{--                                             title="logo"/>--}}
+                    {{--                                        <img class="entry-logo img-responsive"--}}
+                    {{--                                             src="data:image/jpeg;base64,{{base64_encode($setting->logo)}}" alt="logo"--}}
+                    {{--                                             title="logo"/>--}}
                 </a>
                 <button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">
                     <span class="svg-icon svg-icon svg-icon-xl">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        <svg   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                              width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <polygon points="0 0 24 0 24 24 0 24"/>
@@ -133,24 +133,17 @@
                             aria-haspopup="true">
                             <a href="{{url('admin/index')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
-                                       <svg xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                            viewBox="0 0 24 24" version="1.1">
-                                       <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                       <path
-                                           d="M3.95709826,8.41510662 L11.47855,3.81866389 C11.7986624,
-                                           3.62303967 12.2013376,3.62303967 12.52145,3.81866389 L20.0429,
-                                           8.41510557 C20.6374094,8.77841684 21,9.42493654 21,
-                                           10.1216692 L21,19.0000642 C21,20.1046337 20.1045695,
-                                           21.0000642 19,21.0000642 L4.99998155,
-                                           21.0000673 C3.89541205,21.0000673 2.99998155,20.1046368 2.99998155,
-                                           19.0000673 L2.99999828,10.1216672 C2.99999935,
-                                           9.42493561 3.36258984,8.77841732 3.95709826,
-                                           8.41510662 Z M10,13 C9.44771525,13 9,13.4477153 9,
-                                           14 L9,17 C9,17.5522847 9.44771525,18 10,18 L14,18 C14.5522847,18 15,
-                                           17.5522847 15,17 L15,14 C15,13.4477153 14.5522847,13 14,13 L10,13 Z"
-                                           fill="#000000"/>
-                                       </g>
+                                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                           viewBox="0 0 27.02 27.02" style="enable-background:new 0 0 27.02 27.02;"
+                                           xml:space="preserve">
+                                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" >
+	                                             <path  d="M3.674,24.876c0,0-0.024,0.604,0.566,0.604c0.734,0,6.811-0.008,6.811-0.008l0.01-5.581
+		                                          c0,0-0.096-0.92,0.797-0.92h2.826c1.056,0,0.991,0.92,0.991,0.92l-0.012,5.563c0,0,5.762,0,6.667,0
+		                                          c0.749,0,0.715-0.752,0.715-0.752V14.413l-9.396-8.358l-9.975,8.358C3.674,14.413,3.674,24.876,3.674,24.876z" fill="#000000"/>
+                                                 <path d="M0,13.635c0,0,0.847,1.561,2.694,0l11.038-9.338l10.349,9.28c2.138,1.542,2.939,0,2.939,0
+		                                          L13.732,1.54L0,13.635z" fill="#000000"/>
+                                             </g>
                                       </svg>
                                 </span>
                                 <span class="menu-text">Home</span>
@@ -533,63 +526,6 @@
     </div>
     <!--end::Content-->
 </div>
-<!--end::Quick Cart-->
-<script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script>
-<!--begin::Global Config(global config for global JS scripts)-->
-<script>var KTAppSettings = {
-        "breakpoints": {"sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1400},
-        "colors": {
-            "theme": {
-                "base": {
-                    "white": "#ffffff",
-                    "primary": "#3699FF",
-                    "secondary": "#E5EAEE",
-                    "success": "#1BC5BD",
-                    "info": "#8950FC",
-                    "warning": "#FFA800",
-                    "danger": "#F64E60",
-                    "light": "#E4E6EF",
-                    "dark": "#181C32"
-                },
-                "light": {
-                    "white": "#ffffff",
-                    "primary": "#E1F0FF",
-                    "secondary": "#EBEDF3",
-                    "success": "#C9F7F5",
-                    "info": "#EEE5FF",
-                    "warning": "#FFF4DE",
-                    "danger": "#FFE2E5",
-                    "light": "#F3F6F9",
-                    "dark": "#D6D6E0"
-                },
-                "inverse": {
-                    "white": "#ffffff",
-                    "primary": "#ffffff",
-                    "secondary": "#3F4254",
-                    "success": "#ffffff",
-                    "info": "#ffffff",
-                    "warning": "#ffffff",
-                    "danger": "#ffffff",
-                    "light": "#464E5F",
-                    "dark": "#ffffff"
-                }
-            },
-            "gray": {
-                "gray-100": "#F3F6F9",
-                "gray-200": "#EBEDF3",
-                "gray-300": "#E4E6EF",
-                "gray-400": "#D1D3E0",
-                "gray-500": "#B5B5C3",
-                "gray-600": "#7E8299",
-                "gray-700": "#5E6278",
-                "gray-800": "#3F4254",
-                "gray-900": "#181C32"
-            }
-        },
-        "font-family": "Poppins"
-    };</script>
-<!--end::Global Config-->
-<!--begin::Global Theme Bundle(used by all pages)-->
 <script src="{{asset('backendCssJs/assets/plugins/global/plugins.bundle.js')}}"></script>
 <script src="{{asset('backendCssJs/assets/plugins/custom/prismjs/prismjs.bundle.js')}}"></script>
 <script src="{{asset('backendCssJs/assets/js/scripts.bundle.js')}}"></script>

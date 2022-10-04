@@ -84,9 +84,9 @@
         <div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
             <div class="brand flex-column-auto" id="kt_brand">
                 <a href="#" class="brand-logo">
-{{--                                        <img class="entry-logo img-responsive"--}}
-{{--                                             src="data:image/jpeg;base64,{{base64_encode($setting->logo)}}" alt="logo"--}}
-{{--                                             title="logo"/>--}}
+                    {{--                                        <img class="entry-logo img-responsive"--}}
+                    {{--                                             src="data:image/jpeg;base64,{{base64_encode($setting->logo)}}" alt="logo"--}}
+                    {{--                                             title="logo"/>--}}
                 </a>
                 <button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">
                     <span class="svg-icon svg-icon svg-icon-xl">
@@ -133,25 +133,18 @@
                             aria-haspopup="true">
                             <a href="{{url('admin/student/index')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
-                                       <svg xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                            viewBox="0 0 24 24" version="1.1">
+                                    <svg version="1.1" id="Layer_1"
+                                         xmlns="http://www.w3.org/2000/svg"
+                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                         width="260px" height="188px"
+                                         viewBox="0 0 260 188" xml:space="preserve">
                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                       <path
-                                           d="M3.95709826,8.41510662 L11.47855,3.81866389 C11.7986624,
-                                           3.62303967 12.2013376,3.62303967 12.52145,3.81866389 L20.0429,
-                                           8.41510557 C20.6374094,8.77841684 21,9.42493654 21,
-                                           10.1216692 L21,19.0000642 C21,20.1046337 20.1045695,
-                                           21.0000642 19,21.0000642 L4.99998155,
-                                           21.0000673 C3.89541205,21.0000673 2.99998155,20.1046368 2.99998155,
-                                           19.0000673 L2.99999828,10.1216672 C2.99999935,
-                                           9.42493561 3.36258984,8.77841732 3.95709826,
-                                           8.41510662 Z M10,13 C9.44771525,13 9,13.4477153 9,
-                                           14 L9,17 C9,17.5522847 9.44771525,18 10,18 L14,18 C14.5522847,18 15,
-                                           17.5522847 15,17 L15,14 C15,13.4477153 14.5522847,13 14,13 L10,13 Z"
-                                           fill="#000000"/>
+                                            <path d="M134.3,109.2L202,83.8V146c0,13.4-32.2,24.3-72,
+                                            24.3S58,159.4,58,146V83.8l67.9,25.4l4.2,1.6L134.3,109.2z M130.1,98L258,50
+	                                         L130.1,2L2,50l20,7.5v81.8c-4.7,2.2-8,7.1-8,
+	                                         12.7v34h28v-34c0-5.7-3.3-10.6-8.1-12.8V61.9L130.1,98z" fill="#000000"/>
                                        </g>
-                                      </svg>
+                                    </svg>
                                 </span>
                                 <span class="menu-text">Student</span>
                             </a>
@@ -161,37 +154,14 @@
                         <li class="menu-item   @if(Request::url()==url('admin/student/student_attendance')) menu-item-active @endif">
                             <a href="{{url('admin/student/student_attendance')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
-                                        <svg style="height: 19px" xmlns="http://www.w3.org/2000/svg"
-                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                             viewBox="0 0 24 24" version="1.1">
-                                               <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-	                                                  <path d="M11.812,0C5.289,0,0,5.289,0,11.812s5.289,
-	                                                  11.813,11.812,11.813s11.813-5.29,11.813-11.813
-		                                               S18.335,0,11.812,0z M14.271,18.307c-0.608,
-		                                               0.24-1.092,0.422-1.455,0.548c-0.362,
-		                                               0.126-0.783,0.189-1.262,0.189
-		                                               c-0.736,0-1.309-0.18-1.717-0.539s-0.611-0.814-0.611-1.367c0-0.215,
-		                                               0.015-0.435,0.045-0.659c0.031-0.224,0.08-0.476,0.147-0.759
-		                                               l0.761-2.688c0.067-0.258,0.125-0.503,0.171-0.731c0.046-0.23,
-		                                               0.068-0.441,0.068-0.633c0-0.342-0.071-0.582-0.212-0.717
-		                                               c-0.143-0.135-0.412-0.201-0.813-0.201c-0.196,0-0.398,
-		                                               0.029-0.605,0.09c-0.205,0.063-0.383,0.12-0.529,0.176l0.201-0.828
-		                                               c0.498-0.203,0.975-0.377,1.43-0.521c0.455-0.146,
-		                                               0.885-0.218,1.29-0.218c0.731,0,1.295,0.178,1.692,0.53
-		                                               c0.395,0.353,0.594,0.812,0.594,1.376c0,0.117-0.014,
-		                                               0.323-0.041,0.617c-0.027,0.295-0.078,0.564-0.152,0.811l-0.757,2.68
-		                                               c-0.062,0.215-0.117,0.461-0.167,0.736c-0.049,0.275-0.073,
-		                                               0.485-0.073,0.626c0,0.356,0.079,0.599,0.239,0.728
-		                                               c0.158,0.129,0.435,0.194,0.827,0.194c0.185,
-		                                               0,0.392-0.033,0.626-0.097c0.232-0.064,0.4-0.121,0.506-0.17L14.271,18.307z
-		                                                M14.137,7.429c-0.353,0.328-0.778,0.492-1.275,
-		                                                0.492c-0.496,0-0.924-0.164-1.28-0.492c-0.354-0.328-0.533-0.727-0.533-1.193
-		                                               c0-0.465,0.18-0.865,0.533-1.196c0.356-0.332,
-		                                               0.784-0.497,1.28-0.497c0.497,0,0.923,0.165,1.275,0.497
-		                                               c0.353,0.331,0.53,0.731,0.53,1.196C14.667,6.703,14.49,7.101,14.137,7.429z"
-                                                            fill="#000000"/>
-                                               </g>
-                                        </svg>
+                                      <svg style="margin-left:1px" width="16px" height="16px" viewBox="0 0 16 16"
+                                           xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                           class="bi bi-person-check-fill ">
+                                           <path fill-rule="evenodd"
+                                                 d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                                           <path
+                                               d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                      </svg>
                                 </span>
                                 <span class="menu-text">Student Attendance</span>
                             </a>
@@ -201,19 +171,23 @@
 
                             <a href="{{url('admin/student/student_schedule')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                             xmlns:xlink="http://www.w3.org/1999/xlink"
-                                             width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <rect x="0" y="0" width="24" height="24"/>
-                                           <path d="M5,8.6862915 L5,5 L8.6862915,5 L11.5857864,2.10050506 L14.4852814,
-                                           5 L19,5 L19,9.51471863 L21.4852814,12 L19,14.4852814 L19,19 L14.4852814,
-                                           19 L11.5857864,21.8994949 L8.6862915,19 L5,19 L5,15.3137085 L1.6862915,
-                                           12 L5,8.6862915 Z M12,15 C13.6568542,15 15,13.6568542 15,12 C15,
-                                           10.3431458 13.6568542,9 12,9 C10.3431458,9 9,10.3431458 9,12 C9,
-                                           13.6568542 10.3431458,15 12,15 Z" fill="#000000"/>
-                                         </g>
-                                        </svg><!--end::Svg Icon-->
+                                       <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                            viewBox="0 0 198.667 198.667"
+                                            style="enable-background:new 0 0 198.667 198.667;" xml:space="preserve">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                 <path d="M193.667,41.945H182V21.278c0-2.762-2.239-5-5-5h-12c-2.761,0-5,2.238-5,5v20.667H38.667V21.278c0-2.762-2.239-5-5-5h-12
+	                                             c-2.761,0-5,2.238-5,5v20.667H5c-2.761,0-5,2.238-5,5V164.75c0,9.726,7.913,17.639,17.639,17.639h163.389
+	                                             c9.726,0,17.639-7.913,17.639-17.639V46.945C198.667,44.183,196.428,41.945,193.667,41.945z M181.333,138.955H157.4v-12.987h23.934
+	                                             V138.955z M89.533,78.899h23.934v12.987H89.533V78.899z M113.467,115.42H89.533v-12.986h23.934V115.42z M55.6,125.968h23.933v12.987
+	                                             H55.6V125.968z M89.533,125.968h23.934v12.987H89.533V125.968z M147.4,115.42h-23.933v-12.986H147.4V115.42z M21.667,125.968H45.6
+	                                             v12.987H21.667V125.968z M181.333,115.42H157.4v-12.986h23.934V115.42z M157.4,78.899h23.934v12.987H157.4V78.899z M147.4,91.886
+	                                             h-23.933V78.899H147.4V91.886z M55.6,102.434h23.933v12.986H55.6V102.434z M21.667,102.434H45.6v12.986H21.667V102.434z
+	                                             M45.6,162.49H21.667v-12.987H45.6V162.49z M55.6,149.502h23.933v12.987H55.6V149.502z M113.467,162.49H89.533v-12.987h23.934
+	                                             V162.49z M123.467,125.968H147.4v12.987h-23.933V125.968z"
+                                                       fill="#000000"/>
+                                            </g>
+                                       </svg>
                                 </span>
                                 <span class="menu-text">Student Schedule</span>
                             </a>

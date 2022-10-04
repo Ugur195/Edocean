@@ -1,11 +1,11 @@
 "use strict";
-var KTDatatablesSearchOptionsColumnSearch = function() {
+var KTDatatablesSearchOptionsColumnSearch = function () {
 
-    $.fn.dataTable.Api.register('column().title()', function() {
+    $.fn.dataTable.Api.register('column().title()', function () {
         return $(this.header()).text().trim();
     });
 
-    var initTable1 = function() {
+    var initTable1 = function () {
 
         // begin first table
         var table = $('#kt_datatable').DataTable({
@@ -27,51 +27,54 @@ var KTDatatablesSearchOptionsColumnSearch = function() {
             searchDelay: 500,
             processing: true,
             serverSide: true,
+            searchable: true,
             ajax: {
-                url: HOST_URL + '/api/datatables/demos/server.php',
-                type: 'POST',
-                data: {
-                    // parameters for custom backend script demo
-                    columnsDef: [
-                        'RecordID', 'OrderID', 'Country', 'ShipCity', 'CompanyAgent',
-                        'ShipDate', 'Status', 'Type', 'Actions',
-                    ],
-                },
+                url: '/api/contact_us',
+                type: 'get',
             },
-            columns: [{
-                    data: 'Ad'
+            columns: [
+                {
+                    data: 'id',
+                    name: 'id'
                 },
                 {
-                    data: 'OrderID'
+                   data: 'id',
+                    name: 'id'
                 },
                 {
-                    data: 'Country'
+                    data: 'id',
+                    name: 'id'
                 },
                 {
-                    data: 'ShipCity'
+                    data: 'id',
+                    name: 'id'
                 },
                 {
-                    data: 'CompanyAgent'
+                    data: 'id',
+                    name: 'id'
                 },
                 {
-                    data: 'ShipDate'
+                   data: 'id',
+                    name: 'id'
                 },
                 {
-                    data: 'Status'
+                   data: 'id',
+                    name: 'id'
                 },
                 {
-                    data: 'Type'
+                    data: 'id',
+                    name: 'id'
                 },
                 {
                     data: 'Actions',
                     responsivePriority: -1
                 },
             ],
-            initComplete: function() {
+            initComplete: function () {
                 var thisTable = this;
                 var rowFilter = $('<tr class="filter"></tr>').appendTo($(table.table().header()));
 
-                this.api().columns().every(function() {
+                this.api().columns().every(function () {
                     var column = this;
                     var input;
 
@@ -86,7 +89,7 @@ var KTDatatablesSearchOptionsColumnSearch = function() {
                         case 'Country':
                             input = $(`<select class="form-control form-control-sm form-filter datatable-input" title="Select" data-col-index="` + column.index() + `">
 										<option value="">Select</option></select>`);
-                            column.data().unique().sort().each(function(d, j) {
+                            column.data().unique().sort().each(function (d, j) {
                                 $(input).append('<option value="' + d + '">' + d + '</option>');
                             });
                             break;
@@ -124,7 +127,7 @@ var KTDatatablesSearchOptionsColumnSearch = function() {
                             };
                             input = $(`<select class="form-control form-control-sm form-filter datatable-input" title="Select" data-col-index="` + column.index() + `">
 										<option value="">Select</option></select>`);
-                            column.data().unique().sort().each(function(d, j) {
+                            column.data().unique().sort().each(function (d, j) {
                                 $(input).append('<option value="' + d + '">' + status[d].title + '</option>');
                             });
                             break;
@@ -146,7 +149,7 @@ var KTDatatablesSearchOptionsColumnSearch = function() {
                             };
                             input = $(`<select class="form-control form-control-sm form-filter datatable-input" title="Select" data-col-index="` + column.index() + `">
 										<option value="">Select</option></select>`);
-                            column.data().unique().sort().each(function(d, j) {
+                            column.data().unique().sort().each(function (d, j) {
                                 $(input).append('<option value="' + d + '">' + status[d].title + '</option>');
                             });
                             break;
@@ -188,10 +191,10 @@ var KTDatatablesSearchOptionsColumnSearch = function() {
 
                             $('<th>').append(search).append(reset).appendTo(rowFilter);
 
-                            $(search).on('click', function(e) {
+                            $(search).on('click', function (e) {
                                 e.preventDefault();
                                 var params = {};
-                                $(rowFilter).find('.datatable-input').each(function() {
+                                $(rowFilter).find('.datatable-input').each(function () {
                                     var i = $(this).data('col-index');
                                     if (params[i]) {
                                         params[i] += '|' + $(this).val();
@@ -199,16 +202,16 @@ var KTDatatablesSearchOptionsColumnSearch = function() {
                                         params[i] = $(this).val();
                                     }
                                 });
-                                $.each(params, function(i, val) {
+                                $.each(params, function (i, val) {
                                     // apply search params to datatable
                                     table.column(i).search(val ? val : '', false, false);
                                 });
                                 table.table().draw();
                             });
 
-                            $(reset).on('click', function(e) {
+                            $(reset).on('click', function (e) {
                                 e.preventDefault();
-                                $(rowFilter).find('.datatable-input').each(function(i) {
+                                $(rowFilter).find('.datatable-input').each(function (i) {
                                     $(this).val('');
                                     table.column($(this).data('col-index')).search('', false, false);
                                 });
@@ -223,8 +226,8 @@ var KTDatatablesSearchOptionsColumnSearch = function() {
                 });
 
                 // hide search column for responsive table
-                var hideSearchColumnResponsive = function() {
-                    thisTable.api().columns().every(function() {
+                var hideSearchColumnResponsive = function () {
+                    thisTable.api().columns().every(function () {
                         var column = this
                         if (column.responsiveHidden()) {
                             $(rowFilter).find('th').eq(column.index()).show();
@@ -242,11 +245,11 @@ var KTDatatablesSearchOptionsColumnSearch = function() {
                 $('#kt_datepicker_1,#kt_datepicker_2').datepicker();
             },
             columnDefs: [{
-                    targets: -1,
-                    title: 'Actions',
-                    orderable: false,
-                    render: function(data, type, full, meta) {
-                        return '\
+                targets: -1,
+                title: 'Actions',
+                orderable: false,
+                render: function (data, type, full, meta) {
+                    return '\
 							<div class="dropdown dropdown-inline">\
 								<a href="javascript:;" class="btn btn-sm btn-clean btn-icon" data-toggle="dropdown">\
 	                                <i class="la la-cog"></i>\
@@ -266,8 +269,8 @@ var KTDatatablesSearchOptionsColumnSearch = function() {
 								<i class="la la-trash"></i>\
 							</a>\
 						';
-                    },
                 },
+            },
                 {
                     targets: 5,
                     width: '150px',
@@ -275,7 +278,7 @@ var KTDatatablesSearchOptionsColumnSearch = function() {
                 {
                     targets: 6,
                     width: '100px',
-                    render: function(data, type, full, meta) {
+                    render: function (data, type, full, meta) {
                         var status = {
                             1: {
                                 'title': 'Pending',
@@ -315,7 +318,7 @@ var KTDatatablesSearchOptionsColumnSearch = function() {
                 {
                     targets: 7,
                     width: '100px',
-                    render: function(data, type, full, meta) {
+                    render: function (data, type, full, meta) {
                         var status = {
                             1: {
                                 'title': 'Online',
@@ -345,7 +348,7 @@ var KTDatatablesSearchOptionsColumnSearch = function() {
     return {
 
         //main function to initiate the module
-        init: function() {
+        init: function () {
             initTable1();
         },
 
@@ -353,6 +356,6 @@ var KTDatatablesSearchOptionsColumnSearch = function() {
 
 }();
 
-jQuery(document).ready(function() {
+jQuery(document).ready(function () {
     KTDatatablesSearchOptionsColumnSearch.init();
 });

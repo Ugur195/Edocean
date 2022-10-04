@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class StudentAttendance extends Model
 {
-    use HasFactory;
+    protected $table = 'edocean.student_attendance';
+    protected $fillable = ['id', 'student_id', 'subject_id', 'attendance', 'status', 'created_at', 'updated_at'];
 }

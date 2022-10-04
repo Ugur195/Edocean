@@ -54,6 +54,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 });
 
+
 //student
 Route::group(['prefix' => 'admin/student'], function () {
     Route::get('/index', [StudentGetController::class, 'Student']);
@@ -63,6 +64,8 @@ Route::group(['prefix' => 'admin/student'], function () {
 
 });
 
+
+//teacher
 Route::group(['prefix' => 'admin/teacher'], function () {
     Route::get('/index', [TeacherGetController::class, 'Teacher']);
     Route::get('/teacher_schedule', [TeacherGetController::class, 'TeacherSchedule']);
