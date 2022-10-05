@@ -83,7 +83,6 @@
 
     <script>
         $(document).ready(function () {
-
             $('#submit-btn').click(function (e) {
                 e.preventDefault()
                 $.ajax({
@@ -97,9 +96,9 @@
                             $('#formSignUp input').removeClass('is-invalid')
                             $.each(response.errors, function (key, value) {
                               if(key == 'author') {
-                                $('#formSignUp .autor').append('<span class="invalid-feedback d-block">' + value[0] + '</span>')
+                                $('#formSignUp .autor').append('<span class="mt-1 invalid-feedback d-block">' + value[0] + '</span>')
                               } else
-                                $('#formSignUp input[name="' + key + '"]').addClass('is-invalid').after('<br><span class="invalid-feedback d-block">' + value[0] + '</span>')
+                                $('#formSignUp input[name="' + key + '"]').addClass('is-invalid').after('<span class="mt-1 invalid-feedback d-block">' + value[0] + '</span>')
 
                             })
                         } else {

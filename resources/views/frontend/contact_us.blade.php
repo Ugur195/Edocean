@@ -38,7 +38,7 @@
                         </div>
                         <div class="input-and-label">
                             <label for="">Your message</label>
-                            <textarea name="message" id="message" class="contact-textarea " class="form-control"
+                            <textarea name="message" id="message" class="contact-textarea form-control"
                                       cols="30"
                                       rows="10"></textarea>
                         </div>
@@ -97,14 +97,10 @@
                         console.log({response})
                         if (response.status == 'validation-error') {
                             $('#formContactUs .invalid-feedback').remove();
-                            $('#formContactUs input').removeClass('is-invalid')
+                            $('#formContactUs .form-control').removeClass('is-invalid')
+                            console.log(response.errors)
                             $.each(response.errors, function (key, value) {
-                                if (key == 'author') {
-                                    $('#formContactUs .autor').append('<span class="invalid-feedback d-block">' + value[0] + '</span>')
-
-                                } else
-                                    $('#formContactUs input[name="' + key + '"]').addClass('is-invalid').after('<br><span class="invalid-feedback d-block">' + value[0] + '</span>')
-
+                                    $('#formContactUs .form-control[name="' + key + '"]').addClass('is-invalid').after('<span class="mt-1 invalid-feedback d-block">' + value[0] + '</span>')
                             })
                         } else {
                             $('.invalid-feedback').remove();

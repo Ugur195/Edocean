@@ -133,9 +133,9 @@
                             aria-haspopup="true">
                             <a href="{{url('admin/index')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
-                                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                      <svg style="width: 20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                           viewBox="0 0 27.02 27.02" style="enable-background:new 0 0 27.02 27.02;"
+                                           viewBox="0 0 27.02 27.02"
                                            xml:space="preserve">
                                              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" >
 	                                             <path  d="M3.674,24.876c0,0-0.024,0.604,0.566,0.604c0.734,0,6.811-0.008,6.811-0.008l0.01-5.581

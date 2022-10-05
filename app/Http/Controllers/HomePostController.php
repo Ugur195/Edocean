@@ -6,6 +6,7 @@ use App\Models\ContactUs;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -65,7 +66,7 @@ class HomePostController extends Controller
         }
 
         try {
-
+            DB::beginTransaction();
             $user = new User();
             $user->fin = $request->fin;
             $user->author = $request->author;
@@ -77,17 +78,20 @@ class HomePostController extends Controller
             $user->save();
 
             try {
-                 Mail::send('emails.mesaj_gonder', ['msg' => 'Message: ' . '<a href="aa.com">Qeydiyyatdan ugurlu kecdiz</a>'], function ($message) use ($request) {
+                Mail::send('emails.mesaj_gonder', ['msg' => 'Message: ' . '<a href="aa.com">Qeydiyyatdan ugurlu kecdiz</a>'], function ($message) use ($request) {
                     $message->to($request->email, $request->name)->subject('Mail linki');
                     $message->from('edocean_course@mail.ru', 'Edocean Course');
                     $message->setBody('<a href="/aaaaa.com">salam</a>', 'text/html');
                 });
             } catch (\Exception $exception) {
+                DB::rollBack();
                 return response(['title' => 'Ugursuz!', 'message' => 'Mail xetasi! Bele email movcud deyil!', 'status' => 'error']);
             }
+            DB::commit();
             return response(['title' => 'Ugurlu!', 'message' => 'Qeydiyyatdan ugurlu kecdiz', 'status' => 'success']);
 
         } catch (\Exception $exception) {
+            DB::rollBack();
             return response(['title' => 'Ugursuz!', 'message' => 'Qeydiyyatdan kecmek mumkun olmadi' . $exception->getMessage(), 'status' => 'error']);
         }
 

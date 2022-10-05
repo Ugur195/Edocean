@@ -6,6 +6,8 @@ use App\Models\AboutUs;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Yajra\DataTables\DataTables;
 
 class AdminGetController extends Controller
 {
@@ -48,8 +50,14 @@ class AdminGetController extends Controller
 
     public function getContactUs()
     {
-        $contact_us = DB::table('edocean.contact_us')->select(DB::raw('contact_us.*'))->get();
-        return json_encode($contact_us);
+        $contact_us = DB::table('edocean.contact_us')->select(DB::raw("id, full_name, subject, message, email,
+        (CASE read_unread WHEN  0 then 'Oxunmayib' WHEN 1 then 'Oxunub' END) as read_unread,
+        (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
+        return DataTables::of($contact_us)
+            ->addColumn('options', function ($model) {
+                return '<a class="btn btn-xs btn-primary" href="{{}}"><i class="la la-reply"></i></a>
+							    		<button class="btn btn-xs btn-danger" ><i class="la la-trash"></i></button>';
+            })->rawColumns(['options' => true])->make(true);
     }
 
 
