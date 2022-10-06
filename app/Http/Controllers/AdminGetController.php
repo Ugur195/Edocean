@@ -38,6 +38,9 @@ class AdminGetController extends Controller
     {
         $contact_us = ContactUs::all();
         $messages_edit = ContactUs::where('id', $id)->first();
+        if ($messages_edit->read_unread == 0) {
+            ContactUs::where('id', $id)->update(['read_unread' => 1]);
+        }
         return view('backend.messages_edit')->with(['contact_us' => $contact_us, 'messages_edit' => $messages_edit]);
     }
 
@@ -49,8 +52,9 @@ class AdminGetController extends Controller
         (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
         return DataTables::of($contact_us)
             ->addColumn('options', function ($model) {
-                return '<a class="btn btn-xs btn-primary" href=""><i class="la la-reply"></i></a>
-			    	<button onclick="sil(this,{{})"  class="btn btn-xs btn-danger" ><i class="la la-trash"></i></button>';
+                return
+                    '<a class="btn btn-xs btn-primary" href="/admin/messages_edit/'.$model->id.'" ><i class="la la-reply"></i></a>
+			    	<button onclick="sil(this,'.$model->id.')"  class="btn btn-xs btn-danger" ><i class="la la-trash"></i></button>';
             })->rawColumns(['options' => true])->make(true);
     }
 

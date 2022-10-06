@@ -9,14 +9,10 @@
 @section('content')
     <!--begin::Container-->
     <div class="container">
-
         <!--begin::Card-->
         <div class="card card-custom">
             <div class="card-header">
                 <div class="card-title">
-                    <span class="card-icon">
-                        <i class="flaticon2-layers text-primary"></i>
-                    </span>
                     <h3 class="card-label">Messages</h3>
                 </div>
                 <div class="card-toolbar">
@@ -134,7 +130,7 @@
                     $.ajax({
                         type: "Post",
                         url: '',
-                        data:{
+                        data: {
                             'id': id,
                             '_token': CSRF_TOKEN
                         },
@@ -149,6 +145,11 @@
                                 icon: response.status,
                                 allowOutsideClick: false
                             })
+                            if (response.status === 'success') {
+                                setTimeout(function () {
+                                    window.location.href = '/admin/contact_us';
+                                }, 500)
+                            }
 
                         }
                     })

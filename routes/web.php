@@ -52,6 +52,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::post('/about_us', [AdminPostController::class, 'AboutUs']);
     Route::post('/setting', [AdminPostController::class, 'Setting']);
+    Route::post('/contact_us', [AdminPostController::class, 'ContactUsDelete']);
 
 
 });

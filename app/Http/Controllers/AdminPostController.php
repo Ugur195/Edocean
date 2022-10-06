@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AboutUs;
+use App\Models\ContactUs;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use PharIo\Version\Exception;
@@ -44,5 +45,17 @@ class AdminPostController extends Controller
             return response(['title' => 'Ugursuz!', 'message' => 'Update ugursuz alindi!', 'status' => 'error']);
         }
     }
+
+    public function ContactUsDelete(Request $request)
+    {
+        try {
+            ContactUs::where('id', $request->id)->delete();
+            return response(['title' => 'Ugurlu!', 'message' => 'Mesaj Silindi', 'status' => 'success']);
+        } catch (\Exception $exception) {
+            return response(['title' => 'Ugursuz!', 'message' => 'Mesaji silmek olmur!', 'status' => 'error']);
+        }
+
+    }
+
 
 }
