@@ -78,7 +78,7 @@ class HomePostController extends Controller
             $user->save();
 
             try {
-                Mail::send('emails.mesaj_gonder', ['msg' => 'Message: ' . '<a href="aa.com">Qeydiyyatdan ugurlu kecdiz</a>'], function ($message) use ($request) {
+              Mail::send('emails.mesaj_gonder', ['msg' => 'Answer: ' . '<a href="aa.com">Qeydiyyatdan ugurlu kecdiz</a>'], function ($message) use ($request) {
                     $message->to($request->email, $request->name)->subject('Mail linki');
                     $message->from('edocean_course@mail.ru', 'Edocean Course');
                     $message->setBody('<a href="/aaaaa.com">salam</a>', 'text/html');

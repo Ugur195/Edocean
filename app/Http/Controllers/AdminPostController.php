@@ -6,6 +6,8 @@ use App\Models\AboutUs;
 use App\Models\ContactUs;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Mail;
 use PharIo\Version\Exception;
 
 class AdminPostController extends Controller
@@ -55,6 +57,19 @@ class AdminPostController extends Controller
             return response(['title' => 'Ugursuz!', 'message' => 'Mesaji silmek olmur!', 'status' => 'error']);
         }
 
+    }
+
+    public function MessagesEdit(Request $request)
+    {
+        try {
+            Mail::send('emails.mesaj_gonder', ['msg' => 'Answer: ' .$request->answer], function ($message) use ($request) {
+                $message->to($request->email, $request->full_name)->subject('Mail linki');
+                $message->from('edocean_course@mail.ru', 'Edocean Course');
+            });
+            return response(['title' => 'Ugurlu!', 'message' => 'Qeydiyyatdan ugurlu kecdiz', 'status' => 'success']);
+        } catch (\Exception $exception) {
+            return response(['title' => 'Ugursuz!', 'message' => $exception->getMessage(), 'status' => 'error']);
+        }
     }
 
 

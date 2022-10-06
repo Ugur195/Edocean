@@ -1,5 +1,6 @@
 @extends('backend.app')
 @section('css')
+    <link rel="stylesheet" href="{{asset('cssValidate/sweetalert2.css')}}"/>
 @endsection
 
 @section('content')
@@ -14,7 +15,8 @@
                         </div>
                     </div>
                     <!--begin::Form-->
-                    <form class="form">
+                    <form id="MyMessages" method="POST" class="form">
+                        {{csrf_field()}}
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-xl-3"></div>
@@ -29,7 +31,7 @@
 
                                     <div class="form-group">
                                         <label>Email</label>
-                                        <input type="email" value="{{$messages_edit->email}}"
+                                        <input type="email" value="{{$messages_edit->email}}" name="email"
                                                class="form-control form-control-solid form-control-lg"
                                                readonly/>
                                     </div>
@@ -50,7 +52,7 @@
                                     <div class="form-group">
                                         <label for="exampleTextarea">Answer</label>
                                         <textarea class="form-control form-control-solid form-control-lg"
-                                                  id="exampleTextarea" rows="4"></textarea>
+                                                  name="answer" rows="4"></textarea>
                                     </div>
                                     <!--end::Input-->
                                 </div>
@@ -88,5 +90,30 @@
 @endsection
 
 @section('js')
+    <script src="{{asset('jsValidate/jquery.form.js')}}"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $('#MyMessages').ajaxForm({
+                beforeSubmit: function () {
+                },
+                success: function (response) {
+                    Swal.fire({
+                            title: response.title,
+                            text: response.message,
+                            icon: response.status,
+                            allowOutsideClick: false
+                        }
+                    )
+                    if (response.status === 'success') {
+                        setTimeout(function () {
+                            window.location.href = '/admin/contact_us';
+                        }, 500)
+                    }
+                }
+            });
+        });
+    </script>
 @endsection
 
