@@ -409,14 +409,16 @@ ion-icon[name="calendar-number"]{
     background-color: black;
     color: white;
 }
+
+
 .contact-textarea {
     padding: 10px;
     height: 150px;
-    background-color: #f3f4f8;
-    border: none;
-    color: #0e1133;
-    border-radius: 4px;
-    outline: none;
+    background-color: #f3f4f8 !important;
+    border: none !important;
+    color: #0e1133 !important;
+    border-radius: 4px !important;
+    outline: none !important;
 }
 .input-and-label input{
     background-color: #f3f4f8;

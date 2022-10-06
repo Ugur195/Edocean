@@ -26,7 +26,7 @@
                 </div>
                 <div class="btn-and-txt">
                     <input class="login-submit" type="submit" value="Daxil ol">
-                    <a href="./sign_up">Qeydiyyat</a>
+                    <a href="{{url('sign_up')}}">Qeydiyyat</a>
                 </div>
             </div>
         </form>

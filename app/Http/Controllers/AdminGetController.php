@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AboutUs;
+use App\Models\ContactUs;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -33,20 +34,13 @@ class AdminGetController extends Controller
         return view('backend.about_us')->with(['about_us' => $about_us]);
     }
 
-    public function HomeStudent()
+    public function MessagesEdit($id)
     {
-        return view('student.index');
+        $contact_us = ContactUs::all();
+        $messages_edit = ContactUs::where('id', $id)->first();
+        return view('backend.messages_edit')->with(['contact_us' => $contact_us, 'messages_edit' => $messages_edit]);
     }
 
-    public function StudentAttendance()
-    {
-        return view('student.student_attendance');
-    }
-
-    public function StudentSchedule()
-    {
-        return view('student.student_schedule');
-    }
 
     public function getContactUs()
     {
@@ -55,8 +49,8 @@ class AdminGetController extends Controller
         (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
         return DataTables::of($contact_us)
             ->addColumn('options', function ($model) {
-                return '<a class="btn btn-xs btn-primary" href="{{}}"><i class="la la-reply"></i></a>
-							    		<button class="btn btn-xs btn-danger" ><i class="la la-trash"></i></button>';
+                return '<a class="btn btn-xs btn-primary" href=""><i class="la la-reply"></i></a>
+			    	<button onclick="sil(this,{{})"  class="btn btn-xs btn-danger" ><i class="la la-trash"></i></button>';
             })->rawColumns(['options' => true])->make(true);
     }
 

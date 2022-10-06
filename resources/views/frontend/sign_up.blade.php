@@ -66,7 +66,7 @@
                 </div>
                 <div class="btn-and-txt">
                     <button class="btn login-submit" id="submit-btn" type="button">Qeydiyyatdan Keç</button>
-                    <a href="./sign_in">Giriş</a>
+                    <a href="{{url('sign_in')}}">Giriş</a>
                 </div>
             </div>
         </form>

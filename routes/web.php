@@ -44,8 +44,10 @@ Route::post('/sign_up', [HomePostController::class, 'PostSignUp']);
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/index', [AdminGetController::class, 'home']);
     Route::get('/contact_us', [AdminGetController::class, 'ContactUs']);
+    Route::get('/messages_edit/{id}', [AdminGetController::class, 'MessagesEdit']);
     Route::get('/about_us', [AdminGetController::class, 'AboutUs']);
     Route::get('/setting', [AdminGetController::class, 'Setting']);
+
 
 
     Route::post('/about_us', [AdminPostController::class, 'AboutUs']);
