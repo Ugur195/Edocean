@@ -66,7 +66,7 @@ Route::group(['prefix' => 'admin/student'], function () {
     Route::get('/index_student', [StudentGetController::class, 'Student']);
     Route::get('/student_attendance', [StudentGetController::class, 'StudentAttendance']);
     Route::get('/student_schedule', [StudentGetController::class, 'StudentSchedule']);
-
+    Route::get('/student_edit/{id}', [StudentGetController::class, 'StudentEdit'])->name('admin.student.student_edit');
 
 });
 
