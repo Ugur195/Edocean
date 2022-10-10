@@ -6,7 +6,6 @@ use App\Models\AboutUs;
 use App\Models\ContactUs;
 use App\Models\Setting;
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Mail;
 use PharIo\Version\Exception;
 
@@ -68,7 +67,7 @@ class AdminPostController extends Controller
             });
             return response(['title' => 'Ugurlu!', 'message' => 'Qeydiyyatdan ugurlu kecdiz', 'status' => 'success']);
         } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => $exception->getMessage(), 'status' => 'error']);
+            return response(['title' => 'Ugursuz!', 'message' => 'Qeydiyyatdan kecmek mumkun olmadi', 'status' => 'error']);
         }
     }
 

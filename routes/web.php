@@ -46,7 +46,7 @@ Route::post('/sign_up', [HomePostController::class, 'PostSignUp']);
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/index', [AdminGetController::class, 'home']);
     Route::get('/contact_us', [AdminGetController::class, 'ContactUs']);
-    Route::get('/messages_edit/{id}', [AdminGetController::class, 'MessagesEdit']);
+    Route::get('/messages_edit/{id}', [AdminGetController::class, 'MessagesEdit'])->name('admin.messages_edit');
     Route::get('/about_us', [AdminGetController::class, 'AboutUs']);
     Route::get('/setting', [AdminGetController::class, 'Setting']);
 
@@ -67,6 +67,10 @@ Route::group(['prefix' => 'admin/student'], function () {
     Route::get('/student_attendance', [StudentGetController::class, 'StudentAttendance']);
     Route::get('/student_schedule', [StudentGetController::class, 'StudentSchedule']);
     Route::get('/student_edit/{id}', [StudentGetController::class, 'StudentEdit'])->name('admin.student.student_edit');
+
+
+
+    Route::post('/index_student', [StudentPostController::class, 'StudentsDelete']);
 
 });
 

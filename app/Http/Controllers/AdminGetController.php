@@ -53,11 +53,10 @@ class AdminGetController extends Controller
         return DataTables::of($contact_us)
             ->addColumn('options', function ($model) {
                 return
-                    '<a class="btn btn-xs btn-primary" href="/admin/messages_edit/' . $model->id . '" ><i class="la la-reply"></i></a>
+                    '<a class="btn btn-xs btn-primary" href="' . route('admin.messages_edit', $model->id) . '" ><i class="la la-reply"></i></a>
 			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger" ><i class="la la-trash"></i></button>';
             })->rawColumns(['options' => true])->make(true);
     }
-
 
 
 }
