@@ -40,6 +40,8 @@ Route::post('/contact_us', [HomePostController::class, 'PostContactUs']);
 Route::post('/sign_in', [HomePostController::class, 'PostSignIn']);
 Route::post('/sign_up', [HomePostController::class, 'PostSignUp']);
 
+
+
 //admin
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/index', [AdminGetController::class, 'home']);
@@ -61,7 +63,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 //student
 Route::group(['prefix' => 'admin/student'], function () {
-    Route::get('/index', [StudentGetController::class, 'Student']);
+    Route::get('/index_student', [StudentGetController::class, 'Student']);
     Route::get('/student_attendance', [StudentGetController::class, 'StudentAttendance']);
     Route::get('/student_schedule', [StudentGetController::class, 'StudentSchedule']);
 

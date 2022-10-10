@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminGetController;
+use App\Http\Controllers\StudentGetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('contact_us', [AdminGetController::class, 'getContactUs']);
+Route::get('index_student', [StudentGetController::class, 'getStudent']);

@@ -86,13 +86,13 @@
                     <tfoot>
                     <tr>
                         <th>ID</th>
-                        <th>Full Name</th>
-                        <th>Subject</th>
-                        <th>Email</th>
-                        <th>Message</th>
-                        <th>Read Unread</th>
-                        <th>Status</th>
-                        <th>Options</th>
+                        <th>FULL NAME</th>
+                        <th>SUBJECT</th>
+                        <th>EMAIL</th>
+                        <th>MESSAGE</th>
+                        <th>READ UNREAD</th>
+                        <th>STATUS</th>
+                        <th>OPTIONS</th>
                     </tr>
                     </tfoot>
                 </table>
