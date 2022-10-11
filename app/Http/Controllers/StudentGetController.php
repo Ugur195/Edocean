@@ -37,7 +37,7 @@ class StudentGetController extends Controller
         (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
         return DataTables::of($student)
             ->editColumn('image', function ($model) {
-                return "<img style=\"background-image: url('data:image/jpeg;base64,". base64_encode($model->image) . "')\">";
+                return "<img style='display:block;width:80px;height:60px;' src='data:image/jpeg;base64,".base64_encode($model->image)."'/>";
             })
             ->addColumn('options', function ($model) {
                 return
