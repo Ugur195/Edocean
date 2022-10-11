@@ -33,7 +33,7 @@ class StudentGetController extends Controller
 
     public function getStudent()
     {
-        $student = DB::table('edocean.teacher')->select(DB::raw("id,image,name,surname,gender,email,phone,parent,payment,
+        $student = DB::table('edocean.student')->select(DB::raw("id,image,name,surname,gender,email,phone,parent,payment,
         (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
         return DataTables::of($student)
             ->editColumn('image', function ($model) {

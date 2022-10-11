@@ -61,8 +61,8 @@ var KTDatatablesSearchOptionsColumnSearch = function () {
                     name: 'phone'
                 },
                 {
-                    data: 'subject',
-                    name: 'subject'
+                    data: 'subjects',
+                    name: 'subjects'
                 },
                 {
                     data: 'lesson_price',
@@ -71,10 +71,6 @@ var KTDatatablesSearchOptionsColumnSearch = function () {
                 {
                     data: 'status',
                     name: 'status'
-                },
-                {
-                    data: 'demo_lesson',
-                    name: 'demo_lesson'
                 },
                 {
                     data: 'options',
