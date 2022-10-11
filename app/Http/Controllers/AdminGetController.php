@@ -58,5 +58,21 @@ class AdminGetController extends Controller
             })->rawColumns(['options' => true])->make(true);
     }
 
+    public function Teacher() {
+        return view('backend.teacher');
+    }
+
+    public function getTeacher()
+    {
+        $teacher = DB::table('edocean.student')->select(DB::raw("id,image,name,surname,gender,email,phone,subject,lesson_price,demo_lesson
+        (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
+        return DataTables::of($teacher)
+            ->addColumn('options', function ($model) {
+                return
+                    '<a class="btn btn-xs btn-primary" href="' . route('admin.messages_edit', $model->id) . '" ><i class="la la-pencil-square-o"></i></a>
+			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger" ><i class="la la-trash"></i></button>';
+            })->rawColumns(['options' => true])->make(true);
+    }
+
 
 }

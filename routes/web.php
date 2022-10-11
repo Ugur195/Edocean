@@ -49,6 +49,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/messages_edit/{id}', [AdminGetController::class, 'MessagesEdit'])->name('admin.messages_edit');
     Route::get('/about_us', [AdminGetController::class, 'AboutUs']);
     Route::get('/setting', [AdminGetController::class, 'Setting']);
+    Route::get('/teacher', [AdminGetController::class, 'Teacher']);
 
 
 
