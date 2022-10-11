@@ -36,9 +36,12 @@ class StudentGetController extends Controller
         $student = DB::table('edocean.student')->select(DB::raw("id,image,name,surname,gender,email,phone,parent,payment,
         (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
         return DataTables::of($student)
+            ->editColumn('image', function ($model) {
+                return "<img style=\"background-image: url('data:image/jpeg;base64,". base64_encode($model->image) . "')\">";
+            })
             ->addColumn('options', function ($model) {
                 return
-                    '<a class="btn btn-xs btn-primary" href="' . route('admin.student.student_edit', $model->id) . '" ><i class="la la-reply"></i></a>
+                    '<a class="btn btn-xs btn-primary" href="' . route('admin.student.student_edit', $model->id) . '" ><i class="la la-user"></i></a>
 			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger" ><i class="la la-trash"></i></button>';
             })->rawColumns(['options' => true])->make(true);
     }
