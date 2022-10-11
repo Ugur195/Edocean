@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AboutUs;
 use App\Models\ContactUs;
 use App\Models\Setting;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -69,9 +70,16 @@ class AdminGetController extends Controller
         return DataTables::of($teacher)
             ->addColumn('options', function ($model) {
                 return
-                    '<a class="btn btn-xs btn-primary" href="' . route('admin.messages_edit', $model->id) . '" ><i class="la la-pencil-square-o"></i></a>
+                    '<a class="btn btn-xs btn-primary" href="' . route('admin.backend.teacher_edit', $model->id) . '" ><i class="la la-pencil-square-o"></i></a>
 			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger" ><i class="la la-trash"></i></button>';
             })->rawColumns(['options' => true])->make(true);
+    }
+
+    public function TeacherEdit($id)
+    {
+        $teacher = Teacher::all();
+        $teacher_edit = Teacher::where('id', $id)->first();
+        return view('backend.teacher_edit')->with(['teacher_edit' => $teacher_edit, 'teacher' => $teacher]);
     }
 
 
