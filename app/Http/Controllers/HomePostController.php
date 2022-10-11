@@ -78,7 +78,7 @@ class HomePostController extends Controller
             $user->save();
 
             try {
-              Mail::send('emails.mesaj_gonder', ['msg' => 'Answer: ' . '<a href="aa.com">Qeydiyyatdan ugurlu kecdiz</a>'], function ($message) use ($request) {
+                Mail::send('emails.mesaj_gonder', ['msg' => 'Answer: ' . '<a href="aa.com">Qeydiyyatdan ugurlu kecdiz</a>'], function ($message) use ($request) {
                     $message->to($request->email, $request->name)->subject('Mail linki');
                     $message->from('edocean_course@mail.ru', 'Edocean Course');
                     $message->setBody('<a href="/aaaaa.com">salam</a>', 'text/html');
@@ -97,8 +97,25 @@ class HomePostController extends Controller
 
     }
 
-    public function PostSignIn()
+    public function PostSignIn(Request $request)
     {
-        return redirect('/index');
+        $validate = Validator::make($request->all(), [
+            'fin' => 'required',
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+
+        if ($validate->fails()) {
+            return response(['title' => 'Ugursuz!', 'message' => 'Melumat gondermek mumkun olmadi', 'status' => 'validation-error',
+                'errors' => $validate->errors()]);
+        }
+
+        $login = $request->only('fin', 'email', 'password');
+        if (Auth::attempt($login)) {
+            return redirect('index');
+        } else {
+            return back();
+        }
+
     }
 }

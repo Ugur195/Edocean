@@ -79,8 +79,6 @@
     <script src="{{asset('jsValidate/register.js')}}"></script>
 
 
-
-
     <script>
         $(document).ready(function () {
             $('#submit-btn').click(function (e) {
@@ -121,9 +119,6 @@
 
         });
     </script>
-
-
-
 
 @endsection
 
