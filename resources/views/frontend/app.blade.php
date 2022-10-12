@@ -54,14 +54,22 @@
                         <a class="nav-link" href="/contact_us">Əlaqə</a>
                     </li>
 
-                    <li class="nav-item me-2">
-                        @if (Auth::check())
-                            <li class="nav-item me-2 auth" style="padding-left: 140px"><a class="nav-link" href="{{url('logout')}}">Logout</a></li>
-                        @else
-                            <li class="nav-item me-2 auth" style="padding-left: 140px"><a class="nav-link" href="{{ route('sign_in') }}">Login</a></li>
-                            <li class="nav-item me-2 auth"><a class="nav-link" href="{{ route('sign_up') }}">Register</a></li>
+                    @if (Auth::check())
+                        <li class="nav-item me-2 auth" style="padding-left: 140px">
+                            <a class="nav-link" href="{{route('logout')}}">Logout</a>
+                        </li>
+                        @if(Auth::user()->author==1)
+                            <li class="nav-item me-2 auth" style="font-size: 15px" >
+                                <a class="nav-link" target="_blank" href="{{url('/admin/index')}}">Admin Page</a>
+                            </li>
                         @endif
-                    </li>
+                    @else
+                        <li class="nav-item me-2 auth" style="padding-left: 140px">
+                            <a class="nav-link" href="{{ route('sign_in') }}">Login</a>
+                        </li>
+                        <li class="nav-item me-2 auth"><a class="nav-link" href="{{ route('sign_up')}}">Register</a>
+                        </li>
+                    @endif
 
 
                 </ul>

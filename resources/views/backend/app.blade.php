@@ -385,9 +385,9 @@
                 align-items-center justify-content-between">
                     <div class="text-dark order-2 order-md-1">
                         <span class="text-muted font-weight-bold mr-2">2022 ©</span>
-                        <a href="https://www.facebook.com/xaqan.turkoglu.9/" target="_blank"
+                        <a href="#" target="_blank"
                            class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">
-                            Created by Kahagan Maharramov
+                            Created by Aztelecom
                         </a>
                     </div>
                     <div class="nav nav-dark">
@@ -461,7 +461,7 @@
 {{--                            {{Auth::user()->email}}--}}
                         </span>
                     </span>
-                    <a href=""
+                    <a href="{{route('logout')}}"
                        class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">
                         Çıxış
                     </a>
