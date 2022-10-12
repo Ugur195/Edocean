@@ -54,26 +54,12 @@
                         <a class="nav-link" href="/contact_us">Əlaqə</a>
                     </li>
 
-
-                    <li class="nav-item dropdown">
-                        @if(Auth::check())
-                            <a id="navbarDropdown" href="#"
-                               role="button" data-toggle="dropdown" aria-haspopup="true"
-                               aria-expanded="false" v-pre>
-                                {{ Auth::user()->name}} <span
-                                    class="caret"></span>
-
-                                <i class="fa fa-caret-down text-color-primary"></i>
-                            </a>
-
-                            @if(Auth::user()->author==1)
-                                <a target="_blank" href="{{url('/admin/index')}}">Admin Page</a>
-                            @endif
-
-
-                            <a class="dropdown-item" href="{{ url('logout') }}">
-                                <i style="color: #0aa1e8" class="fas fa-power-off"> Logout </i>
-                            </a>
+                    <li class="nav-item me-2">
+                        @if (Auth::check())
+                            <li class="nav-item me-2 auth" style="padding-left: 140px"><a class="nav-link" href="{{url('logout')}}">Logout</a></li>
+                        @else
+                            <li class="nav-item me-2 auth" style="padding-left: 140px"><a class="nav-link" href="{{ route('sign_in') }}">Login</a></li>
+                            <li class="nav-item me-2 auth"><a class="nav-link" href="{{ route('sign_up') }}">Register</a></li>
                         @endif
                     </li>
 

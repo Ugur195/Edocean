@@ -46,6 +46,9 @@ a{
     background-color: black !important;
     height: 5px !important;
 }
+.auth a {
+    color: #14427C !important;
+}
 #ed-video{
     height: 85vh !important;
     margin-top: 95px;

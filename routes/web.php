@@ -28,11 +28,11 @@ use Illuminate\Support\Facades\Auth;
 //});
 
 // front end
-Route::get('/', [HomeGetController::class, 'home']);
+Route::get('/', [HomeGetController::class, 'home'])->name('home');
 Route::get('/index', [HomeGetController::class, 'home']);
 Route::get('/contact_us', [HomeGetController::class, 'GetContactUs']);
-Route::get('/sign_in', [HomeGetController::class, 'GetSignIn']);
-Route::get('/sign_up', [HomeGetController::class, 'GetSignUp']);
+Route::get('/sign_in', [HomeGetController::class, 'GetSignIn'])->name('sign_in')->middleware('guest');
+Route::get('/sign_up', [HomeGetController::class, 'GetSignUp'])->name('sign_up')->middleware('guest');
 Route::get('/logout', [HomeGetController::class, 'GetLogout']);
 Route::get('/index', [HomeGetController::class, 'GetIndex']);
 
