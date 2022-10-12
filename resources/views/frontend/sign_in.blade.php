@@ -38,39 +38,38 @@
     <script src="{{asset('jsValidate/jquery.form.js')}}"></script>
     <script src="{{asset('jsValidate/sweetalert2.js')}}"></script>
 
-{{--    <script>--}}
-{{--        $(document).ready(function () {--}}
-{{--            $('#submit-btn').click(function (e) {--}}
-{{--                e.preventDefault()--}}
-{{--                $.ajax({--}}
-{{--                    'url': $('#MySignIn').attr('action'),--}}
-{{--                    'type': 'post',--}}
-{{--                    'data': $('#MySignIn').serialize(),--}}
-{{--                    success: function (response) {--}}
-{{--                        console.log({response})--}}
-{{--                        if (response.status == 'validation-error') {--}}
-{{--                            $('#MySignIn .invalid-feedback').remove();--}}
-{{--                            $('#MySignIn .form-control').removeClass('is-invalid')--}}
-{{--                            console.log(response.errors)--}}
-{{--                            $.each(response.errors, function (key, value) {--}}
-{{--                                $('#MySignIn input[name="' + key + '"]').addClass('is-invalid').after('<span class="mt-1 invalid-feedback d-block">' + value[0] + '</span>')--}}
-{{--                            })--}}
-{{--                        } else {--}}
-{{--                            $('.invalid-feedback').remove();--}}
-{{--                            Swal.fire({--}}
-{{--                                title: response.title,--}}
-{{--                                text: response.message,--}}
-{{--                                icon: response.status,--}}
-{{--                                allowOutsideClick: false,--}}
-{{--                            })--}}
-{{--                        }--}}
-{{--                    }--}}
-{{--                })--}}
-{{--            })--}}
+    <script>
+        $(document).ready(function () {
+            $('#submit-btn').click(function (e) {
+                e.preventDefault()
+                $.ajax({
+                    'url': $('#MySignIn').attr('action'),
+                    'type': 'post',
+                    'data': $('#MySignIn').serialize(),
+                    success: function (response) {
+                        console.log({response})
+                        if (response.status == 'validation-error') {
+                            $('#MySignIn .invalid-feedback').remove();
+                            $('#MySignIn .form-control').removeClass('is-invalid')
+                            console.log(response.errors)
+                            $.each(response.errors, function (key, value) {
+                                $('#MySignIn input[name="' + key + '"]').addClass('is-invalid').after('<span class="mt-1 invalid-feedback d-block">' + value[0] + '</span>')
+                            })
+                        } else {
+                            $('.invalid-feedback').remove();
+                            Swal.fire({
+                                title: response.title,
+                                text: response.message,
+                                icon: response.status,
+                                allowOutsideClick: false,
+                            })
+                        }
+                    }
+                })
+            })
 
-{{--        });--}}
-{{--    </script>--}}
-
+        });
+    </script>
 
 @endsection
 

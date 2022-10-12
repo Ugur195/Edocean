@@ -51,7 +51,7 @@ class HomePostController extends Controller
     public function PostSignUp(Request $request)
     {
         $validate = Validator::make($request->all(), [
-            'fin' => 'required|string|min:7|unique:users,fin',
+            'fin' => 'required|string|min:7|max:7|unique:users,fin',
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|confirmed|min:6',
@@ -100,9 +100,9 @@ class HomePostController extends Controller
     public function PostSignIn(Request $request)
     {
         $validate = Validator::make($request->all(), [
-            'fin' => 'required',
-            'email' => 'required',
-            'password' => 'required'
+            'fin' => 'required|string|min:7|max:7',
+            'email' => 'required|email',
+            'password' => 'required|min:6'
         ]);
 
         if ($validate->fails()) {
