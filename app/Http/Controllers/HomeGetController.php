@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class HomeGetController extends Controller
 {
@@ -37,6 +39,13 @@ class HomeGetController extends Controller
     public function GetIndex()
     {
         return view('frontend.index');
+    }
+
+    public function GetLogout()
+    {
+        Session::flush();
+        Auth::logout();
+        return redirect('/');
     }
 
 

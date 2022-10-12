@@ -33,6 +33,7 @@ Route::get('/index', [HomeGetController::class, 'home']);
 Route::get('/contact_us', [HomeGetController::class, 'GetContactUs']);
 Route::get('/sign_in', [HomeGetController::class, 'GetSignIn']);
 Route::get('/sign_up', [HomeGetController::class, 'GetSignUp']);
+Route::get('/logout', [HomeGetController::class, 'GetLogout']);
 Route::get('/index', [HomeGetController::class, 'GetIndex']);
 
 
@@ -43,7 +44,7 @@ Route::post('/sign_up', [HomePostController::class, 'PostSignUp']);
 
 
 //admin
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin','middleware'=>'Admin'], function () {
     Route::get('/index', [AdminGetController::class, 'home']);
     Route::get('/contact_us', [AdminGetController::class, 'ContactUs']);
     Route::get('/messages_edit/{id}', [AdminGetController::class, 'MessagesEdit'])->name('admin.messages_edit');
@@ -64,8 +65,6 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/contact_us', [AdminPostController::class, 'ContactUsDelete']);
     Route::post('/teacher', [AdminPostController::class, 'TeachersDelete']);
     Route::post('/student', [AdminPostController::class, 'StudentsDelete']);
-
-
 
 
 });

@@ -54,17 +54,13 @@
                         <a class="nav-link" href="/contact_us">Əlaqə</a>
                     </li>
 
-                    @if(Auth::check())
-                        <img style='display:block;width:45px;height:40px;'
-                             src="data:image/jpeg;base64,{{base64_encode(Auth::user()->image)}}"/>
-                    @endif
 
                     <li class="nav-item dropdown">
                         @if(Auth::check())
                             <a id="navbarDropdown" href="#"
                                role="button" data-toggle="dropdown" aria-haspopup="true"
                                aria-expanded="false" v-pre>
-                                {{ Auth::user()->name}}<span
+                                {{ Auth::user()->name}} <span
                                     class="caret"></span>
 
                                 <i class="fa fa-caret-down text-color-primary"></i>
@@ -75,16 +71,13 @@
                             @endif
 
 
-                            <div class="dropdown-menu dropdown-menu-right"
-                                 aria-labelledby="navbarDropdown">
-
-                                <a class="dropdown-item" href="{{url('my_profile')}}">
-                                    <i style="color: #0aa1e8" class="fas fa-user"> My Profile </i>
-                                </a>
-
-                            </div>
+                            <a class="dropdown-item" href="{{ url('logout') }}">
+                                <i style="color: #0aa1e8" class="fas fa-power-off"> Logout </i>
+                            </a>
+                        @endif
                     </li>
-                    @endif
+
+
                 </ul>
             </div>
         </div>
