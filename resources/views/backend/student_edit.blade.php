@@ -1,4 +1,4 @@
-@extends('student.app')
+@extends('backend.app')
 @section('css')
     <link rel="stylesheet" href="{{asset('cssValidate/sweetalert2.css')}}"/>
 @endsection
@@ -112,7 +112,7 @@
                                     <div class="mr-2">
                                     </div>
                                     <div>
-                                        <a href="{{url('admin/student/index_student')}}" type="button"
+                                        <a href="{{url('admin/student')}}" type="button"
                                            class="btn btn-success font-weight-bolder text-uppercase px-9 py-4"
                                            data-wizard-type="action-submit">Back
                                         </a>

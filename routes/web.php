@@ -51,6 +51,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/setting', [AdminGetController::class, 'Setting']);
     Route::get('/teacher', [AdminGetController::class, 'Teacher'])->name('AdminTeacher');
     Route::get('/teacher_edit/{id}', [AdminGetController::class, 'TeacherEdit'])->name('admin.backend.teacher_edit');
+    Route::get('/student', [AdminGetController::class, 'Student']);
+    Route::get('/student_edit/{id}', [AdminGetController::class, 'StudentEdit'])->name('admin.backend.student_edit');
+
 
 
 
@@ -59,8 +62,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/setting', [AdminPostController::class, 'Setting']);
     Route::post('/messages_edit/{id}', [AdminPostController::class, 'MessagesEdit']);
     Route::post('/contact_us', [AdminPostController::class, 'ContactUsDelete']);
-    Route::post('/teacher', [AdminPostController::class, 'TeacherDelete']);
-    Route::post('/teacher_edit/{id}', [AdminPostController::class, 'TeacherEdit']);
+    Route::post('/teacher', [AdminPostController::class, 'TeachersDelete']);
+    Route::post('/student', [AdminPostController::class, 'StudentsDelete']);
+
 
 
 
@@ -69,14 +73,9 @@ Route::group(['prefix' => 'admin'], function () {
 
 //student
 Route::group(['prefix' => 'admin/student'], function () {
-    Route::get('/index_student', [StudentGetController::class, 'Student']);
     Route::get('/student_attendance', [StudentGetController::class, 'StudentAttendance']);
     Route::get('/student_schedule', [StudentGetController::class, 'StudentSchedule']);
-    Route::get('/student_edit/{id}', [StudentGetController::class, 'StudentEdit'])->name('admin.student.student_edit');
 
-
-
-    Route::post('/index_student', [StudentPostController::class, 'StudentsDelete']);
 
 });
 

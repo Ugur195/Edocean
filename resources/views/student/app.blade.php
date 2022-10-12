@@ -129,27 +129,6 @@
                 <div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1"
                      data-menu-dropdown-timeout="500">
                     <ul class="menu-nav">
-                        <li class="menu-item  @if(Request::url()==url('admin/student/index_student')) menu-item-active @endif "
-                            aria-haspopup="true">
-                            <a href="{{url('admin/student/index_student')}}" class="menu-link">
-                                <span class="svg-icon menu-icon">
-                                    <svg version="1.1" id="Layer_1"
-                                         xmlns="http://www.w3.org/2000/svg"
-                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                         width="260px" height="188px"
-                                         viewBox="0 0 260 188" xml:space="preserve">
-                                       <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <path d="M134.3,109.2L202,83.8V146c0,13.4-32.2,24.3-72,
-                                            24.3S58,159.4,58,146V83.8l67.9,25.4l4.2,1.6L134.3,109.2z M130.1,98L258,50
-	                                         L130.1,2L2,50l20,7.5v81.8c-4.7,2.2-8,7.1-8,
-	                                         12.7v34h28v-34c0-5.7-3.3-10.6-8.1-12.8V61.9L130.1,98z" fill="#000000"/>
-                                       </g>
-                                    </svg>
-                                </span>
-                                <span class="menu-text">Student</span>
-                            </a>
-                        </li>
-
 
                         <li class="menu-item   @if(Request::url()==url('admin/student/student_attendance')) menu-item-active @endif">
                             <a href="{{url('admin/student/student_attendance')}}" class="menu-link">

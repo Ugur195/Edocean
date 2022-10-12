@@ -149,26 +149,7 @@
                                 <span class="menu-text">Home</span>
                             </a>
                         </li>
-                        <li class="menu-item  @if(Request::url()==url('admin/teacher')) menu-item-active @endif "
-                            aria-haspopup="true">
-                            <a href="{{url('admin/teacher')}}" class="menu-link">
-                                <span class="svg-icon menu-icon">
-                                    <svg class="svg-icon" style="
-                                        width: 20px; vertical-align: middle;fill: currentColor;overflow: hidden;" 
-                                        viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M272.128 538.752l207.36 409.472H204.736c-31.488-1.152-57.728-12.224-78.72-33.28s-32.064-47.232-33.28-78.72v-185.472c1.152-31.488 12.224-57.728 33.28-78.72s47.232-32.064
-                                        78.72-33.28h67.392z m88.768-414.784c38.784-39.104 87.616-59.52 146.56-61.248 58.944 1.728 
-                                        107.776 22.144 146.56 61.248 38.784 39.104 59.072 87.808 60.8 146.112-0.576 37.952-9.92
-                                        72.64-28.032 104.128s-43.456 56.576-76.096 75.264c-32.704 18.688-67.072 28.032-103.232 
-                                        28.032-36.16 0-70.592-9.344-103.232-28.032-32.704-18.688-58.048-43.776-76.096-75.264-18.112-31.488-27.456-66.176-28.032-104.128 1.728-58.304 22.016-107.008 60.8-146.112z 
-                                        m241.984 532.928l-95.36 201.28-95.36-201.28 95.36-83.968 95.36 83.968z m286.976-84.928c21.568 20.992
-                                        34.112 47.232 37.632 78.72v185.472c-0.576 31.488-11.52 57.728-32.832 78.72-21.312 20.992-47.68 
-                                        32.064-79.168 33.28H540.736l202.112-409.472h67.392c31.488 1.216 58.048 12.288 79.616 33.28z"  />
-                                    </svg>
-                                </span>
-                                <span class="menu-text">Teacher</span>
-                            </a>
-                        </li>
+
                         <li class="menu-item   @if(Request::url()==url('admin/contact_us')) menu-item-active @endif ">
                             <a href="{{url('admin/contact_us')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
@@ -196,6 +177,54 @@
                                 <span class="menu-text">Messages</span>
                             </a>
                         </li>
+
+
+
+                        <li class="menu-item  @if(Request::url()==url('admin/teacher')) menu-item-active @endif "
+                            aria-haspopup="true">
+                            <a href="{{url('admin/teacher')}}" class="menu-link">
+                                <span class="svg-icon menu-icon">
+                                    <svg class="svg-icon" style="
+                                        width: 20px; vertical-align: middle;fill: currentColor;overflow: hidden;"
+                                        viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M272.128 538.752l207.36 409.472H204.736c-31.488-1.152-57.728-12.224-78.72-33.28s-32.064-47.232-33.28-78.72v-185.472c1.152-31.488 12.224-57.728 33.28-78.72s47.232-32.064
+                                        78.72-33.28h67.392z m88.768-414.784c38.784-39.104 87.616-59.52 146.56-61.248 58.944 1.728
+                                        107.776 22.144 146.56 61.248 38.784 39.104 59.072 87.808 60.8 146.112-0.576 37.952-9.92
+                                        72.64-28.032 104.128s-43.456 56.576-76.096 75.264c-32.704 18.688-67.072 28.032-103.232
+                                        28.032-36.16 0-70.592-9.344-103.232-28.032-32.704-18.688-58.048-43.776-76.096-75.264-18.112-31.488-27.456-66.176-28.032-104.128 1.728-58.304 22.016-107.008 60.8-146.112z
+                                        m241.984 532.928l-95.36 201.28-95.36-201.28 95.36-83.968 95.36 83.968z m286.976-84.928c21.568 20.992
+                                        34.112 47.232 37.632 78.72v185.472c-0.576 31.488-11.52 57.728-32.832 78.72-21.312 20.992-47.68
+                                        32.064-79.168 33.28H540.736l202.112-409.472h67.392c31.488 1.216 58.048 12.288 79.616 33.28z"  />
+                                    </svg>
+                                </span>
+                                <span class="menu-text">Teacher</span>
+                            </a>
+                        </li>
+
+
+
+                        <li class="menu-item  @if(Request::url()==url('admin/student')) menu-item-active @endif "
+                            aria-haspopup="true">
+                            <a href="{{url('admin/student')}}" class="menu-link">
+                                <span class="svg-icon menu-icon">
+                                    <svg version="1.1" id="Layer_1"
+                                         xmlns="http://www.w3.org/2000/svg"
+                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                         width="260px" height="188px"
+                                         viewBox="0 0 260 188" xml:space="preserve">
+                                       <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <path d="M134.3,109.2L202,83.8V146c0,13.4-32.2,24.3-72,
+                                            24.3S58,159.4,58,146V83.8l67.9,25.4l4.2,1.6L134.3,109.2z M130.1,98L258,50
+	                                         L130.1,2L2,50l20,7.5v81.8c-4.7,2.2-8,7.1-8,
+	                                         12.7v34h28v-34c0-5.7-3.3-10.6-8.1-12.8V61.9L130.1,98z" fill="#000000"/>
+                                       </g>
+                                    </svg>
+                                </span>
+                                <span class="menu-text">Student</span>
+                            </a>
+                        </li>
+
+
 
                         <li class="menu-item   @if(Request::url()==url('admin/about_us')) menu-item-active @endif">
                             <a href="{{url('admin/about_us')}}" class="menu-link">

@@ -1,4 +1,4 @@
-@extends('student.app')
+@extends('backend.app')
 
 
 @section('css')
@@ -118,7 +118,7 @@
 
 @section('js')
     <script src="{{asset('backendCssJs/assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
-    <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/index_student.js')}}"></script>
+    <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/student.js')}}"></script>
 
     <script>
         function sil(setir, id) {
@@ -157,7 +157,7 @@
                             })
                             if (response.status === 'success') {
                                 setTimeout(function () {
-                                    window.location.href = '/admin/student/index_student';
+                                    window.location.href = '/admin/student';
                                 }, 500)
                             }
 
@@ -169,4 +169,5 @@
 
     </script>
 @endsection
+
 

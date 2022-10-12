@@ -53,18 +53,39 @@
                     <li class="nav-item me-2">
                         <a class="nav-link" href="/contact_us">Əlaqə</a>
                     </li>
+
+                    @if(Auth::check())
+                        <img style='display:block;width:45px;height:40px;'
+                             src="data:image/jpeg;base64,{{base64_encode(Auth::user()->image)}}"/>
+                    @endif
+
+                    <li class="nav-item dropdown">
+                        @if(Auth::check())
+                            <a id="navbarDropdown" href="#"
+                               role="button" data-toggle="dropdown" aria-haspopup="true"
+                               aria-expanded="false" v-pre>
+                                {{ Auth::user()->name}}<span
+                                    class="caret"></span>
+
+                                <i class="fa fa-caret-down text-color-primary"></i>
+                            </a>
+
+                            @if(Auth::user()->author==1)
+                                <a target="_blank" href="{{url('/admin/index')}}">Admin Page</a>
+                            @endif
+
+
+                            <div class="dropdown-menu dropdown-menu-right"
+                                 aria-labelledby="navbarDropdown">
+
+                                <a class="dropdown-item" href="{{url('my_profile')}}">
+                                    <i style="color: #0aa1e8" class="fas fa-user"> My Profile </i>
+                                </a>
+
+                            </div>
+                    </li>
+                    @endif
                 </ul>
-                <form class="d-flex search-ed">
-                    <input
-                        class="form-control me-2"
-                        type="text"
-                        placeholder="Search"
-                    />
-                    <button class="btn search-iconn" type="button">
-                        <ion-icon name="search-outline"></ion-icon>
-                    </button>
-                </form>
-                <button class="btn btn-primary" type="button">Daxil ol</button>
             </div>
         </div>
     </nav>

@@ -22,4 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('contact_us', [AdminGetController::class, 'getContactUs']);
 Route::get('teacher', [AdminGetController::class, 'getTeacher']);
-Route::get('index_student', [StudentGetController::class, 'getStudent']);
+Route::get('student', [AdminGetController::class, 'getStudent']);

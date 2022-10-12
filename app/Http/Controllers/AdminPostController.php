@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AboutUs;
 use App\Models\ContactUs;
 use App\Models\Setting;
+use App\Models\Student;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -73,26 +74,24 @@ class AdminPostController extends Controller
     }
 
 
-    public function TeacherDelete(Request $request)
+    public function TeachersDelete(Request $request)
     {
         try {
             Teacher::where('id', $request->id)->delete();
-            return response(['title' => 'Ugurlu!', 'message' => 'Mesaj Silindi', 'status' => 'success']);
+            return response(['title' => 'Ugurlu!', 'message' => 'Teacher Silindi', 'status' => 'success']);
         } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => 'Mesaji silmek olmur!', 'status' => 'error']);
+            return response(['title' => 'Ugursuz!', 'message' => 'Teacheri silmek olmur!', 'status' => 'error']);
         }
     }
 
-    public function TeacherEdit(Request $request)
+
+    public function StudentsDelete(Request $request)
     {
         try {
-            Teacher::send('emails.mesaj_gonder', ['msg' => 'Answer: ' .$request->answer], function ($message) use ($request) {
-                $message->to($request->email, $request->full_name)->subject('Mail linki');
-                $message->from('edocean_course@mail.ru', 'Edocean Course');
-            });
-            return response(['title' => 'Ugurlu!', 'message' => 'Qeydiyyatdan ugurlu kecdiz', 'status' => 'success']);
+            Student::where('id', $request->id)->delete();
+            return response(['title' => 'Ugurlu!', 'message' => 'Student Silindi', 'status' => 'success']);
         } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => 'Qeydiyyatdan kecmek mumkun olmadi', 'status' => 'error']);
+            return response(['title' => 'Ugursuz!', 'message' => 'Studenti silmek olmur!', 'status' => 'error']);
         }
     }
 
