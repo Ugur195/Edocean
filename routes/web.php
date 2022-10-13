@@ -72,9 +72,9 @@ Route::group(['prefix' => 'admin','middleware'=>'Admin'], function () {
 
 //student
 Route::group(['prefix' => 'admin/student'], function () {
+    Route::get('/my_profile', [StudentGetController::class, 'getMyProfile']);
     Route::get('/student_attendance', [StudentGetController::class, 'StudentAttendance']);
     Route::get('/student_schedule', [StudentGetController::class, 'StudentSchedule']);
-
 
 });
 

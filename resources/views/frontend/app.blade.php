@@ -62,6 +62,18 @@
                             <li class="nav-item me-2 auth" style="font-size: 15px" >
                                 <a class="nav-link" target="_blank" href="{{url('/admin/index')}}">Admin Page</a>
                             </li>
+                            @elseif(Auth::user()->author==4)
+                                <li class="nav-item me-2 auth" style="font-size: 15px" >
+                                    <a class="nav-link" target="_blank" href="{{url('/admin/student/student_attendance')}}">My Profile</a>
+                                </li>
+                        @elseif(Auth::user()->author==3)
+                            <li class="nav-item me-2 auth" style="font-size: 15px" >
+                                <a class="nav-link" target="_blank" href="{{url('/admin/teacher/index')}}">My Profile</a>
+                            </li>
+                        @elseif(Auth::user()->author==2)
+                            <li class="nav-item me-2 auth" style="font-size: 15px" >
+                                <a class="nav-link" target="_blank" href="{{url('/admin/course/index')}}">My Profile</a>
+                            </li>
                         @endif
                     @else
                         <li class="nav-item me-2 auth" style="padding-left: 140px">

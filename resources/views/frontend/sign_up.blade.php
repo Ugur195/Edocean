@@ -14,7 +14,7 @@
             <h2 class="login-h2">Qeydiyyat</h2>
             <div class="login-form-div">
                 <div>
-                    <label for="">Ad, Soyad</label>
+                    <label for="">Ad</label>
                     <input type="text" name="name" id="user_name">
                 </div>
 
