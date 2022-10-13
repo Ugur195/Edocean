@@ -500,7 +500,7 @@
                         </div>
                     </div>
                     <div class="navi-text">
-                        <div class="font-weight-bold">Profilim</div>
+                        <div href="{{url('/my_profile')}}" class="font-weight-bold">Profilim</div>
                         <div class="text-muted">Hesab tənzimləmələri və başqaları</div>
                     </div>
                 </div>
@@ -517,7 +517,7 @@
                         </div>
                     </div>
                     <div class="navi-text">
-                        <div class="font-weight-bold">Saytı ziyarət et</div>
+                        <a href="{{url('/')}}" class="font-weight-bold">Saytı ziyarət et</a>
                         <div class="text-muted">Əlavələrinizi vəya tanzimləməlrinizi yoxlayın</div>
                     </div>
                 </div>

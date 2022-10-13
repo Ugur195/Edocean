@@ -84,7 +84,7 @@ class AdminGetController extends Controller
         return view('backend.teacher_edit')->with(['teacher_edit' => $teacher_edit, 'teacher' => $teacher]);
     }
 
-    public function Student()
+    public function AdminStudent()
     {
         return view('backend.student');
     }

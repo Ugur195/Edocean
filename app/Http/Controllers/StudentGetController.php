@@ -11,6 +11,11 @@ use Yajra\DataTables\DataTables;
 
 class StudentGetController extends Controller
 {
+    public function Student()
+    {
+        return view('student.index');
+    }
+
     public function StudentAttendance()
     {
         return view('student.student_attendance');
@@ -21,6 +26,8 @@ class StudentGetController extends Controller
         return view('student.student_schedule');
     }
 
+
+
     public function getMyProfile()
     {
         $student = Student::where('user_id', Auth::user()->id)->first();
@@ -30,20 +37,9 @@ class StudentGetController extends Controller
         } else {
             $user = $student;
         }
+//        dd( explode(',',$student->language));
         return view('student.my_profile', ['student' => $user]);
     }
-    public function postMyProfile(Request $request)
-    {
-        $student = Student::where('user_id', Auth::user()->id)->first();
-        if($student==null){
-            Student::create([
-                'name'=>$request->name,
-            ]);
-        }else{
-            $student->name=$request->name;
-            $student->save();
-        }
-        return response();
-    }
+
 
 }

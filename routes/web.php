@@ -52,7 +52,7 @@ Route::group(['prefix' => 'admin','middleware'=>'Admin'], function () {
     Route::get('/setting', [AdminGetController::class, 'Setting']);
     Route::get('/teacher', [AdminGetController::class, 'Teacher'])->name('AdminTeacher');
     Route::get('/teacher_edit/{id}', [AdminGetController::class, 'TeacherEdit'])->name('admin.backend.teacher_edit');
-    Route::get('/student', [AdminGetController::class, 'Student']);
+    Route::get('/student', [AdminGetController::class, 'AdminStudent']);
     Route::get('/student_edit/{id}', [AdminGetController::class, 'StudentEdit'])->name('admin.backend.student_edit');
 
 
@@ -73,8 +73,11 @@ Route::group(['prefix' => 'admin','middleware'=>'Admin'], function () {
 //student
 Route::group(['prefix' => 'admin/student'], function () {
     Route::get('/my_profile', [StudentGetController::class, 'getMyProfile']);
+    Route::get('/index', [StudentGetController::class, 'Student']);
     Route::get('/student_attendance', [StudentGetController::class, 'StudentAttendance']);
     Route::get('/student_schedule', [StudentGetController::class, 'StudentSchedule']);
+
+    Route::post('/my_profile', [StudentPostController::class, 'postMyProfile']);
 
 });
 
