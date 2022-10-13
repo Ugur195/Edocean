@@ -242,7 +242,7 @@
                                 d-none d-md-inline mr-1">Salam,
                                 </span>
                                 <span class="text-dark-50 font-weight-bolder font-size-base
-                                 d-none d-md-inline mr-3">Xaqan
+                                 d-none d-md-inline mr-3">{{\Illuminate\Support\Facades\Auth::user()->name}}
                                 </span>
                                 <span class="symbol symbol-lg-35 symbol-25 symbol-light-success">
                                     <span class="symbol-label font-size-h5 font-weight-bold">
@@ -317,10 +317,10 @@
             </div>
             <div class="d-flex flex-column">
                 <a class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">
-                    Xaqan
+                    {{\Illuminate\Support\Facades\Auth::user()->name}}
                 </a>
                 <div class="text-muted mt-1">
-                    Admin
+                    Teacher
                 </div>
                 <div class="navi mt-2">
                     <span class="navi-link p-0 pb-2">
