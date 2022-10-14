@@ -4,24 +4,24 @@
 @endsection
 
 @section('content')
-    <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Card-->
+    <div class="card card-custom">
+        <div class="card-header card-header-tabs-line">
+            <div class="card-toolbar">
+                <div class="d-flex align-items-center flex-wrap mr-2">
+                    <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Setting</h5>
+                    <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
+                </div>
 
-        <div class="d-flex flex-column-fluid">
-            <div class="container">
-                <div class="card card-custom gutter-b">
-                    <div class="card-header">
-                        <div class="card-title">
-                            <h5 class="card-label">Student</h5>
-                        </div>
-                    </div>
-                    <!--begin::Form-->
-                    <form id="MyStudent" method="POST" class="form">
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="tab-content pt-5">
+                <!--begin::Tab Content-->
+                <div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
+                    <form id="mySetting" class="form" method="POST">
                         {{csrf_field()}}
-                        <div class="card-body">
-                            <div class="row">
                                 <div class="col-xl-3"></div>
-
-                                <div class="col-xl-6">
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Image</label>
@@ -51,59 +51,62 @@
                                     </div>
 
 
-                                    <div class="form-group">
-                                        <label>Name</label>
-                                        <input type="text" value="{{$teacher_edit->name}}"
-                                               class="form-control form-control-solid form-control-lg"
-                                               readonly/>
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Name</label>
+                                        <div class="col-lg-9 col-xl-6">
+                                            <input class="form-control form-control-lg form-control-solid" type="text"
+                                                value="{{$teacher_edit->name}}"/>
+                                        </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>Surname</label>
-                                        <input type="text" value="{{$teacher_edit->surname}}"
-                                               class="form-control form-control-solid form-control-lg"
-                                               readonly/>
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Surname</label>
+                                        <div class="col-lg-9 col-xl-6">
+                                            <input class="form-control form-control-lg form-control-solid" type="text"
+                                                value="{{$teacher_edit->surname}}"/>
+                                        </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>Gender</label>
-                                        <input type="text" value="{{$teacher_edit->gender}}"
-                                               class="form-control form-control-solid form-control-lg"
-                                               readonly/>
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Gender</label>
+                                        <div class="col-lg-9 col-xl-6">
+                                            <input name="url" class="form-control form-control-lg form-control-solid" type="text"
+                                                value="{{$teacher_edit->gender}}"/>
+                                        </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="email" value="{{$teacher_edit->email}}" name="email"
-                                               class="form-control form-control-solid form-control-lg"
-                                               readonly/>
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Email</label>
+                                        <div class="col-lg-9 col-xl-6">
+                                            <input class="form-control form-control-lg form-control-solid" type="text"
+                                                value="{{$teacher_edit->email}}"/>
+                                        </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>Phone</label>
-                                        <input type="text" value="{{$teacher_edit->phone}}"
-                                               class="form-control form-control-solid form-control-lg"
-                                               readonly/>
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Phone</label>
+                                        <div class="col-lg-9 col-xl-6">
+                                            <input class="form-control form-control-lg form-control-solid" type="text"
+                                                value="{{$teacher_edit->phone}}"/>
+                                        </div>
                                     </div>
 
-
-                                    <div class="form-group">
-                                        <label>Subject</label>
-                                        <input type="text" value="{{$teacher_edit->subjects}}"
-                                               class="form-control form-control-solid form-control-lg"
-                                               readonly/>
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Subject</label>
+                                        <div class="col-lg-9 col-xl-6">
+                                            <input class="form-control form-control-lg form-control-solid" type="text"
+                                                value="{{$teacher_edit->subject}}"/>
+                                        </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>Lesson Price</label>
-                                        <input type="number" value="{{$teacher_edit->lesson_price}}"
-                                               class="form-control form-control-solid form-control-lg"
-                                               readonly/>
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Lesson Price</label>
+                                        <div class="col-lg-9 col-xl-6">
+                                            <input class="form-control form-control-lg form-control-solid" type="text"
+                                                value="{{$teacher_edit->lesson_price}}"/>
+                                        </div>
                                     </div>
-                                </div>
                                 <div class="col-xl-3"></div>
-                            </div>
-                        </div>
                         <!--begin::Actions-->
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label"></label>
@@ -124,11 +127,13 @@
                                 </div>
                             </div>
                         </div>
-                        <!--end::Actions-->
+
+
+                        
+
                     </form>
-                    <!--end::Form-->
                 </div>
-                <!--end::Card-->
+
             </div>
         </div>
     </div>
