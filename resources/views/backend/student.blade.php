@@ -85,6 +85,7 @@
                                     <th>Phone</th>
                                     <th>Parent</th>
                                     <th>Payment</th>
+                                    <th>Balance</th>
                                     <th>Status</th>
                                     <th>Options</th>
                                 </tr>
@@ -100,6 +101,7 @@
                                     <th>PHONE</th>
                                     <th>PARENT</th>
                                     <th>PAYMENT</th>
+                                    <th>BALANCE</th>
                                     <th>STATUS</th>
                                     <th>OPTIONS</th>
                                 </tr>

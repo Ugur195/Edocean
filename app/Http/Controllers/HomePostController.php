@@ -112,10 +112,9 @@ class HomePostController extends Controller
 
         $login = $request->only('fin', 'email', 'password');
         if (Auth::attempt($login)) {
-            return redirect('index');
-        } else {
-            return back();
+            return response(['title' => 'Ugurlu!', 'message' => 'Melumat gondermek mumkun olmadi', 'status' => 'success']);
         }
+         return response(['title' => 'Ugursuz!', 'message' => 'Daxil olmadi', 'status' => 'error']);
 
     }
 }

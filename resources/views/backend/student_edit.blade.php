@@ -100,6 +100,14 @@
                                                class="form-control form-control-solid form-control-lg"
                                                readonly/>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label>Balance</label>
+                                        <input type="number" value="{{$student_edit->balance}}"
+                                               class="form-control form-control-solid form-control-lg"
+                                               readonly/>
+                                    </div>
+
                                 </div>
                                 <div class="col-xl-3"></div>
                             </div>
