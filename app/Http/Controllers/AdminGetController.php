@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AboutUs;
 use App\Models\ContactUs;
+use App\Models\Course;
 use App\Models\Setting;
 use App\Models\Student;
 use App\Models\Teacher;
@@ -70,9 +71,12 @@ class AdminGetController extends Controller
         $teacher = DB::table('edocean.teacher')->select(DB::raw("id,image,name,surname,gender,email,phone,subjects,lesson_price,
         (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
         return DataTables::of($teacher)
+            ->editColumn('image', function ($model) {
+                return "<img style='display:block;width:80px;height:60px;' src='data:image/jpeg;base64," . base64_encode($model->image) . "'/>";
+            })
             ->addColumn('options', function ($model) {
                 return
-                    '<a class="btn btn-xs btn-primary" href="' . route('admin.backend.teacher_edit', $model->id) . '" ><i class="la la-pencil-square-o"></i></a>
+                    '<a class="btn btn-xs btn-primary" href="' . route('admin.backend.teacher_edit', $model->id) . '" ><i class="la la-user"></i></a>
 			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger" ><i class="la la-trash"></i></button>';
             })->rawColumns(['options' => true])->make(true);
     }
@@ -84,7 +88,7 @@ class AdminGetController extends Controller
         return view('backend.teacher_edit')->with(['teacher_edit' => $teacher_edit, 'teacher' => $teacher]);
     }
 
-    public function AdminStudent()
+    public function Student()
     {
         return view('backend.student');
     }
@@ -111,6 +115,34 @@ class AdminGetController extends Controller
         $student = Student::all();
         $student_edit = Student::where('id', $id)->first();
         return view('backend.student_edit')->with(['student_edit' => $student_edit, 'student' => $student]);
+    }
+
+    public function Course()
+    {
+        return view('backend.course');
+    }
+
+    public function getCourse()
+    {
+        $course = DB::table('edocean.course')->select(DB::raw("id,image,name,email,phone,subjects,lesson_cost,balance,
+        (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
+        return DataTables::of($course)
+            ->editColumn('image', function ($model) {
+                return "<img style='display:block;width:80px;height:60px;' src='data:image/jpeg;base64," . base64_encode($model->image) . "'/>";
+            })
+            ->addColumn('options', function ($model) {
+                return
+                    '<a class="btn btn-xs btn-primary" href="' . route('admin.backend.course_edit', $model->id) . '" ><i class="la la-pencil-square-o"></i></a>
+			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger" ><i class="la la-trash"></i></button>';
+            })->rawColumns(['options' => true])->make(true);
+
+    }
+
+    public function CourseEdit($id)
+    {
+        $course = Course::all();
+        $course_edit = Course::where('id', $id)->first();
+        return view('backend.course_edit')->with(['course' => $course, 'course_edit' => $course_edit]);
     }
 
 }

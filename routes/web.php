@@ -9,6 +9,8 @@ use App\Http\Controllers\StudentGetController;
 use App\Http\Controllers\StudentPostController;
 use App\Http\Controllers\TeacherGetController;
 use App\Http\Controllers\TeacherPostController;
+use App\Http\Controllers\CourseGetController;
+use App\Http\Controllers\CoursePostController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 
@@ -42,9 +44,8 @@ Route::post('/sign_in', [HomePostController::class, 'PostSignIn']);
 Route::post('/sign_up', [HomePostController::class, 'PostSignUp']);
 
 
-
 //admin
-Route::group(['prefix' => 'admin','middleware'=>'Admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'Admin'], function () {
     Route::get('/index', [AdminGetController::class, 'home']);
     Route::get('/contact_us', [AdminGetController::class, 'ContactUs']);
     Route::get('/messages_edit/{id}', [AdminGetController::class, 'MessagesEdit'])->name('admin.messages_edit');
@@ -52,11 +53,10 @@ Route::group(['prefix' => 'admin','middleware'=>'Admin'], function () {
     Route::get('/setting', [AdminGetController::class, 'Setting']);
     Route::get('/teacher', [AdminGetController::class, 'Teacher'])->name('AdminTeacher');
     Route::get('/teacher_edit/{id}', [AdminGetController::class, 'TeacherEdit'])->name('admin.backend.teacher_edit');
-    Route::get('/student', [AdminGetController::class, 'AdminStudent']);
+    Route::get('/student', [AdminGetController::class, 'Student'])->name('AdminStudent');
     Route::get('/student_edit/{id}', [AdminGetController::class, 'StudentEdit'])->name('admin.backend.student_edit');
-
-
-
+    Route::get('/course', [AdminGetController::class, 'Course'])->name('AdminCourse');
+    Route::get('/course_edit/{id}', [AdminGetController::class, 'CourseEdit'])->name('admin.backend.course_edit');
 
 
     Route::post('/about_us', [AdminPostController::class, 'AboutUs']);
@@ -65,6 +65,7 @@ Route::group(['prefix' => 'admin','middleware'=>'Admin'], function () {
     Route::post('/contact_us', [AdminPostController::class, 'ContactUsDelete']);
     Route::post('/teacher', [AdminPostController::class, 'TeachersDelete']);
     Route::post('/student', [AdminPostController::class, 'StudentsDelete']);
+    Route::post('/course', [AdminPostController::class, 'CoursesDelete']);
 
 
 });
@@ -89,6 +90,18 @@ Route::group(['prefix' => 'admin/teacher'], function () {
 
 
 });
+
+
+//course
+Route::group(['prefix' => 'admin/course'], function () {
+    Route::get('/index', [CourseGetController::class, 'Course']);
+    Route::get('/course_schedule', [CourseGetController::class, 'CourseSchedule']);
+
+
+
+});
+
+
 
 
 

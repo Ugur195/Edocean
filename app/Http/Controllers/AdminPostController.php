@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AboutUs;
 use App\Models\ContactUs;
+use App\Models\Course;
 use App\Models\Setting;
 use App\Models\Student;
 use App\Models\Teacher;
@@ -63,7 +64,7 @@ class AdminPostController extends Controller
     public function MessagesEdit(Request $request)
     {
         try {
-            Mail::send('emails.mesaj_gonder', ['msg' => 'Answer: ' .$request->answer], function ($message) use ($request) {
+            Mail::send('emails.mesaj_gonder', ['msg' => 'Answer: ' . $request->answer], function ($message) use ($request) {
                 $message->to($request->email, $request->full_name)->subject('Mail linki');
                 $message->from('edocean_course@mail.ru', 'Edocean Course');
             });
@@ -93,6 +94,17 @@ class AdminPostController extends Controller
         } catch (\Exception $exception) {
             return response(['title' => 'Ugursuz!', 'message' => 'Studenti silmek olmur!', 'status' => 'error']);
         }
+    }
+
+    public function CoursesDelete(Request $request)
+    {
+        try {
+            Course::where('id', $request->id)->delete();
+            return response(['title' => 'Ugurlu!', 'message' => 'Course Silindi', 'status' => 'success']);
+        } catch (\Exception $exception) {
+            return response(['title' => 'Ugursuz!', 'message' => 'Course silmek olmur!', 'status' => 'error']);
+        }
+
     }
 
 

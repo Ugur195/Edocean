@@ -6,7 +6,7 @@
     <base href="">
     <meta charset="utf-8"/>
     <meta name="csrf-token" content="{{csrf_token()}}">
-    <title>Admin Panel | Edocean</title>
+    <title>Admin Panel | Course</title>
     <meta name="description"
           content="Metronic admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets."/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
@@ -83,14 +83,14 @@
     <div class="d-flex flex-row flex-column-fluid page">
         <div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
             <div class="brand flex-column-auto" id="kt_brand">
-                <a href="" class="brand-logo">
+                <a href="#" class="brand-logo">
                     {{--                                        <img class="entry-logo img-responsive"--}}
                     {{--                                             src="data:image/jpeg;base64,{{base64_encode($setting->logo)}}" alt="logo"--}}
                     {{--                                             title="logo"/>--}}
                 </a>
                 <button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">
                     <span class="svg-icon svg-icon svg-icon-xl">
-                        <svg   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                              width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <polygon points="0 0 24 0 24 24 0 24"/>
@@ -129,200 +129,55 @@
                 <div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1"
                      data-menu-dropdown-timeout="500">
                     <ul class="menu-nav">
-                        <li class="menu-item  @if(Request::url()==url('admin/index')) menu-item-active @endif "
+                        <li class="menu-item  @if(Request::url()==url('admin/course/index')) menu-item-active @endif "
                             aria-haspopup="true">
-                            <a href="{{url('admin/index')}}" class="menu-link">
+                            <a href="{{url('admin/course/index')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
-                                      <svg style="width: 20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                           viewBox="0 0 27.02 27.02"
-                                           xml:space="preserve">
-                                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" >
-	                                             <path  d="M3.674,24.876c0,0-0.024,0.604,0.566,0.604c0.734,0,6.811-0.008,6.811-0.008l0.01-5.581
-		                                          c0,0-0.096-0.92,0.797-0.92h2.826c1.056,0,0.991,0.92,0.991,0.92l-0.012,5.563c0,0,5.762,0,6.667,0
-		                                          c0.749,0,0.715-0.752,0.715-0.752V14.413l-9.396-8.358l-9.975,8.358C3.674,14.413,3.674,24.876,3.674,24.876z" fill="#000000"/>
-                                                 <path d="M0,13.635c0,0,0.847,1.561,2.694,0l11.038-9.338l10.349,9.28c2.138,1.542,2.939,0,2.939,0
-		                                          L13.732,1.54L0,13.635z" fill="#000000"/>
-                                             </g>
-                                      </svg>
-                                </span>
+                                    <svg style="width: 20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                         viewBox="0 0 27.02 27.02"
+                                         xml:space="preserve">
+                                           <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" >
+                                               <path  d="M3.674,24.876c0,0-0.024,0.604,0.566,0.604c0.734,0,6.811-0.008,6.811-0.008l0.01-5.581
+                                                c0,0-0.096-0.92,0.797-0.92h2.826c1.056,0,0.991,0.92,0.991,0.92l-0.012,5.563c0,0,5.762,0,6.667,0
+                                                c0.749,0,0.715-0.752,0.715-0.752V14.413l-9.396-8.358l-9.975,8.358C3.674,14.413,3.674,24.876,3.674,24.876z" fill="#000000"/>
+                                               <path d="M0,13.635c0,0,0.847,1.561,2.694,0l11.038-9.338l10.349,9.28c2.138,1.542,2.939,0,2.939,0
+                                                L13.732,1.54L0,13.635z" fill="#000000"/>
+                                           </g>
+                                    </svg>
+                              </span>
                                 <span class="menu-text">Home</span>
                             </a>
                         </li>
 
-                        <li class="menu-item   @if(Request::url()==url('admin/contact_us')) menu-item-active @endif ">
-                            <a href="{{url('admin/contact_us')}}" class="menu-link">
+
+
+                        <li class="menu-item   @if(Request::url()==url('admin/course/course_schedule')) menu-item-active @endif ">
+                            <a href="{{url('admin/course/course_schedule')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                            viewBox="0 0 24 24" version="1.1">
-                                           <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                         <rect x="0" y="0" width="24" height="24"/>
-                                          <path d="M5,6 L19,6 C20.1045695,6 21,6.8954305 21,8 L21,17 C21,18.1045695 20.1045695,
-                                            19 19,19 L5,19 C3.8954305,19 3,18.1045695 3,17 L3,8 C3,6.8954305 3.8954305,
-                                               6 5,6 Z M18.1444251,7.83964668 L12,11.1481833 L5.85557487,
-                                               7.83964668 C5.4908718,7.6432681 5.03602525,
-                                              7.77972206 4.83964668,8.14442513 C4.6432681,
-                                                  8.5091282 4.77972206,8.96397475 5.14442513,
-                                                9.16035332 L11.6444251,12.6603533 C11.8664074,
-                                                12.7798822 12.1335926,12.7798822 12.3555749,
-                                               12.6603533 L18.8555749,9.16035332 C19.2202779,
-                                                  8.96397475 19.3567319,8.5091282 19.1603533,
-                                                 8.14442513 C18.9639747,7.77972206 18.5091282,
-                                                7.6432681 18.1444251,7.83964668 Z" fill="#000000"/>
-                                          </g>
-                                     </svg><!--end::Svg Icon-->
+                                       <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                            viewBox="0 0 198.667 198.667"
+                                            style="enable-background:new 0 0 198.667 198.667;" xml:space="preserve">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                 <path d="M193.667,41.945H182V21.278c0-2.762-2.239-5-5-5h-12c-2.761,0-5,2.238-5,5v20.667H38.667V21.278c0-2.762-2.239-5-5-5h-12
+	                                             c-2.761,0-5,2.238-5,5v20.667H5c-2.761,0-5,2.238-5,5V164.75c0,9.726,7.913,17.639,17.639,17.639h163.389
+	                                             c9.726,0,17.639-7.913,17.639-17.639V46.945C198.667,44.183,196.428,41.945,193.667,41.945z M181.333,138.955H157.4v-12.987h23.934
+	                                             V138.955z M89.533,78.899h23.934v12.987H89.533V78.899z M113.467,115.42H89.533v-12.986h23.934V115.42z M55.6,125.968h23.933v12.987
+	                                             H55.6V125.968z M89.533,125.968h23.934v12.987H89.533V125.968z M147.4,115.42h-23.933v-12.986H147.4V115.42z M21.667,125.968H45.6
+	                                             v12.987H21.667V125.968z M181.333,115.42H157.4v-12.986h23.934V115.42z M157.4,78.899h23.934v12.987H157.4V78.899z M147.4,91.886
+	                                             h-23.933V78.899H147.4V91.886z M55.6,102.434h23.933v12.986H55.6V102.434z M21.667,102.434H45.6v12.986H21.667V102.434z
+	                                             M45.6,162.49H21.667v-12.987H45.6V162.49z M55.6,149.502h23.933v12.987H55.6V149.502z M113.467,162.49H89.533v-12.987h23.934
+	                                             V162.49z M123.467,125.968H147.4v12.987h-23.933V125.968z"
+                                                       fill="#000000"/>
+                                            </g>
+                                       </svg>
                                 </span>
-                                <span class="menu-text">Messages</span>
+                                <span class="menu-text">Course Schedule</span>
                             </a>
                         </li>
 
 
-
-                        <li class="menu-item  @if(Request::url()==url('admin/teacher')) menu-item-active @endif "
-                            aria-haspopup="true">
-                            <a href="{{url('admin/teacher')}}" class="menu-link">
-                                <span class="svg-icon menu-icon">
-                                    <svg class="svg-icon" style="
-                                        width: 20px; vertical-align: middle;fill: currentColor;overflow: hidden;"
-                                        viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M272.128 538.752l207.36 409.472H204.736c-31.488-1.152-57.728-12.224-78.72-33.28s-32.064-47.232-33.28-78.72v-185.472c1.152-31.488 12.224-57.728 33.28-78.72s47.232-32.064
-                                        78.72-33.28h67.392z m88.768-414.784c38.784-39.104 87.616-59.52 146.56-61.248 58.944 1.728
-                                        107.776 22.144 146.56 61.248 38.784 39.104 59.072 87.808 60.8 146.112-0.576 37.952-9.92
-                                        72.64-28.032 104.128s-43.456 56.576-76.096 75.264c-32.704 18.688-67.072 28.032-103.232
-                                        28.032-36.16 0-70.592-9.344-103.232-28.032-32.704-18.688-58.048-43.776-76.096-75.264-18.112-31.488-27.456-66.176-28.032-104.128 1.728-58.304 22.016-107.008 60.8-146.112z
-                                        m241.984 532.928l-95.36 201.28-95.36-201.28 95.36-83.968 95.36 83.968z m286.976-84.928c21.568 20.992
-                                        34.112 47.232 37.632 78.72v185.472c-0.576 31.488-11.52 57.728-32.832 78.72-21.312 20.992-47.68
-                                        32.064-79.168 33.28H540.736l202.112-409.472h67.392c31.488 1.216 58.048 12.288 79.616 33.28z"  />
-                                    </svg>
-                                </span>
-                                <span class="menu-text">Teacher</span>
-                            </a>
-                        </li>
-
-
-
-                        <li class="menu-item  @if(Request::url()==url('admin/student')) menu-item-active @endif "
-                            aria-haspopup="true">
-                            <a href="{{url('admin/student')}}" class="menu-link">
-                                <span class="svg-icon menu-icon">
-                                    <svg version="1.1" id="Layer_1"
-                                         xmlns="http://www.w3.org/2000/svg"
-                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                         width="260px" height="188px"
-                                         viewBox="0 0 260 188" xml:space="preserve">
-                                       <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <path d="M134.3,109.2L202,83.8V146c0,13.4-32.2,24.3-72,
-                                            24.3S58,159.4,58,146V83.8l67.9,25.4l4.2,1.6L134.3,109.2z M130.1,98L258,50
-	                                         L130.1,2L2,50l20,7.5v81.8c-4.7,2.2-8,7.1-8,
-	                                         12.7v34h28v-34c0-5.7-3.3-10.6-8.1-12.8V61.9L130.1,98z" fill="#000000"/>
-                                       </g>
-                                    </svg>
-                                </span>
-                                <span class="menu-text">Student</span>
-                            </a>
-                        </li>
-
-
-                        <li class="menu-item  @if(Request::url()==url('admin/course')) menu-item-active @endif "
-                            aria-haspopup="true">
-                            <a href="{{url('admin/course')}}" class="menu-link">
-                                <span class="svg-icon menu-icon">
-                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                         width="335.08px" height="335.079px" viewBox="0 0 335.08 335.079" style="enable-background:new 0 0 335.08 335.079;"
-                                         xml:space="preserve">
-                                        <g >
-		                                    <path d="M311.175,115.775c-1.355-10.186-1.546-27.73,7.915-33.621c0.169-0.108,0.295-0.264,0.443-0.398
-			                                 c7.735-2.474,13.088-5.946,8.886-10.618l-114.102-34.38L29.56,62.445c0,0-21.157,3.024-19.267,35.894
-			                                 c1.026,17.89,6.637,26.676,11.544,31l-15.161,4.569c-4.208,4.672,1.144,8.145,8.88,10.615c0.147,0.138,0.271,0.293,0.443,0.401
-			                                 c9.455,5.896,9.273,23.438,7.913,33.626c-33.967,9.645-21.774,12.788-21.774,12.788l7.451,1.803
-			                                 c-5.241,4.736-10.446,13.717-9.471,30.75c1.891,32.864,19.269,35.132,19.269,35.132l120.904,39.298l182.49-44.202
-			                                 c0,0,12.197-3.148-21.779-12.794c-1.366-10.172-1.556-27.712,7.921-33.623c0.174-0.105,0.301-0.264,0.442-0.396
-			                                 c7.736-2.474,13.084-5.943,8.881-10.615l-7.932-2.395c5.29-3.19,13.236-11.527,14.481-33.183
-			                                 c0.859-14.896-3.027-23.62-7.525-28.756l15.678-3.794C332.949,128.569,345.146,125.421,311.175,115.775z M158.533,115.354
-			                                 l30.688-6.307l103.708-21.312l15.451-3.178c-4.937,9.036-4.73,21.402-3.913,29.35c0.179,1.798,0.385,3.44,0.585,4.688
-			                                 L288.14,122.8l-130.897,32.563L158.533,115.354z M26.71,147.337l15.449,3.178l99.597,20.474l8.701,1.782l0,0l0,0l26.093,5.363
-			                                 l1.287,40.01L43.303,184.673l-13.263-3.296c0.195-1.25,0.401-2.89,0.588-4.693C31.44,168.742,31.651,156.373,26.71,147.337z
-			                                 M20.708,96.757c-0.187-8.743,1.371-15.066,4.52-18.28c2.004-2.052,4.369-2.479,5.991-2.479c0.857,0,1.474,0.119,1.516,0.119
-			                                 l79.607,25.953l39.717,12.949l-1.303,40.289L39.334,124.07l-5.88-1.647c-0.216-0.061-0.509-0.103-0.735-0.113
-			                                 C32.26,122.277,21.244,121.263,20.708,96.757z M140.579,280.866L23.28,247.98c-0.217-0.063-0.507-0.105-0.733-0.116
-			                                 c-0.467-0.031-11.488-1.044-12.021-25.544c-0.19-8.754,1.376-15.071,4.519-18.288c2.009-2.052,4.375-2.479,5.994-2.479
-			                                 c0.859,0,1.474,0.115,1.519,0.115c0,0,0.005,0,0,0l119.316,38.908L140.579,280.866z M294.284,239.459
-			                                 c0.185,1.804,0.391,3.443,0.591,4.693l-147.812,36.771l1.292-40.01l31.601-6.497l4.667,1.129l17.492-5.685l80.631-16.569
-			                                 l15.457-3.18C293.261,219.146,293.466,231.517,294.284,239.459z M302.426,185.084c-0.269,0.006-0.538,0.042-0.791,0.122
-			                                 l-11.148,3.121l-106.148,29.764l-1.298-40.289l34.826-11.359l84.327-27.501c0.011-0.005,4.436-0.988,7.684,2.315
-			                                 c3.144,3.214,4.704,9.537,4.52,18.28C313.848,184.035,302.827,185.053,302.426,185.084z" fill="#000000"/>
-	                                    </g>
-                                    </svg>
-                                </span>
-                                <span class="menu-text">Course</span>
-                            </a>
-                        </li>
-
-
-
-                        <li class="menu-item   @if(Request::url()==url('admin/about_us')) menu-item-active @endif">
-                            <a href="{{url('admin/about_us')}}" class="menu-link">
-                                <span class="svg-icon menu-icon">
-                                        <svg style="height: 19px" xmlns="http://www.w3.org/2000/svg"
-                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                             viewBox="0 0 24 24" version="1.1">
-                                               <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-	                                                  <path d="M11.812,0C5.289,0,0,5.289,0,11.812s5.289,
-	                                                  11.813,11.812,11.813s11.813-5.29,11.813-11.813
-		                                               S18.335,0,11.812,0z M14.271,18.307c-0.608,
-		                                               0.24-1.092,0.422-1.455,0.548c-0.362,
-		                                               0.126-0.783,0.189-1.262,0.189
-		                                               c-0.736,0-1.309-0.18-1.717-0.539s-0.611-0.814-0.611-1.367c0-0.215,
-		                                               0.015-0.435,0.045-0.659c0.031-0.224,0.08-0.476,0.147-0.759
-		                                               l0.761-2.688c0.067-0.258,0.125-0.503,0.171-0.731c0.046-0.23,
-		                                               0.068-0.441,0.068-0.633c0-0.342-0.071-0.582-0.212-0.717
-		                                               c-0.143-0.135-0.412-0.201-0.813-0.201c-0.196,0-0.398,
-		                                               0.029-0.605,0.09c-0.205,0.063-0.383,0.12-0.529,0.176l0.201-0.828
-		                                               c0.498-0.203,0.975-0.377,1.43-0.521c0.455-0.146,
-		                                               0.885-0.218,1.29-0.218c0.731,0,1.295,0.178,1.692,0.53
-		                                               c0.395,0.353,0.594,0.812,0.594,1.376c0,0.117-0.014,
-		                                               0.323-0.041,0.617c-0.027,0.295-0.078,0.564-0.152,0.811l-0.757,2.68
-		                                               c-0.062,0.215-0.117,0.461-0.167,0.736c-0.049,0.275-0.073,
-		                                               0.485-0.073,0.626c0,0.356,0.079,0.599,0.239,0.728
-		                                               c0.158,0.129,0.435,0.194,0.827,0.194c0.185,
-		                                               0,0.392-0.033,0.626-0.097c0.232-0.064,0.4-0.121,0.506-0.17L14.271,18.307z
-		                                                M14.137,7.429c-0.353,0.328-0.778,0.492-1.275,
-		                                                0.492c-0.496,0-0.924-0.164-1.28-0.492c-0.354-0.328-0.533-0.727-0.533-1.193
-		                                               c0-0.465,0.18-0.865,0.533-1.196c0.356-0.332,
-		                                               0.784-0.497,1.28-0.497c0.497,0,0.923,0.165,1.275,0.497
-		                                               c0.353,0.331,0.53,0.731,0.53,1.196C14.667,6.703,14.49,7.101,14.137,7.429z"
-                                                            fill="#000000"/>
-                                               </g>
-                                        </svg>
-                                </span>
-                                <span class="menu-text">About Us</span>
-                            </a>
-                        </li>
-
-                        <li class="menu-item   @if(Request::url()==url('admin/setting')) menu-item-active @endif ">
-
-                            <a href="{{url('admin/setting')}}" class="menu-link">
-                                <span class="svg-icon menu-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                             xmlns:xlink="http://www.w3.org/1999/xlink"
-                                             width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <rect x="0" y="0" width="24" height="24"/>
-                                           <path d="M5,8.6862915 L5,5 L8.6862915,5 L11.5857864,2.10050506 L14.4852814,
-                                           5 L19,5 L19,9.51471863 L21.4852814,12 L19,14.4852814 L19,19 L14.4852814,
-                                           19 L11.5857864,21.8994949 L8.6862915,19 L5,19 L5,15.3137085 L1.6862915,
-                                           12 L5,8.6862915 Z M12,15 C13.6568542,15 15,13.6568542 15,12 C15,
-                                           10.3431458 13.6568542,9 12,9 C10.3431458,9 9,10.3431458 9,12 C9,
-                                           13.6568542 10.3431458,15 12,15 Z" fill="#000000"/>
-                                         </g>
-                                        </svg><!--end::Svg Icon-->
-                                </span>
-                                <span class="menu-text">Setting</span>
-                            </a>
-
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -421,7 +276,7 @@
                 align-items-center justify-content-between">
                     <div class="text-dark order-2 order-md-1">
                         <span class="text-muted font-weight-bold mr-2">2022 ©</span>
-                        <a href="#" target="_blank"
+                        <a href="https://www.facebook.com/xaqan.turkoglu.9/" target="_blank"
                            class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">
                             Created by Aztelecom
                         </a>
@@ -536,7 +391,7 @@
                         </div>
                     </div>
                     <div class="navi-text">
-                        <div href="{{url('/my_profile')}}" class="font-weight-bold">Profilim</div>
+                        <a  href="{{url('admin/student/my_profile')}}" class="font-weight-bold">Profilim</a>
                         <div class="text-muted">Hesab tənzimləmələri və başqaları</div>
                     </div>
                 </div>
@@ -611,6 +466,7 @@
     </div>
     <!--end::Content-->
 </div>
+
 <script src="{{asset('backendCssJs/assets/plugins/global/plugins.bundle.js')}}"></script>
 <script src="{{asset('backendCssJs/assets/plugins/custom/prismjs/prismjs.bundle.js')}}"></script>
 <script src="{{asset('backendCssJs/assets/js/scripts.bundle.js')}}"></script>
@@ -627,4 +483,5 @@
 @yield('js')
 <!--end::Body-->
 </html>
+
 
