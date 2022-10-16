@@ -114,7 +114,7 @@ class HomePostController extends Controller
         if (Auth::attempt($login)) {
             return response(['title' => 'Ugurlu!', 'message' => 'Melumat gondermek mumkun olmadi', 'status' => 'success']);
         }
-         return response(['title' => 'Ugursuz!', 'message' => 'Daxil olmadi', 'status' => 'error']);
+         return response(['title' => 'Ugursuz!', 'message' => 'Daxil olmaq mumkun olmadi, sifre yalniwdir!', 'status' => 'error']);
 
     }
 }

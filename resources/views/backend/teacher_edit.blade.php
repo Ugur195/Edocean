@@ -9,7 +9,7 @@
         <div class="card-header card-header-tabs-line">
             <div class="card-toolbar">
                 <div class="d-flex align-items-center flex-wrap mr-2">
-                    <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Setting</h5>
+                    <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Teacher</h5>
                     <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
                 </div>
 
@@ -21,92 +21,104 @@
                 <div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
                     <form id="mySetting" class="form" method="POST">
                         {{csrf_field()}}
-                                <div class="col-xl-3"></div>
+                        <div class="col-xl-3"></div>
 
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Image</label>
-                                        <div class="col-lg-9 col-xl-9">
-                                            <div class="image-input image-input-outline" id="kt_contacts_edit_avatar"
-                                                 style="background-image: url(assets/media/users/blank.png)">
+                        <div class="form-group row">
+                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Image</label>
+                            <div class="col-lg-9 col-xl-9">
+                                <div class="image-input image-input-outline" id="kt_contacts_edit_avatar"
+                                     style="background-image: url(assets/media/users/blank.png)">
 
-                                                <div class="image-input-wrapper"
-                                                     style="background-image: url('data:image/jpeg;base64,{{base64_encode($teacher_edit->image)}}')">
-                                                </div>
-                                                <label
-                                                    class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                    data-action="change" data-toggle="tooltip" title=""
-                                                    data-original-title="Change avatar">
-                                                    <i class="fa fa-pen icon-sm text-muted"></i>
-                                                    <input type="file" name="logo" id="file" accept=".png, .jpg, .jpeg" />
-                                                    <input type="hidden" name="profile_avatar_remove"/>
-                                                </label>
+                                    <div class="image-input-wrapper"
+                                         style="background-image: url('data:image/jpeg;base64,{{base64_encode($teacher_edit->image)}}')">
+                                    </div>
+                                    <label
+                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                        data-action="change" data-toggle="tooltip" title=""
+                                        data-original-title="Change avatar">
+                                        <i class="fa fa-pen icon-sm text-muted"></i>
+                                        <input type="file" name="logo" id="file" accept=".png, .jpg, .jpeg"/>
+                                        <input type="hidden" name="profile_avatar_remove"/>
+                                    </label>
 
-                                                <span
-                                                    class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                    data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                    <span
+                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                        data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
                                         <i class="ki ki-bold-close icon-xs text-muted"></i>
                                     </span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
 
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Name</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" type="text"
-                                                value="{{$teacher_edit->name}}"/>
-                                        </div>
-                                    </div>
+                        <div class="form-group row">
+                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Name</label>
+                            <div class="col-lg-9 col-xl-6">
+                                <input class="form-control form-control-lg form-control-solid" type="text"
+                                       value="{{$teacher_edit->name}}"/>
+                            </div>
+                        </div>
 
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Surname</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" type="text"
-                                                value="{{$teacher_edit->surname}}"/>
-                                        </div>
-                                    </div>
+                        <div class="form-group row">
+                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Surname</label>
+                            <div class="col-lg-9 col-xl-6">
+                                <input class="form-control form-control-lg form-control-solid" type="text"
+                                       value="{{$teacher_edit->surname}}"/>
+                            </div>
+                        </div>
 
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Gender</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input name="url" class="form-control form-control-lg form-control-solid" type="text"
-                                                value="{{$teacher_edit->gender}}"/>
-                                        </div>
-                                    </div>
+                        <div class="form-group row">
+                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Gender</label>
+                            <div class="col-lg-9 col-xl-6">
+                                <input name="url" class="form-control form-control-lg form-control-solid" type="text"
+                                       value="{{$teacher_edit->gender}}"/>
+                            </div>
+                        </div>
 
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Email</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" type="text"
-                                                value="{{$teacher_edit->email}}"/>
-                                        </div>
-                                    </div>
 
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Phone</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" type="text"
-                                                value="{{$teacher_edit->phone}}"/>
-                                        </div>
-                                    </div>
+                        <div class="form-group row">
+                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Email</label>
+                            <div class="col-lg-9 col-xl-6">
+                                <input class="form-control form-control-lg form-control-solid" type="text"
+                                       value="{{$teacher_edit->email}}"/>
+                            </div>
+                        </div>
 
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Subject</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" type="text"
-                                                value="{{$teacher_edit->subject}}"/>
-                                        </div>
-                                    </div>
+                        <div class="form-group row">
+                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Phone</label>
+                            <div class="col-lg-9 col-xl-6">
+                                <input class="form-control form-control-lg form-control-solid" type="text"
+                                       value="{{$teacher_edit->phone}}"/>
+                            </div>
+                        </div>
 
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Lesson Price</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" type="text"
-                                                value="{{$teacher_edit->lesson_price}}"/>
-                                        </div>
-                                    </div>
-                                <div class="col-xl-3"></div>
+                        <div class="form-group row">
+                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Subject</label>
+                            <div class="col-lg-9 col-xl-6">
+                                <input class="form-control form-control-lg form-control-solid" type="text"
+                                       value="{{$teacher_edit->subjects}}"/>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Lesson Price</label>
+                            <div class="col-lg-9 col-xl-6">
+                                <input class="form-control form-control-lg form-control-solid" type="text"
+                                       value="{{$teacher_edit->lesson_price}}"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Balance</label>
+                            <div class="col-lg-9 col-xl-6">
+                                <input class="form-control form-control-lg form-control-solid" type="text"
+                                       value="{{$teacher_edit->balance}}"/>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xl-3"></div>
                         <!--begin::Actions-->
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label"></label>
@@ -128,8 +140,6 @@
                             </div>
                         </div>
 
-
-                        
 
                     </form>
                 </div>

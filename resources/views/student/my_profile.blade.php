@@ -89,18 +89,31 @@
                         </div>
 
                         <div class="form-group row">
+                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Birthday</label>
+                            <div class="col-lg-9 col-xl-6">
+                                <div class="input-group input-group-solid date" id="kt_datetimepicker_3" data-target-input="nearest">
+                                    <input type="text" name="birthday" class="form-control form-control-solid datetimepicker-input"  value="{{$student->birthday}}"
+                                           data-target="#kt_datetimepicker_3"/>
+                                    <div class="input-group-append" data-target="#kt_datetimepicker_3" data-toggle="datetimepicker">
+                                        <span class="input-group-text"><i class="ki ki-calendar"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Gender</label>
                             <div class="col-9 col-form-label">
                                 <div class="radio-inline">
                                     <label class="radio radio-primary">
                                         <input type="radio" name="gender" @if($student->gender=='M') checked @endif value="M"/>
                                         <span></span>
-                                        Kisi
+                                        Male
                                     </label>
                                     <label class="radio radio-primary">
                                         <input type="radio" name="gender"  @if($student->gender=='F') checked @endif value="F"/>
                                         <span></span>
-                                        Qadin
+                                        Female
                                     </label>
                                 </div>
                             </div>
@@ -207,19 +220,43 @@
 
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Parent</label>
-                            <div class="col-lg-9 col-xl-6">
-                                <input name="parent" class="form-control form-control-lg form-control-solid"
-                                       type="text"
-                                       value="{{$student->parent}}"/>
+                            <div class="col-9 col-form-label">
+                                <div class="radio-inline">
+                                    <label class="radio radio-primary">
+                                        <input type="radio" name="parent" @if($student->parent=='Yes') checked @endif value="Yes"/>
+                                        <span></span>
+                                        Yes
+                                    </label>
+                                    <label class="radio radio-primary">
+                                        <input type="radio" name="parent"  @if($student->parent=='No') checked @endif value="No"/>
+                                        <span></span>
+                                        No
+                                    </label>
+                                </div>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Education Level</label>
-                            <div class="col-lg-9 col-xl-6">
-                                <input name="education_level" class="form-control form-control-lg form-control-solid"
-                                       type="text"
-                                       value="{{$student->education_level}}"/>
+                            <div class="col-9 col-form-label">
+                                <div class="radio-inline">
+                                    <label class="radio radio-primary">
+                                        <input type="radio" name="education_level" @if($student->education_level=='Elementary') checked @endif value="Elemen"/>
+                                        <span></span>
+                                        Elementary
+                                    </label>
+                                    <label class="radio radio-primary">
+                                        <input type="radio" name="education_level"  @if($student->education_level=='Secondary') checked @endif value="Secondary"/>
+                                        <span></span>
+                                        Secondary
+                                    </label>
+
+                                    <label class="radio radio-primary">
+                                        <input type="radio" name="education_level"  @if($student->education_level=='Higher') checked @endif value="Higher"/>
+                                        <span></span>
+                                        Higher
+                                    </label>
+                                </div>
                             </div>
                         </div>
 
@@ -264,10 +301,19 @@
 
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Teacher Gender</label>
-                            <div class="col-lg-9 col-xl-6">
-                                <input name="teacher_gender" class="form-control form-control-lg form-control-solid"
-                                       type="text"
-                                       value="{{$student->teacher_gender}}"/>
+                            <div class="col-9 col-form-label">
+                                <div class="radio-inline">
+                                    <label class="radio radio-primary">
+                                        <input type="radio" name="teacher_gender" @if($student->teacher_gender=='M') checked @endif value="M"/>
+                                        <span></span>
+                                        Male
+                                    </label>
+                                    <label class="radio radio-primary">
+                                        <input type="radio" name="teacher_gender"  @if($student->teacher_gender=='F') checked @endif value="F"/>
+                                        <span></span>
+                                        Female
+                                    </label>
+                                </div>
                             </div>
                         </div>
 
@@ -295,6 +341,15 @@
                                 <input name="payment" class="form-control form-control-lg form-control-solid"
                                        type="text"
                                        value="{{$student->payment}}"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Balance</label>
+                            <div class="col-lg-9 col-xl-6">
+                                <input name="balance" class="form-control form-control-lg form-control-solid"
+                                       type="text"
+                                       value="{{$student->balance}}"/>
                             </div>
                         </div>
 

@@ -68,7 +68,7 @@ class AdminGetController extends Controller
 
     public function getTeacher()
     {
-        $teacher = DB::table('edocean.teacher')->select(DB::raw("id,image,name,surname,gender,email,phone,subjects,lesson_price,
+        $teacher = DB::table('edocean.teacher')->select(DB::raw("id,image,name,surname,gender,email,phone,subjects,lesson_price,balance,
         (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
         return DataTables::of($teacher)
             ->editColumn('image', function ($model) {

@@ -69,6 +69,10 @@ var KTDatatablesSearchOptionsColumnSearch = function () {
                     name: 'lesson_price'
                 },
                 {
+                    data: 'balance',
+                    name: 'balance'
+                },
+                {
                     data: 'status',
                     name: 'status'
                 },
@@ -94,6 +98,7 @@ var KTDatatablesSearchOptionsColumnSearch = function () {
                         case 'Phone':
                         case 'Subject':
                         case 'Lesson Price':
+                        case 'Balance':
                             input = $(`<input type="text" class="form-control form-control-sm form-filter datatable-input" data-col-index="` + column.index() + `"/>`);
                             break;
 

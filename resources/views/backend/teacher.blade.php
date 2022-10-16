@@ -83,6 +83,7 @@
                                 <th>Phone</th>
                                 <th>Subject</th>
                                 <th>Lesson Price</th>
+                                <th>Balance</th>
                                 <th>Status</th>
                                 <th>Options</th>
                             </tr>
@@ -98,6 +99,7 @@
                                 <th>PHONE</th>
                                 <th>SUBJECT</th>
                                 <th>LESSON PRICE</th>
+                                <th>BALANCE</th>
                                 <th>STATUS</th>
                                 <th>OPTIONS</th>
                             </tr>
