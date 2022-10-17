@@ -30,7 +30,11 @@ class StudentPostController extends Controller
                 'language' => $langs,
                 'gender' => $request->gender,
                 'education_level' => $request->education_level,
+                'lesson_duration' => $request->lesson_duration,
+                'lessons_intensivity' => $request->lessons_intensivity,
+                'students_amount' => $request->students_amount,
                 'teacher_gender' => $request->teacher_gender,
+                'teacher_status' => $request->teacher_status,
                 'parent' => $request->parent,
                 'email' => $request->email,
                 'address' => $request->address,
@@ -39,6 +43,7 @@ class StudentPostController extends Controller
                 'student_mission' => $request->student_mission,
                 'payment' => $request->payment,
                 'balance' => $request->balance,
+
             ]);
         } else {
             $student->name = $request->name;
@@ -48,7 +53,11 @@ class StudentPostController extends Controller
             $student->language = $langs;
             $student->gender = $request->gender;
             $student->education_level = $request->education_level;
+            $student->lesson_duration = $request->lesson_duration;
+            $student->lessons_intensivity = $request->lessons_intensivity;
+            $student->students_amount = $request->students_amount;
             $student->teacher_gender = $request->teacher_gender;
+            $student->teacher_status = $request->teacher_status;
             $student->parent = $request->parent;
             $student->email = $request->email;
             $student->address = $request->address;
@@ -58,6 +67,9 @@ class StudentPostController extends Controller
             $student->payment = $request->payment;
             $student->balance = $request->balance;
             $student->save();
+        }
+        if (isset($request->image)) {
+            Student::where('id', $request->id)->update(['image' => file_get_contents($request->file('image'))]);
         }
         return back();
     }
