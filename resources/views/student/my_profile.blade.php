@@ -335,7 +335,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Teacher Status</label>
                             <div class="col-lg-9 col-xl-6">
                                 <select name="teacher_status" class=" custom-select form-control  form-control-solid">
-                                    <option  selected>Open this select menu</option>
+                                    <option disabled  selected>Open this select menu</option>
                                     <option value="primary education (I-IV)"
                                             @if($student->teacher_status=='primary education (I-IV)')selected @endif>
                                         primary education (I-IV)
