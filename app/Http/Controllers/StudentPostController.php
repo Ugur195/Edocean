@@ -13,15 +13,20 @@ class StudentPostController extends Controller
     {
         $student = Student::where('user_id', Auth::user()->id)->first();
         $langs = '';
+
         if (isset($request->langs)) {
             foreach ($request->langs as $l) {
                 $langs .= ',' . $l;
             }
         }
 
-
         if ($student == null) {
+//            $image=null;
+//            if (isset($request->image)) {
+//                $image= file_get_contents($request->file('image'));
+//            }
             Student::create([
+//                'image' => $image,
                 'name' => $request->name,
                 'surname' => $request->surname,
                 'father_name' => $request->father_name,
@@ -35,6 +40,8 @@ class StudentPostController extends Controller
                 'students_amount' => $request->students_amount,
                 'teacher_gender' => $request->teacher_gender,
                 'teacher_status' => $request->teacher_status,
+                'country' => $request->country,
+                'city' => $request->city,
                 'parent' => $request->parent,
                 'email' => $request->email,
                 'address' => $request->address,
@@ -46,6 +53,11 @@ class StudentPostController extends Controller
 
             ]);
         } else {
+//            $image=$student->image;
+//            if (isset($request->image)) {
+//                $image= file_get_contents($request->file('imagest'));
+//            }
+//            $student->image = $image;
             $student->name = $request->name;
             $student->surname = $request->surname;
             $student->father_name = $request->father_name;
@@ -62,14 +74,13 @@ class StudentPostController extends Controller
             $student->email = $request->email;
             $student->address = $request->address;
             $student->phone = $request->phone;
+            $student->country = $request->country;
+            $student->city = $request->city;
             $student->skype_id = $request->skype_id;
             $student->student_mission = $request->student_mission;
             $student->payment = $request->payment;
             $student->balance = $request->balance;
             $student->save();
-        }
-        if (isset($request->image)) {
-            Student::where('id', $request->id)->update(['image' => file_get_contents($request->file('image'))]);
         }
         return back();
     }

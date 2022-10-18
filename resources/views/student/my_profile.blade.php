@@ -181,18 +181,18 @@
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Country</label>
                             <div class="col-lg-9 col-xl-6">
-                                <input name="country" class="form-control form-control-lg form-control-solid"
-                                       type="text"
-                                       value="{{$student->country}}"/>
+                                <select class="form-control  form-control-solid" id="country" name="country">
+                                    <option value="{{$student->country}}">Select a country</option>
+                                </select>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">City</label>
                             <div class="col-lg-9 col-xl-6">
-                                <input name="city" type="text"
-                                       class="form-control form-control-lg form-control-solid"
-                                       value="{{$student->city}}"/>
+                                <select class="form-control  form-control-solid" id="state" name="city">
+                                    <option value="{{$student->city}}">Select a city</option>
+                                </select>
                             </div>
                         </div>
 
@@ -469,10 +469,15 @@
             </div>
         </div>
     </div>
-
 @endsection
 
 @section('js')
+    <script type="text/javascript" src="{{asset('backendCssJs/assets/countryes/countries.js')}}"></script>
+
+    <script>
+        populateCountries("country", "state");
+    </script>
+
     <script src="{{asset('backendCssJs/assets/js/pages/custom/contacts/edit-contact.js')}}"></script>
     <script src="{{asset('jsValidate/jquery.form.js')}}"></script>
     <script>
