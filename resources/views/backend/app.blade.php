@@ -34,6 +34,9 @@
     <link href="{{asset('backendCssJs/assets/css/themes/layout/aside/dark.css')}}" rel="stylesheet" type="text/css"/>
     <!--end::Layout Themes-->
     <link rel="shortcut icon" href="{{asset('backendCssJs/assets/media/logos/favicon.ico')}}"/>
+    <style>
+        body {font-family: Poppins, Helvetica, "sans-serif";}
+    </style>
     @yield('css')
 </head>
 

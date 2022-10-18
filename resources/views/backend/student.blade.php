@@ -6,10 +6,9 @@
 @endsection
 
 @section('content')
-    <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <div class="d-flex flex-column flex-column-fluid" id="kt_content">
 
         <div class="d-flex flex-column-fluid">
-            <div class="container">
                 <!--begin::Container-->
                 <div class="container">
                     <!--begin::Card-->
@@ -113,7 +112,6 @@
                     <!--end::Card-->
                 </div>
                 <!--end::Container-->
-            </div>
         </div>
     </div>
 @endsection
