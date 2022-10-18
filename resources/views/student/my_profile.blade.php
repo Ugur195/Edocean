@@ -334,20 +334,27 @@
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Teacher Status</label>
                             <div class="col-lg-9 col-xl-6">
-                                <select name="teacher_status"  class="form-control form-control-solid">
+                                <select name="teacher_status" class=" custom-select form-control  form-control-solid">
+                                    <option  selected>Open this select menu</option>
                                     <option value="primary education (I-IV)"
-                                            @if($student->teacher_status=='primary education (I-IV)')selected @endif>primary education (I-IV)</option>
+                                            @if($student->teacher_status=='primary education (I-IV)')selected @endif>
+                                        primary education (I-IV)
+                                    </option>
                                     <option value="general secondary education (V-IX)"
-                                            @if($student->teacher_status=='general secondary education (V-IX)') selected @endif>general secondary education (V-IX)</option>
+                                            @if($student->teacher_status=='general secondary education (V-IX)') selected @endif>
+                                        general secondary education (V-IX)
+                                    </option>
                                     <option value="complete secondary education (X-XI)"
-                                            @if($student->teacher_status=='complete secondary education (X-XI)') selected @endif>complete secondary education (X-XI)</option>
+                                            @if($student->teacher_status=='complete secondary education (X-XI)') selected @endif>
+                                        complete secondary education (X-XI)
+                                    </option>
                                     <option value="higher education (bachelors , masters , doctoral degrees)"
-                                            @if($student->teacher_status=='higher education (bachelors , masters , doctoral degrees)') selected @endif>higher education (bachelor's, master's, doctoral degrees)</option>
+                                            @if($student->teacher_status=='higher education (bachelors , masters , doctoral degrees)') selected @endif>
+                                        higher education (bachelor's, master's, doctoral degrees)
+                                    </option>
                                 </select>
                             </div>
                         </div>
-
-
 
 
                         <div class="form-group row">
@@ -468,7 +475,12 @@
 @section('js')
     <script src="{{asset('backendCssJs/assets/js/pages/custom/contacts/edit-contact.js')}}"></script>
     <script src="{{asset('jsValidate/jquery.form.js')}}"></script>
-{{--    <script src="{{asset('backendCssJs/assets/js/pages/crud/forms/widgets/bootstrap-datetimepicker.js')}}"></script>--}}
+    <script>
+        $('#kt_datetimepicker_3').datetimepicker({
+            format: 'YYYY-MM-DD'
+        });
+
+    </script>
 @endsection
 
 

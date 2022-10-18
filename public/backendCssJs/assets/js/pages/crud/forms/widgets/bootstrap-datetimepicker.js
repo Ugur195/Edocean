@@ -13,7 +13,7 @@ var KTBootstrapDatetimepicker = function () {
 
         // Demo 3
         $('#kt_datetimepicker_3').datetimepicker({
-            format: 'L'
+            // format: 'L'
         });
 
         // Demo 4
