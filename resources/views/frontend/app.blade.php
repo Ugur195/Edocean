@@ -64,16 +64,16 @@
                             </li>
                         @elseif(Auth::user()->author==2)
                             <li class="nav-item me-2 auth" style="font-size: 15px">
-                                <a class="nav-link" target="_blank" href="{{url('/admin/course/index')}}">My Profile</a>
+                                <a class="nav-link" target="_blank" href="{{url('/admin/course/index')}}">Course Profile</a>
                             </li>
                         @elseif(Auth::user()->author==3)
                             <li class="nav-item me-2 auth" style="font-size: 15px">
-                                <a class="nav-link" target="_blank" href="{{url('/admin/teacher/index')}}">My
+                                <a class="nav-link" target="_blank" href="{{url('/admin/teacher/index')}}">Teacher
                                     Profile</a>
                             </li>
                         @elseif(Auth::user()->author==4)
                             <li class="nav-item me-2 auth" style="font-size: 15px">
-                                <a class="nav-link" target="_blank" href="{{url('/admin/student/student_attendance')}}">My
+                                <a class="nav-link" target="_blank" href="{{url('/admin/student/student_attendance')}}">Student
                                     Profile</a>
                             </li>
                         @endif

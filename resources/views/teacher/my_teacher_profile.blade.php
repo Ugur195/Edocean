@@ -1,4 +1,4 @@
-@extends('student.app')
+@extends('teacher.app')
 
 
 @section('css')
@@ -11,7 +11,7 @@
         <div class="card-header card-header-tabs-line">
             <div class="card-toolbar">
                 <div class="d-flex align-items-center flex-wrap mr-2">
-                    <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">My Profile</h5>
+                    <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">My Teacher Profile</h5>
                     <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
                 </div>
 
@@ -24,7 +24,7 @@
                     <form class="form" method="POST" enctype="multipart/form-data">
                         {{csrf_field()}}
                         <input name="id" class="form-control form-control-lg form-control-solid" hidden type="text"
-                               value="{{$student->id}}"/>
+                               value="{{$teacher->id}}"/>
 
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Image</label>
@@ -33,7 +33,7 @@
                                      style="background-image: url(assets/media/users/blank.png)">
 
                                     <div class="image-input-wrapper"
-                                         style="background-image: url('data:image/jpeg;base64,{{base64_encode($student->image)}}')">
+                                         style="background-image: url('data:image/jpeg;base64,{{base64_encode($teacher->image)}}')">
                                     </div>
                                     <label
                                         class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -58,7 +58,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Name</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input name="name" class="form-control form-control-lg form-control-solid" type="text"
-                                       value="{{$student->name}}"/>
+                                       value="{{$teacher->name}}"/>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -66,7 +66,7 @@
                             <div class="col-lg-9 col-xl-6">
                                 <input name="surname" class="form-control form-control-lg form-control-solid"
                                        type="text"
-                                       value="{{$student->surname}}"/>
+                                       value="{{$teacher->surname}}"/>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -74,7 +74,7 @@
                             <div class="col-lg-9 col-xl-6">
                                 <input name="father_name" class="form-control form-control-lg form-control-solid"
                                        type="text"
-                                       value="{{$student->father_name}}"/>
+                                       value="{{$teacher->father_name}}"/>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -84,7 +84,7 @@
                                      data-target-input="nearest">
                                     <input type="text" name="birthday"
                                            class="form-control form-control-solid datetimepicker-input"
-                                           value="{{$student->birthday}}"
+                                           value="{{$teacher->birthday}}"
                                            data-target="#kt_datetimepicker_3"/>
                                     <div class="input-group-append" data-target="#kt_datetimepicker_3"
                                          data-toggle="datetimepicker">
@@ -99,13 +99,13 @@
                             <div class="col-9 col-form-label">
                                 <div class="radio-inline">
                                     <label class="radio radio-primary">
-                                        <input type="radio" name="gender" @if($student->gender=='M') checked
+                                        <input type="radio" name="gender" @if($teacher->gender=='M') checked
                                                @endif value="M"/>
                                         <span></span>
                                         Male
                                     </label>
                                     <label class="radio radio-primary">
-                                        <input type="radio" name="gender" @if($student->gender=='F') checked
+                                        <input type="radio" name="gender" @if($teacher->gender=='F') checked
                                                @endif value="F"/>
                                         <span></span>
                                         Female
@@ -120,7 +120,7 @@
                                 <div class="checkbox-inline">
                                     <label class="checkbox checkbox-primary">
                                         <input type="checkbox" name="langs[]"
-                                               @if(in_array("Az", explode(',',$student->language)))
+                                               @if(in_array("Az", explode(',',$teacher->language)))
                                                checked="checked"
                                                @endif
                                                value="Az"/>
@@ -129,7 +129,7 @@
                                     </label>
                                     <label class="checkbox checkbox-primary">
                                         <input type="checkbox" name="langs[]"
-                                               @if(in_array("En", explode(',',$student->language)))
+                                               @if(in_array("En", explode(',',$teacher->language)))
                                                checked="checked"
                                                @endif
                                                value="En"/>
@@ -138,7 +138,7 @@
                                     </label>
                                     <label class="checkbox checkbox-primary">
                                         <input type="checkbox" name="langs[]"
-                                               @if(in_array("Ru", explode(',',$student->language)))
+                                               @if(in_array("Ru", explode(',',$teacher->language)))
                                                checked="checked"
                                                @endif
                                                value="Ru"/>
@@ -148,7 +148,7 @@
 
                                     <label class="checkbox checkbox-primary">
                                         <input type="checkbox" name="langs[]"
-                                               @if(in_array("Tr", explode(',',$student->language)))
+                                               @if(in_array("Tr", explode(',',$teacher->language)))
                                                checked="checked"
                                                @endif
                                                value="Tr"/>
@@ -158,7 +158,7 @@
 
                                     <label class="checkbox checkbox-primary">
                                         <input type="checkbox" name="langs[]"
-                                               @if(in_array("O", explode(',',$student->language)))
+                                               @if(in_array("O", explode(',',$teacher->language)))
                                                checked="checked"
                                                @endif
                                                value="O"/>
@@ -174,7 +174,7 @@
                             <div class="col-lg-9 col-xl-6">
                                 <input name="email" class="form-control form-control-lg form-control-solid"
                                        type="text"
-                                       value="{{$student->email}}"/>
+                                       value="{{$teacher->email}}"/>
                             </div>
                         </div>
 
@@ -182,7 +182,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Country</label>
                             <div class="col-lg-9 col-xl-6">
                                 <select class="form-control  form-control-solid" id="country" name="country">
-                                    <option value="{{$student->country}}">Select a country</option>
+                                    <option value="{{$teacher->country}}">Select a country</option>
                                 </select>
                             </div>
                         </div>
@@ -191,7 +191,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">City</label>
                             <div class="col-lg-9 col-xl-6">
                                 <select class="form-control  form-control-solid" id="state" name="city">
-                                    <option value="{{$student->city}}">Select a city</option>
+                                    <option value="{{$teacher->city}}">Select a city</option>
                                 </select>
                             </div>
                         </div>
@@ -200,7 +200,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Phone</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input name="phone" class="form-control form-control-lg form-control-solid" type="text"
-                                       value="{{$student->phone}}"/>
+                                       value="{{$teacher->phone}}"/>
                             </div>
                         </div>
 
@@ -209,58 +209,12 @@
                             <div class="col-lg-9 col-xl-6">
                                 <input name="skype_id" type="text"
                                        class="form-control form-control-lg form-control-solid"
-                                       value="{{$student->skype_id}}"/>
+                                       value="{{$teacher->skype_id}}"/>
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Parent</label>
-                            <div class="col-9 col-form-label">
-                                <div class="radio-inline">
-                                    <label class="radio radio-primary">
-                                        <input type="radio" name="parent" @if($student->parent=='Yes') checked
-                                               @endif value="Yes"/>
-                                        <span></span>
-                                        Yes
-                                    </label>
-                                    <label class="radio radio-primary">
-                                        <input type="radio" name="parent" @if($student->parent=='No') checked
-                                               @endif value="No"/>
-                                        <span></span>
-                                        No
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Education Level</label>
-                            <div class="col-9 col-form-label">
-                                <div class="radio-inline">
-                                    <label class="radio radio-primary">
-                                        <input type="radio" name="education_level"
-                                               @if($student->education_level=='Elementary') checked
-                                               @endif value="Elemen"/>
-                                        <span></span>
-                                        Elementary
-                                    </label>
-                                    <label class="radio radio-primary">
-                                        <input type="radio" name="education_level"
-                                               @if($student->education_level=='Secondary') checked
-                                               @endif value="Secondary"/>
-                                        <span></span>
-                                        Secondary
-                                    </label>
 
-                                    <label class="radio radio-primary">
-                                        <input type="radio" name="education_level"
-                                               @if($student->education_level=='Higher') checked @endif value="Higher"/>
-                                        <span></span>
-                                        Higher
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Lesson Duration</label>
@@ -268,13 +222,13 @@
                                 <div class="radio-inline">
                                     <label class="radio radio-primary">
                                         <input type="radio" name="lesson_duration"
-                                               @if($student->lesson_duration=='1 hour') checked @endif value="1 hour"/>
+                                               @if($teacher->lesson_duration=='1 hour') checked @endif value="1 hour"/>
                                         <span></span>
                                         1 hour
                                     </label>
                                     <label class="radio radio-primary">
                                         <input type="radio" name="lesson_duration"
-                                               @if($student->lesson_duration=='1 hour 30 min') checked
+                                               @if($teacher->lesson_duration=='1 hour 30 min') checked
                                                @endif value="1 hour 30 min"/>
                                         <span></span>
                                         1 hour 30 min
@@ -282,7 +236,7 @@
 
                                     <label class="radio radio-primary">
                                         <input type="radio" name="lesson_duration"
-                                               @if($student->lesson_duration=='2 hours') checked
+                                               @if($teacher->lesson_duration=='2 hours') checked
                                                @endif value="2 hours"/>
                                         <span></span>
                                         2 hours
@@ -297,14 +251,14 @@
                                 <div class="radio-inline">
                                     <label class="radio radio-primary">
                                         <input type="radio" name="lessons_intensivity"
-                                               @if($student->lessons_intensivity=='2 times per week') checked
+                                               @if($teacher->lessons_intensivity=='2 times per week') checked
                                                @endif value="2 times per week"/>
                                         <span></span>
                                         2 times per week
                                     </label>
                                     <label class="radio radio-primary">
                                         <input type="radio" name="lessons_intensivity"
-                                               @if($student->lessons_intensivity=='3 times per week') checked
+                                               @if($teacher->lessons_intensivity=='3 times per week') checked
                                                @endif value="3 times per week"/>
                                         <span></span>
                                         3 times per week
@@ -312,7 +266,7 @@
 
                                     <label class="radio radio-primary">
                                         <input type="radio" name="lessons_intensivity"
-                                               @if($student->lessons_intensivity=='5 times per week') checked
+                                               @if($teacher->lessons_intensivity=='5 times per week') checked
                                                @endif value="5 times per week"/>
                                         <span></span>
                                         5 times per week
@@ -321,61 +275,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Address</label>
-                            <div class="col-lg-9 col-xl-6">
-                                <input name="address" class="form-control form-control-lg form-control-solid"
-                                       type="text"
-                                       value="{{$student->address}}"/>
-                            </div>
-                        </div>
-
-
-                        <div class="form-group row">
-                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Teacher Status</label>
-                            <div class="col-lg-9 col-xl-6">
-                                <select name="teacher_status" class=" custom-select form-control  form-control-solid">
-                                    <option disabled  selected>Open this select menu</option>
-                                    <option value="primary education (I-IV)"
-                                            @if($student->teacher_status=='primary education (I-IV)')selected @endif>
-                                        primary education (I-IV)
-                                    </option>
-                                    <option value="general secondary education (V-IX)"
-                                            @if($student->teacher_status=='general secondary education (V-IX)') selected @endif>
-                                        general secondary education (V-IX)
-                                    </option>
-                                    <option value="complete secondary education (X-XI)"
-                                            @if($student->teacher_status=='complete secondary education (X-XI)') selected @endif>
-                                        complete secondary education (X-XI)
-                                    </option>
-                                    <option value="higher education (bachelors , masters , doctoral degrees)"
-                                            @if($student->teacher_status=='higher education (bachelors , masters , doctoral degrees)') selected @endif>
-                                        higher education (bachelor's, master's, doctoral degrees)
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-
-
-                        <div class="form-group row">
-                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Teacher Gender</label>
-                            <div class="col-9 col-form-label">
-                                <div class="radio-inline">
-                                    <label class="radio radio-primary">
-                                        <input type="radio" name="teacher_gender"
-                                               @if($student->teacher_gender=='M') checked @endif value="M"/>
-                                        <span></span>
-                                        Male
-                                    </label>
-                                    <label class="radio radio-primary">
-                                        <input type="radio" name="teacher_gender"
-                                               @if($student->teacher_gender=='F') checked @endif value="F"/>
-                                        <span></span>
-                                        Female
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Students Amount</label>
@@ -383,13 +282,13 @@
                                 <div class="radio-inline">
                                     <label class="radio radio-primary">
                                         <input type="radio" name="students_amount"
-                                               @if($student->students_amount=='Alone') checked @endif value="Alone"/>
+                                               @if($teacher->students_amount=='Alone') checked @endif value="Alone"/>
                                         <span></span>
                                         Alone
                                     </label>
                                     <label class="radio radio-primary">
                                         <input type="radio" name="students_amount"
-                                               @if($student->students_amount=='In a group (3-4 people)') checked
+                                               @if($teacher->students_amount=='In a group (3-4 people)') checked
                                                @endif value="In a group (3-4 people)"/>
                                         <span></span>
                                         In a group (3-4 people)
@@ -397,7 +296,7 @@
 
                                     <label class="radio radio-primary">
                                         <input type="radio" name="students_amount"
-                                               @if($student->students_amount=='In a group (5-7 people)') checked
+                                               @if($teacher->students_amount=='In a group (5-7 people)') checked
                                                @endif value="In a group (5-7 people)"/>
                                         <span></span>
                                         In a group (5-7 people)
@@ -407,20 +306,11 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Student Mission</label>
+                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Lesson Price</label>
                             <div class="col-lg-9 col-xl-6">
-                                <input name="student_mission" class="form-control form-control-lg form-control-solid"
+                                <input name="lesson_price" class="form-control form-control-lg form-control-solid"
                                        type="text"
-                                       value="{{$student->student_mission}}"/>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Payment</label>
-                            <div class="col-lg-9 col-xl-6">
-                                <input name="payment" class="form-control form-control-lg form-control-solid"
-                                       type="text"
-                                       value="{{$student->payment}}"/>
+                                       value="{{$teacher->lesson_price}}"/>
                             </div>
                         </div>
 
@@ -429,7 +319,7 @@
                             <div class="col-lg-9 col-xl-6">
                                 <input name="balance" class="form-control form-control-lg form-control-solid"
                                        type="text"
-                                       value="{{$student->balance}}"/>
+                                       value="{{$teacher->balance}}"/>
                             </div>
                         </div>
 
@@ -438,7 +328,7 @@
                             <div class="col-lg-9 col-xl-6">
                                 <input name="verified_status" class="form-control form-control-lg form-control-solid"
                                        type="text"
-                                       value="{{$student->verified_status}}"/>
+                                       value="{{$teacher->verified_status}}"/>
                             </div>
                         </div>
 
@@ -487,6 +377,7 @@
 
     </script>
 @endsection
+
 
 
 

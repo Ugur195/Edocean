@@ -131,10 +131,6 @@
                                            class="btn btn-success font-weight-bolder text-uppercase px-9 py-4"
                                            data-wizard-type="action-submit">Back
                                         </a>
-                                        <button class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4"
-                                                data-wizard-type="action-next">Send
-                                        </button>
-
                                     </div>
                                 </div>
                             </div>

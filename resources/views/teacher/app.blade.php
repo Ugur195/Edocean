@@ -133,20 +133,22 @@
                             aria-haspopup="true">
                             <a href="{{url('admin/teacher/index')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
-                                    <svg style="width: 20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                    <svg style="width: 20px" version="1.1" id="Capa_1"
+                                         xmlns="http://www.w3.org/2000/svg"
                                          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                          viewBox="0 0 27.02 27.02"
                                          xml:space="preserve">
-                                           <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" >
-                                               <path  d="M3.674,24.876c0,0-0.024,0.604,0.566,0.604c0.734,0,6.811-0.008,6.811-0.008l0.01-5.581
+                                           <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                               <path d="M3.674,24.876c0,0-0.024,0.604,0.566,0.604c0.734,0,6.811-0.008,6.811-0.008l0.01-5.581
                                                 c0,0-0.096-0.92,0.797-0.92h2.826c1.056,0,0.991,0.92,0.991,0.92l-0.012,5.563c0,0,5.762,0,6.667,0
-                                                c0.749,0,0.715-0.752,0.715-0.752V14.413l-9.396-8.358l-9.975,8.358C3.674,14.413,3.674,24.876,3.674,24.876z" fill="#000000"/>
+                                                c0.749,0,0.715-0.752,0.715-0.752V14.413l-9.396-8.358l-9.975,8.358C3.674,14.413,3.674,24.876,3.674,24.876z"
+                                                     fill="#000000"/>
                                                <path d="M0,13.635c0,0,0.847,1.561,2.694,0l11.038-9.338l10.349,9.28c2.138,1.542,2.939,0,2.939,0
                                                 L13.732,1.54L0,13.635z" fill="#000000"/>
                                            </g>
                                     </svg>
                               </span>
-                              <span class="menu-text">Home</span>
+                                <span class="menu-text">Home</span>
                             </a>
                         </li>
 
@@ -247,8 +249,8 @@
                                 <span class="symbol symbol-lg-35 symbol-25 symbol-light-success">
                                     <span class="symbol-label font-size-h5 font-weight-bold">
 {{--                                        <img class="entry-logo img-responsive" style="width: 30px; height: 30px"--}}
-                                        {{--                                             src="data:image/jpeg;base64,{{base64_encode(Auth::user()->image)}}"--}}
-                                        {{--                                             alt="logo" title="logo"/>--}}
+{{--                                             src="data:image/jpeg;base64,{{base64_encode($teacher->image)}}"--}}
+{{--                                             alt="logo" title="logo"/>--}}
                                     </span>
                                 </span>
                             </div>
@@ -284,7 +286,7 @@
                         <span class="text-muted font-weight-bold mr-2">2022 ©</span>
                         <a href="https://www.facebook.com/xaqan.turkoglu.9/" target="_blank"
                            class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">
-                            Created by Kahagan Maharramov
+                            Created by Aztelecom
                         </a>
                     </div>
                     <div class="nav nav-dark">
@@ -309,9 +311,9 @@
         <div class="d-flex align-items-center mt-5">
             <div class="symbol symbol-100 mr-5">
                 <div class="symbol-label">
-                    {{--                    <img class="entry-logo img-responsive" style="width: 90px; height: 90px"--}}
-                    {{--                         src="data:image/jpeg;base64,{{base64_encode(Auth::user()->image)}}" alt="logo"--}}
-                    {{--                         title="logo"/>--}}
+{{--                    <img class="entry-logo img-responsive" style="width: 90px; height: 90px"--}}
+{{--                         src="data:image/jpeg;base64,{{base64_encode($teacher->image)}}" alt="logo"--}}
+{{--                         title="logo"/>--}}
                 </div>
                 <i class="symbol-badge bg-success"></i>
             </div>
@@ -358,7 +360,7 @@
 {{--                            {{Auth::user()->email}}--}}
                         </span>
                     </span>
-                    <a href=""
+                    <a href="{{route('logout')}}"
                        class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">
                         Çıxış
                     </a>
@@ -397,7 +399,7 @@
                         </div>
                     </div>
                     <div class="navi-text">
-                        <div class="font-weight-bold">Profilim</div>
+                        <a href="{{url('admin/teacher/my_teacher_profile')}}" class="font-weight-bold">Profilim</a>
                         <div class="text-muted">Hesab tənzimləmələri və başqaları</div>
                     </div>
                 </div>
@@ -414,7 +416,7 @@
                         </div>
                     </div>
                     <div class="navi-text">
-                        <div class="font-weight-bold">Saytı ziyarət et</div>
+                        <a href="{{url('/')}}" class="font-weight-bold">Saytı ziyarət et</a>
                         <div class="text-muted">Əlavələrinizi vəya tanzimləməlrinizi yoxlayın</div>
                     </div>
                 </div>

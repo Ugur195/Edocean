@@ -96,16 +96,22 @@ class AdminGetController extends Controller
 
     public function getStudent()
     {
-        $student = DB::table('edocean.student')->select(DB::raw("id,image,name,surname,gender,email,phone,parent,payment,balance,
-        (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
+        $student = DB::table('edocean.student')->select(DB::raw("id,image,name,surname,gender,email,phone,parent,payment,balance,status as st,
+          (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
         return DataTables::of($student)
             ->editColumn('image', function ($model) {
                 return "<img style='display:block;width:80px;height:60px;' src='data:image/jpeg;base64," . base64_encode($model->image) . "'/>";
             })
             ->addColumn('options', function ($model) {
-                return
-                    '<a class="btn btn-xs btn-primary" href="' . route('admin.backend.student_edit', $model->id) . '" ><i class="la la-user"></i></a>
+                    $return='<a class="btn btn-xs btn-primary" href="' . route('admin.backend.student_edit', $model->id) . '" ><i class="la la-user"></i></a>
 			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger" ><i class="la la-trash"></i></button>';
+                    if($model->st==0){
+                        $return.='<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-warning" ><i class="la la-info"></i></button>';
+                    }else if($model->st==1){
+                        $return.='<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-success" ><i class="la la-check"></i></button>';
+                    }
+                return $return;
+
             })->rawColumns(['options' => true])->make(true);
     }
 

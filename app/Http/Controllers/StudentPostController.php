@@ -21,12 +21,12 @@ class StudentPostController extends Controller
         }
 
         if ($student == null) {
-//            $image=null;
-//            if (isset($request->image)) {
-//                $image= file_get_contents($request->file('image'));
-//            }
+            $image=null;
+            if (isset($request->image)) {
+                $image= file_get_contents($request->file('image')->getRealPath());
+            }
             Student::create([
-//                'image' => $image,
+                'image' => $image,
                 'name' => $request->name,
                 'surname' => $request->surname,
                 'father_name' => $request->father_name,
@@ -53,11 +53,11 @@ class StudentPostController extends Controller
 
             ]);
         } else {
-//            $image=$student->image;
-//            if (isset($request->image)) {
-//                $image= file_get_contents($request->file('imagest'));
-//            }
-//            $student->image = $image;
+            $image=$student->image;
+            if (isset($request->image)) {
+                $image= file_get_contents($request->file('image')->getRealPath());
+            }
+            $student->image = $image;
             $student->name = $request->name;
             $student->surname = $request->surname;
             $student->father_name = $request->father_name;
