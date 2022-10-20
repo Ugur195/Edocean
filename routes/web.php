@@ -95,6 +95,7 @@ Route::group(['prefix' => 'admin/teacher'], function () {
 
 //course
 Route::group(['prefix' => 'admin/course'], function () {
+    Route::get('/my_profile', [CourseGetController::class, 'MyCourse']);
     Route::get('/index', [CourseGetController::class, 'Course']);
     Route::get('/course_schedule', [CourseGetController::class, 'CourseSchedule']);
 
