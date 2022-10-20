@@ -55,7 +55,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Name</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value="{{$teacher_edit->name}}"/>
+                                       value="{{$teacher_edit->name}}" readonly/>
                             </div>
                         </div>
 
@@ -63,7 +63,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Surname</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value="{{$teacher_edit->surname}}"/>
+                                       value="{{$teacher_edit->surname}}" readonly/>
                             </div>
                         </div>
 
@@ -71,7 +71,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Gender</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input name="url" class="form-control form-control-lg form-control-solid" type="text"
-                                       value="{{$teacher_edit->gender}}"/>
+                                       value="{{$teacher_edit->gender}}" readonly/>
                             </div>
                         </div>
 
@@ -80,7 +80,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Email</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value="{{$teacher_edit->email}}"/>
+                                       value="{{$teacher_edit->email}}" readonly/>
                             </div>
                         </div>
 
@@ -88,7 +88,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Phone</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value="{{$teacher_edit->phone}}"/>
+                                       value="{{$teacher_edit->phone}}" readonly/>
                             </div>
                         </div>
 
@@ -96,7 +96,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Subject</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value="{{$teacher_edit->subjects}}"/>
+                                       value="{{$teacher_edit->subjects}}" readonly/>
                             </div>
                         </div>
 
@@ -105,7 +105,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Lesson Price</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value="{{$teacher_edit->lesson_price}}"/>
+                                       value="{{$teacher_edit->lesson_price}}" readonly/>
                             </div>
                         </div>
 
@@ -113,7 +113,7 @@
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Balance</label>
                             <div class="col-lg-9 col-xl-6">
                                 <input class="form-control form-control-lg form-control-solid" type="text"
-                                       value="{{$teacher_edit->balance}}"/>
+                                       value="{{$teacher_edit->balance}}" readonly/>
                             </div>
                         </div>
 
