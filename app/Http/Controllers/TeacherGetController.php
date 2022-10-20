@@ -19,7 +19,7 @@ class TeacherGetController extends Controller
         return view('teacher.teacher_schedule');
     }
 
-    public function getMyTeacherProfile()
+    public function getTeacherProfile()
     {
         $teacher = Teacher::where('user_id', Auth::user()->id)->first();
         $user = null;
@@ -29,6 +29,6 @@ class TeacherGetController extends Controller
             $user = $teacher;
         }
 //        dd( explode(',',$teacher->language));
-        return view('teacher.my_teacher_profile', ['teacher' => $user]);
+        return view('teacher.my_profile', ['teacher' => $user]);
     }
 }
