@@ -85,9 +85,12 @@ Route::group(['prefix' => 'admin/student'], function () {
 
 //teacher
 Route::group(['prefix' => 'admin/teacher'], function () {
-    Route::get('/my_teacher_profile', [TeacherGetController::class, 'getMyTeacherProfile']);
+    Route::get('/my_profile', [TeacherGetController::class, 'getTeacherProfile']);
     Route::get('/index', [TeacherGetController::class, 'Teacher']);
     Route::get('/teacher_schedule', [TeacherGetController::class, 'TeacherSchedule']);
+
+
+    Route::post('/my_profile', [TeacherPostController::class, 'postTeacherProfile']);
 
 
 });
