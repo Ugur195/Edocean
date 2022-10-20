@@ -391,7 +391,7 @@
                         </div>
                     </div>
                     <div class="navi-text">
-                        <a  href="{{url('admin/student/my_profile')}}" class="font-weight-bold">Profilim</a>
+                        <a  href="{{url('admin/course/my_profile')}}" class="font-weight-bold">Profilim</a>
                         <div class="text-muted">Hesab tənzimləmələri və başqaları</div>
                     </div>
                 </div>

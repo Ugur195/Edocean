@@ -100,7 +100,7 @@ Route::group(['prefix' => 'admin/course'], function () {
     Route::get('/course_schedule', [CourseGetController::class, 'CourseSchedule']);
 
 
-
+    Route::post('/my_profile', [CoursePostController::class, 'postMyProfile']);
 });
 
 
