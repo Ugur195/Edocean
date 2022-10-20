@@ -192,19 +192,53 @@
 
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Teaching Time</label>
-                            <div class="col-lg-9 col-xl-6">
-                                <input name="teaching_time" class="form-control form-control-lg form-control-solid"
-                                       type="text"
-                                       value="{{$teacher->teaching_time}}"/>
+                            <div class="col-9 col-form-label">
+                                <div class="radio-inline">
+                                    <label class="radio radio-primary">
+                                        <input type="radio" name="teaching_time"
+                                               @if($teacher->teaching_time=='1 hour') checked @endif value="1 hour"/>
+                                        <span></span>
+                                        1 hour
+                                    </label>
+                                    <label class="radio radio-primary">
+                                        <input type="radio" name="teaching_time"
+                                               @if($teacher->teaching_time=='1 hour 30 min') checked
+                                               @endif value="1 hour 30 min"/>
+                                        <span></span>
+                                        1 hour 30 min
+                                    </label>
+
+                                    <label class="radio radio-primary">
+                                        <input type="radio" name="teaching_time"
+                                               @if($teacher->teaching_time=='2 hours') checked
+                                               @endif value="2 hours"/>
+                                        <span></span>
+                                        2 hours
+                                    </label>
+                                </div>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Demo Lesson</label>
-                            <div class="col-lg-9 col-xl-6">
-                                <input name="demo_lesson" class="form-control form-control-lg form-control-solid"
-                                       type="text"
-                                       value="{{$teacher->demo_lesson}}"/>
+                            <div class="col-9 col-form-label">
+                                <div class="radio-inline">
+                                    <label class="radio radio-primary">
+                                        <input type="radio" name="demo_lesson"
+                                               @if($teacher->demo_lesson=='No') checked
+                                               @endif value="No"/>
+                                        <span></span>
+                                        No
+                                    </label>
+
+                                    <label class="radio radio-primary">
+                                        <input type="radio" name="demo_lesson"
+                                               @if($teacher->demo_lesson=='Yes') checked
+                                               @endif value="Yes"/>
+                                        <span></span>
+                                        Yes
+                                    </label>
+                                </div>
                             </div>
                         </div>
 
@@ -217,8 +251,6 @@
                                        value="{{$teacher->video_presentation}}"/>
                             </div>
                         </div>
-
-
 
 
                         <div class="form-group row">
@@ -305,7 +337,6 @@
                         </div>
 
 
-
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Certificate</label>
                             <div class="col-lg-9 col-xl-6">
@@ -314,7 +345,6 @@
                                        value="{{$teacher->certificate}}"/>
                             </div>
                         </div>
-
 
 
                         <div class="form-group row">
@@ -327,7 +357,6 @@
                         </div>
 
 
-
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Work Experience</label>
                             <div class="col-lg-9 col-xl-6">
@@ -338,7 +367,6 @@
                         </div>
 
 
-
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Work Place</label>
                             <div class="col-lg-9 col-xl-6">
@@ -347,7 +375,6 @@
                                        value="{{$teacher->work_place}}"/>
                             </div>
                         </div>
-
 
 
                         <div class="form-group row">
@@ -379,7 +406,6 @@
                         </div>
 
 
-
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Subjects Category</label>
                             <div class="col-lg-9 col-xl-6">
@@ -388,7 +414,6 @@
                                        value="{{$teacher->subjects_category}}"/>
                             </div>
                         </div>
-
 
 
                         <div class="form-group row">
@@ -500,7 +525,6 @@
                                        value="{{$teacher->profile_type}}"/>
                             </div>
                         </div>
-
 
 
                         <div class="form-group row">
