@@ -157,15 +157,12 @@
                                                     <button class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4"
                                                             data-wizard-type="action-next">Update
                                                     </button>
-
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
                                 </form>
                             </div>
-
                         </div>
                     </div>
                 </div>

@@ -300,9 +300,9 @@
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">About Teacher</label>
                             <div class="col-lg-9 col-xl-6">
-                                <input name="about_teacher" class="form-control form-control-lg form-control-solid"
-                                       type="text"
-                                       value="{{$teacher->about_teacher}}"/>
+                                 <textarea name="about_teacher" class="form-control form-control-lg form-control-solid"
+                                           cols="30"
+                                           rows="5">{{$teacher->about_teacher}}</textarea>
                             </div>
                         </div>
 
@@ -373,10 +373,40 @@
 
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Work Experience</label>
-                            <div class="col-lg-9 col-xl-6">
-                                <input name="work_experience" class="form-control form-control-lg form-control-solid"
-                                       type="text"
-                                       value="{{$teacher->work_experience}}"/>
+                            <div class="col-9 col-form-label">
+                                <div class="radio-inline">
+                                    <label class="radio radio-primary">
+                                        <input type="radio" name="work_experience"
+                                               @if($teacher->work_experience== 'dont have') checked
+                                               @endif value="dont have"/>
+                                        <span></span>
+                                        Don't have
+                                    </label>
+
+                                    <label class="radio radio-primary">
+                                        <input type="radio" name="work_experience"
+                                               @if($teacher->work_experience=='1 year') checked
+                                               @endif value="1 year"/>
+                                        <span></span>
+                                        1 year
+                                    </label>
+
+                                    <label class="radio radio-primary">
+                                        <input type="radio" name="work_experience"
+                                               @if($teacher->work_experience=='3-5 years') checked
+                                               @endif value="3-5 years"/>
+                                        <span></span>
+                                        3-5 years
+                                    </label>
+
+                                    <label class="radio radio-primary">
+                                        <input type="radio" name="work_experience"
+                                               @if($teacher->work_experience=='over 10 years') checked
+                                               @endif value="over 10 years"/>
+                                        <span></span>
+                                        over 10 years
+                                    </label>
+                                </div>
                             </div>
                         </div>
 
@@ -493,10 +523,31 @@
 
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Student Level</label>
-                            <div class="col-lg-9 col-xl-6">
-                                <input name="student_level" class="form-control form-control-lg form-control-solid"
-                                       type="text"
-                                       value="{{$teacher->student_level}}"/>
+                            <div class="col-9 col-form-label">
+                                <div class="radio-inline">
+                                    <label class="radio radio-primary">
+                                        <input type="radio" name="student_level"
+                                               @if($teacher->student_level=='Beginner') checked
+                                               @endif value="Beginner"/>
+                                        <span></span>
+                                        Beginner
+                                    </label>
+                                    <label class="radio radio-primary">
+                                        <input type="radio" name="student_level"
+                                               @if($teacher->student_level=='Elementary') checked
+                                               @endif value="Elementary"/>
+                                        <span></span>
+                                        Elementary
+                                    </label>
+
+                                    <label class="radio radio-primary">
+                                        <input type="radio" name="student_level"
+                                               @if($teacher->student_level=='Intermediate') checked
+                                               @endif value="Intermediate"/>
+                                        <span></span>
+                                        Intermediate
+                                    </label>
+                                </div>
                             </div>
                         </div>
 
@@ -533,10 +584,39 @@
 
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Profile Type</label>
-                            <div class="col-lg-9 col-xl-6">
-                                <input name="profile_type" class="form-control form-control-lg form-control-solid"
-                                       type="text"
-                                       value="{{$teacher->profile_type}}"/>
+                            <div class="col-9 col-form-label">
+                                <div class="radio-inline">
+                                    <label class="radio radio-primary">
+                                        <input type="radio" name="profile_type"
+                                               @if($teacher->profile_type=='Basic') checked
+                                               @endif value="Basic"/>
+                                        <span></span>
+                                        Basic
+                                    </label>
+                                    <label class="radio radio-primary">
+                                        <input type="radio" name="profile_type"
+                                               @if($teacher->profile_type=='Standard') checked
+                                               @endif value="Standard"/>
+                                        <span></span>
+                                        Standard
+                                    </label>
+
+                                    <label class="radio radio-primary">
+                                        <input type="radio" name="profile_type"
+                                               @if($teacher->profile_type=='Premium') checked
+                                               @endif value="Premium"/>
+                                        <span></span>
+                                        Premium
+                                    </label>
+
+                                    <label class="radio radio-primary">
+                                        <input type="radio" name="profile_type"
+                                               @if($teacher->profile_type=='Vip') checked
+                                               @endif value="Vip"/>
+                                        <span></span>
+                                        Vip
+                                    </label>
+                                </div>
                             </div>
                         </div>
 
