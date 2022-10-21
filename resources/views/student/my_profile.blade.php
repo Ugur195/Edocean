@@ -476,6 +476,8 @@
 
     <script>
         populateCountries("country", "state");
+        $('#country').val('{{$student->country}}').trigger('change')
+        $('#state').val('{{$student->city}}').trigger('change')
     </script>
 
     <script src="{{asset('backendCssJs/assets/js/pages/custom/contacts/edit-contact.js')}}"></script>
