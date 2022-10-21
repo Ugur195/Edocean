@@ -106,5 +106,6 @@ class TeacherPostController extends Controller
             $teacher->save();
         }
         return back();
+        
     }
 }
