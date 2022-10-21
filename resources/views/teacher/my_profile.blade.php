@@ -339,10 +339,24 @@
 
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Certificate</label>
-                            <div class="col-lg-9 col-xl-6">
-                                <input name="certificate" class="form-control form-control-lg form-control-solid"
-                                       type="text"
-                                       value="{{$teacher->certificate}}"/>
+                            <div class="col-9 col-form-label">
+                                <div class="radio-inline">
+                                    <label class="radio radio-primary">
+                                        <input type="radio" name="certificate"
+                                               @if($teacher->certificate=='No') checked
+                                               @endif value="No"/>
+                                        <span></span>
+                                        No
+                                    </label>
+
+                                    <label class="radio radio-primary">
+                                        <input type="radio" name="certificate"
+                                               @if($teacher->certificate=='Yes') checked
+                                               @endif value="Yes"/>
+                                        <span></span>
+                                        Yes
+                                    </label>
+                                </div>
                             </div>
                         </div>
 
@@ -589,6 +603,8 @@
 
     <script>
         populateCountries("country", "state");
+        $('#country').val('{{$teacher->country}}').trigger('change')
+        $('#state').val('{{$teacher->city}}').trigger('change')
     </script>
 
     <script src="{{asset('backendCssJs/assets/js/pages/custom/contacts/edit-contact.js')}}"></script>
