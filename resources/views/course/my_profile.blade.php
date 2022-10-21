@@ -396,8 +396,6 @@
             let applyNow = this.style.offsetHeight;
             this.style.height = this.scrollHeight - 20 + 'px';
         }
-
-        
         
     </script>
 @endsection
