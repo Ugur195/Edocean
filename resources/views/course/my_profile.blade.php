@@ -3,6 +3,14 @@
 
 @section('css')
     <link rel="stylesheet" href="{{asset('cssValidate/sweetalert2.css')}}"/>
+    <style>
+        textarea {  
+        overflow:hidden;
+        padding: 10px;
+        border: 1px solid #556677;
+        min-height: 100px;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -133,27 +141,62 @@
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">About Course</label>
                             <div class="col-lg-9 col-xl-6">
-                                <input name="about_course" type="text"
+                                <textarea rows='1' name="about_course" type="text"
                                        class="form-control form-control-lg form-control-solid"
-                                       value="{{$course->about_course}}"/>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Subjects</label>
-                            <div class="col-lg-9 col-xl-6">
-                                <input name="subjects" type="text"
-                                       class="form-control form-control-lg form-control-solid"
-                                       value="{{$course->subjects}}"/>
+                                       value="{{$course->about_course}}">{{ $course->about_course }}</textarea>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Subject Category</label>
                             <div class="col-lg-9 col-xl-6">
-                                <input name="subjects_category" type="text"
-                                       class="form-control form-control-lg form-control-solid"
-                                       value="{{$course->subjects_category}}"/>
+                                <select name="subjects_category" class=" custom-select form-control  form-control-solid">
+                                    <option disabled  selected>Open this select menu</option>
+                                    <option value="IT"
+                                        @if($course->subjects_category=='IT')selected @endif>
+                                            IT
+                                    </option>
+                                    <option value="First Group"
+                                        @if($course->subjects_category=='First Group') selected @endif>
+                                            First Group
+                                    </option>
+                                    <option value="Second Group"
+                                        @if($course->subjects_category=='Second Group') selected @endif>
+                                            Second Group
+                                    </option>
+                                    <option value="Third Group"
+                                        @if($course->subjects_category=='Third Group') selected @endif>
+                                            Third Group
+                                    </option>
+                                    <option value="Fourth Group"
+                                        @if($course->subjects_category=='Fourth Group') selected @endif>
+                                            Fourth Group
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Subjects</label>
+                            <div class="col-lg-9 col-xl-6">
+                                <select name="subjects" class=" custom-select form-control  form-control-solid">
+                                    <option disabled  selected>Open this select menu</option>
+                                    @if($course->subjects_category=='IT')
+                                        <option value="Front-End" @if($course->subjects=='Front-End') selected @endif>
+                                                Front-End
+                                        </option>
+                                        <option value="Back-End" @if($course->subjects=='Back-End') selected @endif>
+                                                Back-End
+                                        </option>
+                                    @elseif($course->subjects_category=='First Group')
+                                        <option value="Layer" @if($course->subjects=='Layer') selected @endif>
+                                            Layer
+                                        </option>
+                                        <option value="Dancer" @if($course->subjects=='Dancer') selected @endif>
+                                            Dancer
+                                        </option>
+                                    @endif
+                                </select>
                             </div>
                         </div>
 
@@ -343,4 +386,18 @@
 @endsection
 
 @section('js')
+    <script>
+        const textarea = document.querySelector('textarea');
+
+        textarea.addEventListener( 'input', autosize );
+                    
+        function autosize(){
+            this.style.height = 'auto';
+            let applyNow = this.style.offsetHeight;
+            this.style.height = this.scrollHeight - 20 + 'px';
+        }
+
+        
+        
+    </script>
 @endsection
