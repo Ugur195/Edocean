@@ -657,14 +657,13 @@
                                     <div class="mr-2">
                                     </div>
                                     <div>
-                                        <a href="{{url('admin/student/index')}}" type="button"
+                                        <a href="{{url('admin/teacher/index')}}" type="button"
                                            class="btn btn-success font-weight-bolder text-uppercase px-9 py-4"
                                            data-wizard-type="action-submit">Back
                                         </a>
                                         <button class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4"
                                                 data-wizard-type="action-next">Update
                                         </button>
-
                                     </div>
                                 </div>
                             </div>
@@ -672,7 +671,6 @@
 
                     </form>
                 </div>
-
             </div>
         </div>
     </div>
