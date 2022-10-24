@@ -161,10 +161,9 @@
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Subjects
-                                            Category</label>
+                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Subjects Category</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <select name="subjects_category" class="form-control formselect required"
+                                            <select name="subjects_category" class="form-control form-control-lg form-control-solid custom-select"
                                                     placeholder="Select Subject" id="subject_category_id">
                                                 <option value="0" disabled selected>Select Category</option>
                                                 @foreach ($data as $categories)
@@ -180,7 +179,7 @@
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Subjects</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <select class="browser-default custom-select" name="subjects"
+                                            <select class="form-control form-control-lg form-control-solid custom-select" name="subjects"
                                                     id="subjects">
                                             </select>
                                         </div>
