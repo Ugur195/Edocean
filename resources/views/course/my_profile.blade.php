@@ -164,7 +164,7 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Subjects
                                             Category</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <select class="form-control formselect required"
+                                            <select name="subjects_category" class="form-control formselect required"
                                                     placeholder="Select Subject" id="subject_category_id">
                                                 <option value="0" disabled selected>Select Category</option>
                                                 @foreach ($data as $categories)
@@ -180,8 +180,8 @@
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Subjects</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <select class="browser-default custom-select" name="subcategory"
-                                                    id="subcategory">
+                                            <select class="browser-default custom-select" name="subjects"
+                                                    id="subjects">
                                             </select>
                                         </div>
                                     </div>
@@ -420,18 +420,18 @@
         $(document).ready(function () {
             $('#subject_category_id').on('change', function () {
                 let id = $(this).val();
-                $('#subcategory').empty();
-                $('#subcategory').append(`<option value="0" disabled selected>Processing...</option>`);
+                $('#subjects').empty();
+                $('#subjects').append(`<option value="0" disabled selected>Processing...</option>`);
                 $.ajax({
                     type: 'GET',
                     url: 'GetSubCatEdit/' + id,
                     success: function (response) {
                         var response = JSON.parse(response);
                         console.log(response);
-                        $('#subcategory').empty();
-                        $('#subcategory').append(`<option value="0" disabled selected>Selected Subject</option>`);
+                        $('#subjects').empty();
+                        $('#subjects').append(`<option value="0" disabled selected>Selected Subject</option>`);
                         response.forEach(element => {
-                            $('#subcategory').append(`<option value="${element['id']}">${element['name']}</option>`);
+                            $('#subjects').append(`<option value="${element['id']}">${element['name']}</option>`);
                         });
                     }
                 })
