@@ -12,6 +12,7 @@ use App\Http\Controllers\TeacherPostController;
 use App\Http\Controllers\CourseGetController;
 use App\Http\Controllers\CoursePostController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -104,6 +105,10 @@ Route::group(['prefix' => 'admin/course'], function () {
 
 
     Route::post('/my_profile', [CoursePostController::class, 'postMyProfile']);
+
+    //Subject
+    Route::get('/my_profile', [SubjectController::class, 'index']);
+    Route::get('GetSubCatEdit/{id}', [SubjectController::class, 'GetSubCatEdit']);
 });
 
 

@@ -151,30 +151,18 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-xl-3 col-lg-3 text-right col-form-label">Subject Category</label>
+                                    <label class="col-xl-3 col-lg-3 text-right col-form-label">Subjects Category</label>
                                     <div class="col-lg-9 col-xl-6">
-                                        <select name="subjects_category" class=" custom-select form-control  form-control-solid">
-                                            <option disabled  selected>Open this select menu</option>
-                                            <option value="IT"
-                                                @if($course->subjects_category=='IT')selected @endif>
-                                                    IT
-                                            </option>
-                                            <option value="First Group"
-                                                @if($course->subjects_category=='First Group') selected @endif>
-                                                    First Group
-                                            </option>
-                                            <option value="Second Group"
-                                                @if($course->subjects_category=='Second Group') selected @endif>
-                                                    Second Group
-                                            </option>
-                                            <option value="Third Group"
-                                                @if($course->subjects_category=='Third Group') selected @endif>
-                                                    Third Group
-                                            </option>
-                                            <option value="Fourth Group"
-                                                @if($course->subjects_category=='Fourth Group') selected @endif>
-                                                    Fourth Group
-                                            </option>
+                                        <select class="form-control formselect required" placeholder="Select Subject" id="subject_category_id">
+                                            <option value="0" disabled selected>Select Category</option>
+                                            @foreach ($data as $categories)
+                                                <option value="{{ $categories->id }}">
+                                                    {{ ucfirst($categories->name) }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+
+                                        <select class="browser-default custom-select" name="subcategory" id="subcategory">
                                         </select>
                                     </div>
                                 </div>
@@ -182,33 +170,32 @@
                                 <div class="form-group row">
                                     <label class="col-xl-3 col-lg-3 text-right col-form-label">Subjects</label>
                                     <div class="col-lg-9 col-xl-6">
-                                        <select name="subjects" class=" custom-select form-control  form-control-solid">
-                                            <option disabled  selected>Open this select menu</option>
-                                            @if($course->subjects_category=='IT')
-                                                <option value="Front-End" @if($course->subjects=='Front-End') selected @endif>
-                                                        Front-End
-                                                </option>
-                                                <option value="Back-End" @if($course->subjects=='Back-End') selected @endif>
-                                                        Back-End
-                                                </option>
-                                            @elseif($course->subjects_category=='First Group')
-                                                <option value="Layer" @if($course->subjects=='Layer') selected @endif>
-                                                    Layer
-                                                </option>
-                                                <option value="Dancer" @if($course->subjects=='Dancer') selected @endif>
-                                                    Dancer
-                                                </option>
-                                            @endif
+                                        <select class="form-control formselect required" placeholder="Select Subject" id="subjects">
+                                            
+                                        </select>
+
+                                        <select class="browser-default custom-select" name="subcategory" id="subcategory">
                                         </select>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label class="col-xl-3 col-lg-3 text-right col-form-label">Demo Lesson</label>
-                                    <div class="col-lg-9 col-xl-6">
-                                        <input name="demo_lesson" class="form-control form-control-lg form-control-solid"
-                                            type="text"
-                                            value="{{$course->demo_lesson}}"/>
+                                    <div class="col-9 col-form-label">
+                                        <div class="radio-inline">
+                                            <label class="radio radio-primary">
+                                                <input type="radio" name="demo_lesson" @if($course->demo_lesson=='Yes') checked
+                                                    @endif value="Yes"/>
+                                                <span></span>
+                                                Yes
+                                            </label>
+                                            <label class="radio radio-primary">
+                                                <input type="radio" name="demo_lesson" @if($course->demo_lesson=='No') checked
+                                                    @endif value="No"/>
+                                                <span></span>
+                                                No
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -402,6 +389,30 @@
             let applyNow = this.style.offsetHeight;
             this.style.height = this.scrollHeight - 20 + 'px';
         }
+
+
+
+    //Subjects
+    $(document).ready(function () {
+        $('#subject_category_id').on('change', function() {
+            let id = $(this).val();
+            $('#subcategory').empty();
+            $('#subcategory').append(`<option value="0" disabled selected>Processing...</option>`);
+            $.ajax({
+                type: 'GET',
+                url: 'GetSubCatEdit/' + id,
+                success: function(response) {
+                    var response = JSON.parse(response);
+                    console.log(response);
+                    $('subcategory').empty();
+                    $('subcategory').append(`<option value="0" disabled selected>Selected Subject</option>`);
+                    response.forEach(element => {
+                        $('#subcategory').append(`<option value="${element['id']}">${element['name']}</option>`);
+                    });
+                }
+            })
+        })
+    })
         
     </script>
 @endsection
