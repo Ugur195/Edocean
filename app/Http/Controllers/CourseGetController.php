@@ -6,6 +6,7 @@ use App\Models\Course;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CourseGetController extends Controller
 {
@@ -23,6 +24,7 @@ class CourseGetController extends Controller
     public function MyCourse()
     {
         $course = Course::where('user_id', Auth::user()->id)->first();
+        $data = DB::table('subject_category')->get();
         $user = null;
         if ($course == null) {
             $user = User::find(Auth::user()->id);
@@ -30,6 +32,9 @@ class CourseGetController extends Controller
             $user = $course;
         }
 //        dd( explode(',',$course->language));
-        return view('course.my_profile', ['course' => $user]);
+        return view('course.my_profile', ['course' => $user,'data'=>$data]);
+    }
+    public function GetSubCatEdit($id) {
+        echo json_encode(DB::table('subjects')->where('subject_category_id', $id)->get());
     }
 }

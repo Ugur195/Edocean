@@ -14,8 +14,6 @@ class SubjectController extends Controller
         return view('course.my_profile')->with('data', $data, 'course', $course);
     }
 
-    public function GetSubCatEdit($id) {
-        echo json_encode(DB::table('subjects')->where('subject_category_id', $id)->get());
-    }
+
 
 }

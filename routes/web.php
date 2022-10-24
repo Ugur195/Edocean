@@ -102,13 +102,12 @@ Route::group(['prefix' => 'admin/course'], function () {
     Route::get('/my_profile', [CourseGetController::class, 'MyCourse']);
     Route::get('/index', [CourseGetController::class, 'Course']);
     Route::get('/course_schedule', [CourseGetController::class, 'CourseSchedule']);
+    Route::get('GetSubCatEdit/{id}', [CourseGetController::class, 'GetSubCatEdit']);
 
 
     Route::post('/my_profile', [CoursePostController::class, 'postMyProfile']);
 
-    //Subject
-    Route::get('/my_profile', [SubjectController::class, 'index']);
-    Route::get('GetSubCatEdit/{id}', [SubjectController::class, 'GetSubCatEdit']);
+
 });
 
 
