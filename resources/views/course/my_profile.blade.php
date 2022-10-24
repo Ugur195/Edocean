@@ -309,7 +309,7 @@
                                                     <span></span>
                                                     Ru
                                                 </label>
-    
+
                                                 <label class="checkbox checkbox-primary">
                                                     <input type="checkbox" name="language[]"
                                                         @if(in_array("Tr", explode(',',$course->language)))
@@ -319,7 +319,7 @@
                                                     <span></span>
                                                     Tr
                                                 </label>
-    
+
                                                 <label class="checkbox checkbox-primary">
                                                     <input type="checkbox" name="language[]"
                                                         @if(in_array("O", explode(',',$course->language)))
