@@ -11,11 +11,11 @@ class CoursePostController extends Controller
     public function postMyProfile(Request $request)
     {
         $course = Course::where('user_id', Auth::user()->id)->first();
-        $langs = '';
+        $language = '';
 
-        if (isset($request->langs)) {
-            foreach ($request->langs as $l) {
-                $langs .= ',' . $l;
+        if (isset($request->language)) {
+            foreach ($request->language as $l) {
+                $language .= ',' . $l;
             }
         }
 
@@ -49,7 +49,7 @@ class CoursePostController extends Controller
                 'dislike' => $request->dislike,
                 'see_count' => $request->see_count,
                 'course_type' => $request->course_type,
-                'language' => $request->language,
+                'language' => $language,
                 'lessons_duration' => $request->	lessons_duration,
                 'lessons_intensivity' => $request->lessons_intensivity,
                 'students_amount' => $request->students_amount,
@@ -88,7 +88,7 @@ class CoursePostController extends Controller
             $course->dislike = $request->dislike;
             $course->see_count = $request->see_count;
             $course->course_type = $request->course_type;
-            $course->language = $request->language;
+            $course->language = $language;
             $course->lessons_duration = $request->lessons_duration;
             $course->lessons_intensivity = $request->lessons_intensivity;
             $course->students_amount = $request->students_amount;

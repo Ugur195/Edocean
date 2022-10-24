@@ -280,11 +280,56 @@
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Language</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input name="language"
-                                                   class="form-control form-control-lg form-control-solid"
-                                                   type="text"
-                                                   value="{{$course->language}}"/>
+                                        <div class="col-9 col-form-label">
+                                            <div class="checkbox-inline">
+                                                <label class="checkbox checkbox-primary">
+                                                    <input type="checkbox" name="language[]"
+                                                        @if(in_array("Az", explode(',',$course->language)))
+                                                        checked="checked"
+                                                        @endif
+                                                        value="Az"/>
+                                                    <span></span>
+                                                    Az
+                                                </label>
+                                                <label class="checkbox checkbox-primary">
+                                                    <input type="checkbox" name="language[]"
+                                                        @if(in_array("En", explode(',',$course->language)))
+                                                        checked="checked"
+                                                        @endif
+                                                        value="En"/>
+                                                    <span></span>
+                                                    En
+                                                </label>
+                                                <label class="checkbox checkbox-primary">
+                                                    <input type="checkbox" name="language[]"
+                                                        @if(in_array("Ru", explode(',',$course->language)))
+                                                        checked="checked"
+                                                        @endif
+                                                        value="Ru"/>
+                                                    <span></span>
+                                                    Ru
+                                                </label>
+    
+                                                <label class="checkbox checkbox-primary">
+                                                    <input type="checkbox" name="language[]"
+                                                        @if(in_array("Tr", explode(',',$course->language)))
+                                                        checked="checked"
+                                                        @endif
+                                                        value="Tr"/>
+                                                    <span></span>
+                                                    Tr
+                                                </label>
+    
+                                                <label class="checkbox checkbox-primary">
+                                                    <input type="checkbox" name="language[]"
+                                                        @if(in_array("O", explode(',',$course->language)))
+                                                        checked="checked"
+                                                        @endif
+                                                        value="O"/>
+                                                    <span></span>
+                                                    Other
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
 
