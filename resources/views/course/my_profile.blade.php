@@ -438,4 +438,9 @@
         })
 
     </script>
+
+    <script>
+        $('#subject_category_id').val('{{$course->subjects_category}}').trigger('change')
+        $('#subjects').val('{{$course->subjects}}').trigger('change')
+    </script>
 @endsection
