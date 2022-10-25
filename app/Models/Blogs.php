@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Blogs extends Model
 {
-    use HasFactory;
+    protected $table = 'edocean.blogs';
+    protected $fillable = ['id', 'title', 'title_ru', 'title_en', 'message', 'message_ru', 'message_en', 'author', 'category', 'likes', 'dislike',
+        'comments', 'slug', 'see_count', 'status', 'created_at', 'updated_at'];
 }
