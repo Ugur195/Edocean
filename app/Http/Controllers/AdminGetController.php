@@ -103,13 +103,13 @@ class AdminGetController extends Controller
                 return "<img style='display:block;width:80px;height:60px;' src='data:image/jpeg;base64," . base64_encode($model->image) . "'/>";
             })
             ->addColumn('options', function ($model) {
-                    $return='<a class="btn btn-xs btn-primary" href="' . route('admin.backend.student_edit', $model->id) . '" ><i class="la la-user"></i></a>
+                $return = '<a class="btn btn-xs btn-primary" href="' . route('admin.backend.student_edit', $model->id) . '" ><i class="la la-user"></i></a>
 			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger" ><i class="la la-trash"></i></button>';
-                    if($model->st==0){
-                        $return.='<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-warning" ><i class="la la-info"></i></button>';
-                    }else if($model->st==1){
-                        $return.='<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-success" ><i class="la la-check"></i></button>';
-                    }
+                if ($model->st == 0) {
+                    $return .= '<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-warning" ><i class="la la-info"></i></button>';
+                } else if ($model->st == 1) {
+                    $return .= '<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-success" ><i class="la la-check"></i></button>';
+                }
                 return $return;
 
             })->rawColumns(['options' => true])->make(true);
@@ -149,6 +149,16 @@ class AdminGetController extends Controller
         $course = Course::all();
         $course_edit = Course::where('id', $id)->first();
         return view('backend.course_edit')->with(['course' => $course, 'course_edit' => $course_edit]);
+    }
+
+    public function Blogs()
+    {
+        return view('backend.blogs');
+    }
+
+    public function BlogsComment()
+    {
+        return view('backend.blog_comment');
     }
 
 }

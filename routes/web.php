@@ -58,6 +58,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'Admin'], function () {
     Route::get('/student_edit/{id}', [AdminGetController::class, 'StudentEdit'])->name('admin.backend.student_edit');
     Route::get('/course', [AdminGetController::class, 'Course'])->name('AdminCourse');
     Route::get('/course_edit/{id}', [AdminGetController::class, 'CourseEdit'])->name('admin.backend.course_edit');
+    Route::get('/blogs', [AdminGetController::class, 'Blogs']);
+    Route::get('/blog_comment', [AdminGetController::class, 'BlogsComment']);
 
 
     Route::post('/about_us', [AdminPostController::class, 'AboutUs']);
@@ -109,9 +111,6 @@ Route::group(['prefix' => 'admin/course'], function () {
 
 
 });
-
-
-
 
 
 Auth::routes();
