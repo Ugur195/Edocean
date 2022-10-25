@@ -166,7 +166,7 @@
                                                     placeholder="Select Subject" id="subject_category_id">
                                                 <option value="0" disabled selected>Select Category</option>
                                                 @foreach ($data as $categories)
-                                                    <option value="{{ $categories->id }}">
+                                                    <option @if($categories->id == $course->subjects_category) selected @endif value="{{ $categories->id }}">
                                                         {{ ucfirst($categories->name) }}
                                                     </option>
                                                 @endforeach
@@ -178,7 +178,7 @@
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Subjects</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <select class="form-control form-control-lg form-control-solid custom-select" name="subjects"
+                                            <select data-selected="{{$course->subjects}}" class="form-control form-control-lg form-control-solid custom-select" name="subjects"
                                                     id="subjects">
                                             </select>
                                         </div>
@@ -461,33 +461,36 @@
             this.style.height = this.scrollHeight - 20 + 'px';
         }
 
+        let selectedCategoryId = $('#subject_category_id').val();
+        let selectedSubject = $('#subjects').data('selected');
+        listSubjects(selectedCategoryId, selectedSubject)
 
         //Subjects
         $(document).ready(function () {
             $('#subject_category_id').on('change', function () {
                 let id = $(this).val();
-                $('#subjects').empty();
-                $('#subjects').append(`<option value="0" disabled selected>Processing...</option>`);
-                $.ajax({
-                    type: 'GET',
-                    url: 'GetSubCatEdit/' + id,
-                    success: function (response) {
-                        var response = JSON.parse(response);
-                        console.log(response);
-                        $('#subjects').empty();
-                        $('#subjects').append(`<option value="0" disabled selected>Selected Subject</option>`);
-                        response.forEach(element => {
-                            $('#subjects').append(`<option value="${element['id']}">${element['name']}</option>`);
-                        });
-                    }
-                })
+                let selected = $('#subjects').data('selected');
+                listSubjects(id, selected)
             })
         })
 
-    </script>
-
-    <script>
-        $('#subject_category_id').val('{{$course->subjects_category}}').trigger('change')
-        $('#subjects').val('{{$course->subjects}}').trigger('change')
+        function listSubjects(categoryId, selected) {
+            $('#subjects').empty();
+            $('#subjects').append(`<option value="0" disabled selected>Processing...</option>`);
+            $.ajax({
+                type: 'GET',
+                url: 'GetSubCatEdit/' + categoryId,
+                success: function (response) {
+                    var response = JSON.parse(response);
+                    $('#subjects').empty();
+                    $('#subjects').append(`<option value="0" disabled selected>Selected Subject</option>`);
+                    response.forEach(element => {
+                        let selectedAttribute = '';
+                        if(selected == element['id']) selectedAttribute = 'selected';
+                        $('#subjects').append(`<option ${selectedAttribute} value="${element['id']}">${element['name']}</option>`);
+                    });
+                }
+            })
+        }
     </script>
 @endsection
