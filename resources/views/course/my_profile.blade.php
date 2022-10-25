@@ -53,16 +53,15 @@
                                                     data-action="change" data-toggle="tooltip" title=""
                                                     data-original-title="Change avatar">
                                                     <i class="fa fa-pen icon-sm text-muted"></i>
-                                                    <input type="file" name="image" id="file"
-                                                           accept=".png, .jpg, .jpeg"/>
+                                                    <input type="file" name="image" id="file" accept=".png, .jpg, .jpeg"/>
                                                     <input type="hidden" name="profile_avatar_remove"/>
                                                 </label>
 
                                                 <span
                                                     class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
                                                     data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
-                                                <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                            </span>
+                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                    </span>
                                             </div>
                                         </div>
                                     </div>
@@ -422,7 +421,7 @@
                                                 <div class="mr-2">
                                                 </div>
                                                 <div>
-                                                    <a href="{{url('admin/student/index')}}" type="button"
+                                                    <a href="{{url('admin/course/index')}}" type="button"
                                                        class="btn btn-success font-weight-bolder text-uppercase px-9 py-4"
                                                        data-wizard-type="action-submit">Back
                                                     </a>
@@ -448,6 +447,9 @@
 @endsection
 
 @section('js')
+    <script src="{{asset('backendCssJs/assets/js/pages/custom/contacts/edit-contact.js')}}"></script>
+    <script src="{{asset('jsValidate/jquery.form.js')}}"></script>
+
     <script>
         const textarea = document.querySelector('textarea');
 

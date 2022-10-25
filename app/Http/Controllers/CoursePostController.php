@@ -59,7 +59,7 @@ class CoursePostController extends Controller
                 'user_id' => Auth::user()->id,
                 'verified_status' => $request->verified_status,
                 'status' => $request->lstatus
-                
+
 
             ]);
         } else {
@@ -97,7 +97,6 @@ class CoursePostController extends Controller
             $course->city = $request->city;
             $course->verified_status = $request->verified_status;
             $course->status = $request->status;
-            
             $course->save();
         }
         return back();
