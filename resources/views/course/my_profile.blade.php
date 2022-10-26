@@ -137,7 +137,7 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Phone</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input name="phone" class="form-control form-control-lg form-control-solid"
-                                                   type="text" placeholder="e.g 051 934 36 66"
+                                                   type="text" id="tel"
                                                    value="{{$course->phone}}"/>
                                         </div>
                                     </div>
@@ -493,7 +493,7 @@
                                         <div class="col-lg-9 col-xl-6">
                                             <input name="verified_status"
                                                    class="form-control form-control-lg form-control-solid"
-                                                   type="text"
+                                                   type="number"
                                                    value="{{$course->verified_status}}"/>
                                         </div>
                                     </div>
@@ -502,7 +502,7 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Status</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input name="status" class="form-control form-control-lg form-control-solid"
-                                                   type="text"
+                                                   type="number"
                                                    value="{{$course->status}}"/>
                                         </div>
                                     </div>
@@ -542,6 +542,7 @@
 
 @section('js')
     <script src="{{asset('backendCssJs/assets/js/pages/custom/contacts/edit-contact.js')}}"></script>
+    <script src="{{asset('js/maskinput.js')}}"></script>
     <script src="{{asset('jsValidate/jquery.form.js')}}"></script>
 
     <script>
@@ -587,4 +588,10 @@
             })
         }
     </script>
+    
+    <script type="text/javascript">
+        jQuery(function($){
+        $("#tel").mask("+994(88) 888-88-88");
+        });
+     </script>
 @endsection
