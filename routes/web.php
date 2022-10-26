@@ -91,6 +91,7 @@ Route::group(['prefix' => 'admin/teacher'], function () {
     Route::get('/my_profile', [TeacherGetController::class, 'getTeacherProfile']);
     Route::get('/index', [TeacherGetController::class, 'Teacher']);
     Route::get('/teacher_schedule', [TeacherGetController::class, 'TeacherSchedule']);
+    Route::get('GetSubCatEdit/{id}', [TeacherGetController::class, 'GetSubCatEdit']);
 
 
     Route::post('/my_profile', [TeacherPostController::class, 'postTeacherProfile']);

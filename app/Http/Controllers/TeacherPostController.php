@@ -42,6 +42,8 @@ class TeacherPostController extends Controller
                 'profile_type' => $request->profile_type,
                 'country' => $request->country,
                 'city' => $request->city,
+                'subjects' => $request->subjects,
+                'subjects_category' => $request->subjects_category,
                 'teaching_time' => $request->teaching_time,
                 'demo_lesson' => $request->demo_lesson,
                 'video_presentation' => $request->video_presentation,
@@ -106,6 +108,6 @@ class TeacherPostController extends Controller
             $teacher->save();
         }
         return back();
-        
+
     }
 }

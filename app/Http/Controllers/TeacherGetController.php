@@ -6,6 +6,7 @@ use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class TeacherGetController extends Controller
 {
@@ -22,6 +23,7 @@ class TeacherGetController extends Controller
     public function getTeacherProfile()
     {
         $teacher = Teacher::where('user_id', Auth::user()->id)->first();
+        $data = DB::table('subject_category')->get();
         $user = null;
         if ($teacher == null) {
             $user = User::find(Auth::user()->id);
@@ -29,6 +31,11 @@ class TeacherGetController extends Controller
             $user = $teacher;
         }
 //        dd( explode(',',$teacher->language));
-        return view('teacher.my_profile', ['teacher' => $user]);
+        return view('teacher.my_profile', ['teacher' => $user, 'data' => $data]);
+    }
+
+    public function GetSubCatEdit($id)
+    {
+        echo json_encode(DB::table('subjects')->where('subject_category_id', $id));
     }
 }
