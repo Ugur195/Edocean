@@ -71,7 +71,7 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Name</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input name="name" class="form-control form-control-lg form-control-solid"
-                                                   type="text"
+                                                   type="text" placeholder="Course name"
                                                    value="{{$course->name}}"/>
                                         </div>
                                     </div>
@@ -87,11 +87,21 @@
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Certificate</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input name="certificate"
-                                                   class="form-control form-control-lg form-control-solid"
-                                                   type="text"
-                                                   value="{{$course->certificate}}"/>
+                                        <div class="col-9 col-form-label">
+                                            <div class="radio-inline">
+                                                <label class="radio radio-primary">
+                                                    <input type="radio" name="certificate"
+                                                        @if($course->teacher_gender=='Yes') checked @endif value="Yes"/>
+                                                    <span></span>
+                                                    Yes
+                                                </label>
+                                                <label class="radio radio-primary">
+                                                    <input type="radio" name="certificate"
+                                                        @if($course->certificate=='No') checked @endif value="No"/>
+                                                    <span></span>
+                                                    No
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -100,7 +110,7 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">MMC</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input name="mmc" class="form-control form-control-lg form-control-solid"
-                                                   type="text"
+                                                   type="text" placeholder="Course MMC"
                                                    value="{{$course->mmc}}"/>
                                         </div>
                                     </div>
@@ -108,7 +118,7 @@
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Address</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input name="address"
+                                            <input name="address" placeholder="Course Address"
                                                    class="form-control form-control-lg form-control-solid" type="text"
                                                    value="{{$course->address}}"/>
                                         </div>
@@ -118,7 +128,7 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Email</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input name="email" class="form-control form-control-lg form-control-solid"
-                                                   type="text"
+                                                   type="text" placeholder="Course Email"
                                                    value="{{$course->email}}"/>
                                         </div>
                                     </div>
@@ -127,7 +137,7 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Phone</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input name="phone" class="form-control form-control-lg form-control-solid"
-                                                   type="text"
+                                                   type="text" placeholder="e.g 051 934 36 66"
                                                    value="{{$course->phone}}"/>
                                         </div>
                                     </div>
@@ -136,7 +146,7 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Skype Id</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input name="skype_id" type="text"
-                                                   class="form-control form-control-lg form-control-solid"
+                                                   class="form-control form-control-lg form-control-solid" placeholder="Course Skype login"
                                                    value="{{$course->skype_id}}"/>
                                         </div>
                                     </div>
@@ -145,7 +155,7 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Profile Title</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input name="profile_title" type="text"
-                                                   class="form-control form-control-lg form-control-solid"
+                                                   class="form-control form-control-lg form-control-solid" placeholder="Course profile name"
                                                    value="{{$course->profile_title}}"/>
                                         </div>
                                     </div>
@@ -154,7 +164,7 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">About Course</label>
                                         <div class="col-lg-9 col-xl-6">
                                         <textarea rows='1' name="about_course" type="text"
-                                                  class="form-control form-control-lg form-control-solid"
+                                                  class="form-control form-control-lg form-control-solid" placeholder="Write a short description of the course"
                                                   value="{{$course->about_course}}">{{ $course->about_course }}</textarea>
                                         </div>
                                     </div>
@@ -212,7 +222,7 @@
                                         <div class="col-lg-9 col-xl-6">
                                             <input name="lesson_cost"
                                                    class="form-control form-control-lg form-control-solid"
-                                                   type="text"
+                                                   type="number" placeholder="Enter the price in ₼"
                                                    value="{{$course->lesson_cost}}"/>
                                         </div>
                                     </div>
@@ -223,7 +233,7 @@
                                         <div class="col-lg-9 col-xl-6">
                                             <input name="balance"
                                                    class="form-control form-control-lg form-control-solid"
-                                                   type="text"
+                                                   type="number" placeholder="Course balance in ₼"
                                                    value="{{$course->balance}}"/>
                                         </div>
                                     </div>
@@ -232,7 +242,7 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Rating</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input name="rating" class="form-control form-control-lg form-control-solid"
-                                                   type="text"
+                                                   type="number" placeholder="Course rating"
                                                    value="{{$course->rating}}"/>
                                         </div>
                                     </div>
@@ -241,7 +251,7 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">likes</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input name="likes" class="form-control form-control-lg form-control-solid"
-                                                   type="text"
+                                                   type="number" placeholder="Course likes"
                                                    value="{{$course->likes}}"/>
                                         </div>
                                     </div>
@@ -251,7 +261,7 @@
                                         <div class="col-lg-9 col-xl-6">
                                             <input name="dislike"
                                                    class="form-control form-control-lg form-control-solid"
-                                                   type="text"
+                                                   type="number" placeholder="Course dislikes"
                                                    value="{{$course->dislike}}"/>
                                         </div>
                                     </div>
@@ -261,18 +271,44 @@
                                         <div class="col-lg-9 col-xl-6">
                                             <input name="see_count"
                                                    class="form-control form-control-lg form-control-solid"
-                                                   type="text"
+                                                   type="number" placeholder="Course count"
                                                    value="{{$course->see_count}}"/>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Course Type</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input name="course_type"
-                                                   class="form-control form-control-lg form-control-solid"
-                                                   type="text"
-                                                   value="{{$course->course_type}}"/>
+                                        <div class="col-9 col-form-label">
+                                            <div class="radio-inline">
+                                                <label class="radio radio-primary">
+                                                    <input type="radio" name="course_type"
+                                                           @if($course->course_type=='Basic') checked
+                                                           @endif value="Basic"/>
+                                                    <span></span>
+                                                    Basic
+                                                </label>
+                                                <label class="radio radio-primary">
+                                                    <input type="radio" name="course_type"
+                                                           @if($course->course_type=='Standart') checked
+                                                           @endif value="Standart"/>
+                                                    <span></span>
+                                                    Standart
+                                                </label>
+                                                <label class="radio radio-primary">
+                                                    <input type="radio" name="course_type"
+                                                           @if($course->course_type=='Premium') checked
+                                                           @endif value="Premium"/>
+                                                    <span></span>
+                                                    Premium
+                                                </label>
+                                                <label class="radio radio-primary">
+                                                    <input type="radio" name="course_type"
+                                                           @if($course->course_type=='VIP') checked
+                                                           @endif value="VIP"/>
+                                                    <span></span>
+                                                    VIP
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -335,34 +371,92 @@
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Lessons
                                             Duration</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input name="lessons_duration"
-                                                   class="form-control form-control-lg form-control-solid"
-                                                   type="text"
-                                                   value="{{$course->lessons_duration}}"/>
-                                        </div>
+                                            <div class="col-9 col-form-label">
+                                                <div class="radio-inline">
+                                                    <label class="radio radio-primary">
+                                                        <input type="radio" name="lessons_duration"
+                                                            @if($course->lessons_duration=='1 hour') checked @endif value="1 hour"/>
+                                                        <span></span>
+                                                        1 hour
+                                                    </label>
+                                                    <label class="radio radio-primary">
+                                                        <input type="radio" name="lessons_duration"
+                                                            @if($course->lessons_duration=='1 hour 30 min') checked
+                                                            @endif value="1 hour 30 min"/>
+                                                        <span></span>
+                                                        1 hour 30 min
+                                                    </label>
+        
+                                                    <label class="radio radio-primary">
+                                                        <input type="radio" name="lessons_duration"
+                                                            @if($course->lessons_duration=='2 hours') checked
+                                                            @endif value="2 hours"/>
+                                                        <span></span>
+                                                        2 hours
+                                                    </label>
+                                                </div>
+                                            </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Lessons
                                             Intensivity</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input name="lessons_intensivity"
-                                                   class="form-control form-control-lg form-control-solid"
-                                                   type="text"
-                                                   value="{{$course->lessons_intensivity}}"/>
-                                        </div>
+                                            <div class="col-9 col-form-label">
+                                                <div class="radio-inline">
+                                                    <label class="radio radio-primary">
+                                                        <input type="radio" name="lessons_intensivity"
+                                                            @if($course->lessons_intensivity=='2 times per week') checked
+                                                            @endif value="2 times per week"/>
+                                                        <span></span>
+                                                        2 times per week
+                                                    </label>
+                                                    <label class="radio radio-primary">
+                                                        <input type="radio" name="lessons_intensivity"
+                                                            @if($course->lessons_intensivity=='3 times per week') checked
+                                                            @endif value="3 times per week"/>
+                                                        <span></span>
+                                                        3 times per week
+                                                    </label>
+        
+                                                    <label class="radio radio-primary">
+                                                        <input type="radio" name="lessons_intensivity"
+                                                            @if($course->lessons_intensivity=='5 times per week') checked
+                                                            @endif value="5 times per week"/>
+                                                        <span></span>
+                                                        5 times per week
+                                                    </label>
+                                                </div>
+                                            </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Students
+                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Courses
                                             Amount</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input name="students_amount"
-                                                   class="form-control form-control-lg form-control-solid"
-                                                   type="text"
-                                                   value="{{$course->students_amount}}"/>
-                                        </div>
+                                            <div class="col-9 col-form-label">
+                                                <div class="radio-inline">
+                                                    <label class="radio radio-primary">
+                                                        <input type="radio" name="students_amount"
+                                                            @if($course->students_amount=='Alone') checked @endif value="Alone"/>
+                                                        <span></span>
+                                                        Alone
+                                                    </label>
+                                                    <label class="radio radio-primary">
+                                                        <input type="radio" name="students_amount"
+                                                            @if($course->students_amount=='In a group (3-4 people)') checked
+                                                            @endif value="In a group (3-4 people)"/>
+                                                        <span></span>
+                                                        In a group (3-4 people)
+                                                    </label>
+        
+                                                    <label class="radio radio-primary">
+                                                        <input type="radio" name="students_amount"
+                                                            @if($course->students_amount=='In a group (5-7 people)') checked
+                                                            @endif value="In a group (5-7 people)"/>
+                                                        <span></span>
+                                                        In a group (5-7 people)
+                                                    </label>
+                                                </div>
+                                            </div>
                                     </div>
 
                                     <div class="form-group row">
