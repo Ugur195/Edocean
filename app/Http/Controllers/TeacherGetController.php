@@ -36,6 +36,6 @@ class TeacherGetController extends Controller
 
     public function GetSubCatEdit($id)
     {
-        echo json_encode(DB::table('subjects')->where('subject_category_id', $id));
+        echo json_encode(DB::table('subjects')->where('subject_category_id', $id)->get());
     }
 }
