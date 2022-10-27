@@ -22,7 +22,7 @@
                         <div class="tab-content pt-5">
                             <!--begin::Tab Content-->
                             <div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
-                                <form id="mySetting" class="form" method="POST">
+                                <form class="form" method="POST">
                                     {{csrf_field()}}
                                     <div class="col-xl-3"></div>
 
@@ -138,11 +138,8 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </form>
                             </div>
-
                         </div>
                     </div>
                 </div>

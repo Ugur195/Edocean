@@ -71,6 +71,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'Admin'], function () {
     Route::post('/teacher', [AdminPostController::class, 'TeachersDelete']);
     Route::post('/student', [AdminPostController::class, 'StudentsDelete']);
     Route::post('/course', [AdminPostController::class, 'CoursesDelete']);
+    Route::post('/blogs', [AdminPostController::class, 'BlogsDelete']);
 
 
 });

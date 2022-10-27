@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AboutUs;
+use App\Models\Blogs;
 use App\Models\ContactUs;
 use App\Models\Course;
 use App\Models\Setting;
@@ -107,5 +108,15 @@ class AdminPostController extends Controller
 
     }
 
+    public function BlogsDelete(Request $request)
+    {
+        try {
+            Blogs::where('id', $request->id)->delete();
+            return response(['title' => 'Ugurlu!', 'message' => 'Blog Silindi', 'status' => 'success']);
+        } catch (\Exception $exception) {
+            return response(['title' => 'Ugursuz!', 'message' => 'Blogu silmek olmur!', 'status' => 'error']);
+        }
+
+    }
 
 }

@@ -155,7 +155,7 @@
                             })
                             if (response.status === 'success') {
                                 setTimeout(function () {
-                                    window.location.href = '/admin/student';
+                                    window.location.href = '/admin/blogs';
                                 }, 500)
                             }
 
