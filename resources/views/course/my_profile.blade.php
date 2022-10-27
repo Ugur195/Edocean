@@ -460,30 +460,20 @@
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Slug</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input name="slug" class="form-control form-control-lg form-control-solid"
-                                                   type="text"
-                                                   value="{{$course->slug}}"/>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Country</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input name="country"
-                                                   class="form-control form-control-lg form-control-solid"
-                                                   type="text"
-                                                   value="{{$course->country}}"/>
+                                            <select class="form-control  form-control-solid" id="country" name="country">
+                                                <option value="{{$course->country}}">Select a country</option>
+                                            </select>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">City</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input name="city" class="form-control form-control-lg form-control-solid"
-                                                   type="text"
-                                                   value="{{$course->city}}"/>
+                                            <select class="form-control  form-control-solid" id="state" name="city">
+                                                <option value="{{$course->city}}">Select a city</option>
+                                            </select>
                                         </div>
                                     </div>
 
@@ -495,15 +485,6 @@
                                                    class="form-control form-control-lg form-control-solid"
                                                    type="number"
                                                    value="{{$course->verified_status}}"/>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Status</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input name="status" class="form-control form-control-lg form-control-solid"
-                                                   type="number"
-                                                   value="{{$course->status}}"/>
                                         </div>
                                     </div>
 
@@ -542,6 +523,7 @@
 
 @section('js')
     <script src="{{asset('backendCssJs/assets/js/pages/custom/contacts/edit-contact.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backendCssJs/assets/countryes/countries.js')}}"></script>
     <script src="{{asset('js/maskinput.js')}}"></script>
     <script src="{{asset('jsValidate/jquery.form.js')}}"></script>
 
@@ -589,9 +571,18 @@
         }
     </script>
     
+    {{-- Phone --}}
     <script type="text/javascript">
         jQuery(function($){
         $("#tel").mask("+994(88) 888-88-88");
         });
-     </script>
+    </script>
+
+
+    <script>
+        populateCountries("country", "state");
+        $('#country').val('{{$course->country}}').trigger('change')
+        $('#state').val('{{$course->city}}').trigger('change')
+    </script>
+
 @endsection
