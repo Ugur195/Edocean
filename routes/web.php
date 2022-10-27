@@ -60,6 +60,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'Admin'], function () {
     Route::get('/course_edit/{id}', [AdminGetController::class, 'CourseEdit'])->name('admin.backend.course_edit');
     Route::get('/blogs', [AdminGetController::class, 'Blogs']);
     Route::get('/blog_comment', [AdminGetController::class, 'BlogsComment']);
+    Route::get('/blog_category', [AdminGetController::class, 'BlogsCategory']);
 
 
     Route::post('/about_us', [AdminPostController::class, 'AboutUs']);

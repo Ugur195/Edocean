@@ -290,7 +290,7 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Phone</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input name="phone" class="form-control form-control-lg form-control-solid"
-                                                   type="text"
+                                                   type="text" id="tel"
                                                    value="{{$teacher->phone}}"/>
                                         </div>
                                     </div>
@@ -742,6 +742,7 @@
 
     <script src="{{asset('backendCssJs/assets/js/pages/custom/contacts/edit-contact.js')}}"></script>
     <script src="{{asset('jsValidate/jquery.form.js')}}"></script>
+    <script src="{{asset('js/maskinput.js')}}"></script>
 
 
 
@@ -779,6 +780,13 @@
                 }
             })
         }
+    </script>
+
+    {{-- Phone --}}
+    <script type="text/javascript">
+        jQuery(function ($) {
+            $("#tel").mask("+994(88) 888-88-88");
+        });
     </script>
 
 @endsection

@@ -161,4 +161,9 @@ class AdminGetController extends Controller
         return view('backend.blog_comment');
     }
 
+    public function BlogsCategory()
+    {
+        return view('backend.blog_category');
+    }
+
 }
