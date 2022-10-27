@@ -24,3 +24,4 @@ Route::get('contact_us', [AdminGetController::class, 'getContactUs']);
 Route::get('teacher', [AdminGetController::class, 'getTeacher']);
 Route::get('student', [AdminGetController::class, 'getStudent']);
 Route::get('course', [AdminGetController::class, 'getCourse']);
+Route::get('blogs', [AdminGetController::class, 'getBlogs']);

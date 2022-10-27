@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AboutUs;
+use App\Models\Blogs;
 use App\Models\ContactUs;
 use App\Models\Course;
 use App\Models\Setting;
@@ -149,6 +150,29 @@ class AdminGetController extends Controller
         $course = Course::all();
         $course_edit = Course::where('id', $id)->first();
         return view('backend.course_edit')->with(['course' => $course, 'course_edit' => $course_edit]);
+    }
+
+
+    public function getBlogs()
+    {
+        $blogs = DB::table('edocean.blogs')->select(DB::raw("id,image,title,message,author,category,likes,dislike,see_count,
+        (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
+        return DataTables::of($blogs)
+            ->editColumn('image', function ($model) {
+                return "<img style='display:block;width:80px;height:60px;' src='data:image/jpeg;base64," . base64_encode($model->image) . "'/>";
+            })
+            ->addColumn('options', function ($model) {
+                return
+                    '<a class="btn btn-xs btn-primary" href="' . route('admin.backend.blogs_edit', $model->id) . '" ><i class="la la-pencil-square-o"></i></a>
+			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger" ><i class="la la-trash"></i></button>';
+            })->rawColumns(['options' => true])->make(true);
+    }
+
+    public function BlogsEdit($id)
+    {
+        $blogs = Blogs::all();
+        $blogs_edit = Blogs::where('id', $id)->first();
+        return view('backend.blogs_edit')->with(['blogs' => $blogs, 'blogs_edit' => $blogs_edit]);
     }
 
     public function Blogs()
