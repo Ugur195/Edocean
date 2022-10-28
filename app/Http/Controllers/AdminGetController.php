@@ -9,6 +9,7 @@ use App\Models\Course;
 use App\Models\Setting;
 use App\Models\Student;
 use App\Models\Teacher;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -155,8 +156,15 @@ class AdminGetController extends Controller
 
     public function getBlogs()
     {
-        $blogs = DB::table('edocean.blogs')->select(DB::raw("id,image,title,message,author,category,likes,dislike,see_count,
-        (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
+//        dd(User::find(55));
+        $blogs = DB::table('edocean.blogs')->select(DB::raw("edocean.users.name as username, edocean.blog_category.name as bg_name,
+         edocean.blogs.id, edocean.blogs.image,edocean.blogs.title,
+        edocean.blogs.message,edocean.blogs.author,edocean.blogs.category,edocean.blogs.likes,edocean.blogs.dislike,edocean.blogs.see_count,
+        (CASE edocean.blogs.status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))
+            ->leftJoin('edocean.users', 'edocean.users.id', '=', 'edocean.blogs.author')
+            ->leftJoin('edocean.blog_category', 'edocean.blog_category.id', '=', 'edocean.blogs.category')
+            ->get();
+//        dd($blogs);
         return DataTables::of($blogs)
             ->editColumn('image', function ($model) {
                 return "<img style='display:block;width:80px;height:60px;' src='data:image/jpeg;base64," . base64_encode($model->image) . "'/>";

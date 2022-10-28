@@ -116,7 +116,7 @@
 
 @section('js')
     <script src="{{asset('backendCssJs/assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
-    <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/blogs.js')}}"></script>
+    <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/blogs.js?v='.time())}}"></script>
 
     <script>
         function sil(setir, id) {

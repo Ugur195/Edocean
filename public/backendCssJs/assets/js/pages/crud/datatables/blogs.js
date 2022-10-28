@@ -49,12 +49,12 @@ var KTDatatablesSearchOptionsColumnSearch = function () {
                     name: 'message'
                 },
                 {
-                    data: 'author',
-                    name: 'author'
+                    data: 'username',
+                    name: 'username'
                 },
                 {
-                    data: 'category',
-                    name: 'category'
+                    data: 'bg_name',
+                    name: 'bg_name'
                 },
                 {
                     data: 'likes',
