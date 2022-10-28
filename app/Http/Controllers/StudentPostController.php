@@ -21,9 +21,9 @@ class StudentPostController extends Controller
         }
 
         if ($student == null) {
-            $image=null;
+            $image = null;
             if (isset($request->image)) {
-                $image= file_get_contents($request->file('image')->getRealPath());
+                $image = file_get_contents($request->file('image')->getRealPath());
             }
             Student::create([
                 'image' => $image,
@@ -43,6 +43,8 @@ class StudentPostController extends Controller
                 'country' => $request->country,
                 'city' => $request->city,
                 'parent' => $request->parent,
+                'subjects' => $request->subjects,
+                'subjects_category' => $request->subjects_category,
                 'email' => $request->email,
                 'address' => $request->address,
                 'phone' => $request->phone,
@@ -53,9 +55,9 @@ class StudentPostController extends Controller
 
             ]);
         } else {
-            $image=$student->image;
+            $image = $student->image;
             if (isset($request->image)) {
-                $image= file_get_contents($request->file('image')->getRealPath());
+                $image = file_get_contents($request->file('image')->getRealPath());
             }
             $student->image = $image;
             $student->name = $request->name;
@@ -71,6 +73,8 @@ class StudentPostController extends Controller
             $student->teacher_gender = $request->teacher_gender;
             $student->teacher_status = $request->teacher_status;
             $student->parent = $request->parent;
+            $student->subjects = $request->subjects;
+            $student->subjects_category = $request->subjects_category;
             $student->email = $request->email;
             $student->address = $request->address;
             $student->phone = $request->phone;

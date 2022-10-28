@@ -202,7 +202,7 @@
                                 <div class="form-group row">
                                     <label class="col-xl-3 col-lg-3 text-right col-form-label">Phone</label>
                                     <div class="col-lg-9 col-xl-6">
-                                        <input name="phone" class="form-control form-control-lg form-control-solid" type="text"
+                                        <input name="phone"  id="tel" class="form-control form-control-lg form-control-solid" type="text"
                                             value="{{$student->phone}}"/>
                                     </div>
                                 </div>
@@ -233,6 +233,35 @@
                                                 No
                                             </label>
                                         </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-xl-3 col-lg-3 text-right col-form-label">Subjects
+                                        Category</label>
+                                    <div class="col-lg-9 col-xl-6">
+                                        <select name="subjects_category"
+                                                class="form-control form-control-lg form-control-solid custom-select"
+                                                placeholder="Select Subject" id="subject_category_id">
+                                            <option value="0" disabled selected>Select Category</option>
+                                            @foreach ($data as $categories)
+                                                <option @if($categories->id == $student->subjects_category) selected
+                                                        @endif value="{{ $categories->id }}">
+                                                    {{ ucfirst($categories->name) }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label class="col-xl-3 col-lg-3 text-right col-form-label">Subjects</label>
+                                    <div class="col-lg-9 col-xl-6">
+                                        <select data-selected="{{$student->subjects}}"
+                                                class="form-control form-control-lg form-control-solid custom-select"
+                                                name="subjects" id="subjects">
+                                        </select>
                                     </div>
                                 </div>
 
@@ -478,21 +507,68 @@
 @endsection
 
 @section('js')
+    <script src="{{asset('backendCssJs/assets/js/pages/custom/contacts/edit-contact.js')}}"></script>
+    <script src="{{asset('jsValidate/jquery.form.js')}}"></script>
     <script type="text/javascript" src="{{asset('backendCssJs/assets/countryes/countries.js')}}"></script>
+    <script src="{{asset('js/maskinput.js')}}"></script>
+
 
     <script>
+        //Subjects
+
+        let selectedCategoryId = $('#subject_category_id').val();
+        let selectedSubject = $('#subjects').data('selected');
+        listSubjects(selectedCategoryId, selectedSubject);
+
+
+        $(document).ready(function () {
+            $('#subject_category_id').on('change', function () {
+                let id = $(this).val();
+                let selected = $('#subjects').data('selected');
+                listSubjects(id, selected)
+            })
+        })
+
+        function listSubjects(categoryId, selected) {
+            $('#subjects').empty();
+            $('#subjects').append(`<option value="0" disabled selected>Processing...</option>`);
+            $.ajax({
+                type: 'GET',
+                url: 'GetSubCatStuEdit/' + categoryId,
+                success: function (response) {
+                    var response = JSON.parse(response);
+                    $('#subjects').empty();
+                    $('#subjects').append(`<option value="0" disabled selected>Selected Subject</option>`);
+                    response.forEach(element => {
+                        let selectedAttribute = '';
+                        if (selected == element['id']) selectedAttribute = 'selected';
+                        $('#subjects').append(`<option ${selectedAttribute} value="${element['id']}">${element['name']}</option>`);
+                    });
+                }
+            })
+        }
+    </script>
+
+    <script>
+        //Country and City
         populateCountries("country", "state");
         $('#country').val('{{$student->country}}').trigger('change')
         $('#state').val('{{$student->city}}').trigger('change')
     </script>
 
-    <script src="{{asset('backendCssJs/assets/js/pages/custom/contacts/edit-contact.js')}}"></script>
-    <script src="{{asset('jsValidate/jquery.form.js')}}"></script>
     <script>
+        //Birthday
         $('#kt_datetimepicker_3').datetimepicker({
             format: 'YYYY-MM-DD'
         });
+    </script>
 
+
+    <script type="text/javascript">
+        //Phone
+        jQuery(function ($) {
+            $("#tel").mask("+994(88) 888-88-88");
+        });
     </script>
 @endsection
 

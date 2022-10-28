@@ -465,6 +465,7 @@
                                         </div>
                                     </div>
 
+
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Subjects
                                             Category</label>
@@ -713,7 +714,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </form>
                             </div>
                         </div>
@@ -725,28 +725,16 @@
 @endsection
 
 @section('js')
-    <script type="text/javascript" src="{{asset('backendCssJs/assets/countryes/countries.js')}}"></script>
-
-    <script>
-        populateCountries("country", "state");
-        $('#country').val('{{$teacher->country}}').trigger('change')
-        $('#state').val('{{$teacher->city}}').trigger('change')
-    </script>
-
-    <script>
-        $('#kt_datetimepicker_3').datetimepicker({
-            format: 'YYYY-MM-DD'
-        });
-    </script>
-
 
     <script src="{{asset('backendCssJs/assets/js/pages/custom/contacts/edit-contact.js')}}"></script>
     <script src="{{asset('jsValidate/jquery.form.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backendCssJs/assets/countryes/countries.js')}}"></script>
     <script src="{{asset('js/maskinput.js')}}"></script>
 
 
 
     <script>
+        //Subjects
 
         let selectedCategoryId = $('#subject_category_id').val();
         let selectedSubject = $('#subjects').data('selected');
@@ -767,7 +755,7 @@
             $('#subjects').append(`<option value="0" disabled selected>Processing...</option>`);
             $.ajax({
                 type: 'GET',
-                url: 'GetSubCatEdit/' + categoryId,
+                url: 'GetSubCatTeachEdit/' + categoryId,
                 success: function (response) {
                     var response = JSON.parse(response);
                     $('#subjects').empty();
@@ -782,8 +770,23 @@
         }
     </script>
 
-    {{-- Phone --}}
+    <script>
+        //Country and City
+        populateCountries("country", "state");
+        $('#country').val('{{$teacher->country}}').trigger('change')
+        $('#state').val('{{$teacher->city}}').trigger('change')
+    </script>
+
+    <script>
+        //Birthday
+        $('#kt_datetimepicker_3').datetimepicker({
+            format: 'YYYY-MM-DD'
+        });
+    </script>
+
+
     <script type="text/javascript">
+        //Phone
         jQuery(function ($) {
             $("#tel").mask("+994(88) 888-88-88");
         });

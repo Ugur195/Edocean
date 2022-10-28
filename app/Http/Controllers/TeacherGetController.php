@@ -34,7 +34,7 @@ class TeacherGetController extends Controller
         return view('teacher.my_profile', ['teacher' => $user, 'data' => $data]);
     }
 
-    public function GetSubCatEdit($id)
+    public function GetSubCatTeachEdit($id)
     {
         echo json_encode(DB::table('subjects')->where('subject_category_id', $id)->get());
     }

@@ -27,10 +27,10 @@ class StudentGetController extends Controller
     }
 
 
-
     public function getMyProfile()
     {
         $student = Student::where('user_id', Auth::user()->id)->first();
+        $data = DB::table('subject_category')->get();
         $user = null;
         if ($student == null) {
             $user = User::find(Auth::user()->id);
@@ -38,7 +38,12 @@ class StudentGetController extends Controller
             $user = $student;
         }
 //        dd( explode(',',$student->language));
-        return view('student.my_profile', ['student' => $user]);
+        return view('student.my_profile', ['student' => $user, 'data' => $data]);
+    }
+
+    public function GetSubCatStuEdit($id)
+    {
+        echo json_encode(DB::table('subjects')->where('subject_category_id', $id)->get());
     }
 
 
