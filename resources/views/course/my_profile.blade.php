@@ -10,6 +10,67 @@
             border: 1px solid #556677;
             min-height: 100px;
         }
+        .row {
+            align-items: center;
+        }
+        .col-sm4 {
+            padding-left: 10px;
+        }
+        .form__item {
+            padding-left: 60px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .rating {
+            display: flex;
+            align-items: flex-end;
+            font-size: 40px;
+            line-height: 0.75;
+        }
+        .rating__body {
+            position: relative;
+        }
+        .rating__body::before {
+            content: "★★★★★";
+            display: block;
+        }
+        .rating__active {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+        }
+        .rating__active::before {
+            content: "★★★★★";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            color: #ffd300;
+        }
+        .rating__items {
+            display: flex;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        .rating__item {
+            flex: 0 0 20%;
+            height: 100%;
+            opacity: 0;
+        }
+        .rating__value {
+            font-size: 50%;
+            line-height: 1;
+            padding: 0 0 0 10px
+        }
+
     </style>
 @endsection
 
@@ -41,7 +102,7 @@
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Image</label>
-                                        <div class="col-lg-9 col-xl-9">
+                                        <div class="col-sm4">
                                             <div class="image-input image-input-outline" id="kt_contacts_edit_avatar"
                                                  style="background-image: url(assets/media/users/blank.png)">
 
@@ -60,8 +121,23 @@
                                                 <span
                                                     class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
                                                     data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
-                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                    </span>
+                                                    <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form__item col-sm">
+                                            <div class="rating rating_set">
+                                                <div class="rating__body">
+                                                    <div class="rating__active"></div>
+                                                    <div class="rating__items">
+                                                        <input type="radio" class="rating__item" value="1" name="rating" />
+                                                        <input type="radio" class="rating__item" value="2" name="rating" />
+                                                        <input type="radio" class="rating__item" value="3" name="rating" />
+                                                        <input type="radio" class="rating__item" value="4" name="rating" />
+                                                        <input type="radio" class="rating__item" value="5" name="rating" />
+                                                    </div>
+                                                </div>
+                                                <div class="rating__value">3.6</div>
                                             </div>
                                         </div>
                                     </div>
@@ -242,7 +318,7 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Rating</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input name="rating" class="form-control form-control-lg form-control-solid"
-                                                   type="number" placeholder="Course rating"
+                                                   type="text" placeholder="Course rating"
                                                    value="{{$course->rating}}"/>
                                         </div>
                                     </div>
@@ -576,6 +652,54 @@
         jQuery(function($){
         $("#tel").mask("+994(88) 888-88-88");
         });
+    </script>
+
+    {{-- Star --}}
+    <script>
+        "use strict"
+
+        const ratings = document.querySelectorAll('.rating');
+        if (ratings.length > 0) {
+            initRatings();
+        }
+
+        function initRatings() {
+            let ratingActive, ratingValue;
+            for(let index = 0; index < ratings.length; index++) {
+                const rating = ratings[index];
+                initRating(rating);
+            }
+        }
+
+        function initRating(rating) {
+            initRatingVars(rating);
+            setRatingActiveWidth();
+
+            if(rating.classList.contains('rating_set')) {
+                setRating(rating);
+            }
+        }
+
+        function initRatingVars(rating) {
+            ratingActive = rating.querySelector('.rating__active');
+            ratingValue = rating.querySelector('rating__value');
+        }
+
+        function setRatingActiveWidth(index = ratingValue.innerHTML) {
+            const ratingActiveWidth = index / 0.05;
+            ratingActive.style.width = `${ratingActiveWidth}%`;
+        }
+
+        function setRating(rating) {
+            const ratingItems = rating.querySelectorAll('.rating__item');
+            for (let index = 0; index < ratingItem.length; index++) {
+                const ratingItem = ratingItems[index];
+                ratingItem.addEventListener("mouseenter", function (e) {
+                    initRatingVars(rating);
+                    setRatingActiveWidth(ratingItem.value);
+                });
+            }
+        }
     </script>
 
 
