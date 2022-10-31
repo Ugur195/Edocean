@@ -316,6 +316,11 @@
     color: #3699FF;
   }
 }
+.card-custom {
+  margin-bottom: 50px;
+}
+
+
 @media (max-width: 991.98px) {
   .header-menu-mobile {
     background-color: #ffffff;
