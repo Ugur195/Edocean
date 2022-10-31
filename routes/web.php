@@ -48,6 +48,7 @@ Route::post('/sign_up', [HomePostController::class, 'PostSignUp']);
 //admin
 Route::group(['prefix' => 'admin', 'middleware' => 'Admin'], function () {
     Route::get('/index', [AdminGetController::class, 'home']);
+    Route::get('/admins', [AdminGetController::class, 'Admins']);
     Route::get('/contact_us', [AdminGetController::class, 'ContactUs']);
     Route::get('/messages_edit/{id}', [AdminGetController::class, 'MessagesEdit'])->name('admin.messages_edit');
     Route::get('/about_us', [AdminGetController::class, 'AboutUs']);

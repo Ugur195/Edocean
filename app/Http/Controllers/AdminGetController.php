@@ -22,6 +22,11 @@ class AdminGetController extends Controller
         return view('backend.index');
     }
 
+    public function Admins()
+    {
+        return view('backend.admins');
+    }
+
     public function ContactUs()
     {
         return view('backend.contact_us');
@@ -108,10 +113,10 @@ class AdminGetController extends Controller
                 $return = '<a class="btn btn-xs btn-primary" href="' . route('admin.backend.student_edit', $model->id) . '" ><i class="la la-user"></i></a>
 			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger" ><i class="la la-trash"></i></button>';
                 if ($model->st == 0) {
-                    $return .= '<button onclick="blokUnblok('.$model->st.',' . $model->id . ')"  class="btn btn-xs btn-success"  name="btn_blok"
+                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-success"  name="btn_blok"
                                         value="btn_blok" ><i class="la la-check"></i></button>';
                 } else if ($model->st == 1) {
-                    $return .= '<button onclick="blokUnblok('.$model->st.',' . $model->id . ')"  class="btn btn-xs btn-dark" name="btn_unblok"  value="btn_unblok" ><i class="la la-close"></i></button>';
+                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-dark" name="btn_unblok"  value="btn_unblok" ><i class="la la-close"></i></button>';
                 }
                 return $return;
 
