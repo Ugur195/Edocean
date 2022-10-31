@@ -108,9 +108,10 @@ class AdminGetController extends Controller
                 $return = '<a class="btn btn-xs btn-primary" href="' . route('admin.backend.student_edit', $model->id) . '" ><i class="la la-user"></i></a>
 			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger" ><i class="la la-trash"></i></button>';
                 if ($model->st == 0) {
-                    $return .= '<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-warning" ><i class="la la-info"></i></button>';
+                    $return .= '<button onclick="blokUnblok('.$model->st.',' . $model->id . ')"  class="btn btn-xs btn-success"  name="btn_blok"
+                                        value="btn_blok" ><i class="la la-check"></i></button>';
                 } else if ($model->st == 1) {
-                    $return .= '<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-success" ><i class="la la-check"></i></button>';
+                    $return .= '<button onclick="blokUnblok('.$model->st.',' . $model->id . ')"  class="btn btn-xs btn-dark" name="btn_unblok"  value="btn_unblok" ><i class="la la-close"></i></button>';
                 }
                 return $return;
 

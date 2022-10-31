@@ -87,11 +87,25 @@ class AdminPostController extends Controller
     }
 
 
-    public function StudentsDelete(Request $request)
+    public function StudentsBlockUnblockDelete(Request $request)
     {
         try {
-            Student::where('id', $request->id)->delete();
-            return response(['title' => 'Ugurlu!', 'message' => 'Student Silindi', 'status' => 'success']);
+            if ($request->btn_block != null) {
+                if ($request->status == 0) {
+                    Student::find($request->id)->update(['status' => 1]);
+                    return response(['title' => 'Ugurlu!', 'message' => 'Student blokdan cixdi!', 'status' => 'success']);
+                } else if ($request->status == 1){
+                    Student::find($request->id)->update(['status' => 0]);
+                    return response(['title' => 'Ugurlu!', 'message' => 'Student bloklandi!', 'status' => 'success']);
+                }else{
+                    return response(['title' => 'Ugursuz!', 'message' => 'Studenti bloklamaq mumkun olmadi!', 'status' => 'error']);
+                }
+            } else if ($request->btn_delete != null) {
+                Student::where('id', $request->id)->delete();
+                return response(['title' => 'Ugurlu!', 'message' => 'Student ugurlu silindi!', 'status' => 'success']);
+            } else {
+                return response(['title' => 'Ugursuz!', 'message' => 'Studenti silmek mumkun olmadi!', 'status' => 'error']);
+            }
         } catch (\Exception $exception) {
             return response(['title' => 'Ugursuz!', 'message' => 'Studenti silmek olmur!', 'status' => 'error']);
         }
