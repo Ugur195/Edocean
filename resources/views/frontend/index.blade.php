@@ -28,93 +28,17 @@
 
                 </ul >
                 <div class="course-row ">
-                    <a href="" class="course-a development"><div class="course ">
-                            <img src="./frontendCss/images/course.jpg" alt="">
-                            <div>
-                                <h3>MilliSoft</h3>
-                                <p>Web Development</p>
+                    @foreach ($course as $c)
+                        <a href="" class="course-a development">
+                            <div class="course ">
+                                <img src={{ $c->image }} alt="">
+                                <div>
+                                    <h3>MilliSoft</h3>
+                                    <p>Web Development</p>
+                                </div>
                             </div>
-                        </div></a>
-                    <a href="" class="course-a master" >
-                        <div class="course ">
-                            <img src="./frontendCss/images/masterschool.webp" alt="">
-                            <div>
-                                <h3>Master School</h3>
-                                <p>Magistr Kursları</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="" class="course-a master">
-                        <div class="course ">
-                            <img src="./frontendCss/images/masterschool.webp" alt="">
-                            <div>
-                                <h3>Master School</h3>
-                                <p>Magistr Kursları</p>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="" class="course-a development">
-                        <div class="course ">
-                            <img src="./frontendCss/images/nantech.png" alt="">
-                            <div>
-                                <h3>NaNTech</h3>
-                                <p>Full Stack Development</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="" class="course-a master">
-                        <div class="course  ">
-                            <img src="./frontendCss/images/masterschool.webp" alt="">
-                            <div>
-                                <h3>Master School</h3>
-                                <p>Magistr Kursları</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="" class="course-a development"><div class="course ">
-                            <img src="./frontendCss/images/course.jpg" alt="">
-                            <div>
-                                <h3>MilliSoft</h3>
-                                <p>Web Development</p>
-                            </div>
-                        </div></a>
-                    <a href="" class="course-a master">
-                        <div class="course ">
-                            <img src="./frontendCss/images/masterschool.webp" alt="">
-                            <div>
-                                <h3>Master School</h3>
-                                <p>Magistr Kursları</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="" class="course-a development">
-                        <div class="course ">
-                            <img src="./frontendCss/images/course.jpg" alt="">
-                            <div>
-                                <h3>MilliSoft</h3>
-                                <p>Web Development</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="" class="course-a development">
-                        <div class="course ">
-                            <img src="./frontendCss/images/nantech.png" alt="">
-                            <div>
-                                <h3>NaNTech</h3>
-                                <p>Full Stack Development</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="" class="course-a development">
-                        <div class="course ">
-                            <img src="./frontendCss/images/course.jpg" alt="">
-                            <div>
-                                <h3>MilliSoft</h3>
-                                <p>Web Development</p>
-                            </div>
-                        </div>
-                    </a>
+                        </a>
+                    @endforeach
                 </div>
 
                 <a href="#" class="see-all-href"><button class="see-all-button">Bütün kurslar</button></a>

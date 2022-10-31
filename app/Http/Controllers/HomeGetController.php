@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -38,7 +39,8 @@ class HomeGetController extends Controller
 
     public function GetIndex()
     {
-        return view('frontend.index');
+        $course=Course::all();
+        return view('frontend.index')->with(['course=>$course']);
     }
 
     public function GetLogout()
