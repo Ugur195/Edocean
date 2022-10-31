@@ -39,8 +39,8 @@ class HomeGetController extends Controller
 
     public function GetIndex()
     {
-        $course=Course::all();
-        return view('frontend.index')->with(['course=>$course']);
+        $course = Course::all();
+        return view('frontend.index')->with(['course' => $course]);
     }
 
     public function GetLogout()
