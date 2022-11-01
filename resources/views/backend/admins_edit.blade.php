@@ -12,7 +12,7 @@
                     <div class="card-header card-header-tabs-line">
                         <div class="card-toolbar">
                             <div class="d-flex align-items-center flex-wrap mr-2">
-                                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Student</h5>
+                                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Admin</h5>
                                 <div
                                     class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
                             </div>
@@ -33,7 +33,7 @@
                                                  style="background-image: url(assets/media/users/blank.png)">
 
                                                 <div class="image-input-wrapper"
-                                                     style="background-image: url('data:image/jpeg;base64,{{base64_encode($student_edit->image)}}')">
+                                                     style="background-image: url('data:image/jpeg;base64,{{base64_encode($admins_edit->image)}}')">
                                                 </div>
                                                 <label
                                                     class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -56,27 +56,34 @@
 
 
                                     <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Name</label>
+                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">First Name</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$student_edit->name}}" readonly/>
+                                                   value="{{$admins_edit->first_name}}" readonly/>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Surname</label>
+                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Last Name</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$student_edit->surname}}" readonly/>
+                                                   value="{{$admins_edit->last_name}}" readonly/>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Gender</label>
+                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Father Name<</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input name="url" class="form-control form-control-lg form-control-solid"
-                                                   type="text"
-                                                   value="{{$student_edit->gender}}" readonly/>
+                                            <input class="form-control form-control-lg form-control-solid" type="text"
+                                                   value="{{$admins_edit->father_name}}" readonly/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Birthday</label>
+                                        <div class="col-lg-9 col-xl-6">
+                                            <input class="form-control form-control-lg form-control-solid" type="text"
+                                                   value="{{$admins_edit->birthday}}" readonly/>
                                         </div>
                                     </div>
 
@@ -85,40 +92,7 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Email</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$student_edit->email}}" readonly/>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Phone</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$student_edit->phone}}" readonly/>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Parent</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$student_edit->parent}}" readonly/>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Payment</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$student_edit->payment}}" readonly/>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Balance</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$student_edit->balance}}" readonly/>
+                                                   value="{{$admins_edit->email}}" readonly/>
                                         </div>
                                     </div>
 
@@ -132,7 +106,7 @@
                                                 <div class="mr-2">
                                                 </div>
                                                 <div>
-                                                    <a href="{{route('AdminStudent')}}" type="button"
+                                                    <a href="{{route('AdminEdocean')}}" type="button"
                                                        class="btn btn-success font-weight-bolder text-uppercase px-9 py-4"
                                                        data-wizard-type="action-submit">Back
                                                     </a>
@@ -153,4 +127,5 @@
 @section('js')
 
 @endsection
+
 

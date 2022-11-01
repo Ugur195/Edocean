@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AboutUs;
+use App\Models\Admin;
 use App\Models\Blogs;
 use App\Models\ContactUs;
 use App\Models\Course;
@@ -129,6 +130,41 @@ class AdminGetController extends Controller
         $student = Student::all();
         $student_edit = Student::where('id', $id)->first();
         return view('backend.student_edit')->with(['student_edit' => $student_edit, 'student' => $student]);
+    }
+
+
+    public function AdminsProject()
+    {
+        return view('backend.admins');
+    }
+
+    public function getAdminsProject()
+    {
+        $admins_project = DB::table('edocean.admin')->select(DB::raw("id,image,first_name,last_name,father_name,birthday,email,status as st,
+          (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
+        return DataTables::of($admins_project)
+            ->editColumn('image', function ($model) {
+                return "<img style='display:block;width:80px;height:60px;' src='data:image/jpeg;base64," . base64_encode($model->image) . "'/>";
+            })
+            ->addColumn('options', function ($model) {
+                $return = '<a class="btn btn-xs btn-primary" href="' . route('admin.backend.admins_edit', $model->id) . '" ><i class="la la-user"></i></a>
+			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger" ><i class="la la-trash"></i></button>';
+                if ($model->st == 0) {
+                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-success"
+                                         ><i class="la la-check"></i></button>';
+                } else if ($model->st == 1) {
+                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-dark"  ><i class="la la-close"></i></button>';
+                }
+                return $return;
+
+            })->rawColumns(['options' => true])->make(true);
+    }
+
+    public function AdminsEditProject($id)
+    {
+        $admins = Admin::all();
+        $admins_edit = Admin::where('id', $id)->first();
+        return view('backend.admins_edit')->with(['admins' => $admins, 'admins_edit' => $admins_edit]);
     }
 
     public function Course()

@@ -62,6 +62,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'Admin'], function () {
     Route::get('/blogs_edit/{id}', [AdminGetController::class, 'BlogsEdit'])->name('admin.backend.blogs_edit');
     Route::get('/blog_comment', [AdminGetController::class, 'BlogsComment']);
     Route::get('/blog_category', [AdminGetController::class, 'BlogsCategory']);
+    Route::get('/admins', [AdminGetController::class, 'AdminsProject'])->name('AdminEdocean');
+    Route::get('/admins_edit/{id}', [AdminGetController::class, 'AdminsEditProject'])->name('admin.backend.admins_edit');
 
 
     Route::post('/about_us', [AdminPostController::class, 'AboutUs']);
@@ -72,6 +74,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'Admin'], function () {
     Route::post('/student', [AdminPostController::class, 'StudentsBlockUnblockDelete']);
     Route::post('/course', [AdminPostController::class, 'CoursesDelete']);
     Route::post('/blogs', [AdminPostController::class, 'BlogsDelete']);
+    Route::post('/admins', [AdminPostController::class, 'AdminsBlockUnblockDelete']);
 
 
 });

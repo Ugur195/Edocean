@@ -111,6 +111,11 @@ class AdminPostController extends Controller
         }
     }
 
+
+    public function AdminsBlockUnblockDelete(Request $request)
+    {}
+
+
     public function CoursesDelete(Request $request)
     {
         try {
