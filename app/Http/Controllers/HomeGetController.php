@@ -18,7 +18,8 @@ class HomeGetController extends Controller
 
     public function home()
     {
-        return view('frontend.index');
+        $course = Course::all();
+        return view('frontend.index')->with(['course' => $course]);
     }
 
 
@@ -37,11 +38,6 @@ class HomeGetController extends Controller
         return view('frontend.sign_up');
     }
 
-    public function GetIndex()
-    {
-        $course = Course::all();
-        return view('frontend.index')->with(['course' => $course]);
-    }
 
     public function GetLogout()
     {
