@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -19,7 +20,8 @@ class HomeGetController extends Controller
     public function home()
     {
         $course = Course::all();
-        return view('frontend.index')->with(['course' => $course]);
+        $teacher = Teacher::all();
+        return view('frontend.index')->with(['course' => $course, 'teacher' => $teacher]);
     }
 
 
