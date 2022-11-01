@@ -202,6 +202,7 @@
                         url: '',
                         data: {
                             'id': id,
+                            'btn_delete': 'btn_delete',
                             '_token': CSRF_TOKEN
                         },
 

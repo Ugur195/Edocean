@@ -152,6 +152,7 @@
                         data: {
                             'id': id,
                             'status': status,
+                            'btn_block': 'btn_block',
                             '_token': CSRF_TOKEN
                         },
 
@@ -195,7 +196,9 @@
                         url: '',
                         data: {
                             'id': id,
+                            'btn_delete': 'btn_delete',
                             '_token': CSRF_TOKEN
+
                         },
 
                         success: function (response) {

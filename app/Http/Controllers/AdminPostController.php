@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AboutUs;
+use App\Models\Admin;
 use App\Models\Blogs;
 use App\Models\ContactUs;
 use App\Models\Course;
@@ -113,7 +114,29 @@ class AdminPostController extends Controller
 
 
     public function AdminsBlockUnblockDelete(Request $request)
-    {}
+    {
+        try {
+            if ($request->btn_block != null) {
+                if ($request->status == 0) {
+                    Admin::find($request->id)->update(['status' => 1]);
+                    return response(['title' => 'Ugurlu!', 'message' => 'Admin blokdan cixdi!', 'status' => 'success']);
+                } else if ($request->status == 1){
+                    Admin::find($request->id)->update(['status' => 0]);
+                    return response(['title' => 'Ugurlu!', 'message' => 'Admin bloklandi!', 'status' => 'success']);
+                }else{
+                    return response(['title' => 'Ugursuz!', 'message' => 'Admini bloklamaq mumkun olmadi!', 'status' => 'error']);
+                }
+            } else if ($request->btn_delete != null) {
+                Admin::where('id', $request->id)->delete();
+                return response(['title' => 'Ugurlu!', 'message' => 'Admin ugurlu silindi!', 'status' => 'success']);
+            } else {
+                return response(['title' => 'Ugursuz!', 'message' => 'Admini silmek mumkun olmadi!', 'status' => 'error']);
+            }
+        } catch (\Exception $exception) {
+            return response(['title' => 'Ugursuz!', 'message' => 'Admini silmek olmur!', 'status' => 'error']);
+        }
+
+    }
 
 
     public function CoursesDelete(Request $request)
