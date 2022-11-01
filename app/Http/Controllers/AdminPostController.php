@@ -77,11 +77,25 @@ class AdminPostController extends Controller
     }
 
 
-    public function TeachersDelete(Request $request)
+    public function TeachersBlockUnblockDelete(Request $request)
     {
         try {
-            Teacher::where('id', $request->id)->delete();
-            return response(['title' => 'Ugurlu!', 'message' => 'Teacher Silindi', 'status' => 'success']);
+            if ($request->btn_block != null) {
+                if ($request->status == 0) {
+                    Teacher::find($request->id)->update(['status' => 1]);
+                    return response(['title' => 'Ugurlu!', 'message' => 'Teacher blokdan cixdi!', 'status' => 'success']);
+                } else if ($request->status == 1) {
+                    Teacher::find($request->id)->update(['status' => 0]);
+                    return response(['title' => 'Ugurlu!', 'message' => 'Teacher bloklandi!', 'status' => 'success']);
+                } else {
+                    return response(['title' => 'Ugursuz!', 'message' => 'Teacheri bloklamaq mumkun olmadi!', 'status' => 'error']);
+                }
+            } else if ($request->btn_delete != null) {
+                Teacher::where('id', $request->id)->delete();
+                return response(['title' => 'Ugurlu!', 'message' => 'Teacher ugurlu silindi!', 'status' => 'success']);
+            } else {
+                return response(['title' => 'Ugursuz!', 'message' => 'Teacheri silmek mumkun olmadi!', 'status' => 'error']);
+            }
         } catch (\Exception $exception) {
             return response(['title' => 'Ugursuz!', 'message' => 'Teacheri silmek olmur!', 'status' => 'error']);
         }
@@ -95,10 +109,10 @@ class AdminPostController extends Controller
                 if ($request->status == 0) {
                     Student::find($request->id)->update(['status' => 1]);
                     return response(['title' => 'Ugurlu!', 'message' => 'Student blokdan cixdi!', 'status' => 'success']);
-                } else if ($request->status == 1){
+                } else if ($request->status == 1) {
                     Student::find($request->id)->update(['status' => 0]);
                     return response(['title' => 'Ugurlu!', 'message' => 'Student bloklandi!', 'status' => 'success']);
-                }else{
+                } else {
                     return response(['title' => 'Ugursuz!', 'message' => 'Studenti bloklamaq mumkun olmadi!', 'status' => 'error']);
                 }
             } else if ($request->btn_delete != null) {
@@ -120,10 +134,10 @@ class AdminPostController extends Controller
                 if ($request->status == 0) {
                     Admin::find($request->id)->update(['status' => 1]);
                     return response(['title' => 'Ugurlu!', 'message' => 'Admin blokdan cixdi!', 'status' => 'success']);
-                } else if ($request->status == 1){
+                } else if ($request->status == 1) {
                     Admin::find($request->id)->update(['status' => 0]);
                     return response(['title' => 'Ugurlu!', 'message' => 'Admin bloklandi!', 'status' => 'success']);
-                }else{
+                } else {
                     return response(['title' => 'Ugursuz!', 'message' => 'Admini bloklamaq mumkun olmadi!', 'status' => 'error']);
                 }
             } else if ($request->btn_delete != null) {
@@ -142,10 +156,24 @@ class AdminPostController extends Controller
     public function CoursesDelete(Request $request)
     {
         try {
-            Course::where('id', $request->id)->delete();
-            return response(['title' => 'Ugurlu!', 'message' => 'Course Silindi', 'status' => 'success']);
+            if ($request->btn_block != null) {
+                if ($request->status == 0) {
+                    Course::find($request->id)->update(['status' => 1]);
+                    return response(['title' => 'Ugurlu!', 'message' => 'Course blokdan cixdi!', 'status' => 'success']);
+                } else if ($request->status == 1) {
+                    Course::find($request->id)->update(['status' => 0]);
+                    return response(['title' => 'Ugurlu!', 'message' => 'Course bloklandi!', 'status' => 'success']);
+                } else {
+                    return response(['title' => 'Ugursuz!', 'message' => 'Coursu bloklamaq mumkun olmadi!', 'status' => 'error']);
+                }
+            } else if ($request->btn_delete != null) {
+                Course::where('id', $request->id)->delete();
+                return response(['title' => 'Ugurlu!', 'message' => 'Course ugurlu silindi!', 'status' => 'success']);
+            } else {
+                return response(['title' => 'Ugursuz!', 'message' => 'Coursu silmek mumkun olmadi!', 'status' => 'error']);
+            }
         } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => 'Course silmek olmur!', 'status' => 'error']);
+            return response(['title' => 'Ugursuz!', 'message' => 'Coursu silmek olmur!', 'status' => 'error']);
         }
 
     }

@@ -120,6 +120,65 @@
     <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/course.js')}}"></script>
 
     <script>
+        function blokUnblok(status, id) {
+            console.log('basildi' + status);
+            let title = '';
+            let text = '';
+            let icon = '';
+            let confBtnText = '';
+            if (status == 0) {
+                title = 'Blokdan cixartmaq Isteyirsinizmi?';
+                text = 'Unblock etdikden sonra Blok etmek mumkundu!';
+                icon = 'info';
+                confBtnText = 'Blokdan cixart';
+            } else if (status == 1) {
+                title = 'Blok etmek Isteyirsinizmi?';
+                text = 'Blok etdikden sonra Unblock etmek mumkundu!';
+                icon = 'warning';
+                confBtnText = 'Blok et';
+            }
+            swal.fire({
+                title: title,
+                text: text,
+                icon: icon,
+                allowOutsideClick: false,
+                showCancelButton: true,
+                cancelButtonText: 'Bagla',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: confBtnText,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content')
+                    $.ajax({
+                        type: "Post",
+                        url: '',
+                        data: {
+                            'id': id,
+                            'status': status,
+                            'btn_block': 'btn_block',
+                            '_token': CSRF_TOKEN
+                        },
+
+                        success: function (response) {
+                            swal.fire({
+                                title: response.title,
+                                text: response.message,
+                                icon: response.status,
+                                allowOutsideClick: false
+                            })
+                            if (response.status === 'success') {
+                                setTimeout(function () {
+                                    window.location.href = '/admin/course';
+                                }, 500)
+                            }
+
+                        }
+                    })
+                }
+            })
+        }
+
         function sil(setir, id) {
             var sira = setir.parentNode.parentNode.rowIndex;
             console.log(sira);
@@ -141,7 +200,9 @@
                         url: '',
                         data: {
                             'id': id,
+                            'btn_delete': 'btn_delete',
                             '_token': CSRF_TOKEN
+
                         },
 
                         success: function (response) {
@@ -165,6 +226,5 @@
                 }
             })
         }
-
     </script>
 @endsection
