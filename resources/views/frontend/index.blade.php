@@ -2,6 +2,13 @@
 
 @section('css')
     <link rel="stylesheet" href="{{asset('cssValidate/sweetalert2.css')}}"/>
+
+    <style>
+        img {
+            object-fit: cover;
+            height: 300px; 
+        }
+    </style>
 @endsection
 
 {{--//--}}
@@ -63,7 +70,7 @@
                         @foreach ($teacher as $t)
                             @if ($t->profile_type=='Vip')
                                 <div class="vip teacher fizika">
-                                    <img class="teacher-card-img" src="./frontendCss/images/teacher-card-img.jpg" alt="">
+                                    <img class="teacher-card-img" src="data:image/jpeg;base64,{{base64_encode($t->image)}}" alt="">
                                     <div class="details">
                                         <div class="details-1">
                                             <div class="rating-and-views">
@@ -85,7 +92,7 @@
                                         <div class="date-and-button">
                                             <p>
                                                 <ion-icon name="calendar-number"></ion-icon>
-                                                {{ $t->created_at }}
+                                                28.06.2022
                                             </p>
                                             <a href="">
                                                 <button>Daha Ətraflı
@@ -110,7 +117,7 @@
                 <div class="teacher-row">
                     @foreach ($teacher as $t)
                         <div class="vip teacher fizika">
-                            <img class="teacher-card-img" src="./frontendCss/images/teacher-card-img.jpg" alt="">
+                            <img class="teacher-card-img " src="data:image/jpeg;base64,{{base64_encode($t->image)}}" alt="">
                             <div class="details">
                                 <div class="details-1">
                                     <div class="rating-and-views">
