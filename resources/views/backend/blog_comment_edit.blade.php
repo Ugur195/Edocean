@@ -55,7 +55,7 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Blog</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$blog_comment_edit->blog_id}}" readonly/>
+                                                   value="{{\App\Models\Blogs::find($blog_comment_edit->blog_id)->title}}" readonly/>
                                         </div>
                                     </div>
 

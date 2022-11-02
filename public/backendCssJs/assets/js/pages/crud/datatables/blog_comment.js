@@ -48,9 +48,10 @@ var KTDatatablesSearchOptionsColumnSearch = function () {
                     data: 'message',
                     name: 'message'
                 },
+
                 {
-                    data: 'blog_id',
-                    name: 'blog_id'
+                    data: 'title_name',
+                    name: 'title_name'
                 },
                 {
                     data: 'parent_comment',

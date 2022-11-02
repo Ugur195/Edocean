@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AboutUs;
 use App\Models\Admin;
 use App\Models\BlogCategory;
+use App\Models\BlogComment;
 use App\Models\Blogs;
 use App\Models\ContactUs;
 use App\Models\Course;
@@ -185,6 +186,7 @@ class AdminPostController extends Controller
         try {
             BlogCategory::where('id', $request->id)->delete();
             Blogs::where('category', $request->id)->delete();
+            BlogComment::where('blog_id', $request->id)->delete();
             return response(['title' => 'Ugurlu!', 'message' => 'Our Team Role Silindi', 'status' => 'success']);
         } catch (\Exception $exception) {
             return response(['title' => 'Ugursuz!', 'message' => 'Our Team Role silmek olmur!', 'status' => 'error']);
@@ -201,6 +203,17 @@ class AdminPostController extends Controller
             return response(['title' => 'Ugursuz!', 'message' => 'Blogu silmek olmur!', 'status' => 'error']);
         }
 
+    }
+
+
+    public function BlogCommentDelete(Request $request)
+    {
+        try {
+            BlogComment::where('id', $request->id)->delete();
+            return response(['title' => 'Ugurlu!', 'message' => 'BlogComment Silindi', 'status' => 'success']);
+        } catch (\Exception $exception) {
+            return response(['title' => 'Ugursuz!', 'message' => 'BlogCommenti silmek olmur!', 'status' => 'error']);
+        }
     }
 
 }

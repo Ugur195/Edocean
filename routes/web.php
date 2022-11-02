@@ -78,6 +78,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'Admin'], function () {
     Route::post('/blogs', [AdminPostController::class, 'BlogsDelete']);
     Route::post('/blog_category', [AdminPostController::class, 'BlogCategoryDelete']);
     Route::post('/admins', [AdminPostController::class, 'AdminsBlockUnblockDelete']);
+    Route::post('/blog_comment', [AdminPostController::class, 'BlogCommentDelete']);
+
 
 
 });
