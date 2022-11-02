@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AboutUs;
 use App\Models\Admin;
+use App\Models\BlogCategory;
 use App\Models\Blogs;
 use App\Models\ContactUs;
 use App\Models\Course;
@@ -174,6 +175,19 @@ class AdminPostController extends Controller
             }
         } catch (\Exception $exception) {
             return response(['title' => 'Ugursuz!', 'message' => 'Coursu silmek olmur!', 'status' => 'error']);
+        }
+
+    }
+
+
+    public function BlogCategoryDelete(Request $request)
+    {
+        try {
+            BlogCategory::where('id', $request->id)->delete();
+            Blogs::where('category', $request->id)->delete();
+            return response(['title' => 'Ugurlu!', 'message' => 'Our Team Role Silindi', 'status' => 'success']);
+        } catch (\Exception $exception) {
+            return response(['title' => 'Ugursuz!', 'message' => 'Our Team Role silmek olmur!', 'status' => 'error']);
         }
 
     }
