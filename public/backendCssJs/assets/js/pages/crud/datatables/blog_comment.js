@@ -49,8 +49,8 @@ var KTDatatablesSearchOptionsColumnSearch = function () {
                     name: 'message'
                 },
                 {
-                    data: 'blog_slug',
-                    name: 'blog_slug'
+                    data: 'blog_id',
+                    name: 'blog_id'
                 },
                 {
                     data: 'parent_comment',
@@ -78,7 +78,7 @@ var KTDatatablesSearchOptionsColumnSearch = function () {
                         case 'Name':
                         case 'Email':
                         case 'Message':
-                        case 'Blog Slug':
+                        case 'Blog':
                         case 'Parent Comment':
                             input = $(`<input type="text" class="form-control form-control-sm form-filter datatable-input" data-col-index="` + column.index() + `"/>`);
                             break;

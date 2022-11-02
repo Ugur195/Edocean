@@ -52,10 +52,10 @@
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Blog Slug</label>
+                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Blog</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$blog_comment_edit->blog_slug}}" readonly/>
+                                                   value="{{$blog_comment_edit->blog_id}}" readonly/>
                                         </div>
                                     </div>
 

@@ -79,7 +79,7 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Message</th>
-                            <th>Blog Slug</th>
+                            <th>Blog</th>
                             <th>Parent Comment</th>
                             <th>Status</th>
                             <th>Options</th>
@@ -91,7 +91,7 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Message</th>
-                            <th>Blog Slug</th>
+                            <th>Blog</th>
                             <th>Parent Comment</th>
                             <th>Status</th>
                             <th>Options</th>

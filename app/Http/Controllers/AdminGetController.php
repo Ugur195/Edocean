@@ -274,9 +274,14 @@ class AdminGetController extends Controller
         return view('backend.blog_category');
     }
 
-    public function getBlogComment() {
-        $blog_comment = DB::table('edocean.blog_comment')->select(DB::raw("id, name, email, message, blog_slug, parent_comment,
-        (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
+    public function getBlogComment()
+    {
+        $blog_comment = DB::table('edocean.blog_comment')->select(DB::raw("edocean.blogs.title as title_name,
+        edocean.blog_comment.id, edocean.blog_comment.name,
+		edocean.blog_comment.email, edocean.blog_comment.message, edocean.blog_comment.blog_id, edocean.blog_comment.parent_comment,
+        (CASE edocean.blog_comment.status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))
+            ->leftJoin('edocean.blogs', 'edocean.blogs.id', '=', 'edocean.blog_comment.blog_id')
+            ->get();
         return DataTables::of($blog_comment)
             ->addColumn('options', function ($model) {
                 return
