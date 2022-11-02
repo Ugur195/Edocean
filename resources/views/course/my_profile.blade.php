@@ -32,7 +32,7 @@
             flex-direction: column;
         }
         .likes {
-            margin-top: -20px !important; 
+            margin-top: 5px !important; 
         }
         .status {
             margin-left: -200px;
@@ -40,8 +40,9 @@
         .status svg {
             color: #ffd300;
         }
-
-        
+        .placeholder {
+            height: 40px;
+        }        
         .fas {
             color: #ffd300;
         }
@@ -101,7 +102,6 @@
                                             </div>
                                         </div>
                                         <div class="form__item col-sm"> 
-                                            <p>
                                                 <div class="placeholder" style="color: lightgray;">
                                                     <i class="far fa-star"></i>
                                                     <i class="far fa-star"></i>
@@ -109,21 +109,21 @@
                                                     <i class="far fa-star"></i>
                                                     <i class="far fa-star"></i>
                                                     <span class="small">({{ $course->rating }})</span>
+
+                                                    <div class="overlay" style="position: relative;top: -22px;">
+                                                    
+                                                        @while($course->rating>0)
+                                                            @if($course->rating >0.5)
+                                                                <i class="fas fa-star"></i>
+                                                            @else
+                                                                <i class="fas fa-star-half"></i>
+                                                            @endif
+                                                            @php $course->rating--; @endphp
+                                                        @endwhile
+                                            
+                                                    </div> 
                                                 </div>
                                         
-                                                <div class="overlay" style="position: relative;top: -22px;">
-                                                    
-                                                    @while($course->rating>0)
-                                                        @if($course->rating >0.5)
-                                                            <i class="fas fa-star"></i>
-                                                        @else
-                                                            <i class="fas fa-star-half"></i>
-                                                        @endif
-                                                        @php $course->rating--; @endphp
-                                                    @endwhile
-                                        
-                                                </div> 
-                                            </p>
                                             <div class="likes">
                                                 <span>{{ $course->likes }}</span>
                                                 <i style="color: green; vertical-align: -5px; font-size:30px; padding-right: 20px;" class="la la-thumbs-up"></i>

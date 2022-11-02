@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AboutUs;
 use App\Models\Admin;
 use App\Models\BlogCategory;
+use App\Models\BlogComment;
 use App\Models\Blogs;
 use App\Models\ContactUs;
 use App\Models\Course;
@@ -273,8 +274,25 @@ class AdminGetController extends Controller
         return view('backend.blog_category');
     }
 
+    public function getBlogComment() {
+        $blog_comment = DB::table('edocean.blog_comment')->select(DB::raw("id, name, email, message, blog_slug, parent_comment,
+        (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
+        return DataTables::of($blog_comment)
+            ->addColumn('options', function ($model) {
+                return
+                    '<a class="btn btn-xs btn-primary" href="' . route('admin.backend.blog_comment_edit', $model->id) . '" ><i class="la la-pencil-square-o"></i></a>
+			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger" ><i class="la la-trash"></i></button>';
+            })->rawColumns(['options' => true])->make(true);
+    }
 
-    public function BlogsComment()
+    public function BlogCommentEdit($id)
+    {
+        $blog_comment = BlogComment::all();
+        $blog_comment_edit = BlogComment::where('id', $id)->first();
+        return view('backend.blog_comment_edit')->with(['blog_comment' => $blog_comment, 'blog_comment_edit' => $blog_comment_edit]);
+    }
+
+    public function BlogComment()
     {
         return view('backend.blog_comment');
     }
