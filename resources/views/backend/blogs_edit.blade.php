@@ -74,7 +74,7 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Author</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input  class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$blogs_edit->author}}" readonly/>
+                                                   value="{{\App\Models\User::find($blogs_edit->author)->name}}" readonly/>
                                         </div>
                                     </div>
 
@@ -83,7 +83,7 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Category</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$blogs_edit->category}}" readonly/>
+                                                   value="{{\App\Models\BlogCategory::find($blogs_edit->category)->name}}" readonly/>
                                         </div>
                                     </div>
 
