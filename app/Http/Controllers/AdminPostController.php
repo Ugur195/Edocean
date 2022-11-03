@@ -184,7 +184,7 @@ class AdminPostController extends Controller
     public function BlogCategoryDelete(Request $request)
     {
         try {
-            BlogCategory::where('id', $request->id)->delete();
+            $blog_category = BlogCategory::where('id', $request->id)->delete();
             Blogs::where('category', $request->id)->delete();
             BlogComment::where('blog_id', $request->id)->delete();
             return response(['title' => 'Ugurlu!', 'message' => 'Our Team Role Silindi', 'status' => 'success']);

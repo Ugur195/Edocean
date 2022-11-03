@@ -247,7 +247,7 @@ class AdminGetController extends Controller
         return view('backend.blogs');
     }
 
-    public function BlogsAdd() {
+    public function AddBlogs() {
         return view('backend.blogs_add');
     }
 
