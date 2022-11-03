@@ -41,9 +41,10 @@
                                             <div class="image-input image-input-outline" id="kt_contacts_edit_avatar"
                                                  style="background-image: url(assets/media/users/blank.png)">
 
-                                                <div class="image-input-wrapper"
-                                                     style="background-image: url('data:image/jpeg;base64,')">
-                                                </div>
+{{--                                                <div class="image-input-wrapper"--}}
+{{--                                                     style="background-image: url('data:image/jpeg;base64,{{base64_encode($blogs->image)}}')">--}}
+{{--                                                </div>--}}
+
                                                 <label
                                                     class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
                                                     data-action="change" data-toggle="tooltip" title=""

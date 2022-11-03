@@ -67,7 +67,7 @@
                             <!--end::Dropdown-->
                             <!--begin::Button-->
                             <a href="{{ route('BlogsAdd') }}" class="btn btn-primary font-weight-bolder">
-                                <i class="la la-plus"></i>New Record</a>
+                                <i class="la la-plus"></i>Add Blog</a>
                             <!--end::Button-->
                         </div>
                     </div>
