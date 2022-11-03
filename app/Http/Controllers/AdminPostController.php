@@ -12,7 +12,9 @@ use App\Models\Course;
 use App\Models\Setting;
 use App\Models\Student;
 use App\Models\Teacher;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use PharIo\Version\Exception;
 
@@ -104,27 +106,27 @@ class AdminPostController extends Controller
     }
 
 
-    public function StudentsBlockUnblockDelete(Request $request)
+    public function blogssBlockUnblockDelete(Request $request)
     {
         try {
             if ($request->btn_block != null) {
                 if ($request->status == 0) {
-                    Student::find($request->id)->update(['status' => 1]);
-                    return response(['title' => 'Ugurlu!', 'message' => 'Student blokdan cixdi!', 'status' => 'success']);
+                    blogs::find($request->id)->update(['status' => 1]);
+                    return response(['title' => 'Ugurlu!', 'message' => 'blogs blokdan cixdi!', 'status' => 'success']);
                 } else if ($request->status == 1) {
-                    Student::find($request->id)->update(['status' => 0]);
-                    return response(['title' => 'Ugurlu!', 'message' => 'Student bloklandi!', 'status' => 'success']);
+                    blogs::find($request->id)->update(['status' => 0]);
+                    return response(['title' => 'Ugurlu!', 'message' => 'blogs bloklandi!', 'status' => 'success']);
                 } else {
-                    return response(['title' => 'Ugursuz!', 'message' => 'Studenti bloklamaq mumkun olmadi!', 'status' => 'error']);
+                    return response(['title' => 'Ugursuz!', 'message' => 'blogsi bloklamaq mumkun olmadi!', 'status' => 'error']);
                 }
             } else if ($request->btn_delete != null) {
-                Student::where('id', $request->id)->delete();
-                return response(['title' => 'Ugurlu!', 'message' => 'Student ugurlu silindi!', 'status' => 'success']);
+                blogs::where('id', $request->id)->delete();
+                return response(['title' => 'Ugurlu!', 'message' => 'blogs ugurlu silindi!', 'status' => 'success']);
             } else {
-                return response(['title' => 'Ugursuz!', 'message' => 'Studenti silmek mumkun olmadi!', 'status' => 'error']);
+                return response(['title' => 'Ugursuz!', 'message' => 'blogsi silmek mumkun olmadi!', 'status' => 'error']);
             }
         } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => 'Studenti silmek olmur!', 'status' => 'error']);
+            return response(['title' => 'Ugursuz!', 'message' => 'blogsi silmek olmur!', 'status' => 'error']);
         }
     }
 
@@ -203,6 +205,38 @@ class AdminPostController extends Controller
             return response(['title' => 'Ugursuz!', 'message' => 'Blogu silmek olmur!', 'status' => 'error']);
         }
 
+    }
+
+    public function BlogsAdd(Request $request)
+    {
+
+        $blogs= Blogs::where('title', $request->title)->first();
+        if ($blogs == null) {
+            $image = null;
+            if (isset($request->image)) {
+                $image = file_get_contents($request->file('image')->getRealPath());
+            }
+            $blogs = new Blogs();
+            $blogs->image = $image;
+            $blogs->title = $request->title;
+            $blogs->title_ru = $request->title_ru;
+            $blogs->title_en = $request->title_en;
+            $blogs->message = $request->message;
+            $blogs->message_ru = $request->message_ru;
+            $blogs->message_en = $request->message_en;
+            $blogs->author = Auth::user()->id;
+            $blogs->category = $request->blog_category;
+            $blogs->slug = $request->title;
+            $blogs->status = 1;
+            $blogs->likes = 0;
+            $blogs->dislike = 0;
+            $blogs->see_count = 0;
+            $blogs->save();
+            return response(['title' => 'Ugurlu!', 'message' => 'Yeni Blog Yaradildi', 'status' => 'success']);
+       }
+       else {
+            return response(['title' => 'Ugursuz!', 'message' => 'Yeni Blog yaratmaq mumkun olmadi!', 'status' => 'error']);
+       }
     }
 
 

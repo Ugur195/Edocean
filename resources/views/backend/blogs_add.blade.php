@@ -31,7 +31,7 @@
                         <div class="tab-content pt-5">
                             <!--begin::Tab Content-->
                             <div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
-                                <form id="mySetting" class="form" method="POST">
+                                <form id="mySetting" class="form" method="POST" enctype="multipart/form-data">
                                     {{csrf_field()}}
                                     <div class="col-xl-3"></div>
 
@@ -42,7 +42,7 @@
                                                  style="background-image: url(assets/media/users/blank.png)">
 
                                                 <div class="image-input-wrapper"
-                                                     style="background-image: url('data:image/jpeg;base64')">
+                                                     name="image" style="background-image: url('data:image/jpeg;base64')">
                                                 </div>
                                                 <label
                                                     class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -66,14 +66,47 @@
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Title</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" placeholder="Blog Name" type="text" value=""/>
+                                            <input class="form-control form-control-lg form-control-solid" placeholder="Blog Name" name="title" type="text" value=""/>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Title RU</label>
+                                        <div class="col-lg-9 col-xl-6">
+                                            <input class="form-control form-control-lg form-control-solid" placeholder="Blog Name" name="title_ru" type="text" value=""/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Title EN</label>
+                                        <div class="col-lg-9 col-xl-6">
+                                            <input class="form-control form-control-lg form-control-solid" placeholder="Blog Name" name="title_en" type="text" value=""/>
+                                        </div>
+                                    </div>
+                                    
+
+                                    <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Message</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <textarea rows='1' name="about_course" type="text"
+                                            <textarea rows='1' name="message" type="text"
+                                                  class="form-control form-control-lg form-control-solid" placeholder="Write a short description of the course"
+                                                  value=""></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Message RU</label>
+                                        <div class="col-lg-9 col-xl-6">
+                                            <textarea rows='1' name="message_ru" type="text"
+                                                  class="form-control form-control-lg form-control-solid" placeholder="Write a short description of the course"
+                                                  value=""></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Message EN</label>
+                                        <div class="col-lg-9 col-xl-6">
+                                            <textarea rows='1' name="message_en" type="text"
                                                   class="form-control form-control-lg form-control-solid" placeholder="Write a short description of the course"
                                                   value=""></textarea>
                                         </div>
@@ -82,7 +115,7 @@
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Author</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input  class="form-control form-control-lg form-control-solid" type="text" value="{{ Auth::user()->name }}"/>
+                                            <input  class="form-control form-control-lg form-control-solid" name="author" type="text" value="{{ Auth::user()->name }}"/>
                                         </div>
                                     </div>
 
@@ -90,10 +123,10 @@
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Category</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <select class="form-control  form-control-solid" id="category" name="category">
+                                            <select class="form-control  form-control-solid" id="category" name="blog_category">
                                                 <option value="0" selected disabled>Select a Category</option>
                                                 @foreach ($blog_category as $category)
-                                                    <option value="">{{$category->name}}</option>
+                                                    <option value="{{$category->id}}">{{$category->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
