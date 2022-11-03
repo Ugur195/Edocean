@@ -1,6 +1,15 @@
 @extends('backend.app')
 @section('css')
     <link rel="stylesheet" href="{{asset('cssValidate/sweetalert2.css')}}"/>
+
+    <style> 
+        textarea {
+        overflow: hidden;
+        padding: 10px;
+        border: 1px solid #556677;
+        min-height: 100px;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -33,7 +42,7 @@
                                                  style="background-image: url(assets/media/users/blank.png)">
 
                                                 <div class="image-input-wrapper"
-                                                     style="background-image: url('data:image/jpeg;base64,{{base64_encode($blogs_edit->image)}}')">
+                                                     style="background-image: url('data:image/jpeg;base64')">
                                                 </div>
                                                 <label
                                                     class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -57,21 +66,23 @@
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Title</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" type="text" value=""/>
+                                            <input class="form-control form-control-lg form-control-solid" placeholder="Blog Name" type="text" value=""/>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Message</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" type="text" value=""/>
+                                            <textarea rows='1' name="about_course" type="text"
+                                                  class="form-control form-control-lg form-control-solid" placeholder="Write a short description of the course"
+                                                  value=""></textarea>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Author</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input  class="form-control form-control-lg form-control-solid" type="text" value=""/>
+                                            <input  class="form-control form-control-lg form-control-solid" type="text" value="{{ Auth::user()->name }}"/>
                                         </div>
                                     </div>
 
@@ -79,29 +90,12 @@
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Category</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" type="text" value=""/>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Likes</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" type="text" value=""/>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Dislike</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" type="text" value=""/>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">See Count</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" type="text" value=""/>
+                                            <select class="form-control  form-control-solid" id="category" name="category">
+                                                <option value="0" selected disabled>Select a Category</option>
+                                                @foreach ($blog_category as $category)
+                                                    <option value="">{{$category->name}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
 
@@ -115,13 +109,13 @@
                                                 <div class="mr-2">
                                                 </div>
                                                 <div>
-                                                    <a href="{{url('backend/blogs')}}" type="button"
+                                                    <a href="{{url('admin/blogs')}}" type="button"
                                                        class="btn btn-success font-weight-bolder text-uppercase px-9 py-4"
                                                        data-wizard-type="action-submit">Back
                                                     </a>
                                                     <button
                                                         class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4"
-                                                        data-wizard-type="action-next">Update
+                                                        data-wizard-type="action-next">Create
                                                     </button>
 
                                                 </div>
@@ -139,6 +133,20 @@
 @endsection
 
 @section('js')
+    <script src="{{asset('backendCssJs/assets/js/pages/custom/contacts/edit-contact.js')}}"></script>
+    <script src="{{asset('jsValidate/jquery.form.js')}}"></script>
 
+
+    <script>
+        const textarea = document.querySelector('textarea');
+
+        textarea.addEventListener('input', autosize);
+
+        function autosize() {
+            this.style.height = 'auto';
+            let applyNow = this.style.offsetHeight;
+            this.style.height = this.scrollHeight - 20 + 'px';
+        }
+    </script>
 @endsection
 
