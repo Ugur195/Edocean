@@ -248,8 +248,9 @@ class AdminGetController extends Controller
     }
 
     public function AddBlogs() {
+        $blogs = Blogs::all();
         $blog_category = BlogCategory::where('status', 1)->get();
-        return view('backend.blogs_add')->with(['blog_category' => $blog_category]);
+        return view('backend.blogs_add')->with(['blog_category' => $blog_category, 'blogs' => $blogs]);
     }
 
 

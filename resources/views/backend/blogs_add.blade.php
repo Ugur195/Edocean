@@ -42,7 +42,7 @@
                                                  style="background-image: url(assets/media/users/blank.png)">
 
                                                 <div class="image-input-wrapper"
-                                                     name="image" style="background-image: url('data:image/jpeg;base64')">
+                                                    style="background-image: url('data:image/jpeg;base64,{{base64_encode($blogs->image)}}')">
                                                 </div>
                                                 <label
                                                     class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
