@@ -4,10 +4,10 @@
 
     <style>
         textarea {
-        overflow: hidden;
-        padding: 10px;
-        border: 1px solid #556677;
-        min-height: 100px;
+            overflow: hidden;
+            padding: 10px;
+            border: 1px solid #556677;
+            min-height: 100px;
         }
     </style>
 @endsection
@@ -42,14 +42,14 @@
                                                  style="background-image: url(assets/media/users/blank.png)">
 
                                                 <div class="image-input-wrapper"
-                                                    style="background-image: url('data:image/jpeg;base64,{{base64_encode($blogs->image)}}')">
+                                                     style="background-image: url('data:image/jpeg;base64,')">
                                                 </div>
                                                 <label
                                                     class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
                                                     data-action="change" data-toggle="tooltip" title=""
                                                     data-original-title="Change avatar">
                                                     <i class="fa fa-pen icon-sm text-muted"></i>
-                                                    <input type="file" name="logo" id="file" accept=".png, .jpg, .jpeg"/>
+                                                    <input type="file" name="image" id="file" accept=".png, .jpg, .jpeg"/>
                                                     <input type="hidden" name="profile_avatar_remove"/>
                                                 </label>
 
