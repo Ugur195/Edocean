@@ -247,6 +247,10 @@ class AdminGetController extends Controller
         return view('backend.blogs');
     }
 
+    public function BlogsAdd() {
+        return view('backend.blogs_add');
+    }
+
 
     public function getBlogCategory()
     {

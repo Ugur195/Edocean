@@ -59,6 +59,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'Admin'], function () {
     Route::get('/course', [AdminGetController::class, 'Course'])->name('AdminCourse');
     Route::get('/course_edit/{id}', [AdminGetController::class, 'CourseEdit'])->name('admin.backend.course_edit');
     Route::get('/blogs', [AdminGetController::class, 'Blogs'])->name('AdminBlogs');
+    Route::get('/blogs_add', [AdminGetController::class], 'BlogsAdd')->name('BlogsAdd');
     Route::get('/blogs_edit/{id}', [AdminGetController::class, 'BlogsEdit'])->name('admin.backend.blogs_edit');
     Route::get('/blog_comment', [AdminGetController::class, 'BlogComment'])->name('AdminBlogComment');
     Route::get('/blog_category', [AdminGetController::class, 'BlogCategory'])->name('AdminBlogCategory');
