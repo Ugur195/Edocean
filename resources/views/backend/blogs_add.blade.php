@@ -2,7 +2,7 @@
 @section('css')
     <link rel="stylesheet" href="{{asset('cssValidate/sweetalert2.css')}}"/>
 
-    <style> 
+    <style>
         textarea {
         overflow: hidden;
         padding: 10px;
@@ -83,7 +83,7 @@
                                             <input class="form-control form-control-lg form-control-solid" placeholder="Blog Name" name="title_en" type="text" value=""/>
                                         </div>
                                     </div>
-                                    
+
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Message</label>

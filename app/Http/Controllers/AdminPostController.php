@@ -210,7 +210,7 @@ class AdminPostController extends Controller
     public function BlogsAdd(Request $request)
     {
 
-        $blogs= Blogs::where('title', $request->title)->first();
+        $blogs = Blogs::where('title', $request->title)->first();
         if ($blogs == null) {
             $image = null;
             if (isset($request->image)) {
@@ -233,10 +233,9 @@ class AdminPostController extends Controller
             $blogs->see_count = 0;
             $blogs->save();
             return response(['title' => 'Ugurlu!', 'message' => 'Yeni Blog Yaradildi', 'status' => 'success']);
-       }
-       else {
+        } else {
             return response(['title' => 'Ugursuz!', 'message' => 'Yeni Blog yaratmaq mumkun olmadi!', 'status' => 'error']);
-       }
+        }
     }
 
 
