@@ -181,5 +181,7 @@
             this.style.height = this.scrollHeight - 20 + 'px';
         }
     </script>
+
+    @include('sweetalert::alert')
 @endsection
 

@@ -16,6 +16,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use RealRashid\SweetAlert\Facades\Alert;
 use PharIo\Version\Exception;
 
 class AdminPostController extends Controller
@@ -236,9 +237,11 @@ class AdminPostController extends Controller
             $blogs->dislike = 0;
             $blogs->see_count = 0;
             $blogs->save();
-            return response(['title' => 'Ugurlu!', 'message' => 'Yeni Blog Yaradildi', 'status' => 'success']);
+            Alert::success('Success Title', 'Success Message');
+            return redirect('/admin/blogs');
         } else {
-            return response(['title' => 'Ugursuz!', 'message' => 'Yeni Blog yaratmaq mumkun olmadi!', 'status' => 'error']);
+            Alert::error('Error Title', 'Error Message');
+            return redirect('/admin/blogs');
         }
     }
 
