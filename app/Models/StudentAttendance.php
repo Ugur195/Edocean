@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class StudentAttendance extends Model
 {
     protected $table = 'edocean.student_attendance';
-    protected $fillable = ['id', 'student_id', 'subject_id', 'attendance', 'status', 'created_at', 'updated_at'];
+    protected $fillable = ['id', 'student_id', 'subject_id', 'attendance', 'status'];
 }

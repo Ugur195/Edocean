@@ -85,6 +85,7 @@ class AdminGetController extends Controller
                 return "<img style='display:block;width:80px;height:60px;' src='data:image/jpeg;base64," . base64_encode($model->image) . "'/>";
             })
             ->addColumn('options', function ($model) {
+
                 $return = '<a class="btn btn-xs btn-primary" href="' . route('admin.backend.teacher_edit', $model->id) . '" ><i class="la la-user"></i></a>
 			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger mr-1" ><i class="la la-trash"></i></button>';
                 if ($model->st == 0) {
@@ -123,10 +124,10 @@ class AdminGetController extends Controller
                 $return = '<a class="btn btn-xs btn-primary" href="' . route('admin.backend.student_edit', $model->id) . '" ><i class="la la-user"></i></a>
 			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger" ><i class="la la-trash"></i></button>';
                 if ($model->st == 0) {
-                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-success mt-1"  name="btn_blok"
+                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-success"  name="btn_blok"
                                         value="btn_blok" ><i class="la la-check"></i></button>';
                 } else if ($model->st == 1) {
-                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-dark mt-1" name="btn_unblok"  value="btn_unblok" ><i class="la la-close"></i></button>';
+                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-dark" name="btn_unblok"  value="btn_unblok" ><i class="la la-close"></i></button>';
                 }
                 return $return;
 
@@ -218,7 +219,8 @@ class AdminGetController extends Controller
 //        dd(User::find(55));
         $blogs = DB::table('edocean.blogs')->select(DB::raw("edocean.users.name as username, edocean.blog_category.name as bg_name,
          edocean.blogs.id, edocean.blogs.image,edocean.blogs.title,
-        edocean.blogs.message,edocean.blogs.author,edocean.blogs.category,edocean.blogs.likes,edocean.blogs.dislike,edocean.blogs.see_count, edocean.blogs.status as st,
+        edocean.blogs.message,edocean.blogs.author,edocean.blogs.category,edocean.blogs.likes,edocean.blogs.dislike,edocean.blogs.see_count,
+         edocean.blogs.status as st,
         (CASE edocean.blogs.status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))
             ->leftJoin('edocean.users', 'edocean.users.id', '=', 'edocean.blogs.author')
             ->leftJoin('edocean.blog_category', 'edocean.blog_category.id', '=', 'edocean.blogs.category')

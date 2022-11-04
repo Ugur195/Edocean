@@ -78,7 +78,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'Admin'], function () {
     Route::post('/teacher', [AdminPostController::class, 'TeachersBlockUnblockDelete']);
     Route::post('/student', [AdminPostController::class, 'StudentsBlockUnblockDelete']);
     Route::post('/course', [AdminPostController::class, 'CoursesDelete']);
-    Route::post('/blogs', [AdminPostController::class, 'BlogsDelete']);
     Route::post('/blogs_add', [AdminPostController::class, 'BlogsAdd']);
     Route::post('/blog_category', [AdminPostController::class, 'BlogCategoryDelete']);
     Route::post('/add_blog_category', [AdminPostController::class, 'AddBlogCategory']);
@@ -133,3 +132,4 @@ Route::group(['prefix' => 'admin/course'], function () {
 
 Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+

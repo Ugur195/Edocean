@@ -127,7 +127,7 @@
             if (status == 0) {
                 title = 'Blokdan cixartmaq Isteyirsinizmi?';
                 text = 'Unblock etdikden sonra Blok etmek mumkundu!';
-                icon = 'info';
+                icon = 'warning';
                 confBtnText = 'Blokdan cixart';
             } else if (status == 1) {
                 title = 'Blok etmek Isteyirsinizmi?';
@@ -168,7 +168,7 @@
                             if (response.status === 'success') {
                                 setTimeout(function () {
                                     window.location.href = '/admin/blogs';
-                                }, 500)
+                                }, 1000)
                             }
 
                         }
@@ -198,7 +198,9 @@
                         url: '',
                         data: {
                             'id': id,
+                            'btn_delete': 'btn_delete',
                             '_token': CSRF_TOKEN
+
                         },
 
                         success: function (response) {
@@ -214,7 +216,7 @@
                             if (response.status === 'success') {
                                 setTimeout(function () {
                                     window.location.href = '/admin/blogs';
-                                }, 500)
+                                }, 1000)
                             }
 
                         }
@@ -222,7 +224,6 @@
                 }
             })
         }
-
     </script>
 @endsection
 

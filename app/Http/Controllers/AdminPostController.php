@@ -123,6 +123,7 @@ class AdminPostController extends Controller
                 }
             } else if ($request->btn_delete != null) {
                 Blogs::where('id', $request->id)->delete();
+                BlogComment::where('blog_id', $request->id)->delete();
                 return response(['title' => 'Ugurlu!', 'message' => 'Blogs ugurlu silindi!', 'status' => 'success']);
             } else {
                 return response(['title' => 'Ugursuz!', 'message' => 'Blogsi silmek mumkun olmadi!', 'status' => 'error']);
