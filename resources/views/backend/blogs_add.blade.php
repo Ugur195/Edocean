@@ -88,7 +88,7 @@
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Message</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <textarea rows='1' name="message" type="text"
+                                            <textarea onkeyup="textAreaAdjust(this)" rows='1' name="message" type="text"
                                                   class="form-control form-control-lg form-control-solid" placeholder="Write a short description of the course"
                                                   value=""></textarea>
                                         </div>
@@ -97,7 +97,7 @@
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Message RU</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <textarea rows='1' name="message_ru" type="text"
+                                            <textarea onkeyup="textAreaAdjust(this)" rows='1' name="message_ru" type="text"
                                                   class="form-control form-control-lg form-control-solid" placeholder="Write a short description of the course"
                                                   value=""></textarea>
                                         </div>
@@ -106,7 +106,7 @@
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Message EN</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <textarea rows='1' name="message_en" type="text"
+                                            <textarea onkeyup="textAreaAdjust(this)" rows='1' name="message_en" type="text"
                                                   class="form-control form-control-lg form-control-solid" placeholder="Write a short description of the course"
                                                   value=""></textarea>
                                         </div>
@@ -171,14 +171,9 @@
 
 
     <script>
-        const textarea = document.querySelector('textarea');
-
-        textarea.addEventListener('input', autosize);
-
-        function autosize() {
-            this.style.height = 'auto';
-            let applyNow = this.style.offsetHeight;
-            this.style.height = this.scrollHeight - 20 + 'px';
+        function textAreaAdjust(element) {
+            element.style.height = "1px";
+            element.style.height = (25+element.scrollHeight)+"px";
         }
     </script>
     <script>
