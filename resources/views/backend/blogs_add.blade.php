@@ -21,7 +21,8 @@
                         <div class="card-toolbar">
                             <div class="d-flex align-items-center flex-wrap mr-2">
                                 <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">New Blog</h5>
-                                <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
+                                <div
+                                    class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
                             </div>
 
                         </div>
@@ -49,7 +50,8 @@
                                                     data-action="change" data-toggle="tooltip" title=""
                                                     data-original-title="Change avatar">
                                                     <i class="fa fa-pen icon-sm text-muted"></i>
-                                                    <input type="file" name="image" id="file" accept=".png, .jpg, .jpeg"/>
+                                                    <input type="file" name="image" id="file"
+                                                           accept=".png, .png(), .jpg, .jpg(), .jpeg, .jpeg()"/>
                                                     <input type="hidden" name="profile_avatar_remove"/>
                                                 </label>
 
@@ -66,21 +68,24 @@
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Title</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" placeholder="Blog Name" name="title" type="text" value=""/>
+                                            <input class="form-control form-control-lg form-control-solid"
+                                                   placeholder="Blog Name" name="title" type="text" value=""/>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Title RU</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" placeholder="Blog Name" name="title_ru" type="text" value=""/>
+                                            <input class="form-control form-control-lg form-control-solid"
+                                                   placeholder="Blog Name" name="title_ru" type="text" value=""/>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Title EN</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" placeholder="Blog Name" name="title_en" type="text" value=""/>
+                                            <input class="form-control form-control-lg form-control-solid"
+                                                   placeholder="Blog Name" name="title_en" type="text" value=""/>
                                         </div>
                                     </div>
 
@@ -89,33 +94,39 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Message</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <textarea onkeyup="textAreaAdjust(this)" rows='1' name="message" type="text"
-                                                  class="form-control form-control-lg form-control-solid" placeholder="Write a short description of the course"
-                                                  value=""></textarea>
+                                                      class="form-control form-control-lg form-control-solid"
+                                                      placeholder="Write a short description of the course"
+                                                      value=""></textarea>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Message RU</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <textarea onkeyup="textAreaAdjust(this)" rows='1' name="message_ru" type="text"
-                                                  class="form-control form-control-lg form-control-solid" placeholder="Write a short description of the course"
-                                                  value=""></textarea>
+                                            <textarea onkeyup="textAreaAdjust(this)" rows='1' name="message_ru"
+                                                      type="text"
+                                                      class="form-control form-control-lg form-control-solid"
+                                                      placeholder="Write a short description of the course"
+                                                      value=""></textarea>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Message EN</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <textarea onkeyup="textAreaAdjust(this)" rows='1' name="message_en" type="text"
-                                                  class="form-control form-control-lg form-control-solid" placeholder="Write a short description of the course"
-                                                  value=""></textarea>
+                                            <textarea onkeyup="textAreaAdjust(this)" rows='1' name="message_en"
+                                                      type="text"
+                                                      class="form-control form-control-lg form-control-solid"
+                                                      placeholder="Write a short description of the course"
+                                                      value=""></textarea>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Author</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input  readonly class="form-control form-control-lg form-control-solid" name="author" type="text" value="{{ Auth::user()->name }}"/>
+                                            <input readonly class="form-control form-control-lg form-control-solid"
+                                                   name="author" type="text" value="{{ Auth::user()->name }}"/>
                                         </div>
                                     </div>
 
@@ -123,7 +134,8 @@
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Category</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <select class="form-control  form-control-solid" id="category" name="blog_category">
+                                            <select class="form-control  form-control-solid" id="category"
+                                                    name="blog_category">
                                                 <option value="0" selected disabled>Select a Category</option>
                                                 @foreach ($blog_category as $category)
                                                     <option value="{{$category->id}}">{{$category->name}}</option>
@@ -173,7 +185,7 @@
     <script>
         function textAreaAdjust(element) {
             element.style.height = "1px";
-            element.style.height = (25+element.scrollHeight)+"px";
+            element.style.height = (25 + element.scrollHeight) + "px";
         }
     </script>
     <script>
