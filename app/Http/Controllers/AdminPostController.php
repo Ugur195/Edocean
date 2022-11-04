@@ -201,6 +201,20 @@ class AdminPostController extends Controller
 
     }
 
+    public function AddBlogCategory(Request $request) {
+        $blog_category = BlogCategory::where('name', $request->name)->first();
+        if ($blog_category == null) {
+            $blog_category = new BlogCategory();
+            $blog_category->name = $request->name; 
+            $blog_category->slug = $request->name;
+            $blog_category->status = 1;
+            $blog_category->save();
+            return response(['title' => 'Ugurlu!', 'message' => 'Yeni Blog Category elave edildi!', 'status' => 'success']);
+        } else {
+            return response(['title' => 'Ugursuz!', 'message' => 'Yeni Blog Category elave etmek mumkun olmadi', 'status' => 'error']);
+        }
+    }
+
     public function BlogsDelete(Request $request)
     {
         try {

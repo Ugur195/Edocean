@@ -266,6 +266,10 @@ class AdminGetController extends Controller
             })->rawColumns(['options' => true])->make(true);
     }
 
+    public function AddBlogCategory() {
+        return view('backend.add_blog_category');
+    }
+
 
     public function BlogCategoryEdit($id)
     {

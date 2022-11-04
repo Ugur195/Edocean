@@ -63,8 +63,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'Admin'], function () {
     Route::get('/blogs_edit/{id}', [AdminGetController::class, 'BlogsEdit'])->name('admin.backend.blogs_edit');
     Route::get('/blog_comment', [AdminGetController::class, 'BlogComment'])->name('AdminBlogComment');
     Route::get('/blog_category', [AdminGetController::class, 'BlogCategory'])->name('AdminBlogCategory');
-    Route::get('/blog_comment_edit/{id}', [AdminGetController::class, 'BlogCommentEdit'])->name('admin.backend.blog_comment_edit');
     Route::get('/blog_category_edit/{id}', [AdminGetController::class, 'BlogCategoryEdit'])->name('admin.backend.blog_category_edit');
+    Route::get('/add_blog_category', [AdminGetController::class, 'AddBlogCategory'])->name('AddBlogCategory');
+    Route::get('/blog_comment_edit/{id}', [AdminGetController::class, 'BlogCommentEdit'])->name('admin.backend.blog_comment_edit');
     Route::get('/admins', [AdminGetController::class, 'AdminsProject'])->name('AdminEdocean');
     Route::get('/admins_edit/{id}', [AdminGetController::class, 'AdminsEditProject'])->name('admin.backend.admins_edit');
 
@@ -79,6 +80,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'Admin'], function () {
     Route::post('/blogs', [AdminPostController::class, 'BlogsDelete']);
     Route::post('/blogs_add', [AdminPostController::class, 'BlogsAdd']);
     Route::post('/blog_category', [AdminPostController::class, 'BlogCategoryDelete']);
+    Route::post('/add_blog_category', [AdminPostController::class, 'AddBlogCategory']);
     Route::post('/admins', [AdminPostController::class, 'AdminsBlockUnblockDelete']);
     Route::post('/blog_comment', [AdminPostController::class, 'BlogCommentDelete']);
 
