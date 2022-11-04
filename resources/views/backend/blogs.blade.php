@@ -2,7 +2,6 @@
 
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('cssValidate/sweetalert2.css')}}"/>
 @endsection
 
 @section('content')

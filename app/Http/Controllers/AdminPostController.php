@@ -237,11 +237,9 @@ class AdminPostController extends Controller
             $blogs->dislike = 0;
             $blogs->see_count = 0;
             $blogs->save();
-            Alert::success('Success Title', 'Success Message');
-            return redirect('/admin/blogs');
+            return response(['title' => 'Ugurlu!', 'message' => 'Yeni Blog elave edildi!', 'status' => 'success']);
         } else {
-            Alert::error('Error Title', 'Error Message');
-            return redirect('/admin/blogs');
+            return response(['title' => 'Ugursuz!', 'message' => 'Yeni Blog elave etmek mumkun olmadi', 'status' => 'error']);
         }
     }
 

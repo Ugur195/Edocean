@@ -1,7 +1,6 @@
 @extends('backend.app')
-@section('css')
-    <link rel="stylesheet" href="{{asset('cssValidate/sweetalert2.css')}}"/>
 
+@section('css')
     <style>
         textarea {
             overflow: hidden;
@@ -31,7 +30,7 @@
                         <div class="tab-content pt-5">
                             <!--begin::Tab Content-->
                             <div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
-                                <form id="mySetting" class="form" method="POST" enctype="multipart/form-data">
+                                <form id="myAddBlog" class="form" method="POST" enctype="multipart/form-data">
                                     {{csrf_field()}}
                                     <div class="col-xl-3"></div>
 
@@ -41,9 +40,9 @@
                                             <div class="image-input image-input-outline" id="kt_contacts_edit_avatar"
                                                  style="background-image: url(assets/media/users/blank.png)">
 
-{{--                                                <div class="image-input-wrapper"--}}
-{{--                                                     style="background-image: url('data:image/jpeg;base64,{{base64_encode($blogs->image)}}')">--}}
-{{--                                                </div>--}}
+                                                <div class="image-input-wrapper"
+                                                     style="background-image: url('data:image/jpeg;base64,')">
+                                                </div>
 
                                                 <label
                                                     class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -116,7 +115,7 @@
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Author</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input  class="form-control form-control-lg form-control-solid" name="author" type="text" value="{{ Auth::user()->name }}"/>
+                                            <input  readonly class="form-control form-control-lg form-control-solid" name="author" type="text" value="{{ Auth::user()->name }}"/>
                                         </div>
                                     </div>
 
@@ -182,7 +181,29 @@
             this.style.height = this.scrollHeight - 20 + 'px';
         }
     </script>
+    <script>
+        $(document).ready(function () {
+            $('#myAddBlog').ajaxForm({
+                beforeSubmit: function () {
+                },
 
-    @include('sweetalert::alert')
+                success: function (response) {
+                    Swal.fire({
+                            title: response.title,
+                            text: response.message,
+                            icon: response.status,
+                            allowOutsideClick: false
+                        }
+                    )
+                    if (response.status === 'success') {
+                        setTimeout(function () {
+                            window.location.href = '/admin/blogs';
+                        }, 1000)
+                    }
+
+                }
+            });
+        });
+    </script>
 @endsection
 
