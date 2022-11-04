@@ -1,7 +1,6 @@
 @extends('backend.app')
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('cssValidate/sweetalert2.css')}}"/>
 @endsection
 
 @section('content')
@@ -169,7 +168,7 @@
                             if (response.status === 'success') {
                                 setTimeout(function () {
                                     window.location.href = '/admin/teacher';
-                                }, 500)
+                                }, 1000)
                             }
 
                         }
@@ -217,7 +216,7 @@
                             if (response.status === 'success') {
                                 setTimeout(function () {
                                     window.location.href = '/admin/teacher';
-                                }, 500)
+                                }, 1000)
                             }
                         }
                     })
