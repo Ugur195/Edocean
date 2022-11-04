@@ -67,7 +67,7 @@
                             <!--end::Dropdown-->
                             <!--begin::Button-->
                             <a href="{{ route('AddBlogCategory') }}" class="btn btn-primary font-weight-bolder">
-                                <i class="la la-plus"></i>New Record</a>
+                                <i class="la la-plus"></i>Add Category</a>
                             <!--end::Button-->
                         </div>
                     </div>
@@ -148,7 +148,7 @@
                             if (response.status === 'success') {
                                 setTimeout(function () {
                                     window.location.href = '/admin/blog_category';
-                                }, 500)
+                                }, 1000)
                             }
 
                         }

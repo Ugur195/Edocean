@@ -1,6 +1,5 @@
 @extends('backend.app')
 @section('css')
-    <link rel="stylesheet" href="{{asset('cssValidate/sweetalert2.css')}}"/>
 @endsection
 
 @section('content')
@@ -41,7 +40,7 @@
                                                     data-original-title="Change avatar">
                                                     <i class="fa fa-pen icon-sm text-muted"></i>
                                                     <input type="file" name="logo" id="file"
-                                                           accept=".png, .jpg, .jpeg"/>
+                                                           accept=".png, .png(), .jpg, .jpg(), .jpeg, .jpeg()"/>
                                                     <input type="hidden" name="profile_avatar_remove"/>
                                                 </label>
 

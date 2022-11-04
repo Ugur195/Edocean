@@ -15,6 +15,7 @@ use App\Models\Teacher;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
 use PharIo\Version\Exception;
@@ -187,13 +188,13 @@ class AdminPostController extends Controller
     public function BlogCategoryDelete(Request $request)
     {
         try {
-            $blogCategory = BlogCategory::find($request->id);
-            $blogs = $blogCategory->blogs;
-            foreach ($blogs as $blog) {
-                $blog->comments()->delete();
-                $blog->delete();
-            }
-            $blogCategory->delete();
+            $blogCategory = BlogCategory::with('comments')->find($request->id);
+
+            DB::transaction(function () use ($blogCategory) {
+                $blogCategory->comments()->delete();
+                $blogCategory->blogs()->delete();
+                $blogCategory->delete();
+            });
             return response(['title' => 'Ugurlu!', 'message' => 'BlogCategory ugurlu silindi!', 'status' => 'success']);
         } catch (\Exception $exception) {
             return response(['title' => 'Ugursuz!', 'message' => 'BlogCategory silmek mumkun olmadi!', 'status' => 'error']);
@@ -201,11 +202,29 @@ class AdminPostController extends Controller
 
     }
 
-    public function AddBlogCategory(Request $request) {
+    public function BlogsDelete(Request $request)
+    {
+        try {
+            $blog = Blogs::find($request->id);
+            $blog_comment = $blog->blog_comment;
+            foreach ($blog_comment as $bg) {
+                $bg->comments()->delete();
+                $blog->delete();
+            }
+            return response(['title' => 'Ugurlu!', 'message' => 'Blog Silindi', 'status' => 'success']);
+        } catch (\Exception $exception) {
+            return response(['title' => 'Ugursuz!', 'message' => 'Blogu silmek olmur!', 'status' => 'error']);
+        }
+
+    }
+
+
+    public function AddBlogCategory(Request $request)
+    {
         $blog_category = BlogCategory::where('name', $request->name)->first();
         if ($blog_category == null) {
             $blog_category = new BlogCategory();
-            $blog_category->name = $request->name; 
+            $blog_category->name = $request->name;
             $blog_category->slug = $request->name;
             $blog_category->status = 1;
             $blog_category->save();
@@ -215,16 +234,6 @@ class AdminPostController extends Controller
         }
     }
 
-    public function BlogsDelete(Request $request)
-    {
-        try {
-            Blogs::where('id', $request->id)->delete();
-            return response(['title' => 'Ugurlu!', 'message' => 'Blog Silindi', 'status' => 'success']);
-        } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => 'Blogu silmek olmur!', 'status' => 'error']);
-        }
-
-    }
 
     public function BlogsAdd(Request $request)
     {
