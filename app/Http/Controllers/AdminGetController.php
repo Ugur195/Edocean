@@ -254,7 +254,8 @@ class AdminGetController extends Controller
         return view('backend.blogs');
     }
 
-    public function AddBlogs() {
+    public function AddBlogs()
+    {
         $blogs = Blogs::all();
         $blog_category = BlogCategory::where('status', 1)->get();
         return view('backend.blogs_add')->with(['blog_category' => $blog_category, 'blogs' => $blogs]);
@@ -273,7 +274,8 @@ class AdminGetController extends Controller
             })->rawColumns(['options' => true])->make(true);
     }
 
-    public function AddBlogCategory() {
+    public function AddBlogCategory()
+    {
         return view('backend.add_blog_category');
     }
 
@@ -317,6 +319,11 @@ class AdminGetController extends Controller
     public function BlogComment()
     {
         return view('backend.blog_comment');
+    }
+
+    public function Menu()
+    {
+        return view('backend.menu');
     }
 
 }

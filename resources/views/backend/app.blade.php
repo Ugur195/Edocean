@@ -345,7 +345,6 @@
                         </li>
 
 
-
                         <li class="menu-item  @if(Request::url()==url('admin/blog_category')) menu-item-active @endif "
                             aria-haspopup="true">
                             <a href="{{url('admin/blog_category')}}" class="menu-link">
@@ -425,6 +424,42 @@
                                    </svg>
                                 </span>
                                 <span class="menu-text">Blog Comment</span>
+                            </a>
+                        </li>
+
+
+                        <li class="menu-item  @if(Request::url()==url('admin/menu')) menu-item-active @endif "
+                            aria-haspopup="true">
+                            <a href="{{url('admin/menu')}}" class="menu-link">
+                                <span class="svg-icon menu-icon">
+                                   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                        viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
+                                        xml:space="preserve" >
+                                             <g>
+	                                             <g>
+
+		                                            <rect width="237.268" height="237.268"  fill="#000000"/>
+	                                             </g>
+                                             </g>
+                                              <g>
+	                                             <g>
+		                                             <rect x="274.732" width="237.268" height="237.268"  fill="#000000"/>
+	                                             </g>
+                                              </g>
+                                               <g>
+	                                               <g>
+		                                              <rect y="274.732" width="237.268" height="237.268"  fill="#000000"/>
+	                                               </g>
+                                               </g>
+                                            <g>
+	                                           <g>
+		                                           <rect x="274.732" y="274.732" width="237.268" height="237.268"  fill="#000000"/>
+	                                            </g>
+                                            </g>
+                                   </svg>
+                                </span>
+                                <span class="menu-text">Menu</span>
                             </a>
                         </li>
 

@@ -68,6 +68,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'Admin'], function () {
     Route::get('/blog_comment_edit/{id}', [AdminGetController::class, 'BlogCommentEdit'])->name('admin.backend.blog_comment_edit');
     Route::get('/admins', [AdminGetController::class, 'AdminsProject'])->name('AdminEdocean');
     Route::get('/admins_edit/{id}', [AdminGetController::class, 'AdminsEditProject'])->name('admin.backend.admins_edit');
+    Route::get('/menu', [AdminGetController::class, 'Menu'])->name('AdminMenu');
+
 
 
     Route::post('/about_us', [AdminPostController::class, 'AboutUs']);
