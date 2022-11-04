@@ -1,7 +1,6 @@
 @extends('backend.app')
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('cssValidate/sweetalert2.css')}}"/>
 @endsection
 
 @section('content')
@@ -106,6 +105,7 @@
 @section('js')
     <script src="{{asset('backendCssJs/assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
     <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/contact_us.js')}}"></script>
+    <script src="{{asset('jsValidate/jquery.form.js')}}"></script>
 
 
     <script>
@@ -146,7 +146,7 @@
                             if (response.status === 'success') {
                                 setTimeout(function () {
                                     window.location.href = '/admin/contact_us';
-                                }, 500)
+                                }, 1000)
                             }
 
                         }

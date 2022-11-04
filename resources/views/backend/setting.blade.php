@@ -2,7 +2,6 @@
 
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('cssValidate/sweetalert2.css')}}"/>
 @endsection
 
 @section('content')
@@ -329,7 +328,7 @@
                     if (response.status === 'success') {
                         setTimeout(function () {
                             window.location.href = '/admin/setting';
-                        }, 500)
+                        }, 1000)
                     }
                 }
             });
