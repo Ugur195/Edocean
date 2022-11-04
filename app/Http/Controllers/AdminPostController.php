@@ -206,6 +206,7 @@ class AdminPostController extends Controller
     {
         try {
             Blogs::where('id', $request->id)->delete();
+            BlogComment::where('blog_id', $request->id)->delete();
             return response(['title' => 'Ugurlu!', 'message' => 'Blog Silindi', 'status' => 'success']);
         } catch (\Exception $exception) {
             return response(['title' => 'Ugursuz!', 'message' => 'Blogu silmek olmur!', 'status' => 'error']);
