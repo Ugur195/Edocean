@@ -139,7 +139,7 @@
                             aria-haspopup="true">
                             <a href="{{url('admin/index')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
-                                      <svg style="width: 20px" version="1.1" id="Capa_1"
+                                      <svg style="width: 24px" version="1.1" id="Capa_1"
                                            xmlns="http://www.w3.org/2000/svg"
                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                            viewBox="0 0 27.02 27.02"
@@ -236,7 +236,7 @@
                         <li class="menu-item   @if(Request::url()==url('admin/contact_us')) menu-item-active @endif ">
                             <a href="{{url('admin/contact_us')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
-                                        <svg
+                                        <svg style="width: 28px; height: 28px; margin-left: -5px;"
                                             xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
                                             viewBox="0 0 24 24" version="1.1">
@@ -266,8 +266,7 @@
                             aria-haspopup="true">
                             <a href="{{url('admin/teacher')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
-                                    <svg class="svg-icon" style="
-                                        width: 20px; vertical-align: middle;fill: currentColor;overflow: hidden;"
+                                    <svg class="svg-icon" style="width: 26px; margin-left: -5px; vertical-align: middle;fill: currentColor;overflow: hidden;"
                                          viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M272.128 538.752l207.36 409.472H204.736c-31.488-1.152-57.728-12.224-78.72-33.28s-32.064-47.232-33.28-78.72v-185.472c1.152-31.488 12.224-57.728 33.28-78.72s47.232-32.064
                                         78.72-33.28h67.392z m88.768-414.784c38.784-39.104 87.616-59.52 146.56-61.248 58.944 1.728
@@ -292,7 +291,7 @@
                                          xmlns="http://www.w3.org/2000/svg"
                                          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                          width="260px" height="188px"
-                                         viewBox="0 0 260 188" xml:space="preserve">
+                                         viewBox="0 0 260 188" xml:space="preserve" style="width:26px; height: 26px;">
                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <path d="M134.3,109.2L202,83.8V146c0,13.4-32.2,24.3-72,
                                             24.3S58,159.4,58,146V83.8l67.9,25.4l4.2,1.6L134.3,109.2z M130.1,98L258,50
@@ -313,7 +312,7 @@
                                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                                          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                          width="335.08px" height="335.079px" viewBox="0 0 335.08 335.079"
-                                         style="enable-background:new 0 0 335.08 335.079;"
+                                         style="enable-background:new 0 0 335.08 335.079; height:24px;"
                                          xml:space="preserve">
                                         <g>
 		                                    <path d="M311.175,115.775c-1.355-10.186-1.546-27.73,7.915-33.621c0.169-0.108,0.295-0.264,0.443-0.398
@@ -349,7 +348,7 @@
                             aria-haspopup="true">
                             <a href="{{url('admin/blog_category')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height:22px;">
                                         <g>
 		                                  <path
                                               d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z"
@@ -406,7 +405,7 @@
                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                         width="67.025px" height="67.026px" viewBox="0 0 67.025 67.026"
-                                        style="enable-background:new 0 0 67.025 67.026;"
+                                        style="enable-background:new 0 0 67.025 67.026; height:25px; width: 25px;"
                                         xml:space="preserve">
 		                                  <g>
 			                                <polygon points="41.441,29.477 44.576,31.269 50.848,27.685 41.441,22.086 "/>
@@ -434,7 +433,7 @@
                                 <span class="svg-icon menu-icon">
                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                        viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
+                                        viewBox="0 0 512 512" style="enable-background:new 0 0 512 512; height:22px;"
                                         xml:space="preserve" >
                                              <g>
 	                                             <g>
@@ -467,7 +466,7 @@
                         <li class="menu-item   @if(Request::url()==url('admin/about_us')) menu-item-active @endif">
                             <a href="{{url('admin/about_us')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
-                                        <svg style="height: 19px" xmlns="http://www.w3.org/2000/svg"
+                                        <svg style="height: 22px" xmlns="http://www.w3.org/2000/svg"
                                              xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
                                              viewBox="0 0 24 24" version="1.1">
                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -509,7 +508,7 @@
                                 <span class="svg-icon menu-icon">
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                              xmlns:xlink="http://www.w3.org/1999/xlink"
-                                             width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                             width="24px" height="24px" viewBox="0 0 24 24" version="1.1" style="width:30px; height: 30px; margin-left: -5px;">
                                           <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <rect x="0" y="0" width="24" height="24"/>
                                            <path d="M5,8.6862915 L5,5 L8.6862915,5 L11.5857864,2.10050506 L14.4852814,
