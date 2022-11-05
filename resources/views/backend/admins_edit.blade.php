@@ -56,15 +56,19 @@
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">First Name</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$admins_edit->first_name}}"/>
+                                            <input class="form-control form-control-lg form-control-solid" name="first_name" type="text"
+                                                @if ($admins_edit->first_name!== null)
+                                                    value="{{ $admins_edit->first_name }}"
+                                                @else
+                                                    value="{{$admins_edit->name}}"/>
+                                                @endif
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Last Name</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" type="text"
+                                            <input class="form-control form-control-lg form-control-solid" name="last_name" type="text"
                                                    value="{{$admins_edit->last_name}}"/>
                                         </div>
                                     </div>
@@ -72,7 +76,7 @@
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Father Name</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" type="text"
+                                            <input class="form-control form-control-lg form-control-solid" name="father_name" type="text"
                                                    value="{{$admins_edit->father_name}}"/>
                                         </div>
                                     </div>
@@ -98,7 +102,7 @@
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Email</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" type="text"
+                                            <input class="form-control form-control-lg form-control-solid" name="email" type="text"
                                                    value="{{$admins_edit->email}}"/>
                                         </div>
                                     </div>

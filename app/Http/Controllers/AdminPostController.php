@@ -238,6 +238,16 @@ class AdminPostController extends Controller
             $image = file_get_contents($request->file('image')->getRealPath());
         }
         if($admin_edit == null) {
+            Admin::creat([
+                'image' => $image,
+                'first_name' => $request->name,
+                'last_name' => $request->last_name,
+                'father_name' => $request->father_name,
+                'birthday' => $request->birthday,
+                'email' => $request->email,
+                'status' => $admin_edit->status=1,
+            ]);
+        }else {  
             $admin_edit = new Admin();
             $admin_edit->image = $image;
             $admin_edit->first_name = $request->first_name;
@@ -247,11 +257,8 @@ class AdminPostController extends Controller
             $admin_edit->email = $request->email;
             $admin_edit->status = 1;
             $admin_edit->save();
-
-            return response(['title' => 'Ugurlu!', 'message' => 'Yeni Admin elave edildi!', 'status' => 'success']);
-        } else {
-            return response(['title' => 'Ugursuz!', 'message' => 'Yeni Admin elave etmek mumkun olmadi', 'status' => 'error']);
         }
+        return back();
     }
     //finish Admin
 
