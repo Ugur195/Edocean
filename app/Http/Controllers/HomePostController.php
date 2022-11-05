@@ -15,6 +15,7 @@ use PHPUnit\Exception;
 
 class HomePostController extends Controller
 {
+    //ContactUs
     public function PostContactUs(Request $request)
     {
         try {
@@ -46,8 +47,12 @@ class HomePostController extends Controller
         }
 
     }
+    //finish ContactUs
 
 
+
+
+    //SignUp
     public function PostSignUp(Request $request)
     {
         $validate = Validator::make($request->all(), [
@@ -96,7 +101,12 @@ class HomePostController extends Controller
         }
 
     }
+    //finish SignUp
 
+
+
+
+    //SignIn
     public function PostSignIn(Request $request)
     {
         $validate = Validator::make($request->all(), [
@@ -117,4 +127,6 @@ class HomePostController extends Controller
          return response(['title' => 'Ugursuz!', 'message' => 'Daxil olmaq mumkun olmadi, sifre yalniwdir!', 'status' => 'error']);
 
     }
+    //finish SignIn
+
 }
