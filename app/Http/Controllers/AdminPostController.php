@@ -12,10 +12,12 @@ use App\Models\Course;
 use App\Models\Setting;
 use App\Models\Student;
 use App\Models\Teacher;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
 use PharIo\Version\Exception;
@@ -182,6 +184,26 @@ class AdminPostController extends Controller
             return response(['title' => 'Ugursuz!', 'message' => 'Admini silmek olmur!', 'status' => 'error']);
         }
 
+    }
+
+
+    public function AddAdmin(Request $request) {
+        $add_admin = User::where('name', $request->name)->first();
+        if ($add_admin == null) {
+            $add_admin = new User();
+            $add_admin->fin = $request->fin;
+            $add_admin->name = $request->name;
+            $add_admin->email = $request->email;
+            $add_admin->password = Hash::make($request->password);
+            $add_admin->author = 1;
+            $add_admin->slug = $request->name;
+            $add_admin->status = 1;
+
+            $add_admin->save();
+            return response(['title' => 'Ugurlu!', 'message' => 'Yeni Admin elave edildi!', 'status' => 'success']);
+        } else {
+            return response(['title' => 'Ugursuz!', 'message' => 'Yeni Admin elave etmek mumkun olmadi', 'status' => 'error']);
+        }
     }
 
 

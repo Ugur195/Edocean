@@ -177,6 +177,11 @@ class AdminGetController extends Controller
         return view('backend.admins_edit')->with(['admins' => $admins, 'admins_edit' => $admins_edit]);
     }
 
+    public function AddAdmin() {
+        $add_admin = User::all();
+        return view('backend.add_admins')->with(['add_admin' => $add_admin]);
+    }
+
     public function Course()
     {
         return view('backend.course');
