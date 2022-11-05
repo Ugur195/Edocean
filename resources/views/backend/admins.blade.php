@@ -111,8 +111,8 @@
 @endsection
 
 @section('js')
-    <script src="{{asset('backendCssJs/assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
-    <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/admins.js')}}"></script>
+    <script src="{{asset('backendCssJs/assets/plugins/custom/datatables/datatables.bundle.js?v='.time())}}"></script>
+    <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/admins.js?v='.time())}}"></script>
 
     <script>
         function blokUnblok(status, id) {

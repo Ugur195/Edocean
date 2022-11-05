@@ -150,8 +150,15 @@ class AdminGetController extends Controller
 
     public function getAdminsProject()
     {
-        $admins_project = DB::table('edocean.admin')->select(DB::raw("id,image,first_name,last_name,father_name,birthday,email,status as st,
-          (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
+        $admins_project = DB::table('edocean.users')->select(DB::raw("edocean.users.id, edocean.admin.image,
+        edocean.users.name as first_name, edocean.admin.last_name,
+        edocean.admin.father_name, edocean.admin.birthday,
+        edocean.users.email, edocean.users.status as st,
+          (CASE edocean.users.status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))
+            ->where('edocean.users.author',1)
+            ->leftJoin('edocean.admin', 'edocean.admin.user_id', '=', 'edocean.users.id')
+            ->get();
+//        dd($admins_project);
         return DataTables::of($admins_project)
             ->editColumn('image', function ($model) {
                 return "<img style='display:block;width:80px;height:60px;' src='data:image/jpeg;base64," . base64_encode($model->image) . "'/>";
@@ -223,11 +230,11 @@ class AdminGetController extends Controller
 //        dd(User::find(55));
         $blogs = DB::table('edocean.blogs')->select(DB::raw("edocean.users.name as username, edocean.blog_category.name as bg_name,
          edocean.blogs.id, edocean.blogs.image,edocean.blogs.title,
-        edocean.blogs.message,edocean.blogs.author,edocean.blogs.category,edocean.blogs.likes,edocean.blogs.dislike,edocean.blogs.see_count,
+        edocean.blogs.message,edocean.blogs.author,edocean.blogs.category_id,edocean.blogs.likes,edocean.blogs.dislike,edocean.blogs.see_count,
          edocean.blogs.status as st,
         (CASE edocean.blogs.status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))
             ->leftJoin('edocean.users', 'edocean.users.id', '=', 'edocean.blogs.author')
-            ->leftJoin('edocean.blog_category', 'edocean.blog_category.id', '=', 'edocean.blogs.category')
+            ->leftJoin('edocean.blog_category', 'edocean.blog_category.id', '=', 'edocean.blogs.category_id')
             ->get();
 //        dd($blogs);
         return DataTables::of($blogs)

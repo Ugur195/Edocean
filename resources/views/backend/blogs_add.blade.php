@@ -134,7 +134,7 @@
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Category</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <select class="form-control  form-control-solid" id="category"
+                                            <select class="form-control  form-control-solid" id="category_id"
                                                     name="blog_category">
                                                 <option value="0" selected disabled>Select a Category</option>
                                                 @foreach ($blog_category as $category)
