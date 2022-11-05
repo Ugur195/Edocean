@@ -234,42 +234,7 @@ class AdminPostController extends Controller
 
 
 
-    //Blog
-    public function BlogCategoryDelete(Request $request)
-    {
-        try {
-            $blogCategory = BlogCategory::with('comments')->find($request->id);
-
-            DB::transaction(function () use ($blogCategory) {
-                $blogCategory->comments()->delete();
-                $blogCategory->blogs()->delete();
-                $blogCategory->delete();
-            });
-            return response(['title' => 'Ugurlu!', 'message' => 'BlogCategory ugurlu silindi!', 'status' => 'success']);
-        } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => 'BlogCategory silmek mumkun olmadi!', 'status' => 'error']);
-        }
-
-    }
-
-
-
-    public function AddBlogCategory(Request $request)
-    {
-        $blog_category = BlogCategory::where('name', $request->name)->first();
-        if ($blog_category == null) {
-            $blog_category = new BlogCategory();
-            $blog_category->name = $request->name;
-            $blog_category->slug = $request->name;
-            $blog_category->status = 1;
-            $blog_category->save();
-            return response(['title' => 'Ugurlu!', 'message' => 'Yeni Blog Category elave edildi!', 'status' => 'success']);
-        } else {
-            return response(['title' => 'Ugursuz!', 'message' => 'Yeni Blog Category elave etmek mumkun olmadi', 'status' => 'error']);
-        }
-    }
-
-
+    //Blogs
     public function BlogsAdd(Request $request)
     {
 
@@ -326,8 +291,50 @@ class AdminPostController extends Controller
             return response(['title' => 'Ugursuz!', 'message' => 'Blogsi silmek olmur!', 'status' => 'error']);
         }
     }
+    //finish Blogs
 
 
+
+
+    //Blog Category
+    public function BlogCategoryDelete(Request $request)
+    {
+        try {
+            $blogCategory = BlogCategory::with('comments')->find($request->id);
+
+            DB::transaction(function () use ($blogCategory) {
+                $blogCategory->comments()->delete();
+                $blogCategory->blogs()->delete();
+                $blogCategory->delete();
+            });
+            return response(['title' => 'Ugurlu!', 'message' => 'BlogCategory ugurlu silindi!', 'status' => 'success']);
+        } catch (\Exception $exception) {
+            return response(['title' => 'Ugursuz!', 'message' => 'BlogCategory silmek mumkun olmadi!', 'status' => 'error']);
+        }
+
+    }
+
+
+    public function AddBlogCategory(Request $request)
+    {
+        $blog_category = BlogCategory::where('name', $request->name)->first();
+        if ($blog_category == null) {
+            $blog_category = new BlogCategory();
+            $blog_category->name = $request->name;
+            $blog_category->slug = $request->name;
+            $blog_category->status = 1;
+            $blog_category->save();
+            return response(['title' => 'Ugurlu!', 'message' => 'Yeni Blog Category elave edildi!', 'status' => 'success']);
+        } else {
+            return response(['title' => 'Ugursuz!', 'message' => 'Yeni Blog Category elave etmek mumkun olmadi', 'status' => 'error']);
+        }
+    }
+    // finish BlogCategory
+
+
+
+
+    //BlogComment
     public function BlogCommentDelete(Request $request)
     {
         try {
@@ -337,6 +344,6 @@ class AdminPostController extends Controller
             return response(['title' => 'Ugursuz!', 'message' => 'BlogCommenti silmek olmur!', 'status' => 'error']);
         }
     }
-    //finish Blogs
+    //finish BlogComment
 
 }

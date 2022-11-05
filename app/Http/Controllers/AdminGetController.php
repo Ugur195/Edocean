@@ -20,43 +20,39 @@ use Yajra\DataTables\DataTables;
 
 class AdminGetController extends Controller
 {
+    //HOME
     public function home()
     {
         return view('backend.index');
     }
+    //finish Home
 
-    public function Admins()
-    {
-        return view('backend.admins');
-    }
 
-    public function ContactUs()
-    {
-        return view('backend.contact_us');
-    }
 
+    //Setting
     public function Setting()
     {
         $setting = Setting::find(1);
         return view('backend.setting')->with(['setting' => $setting]);
     }
+    //finish Setting
 
+
+    //AboutUs
     public function AboutUs()
     {
         $about_us = AboutUs::find(1);
         return view('backend.about_us')->with(['about_us' => $about_us]);
     }
+    //finish AboutUs
 
-    public function MessagesEdit($id)
+
+
+    //ContactUs/Messages
+    public function ContactUs()
     {
-        $contact_us = ContactUs::all();
-        $messages_edit = ContactUs::where('id', $id)->first();
-        if ($messages_edit->read_unread == 0) {
-            ContactUs::where('id', $id)->update(['read_unread' => 1]);
-        }
-        return view('backend.messages_edit')->with(['contact_us' => $contact_us, 'messages_edit' => $messages_edit]);
+        return view('backend.contact_us');
     }
-
 
     public function getContactUs()
     {
@@ -71,11 +67,81 @@ class AdminGetController extends Controller
             })->rawColumns(['options' => true])->make(true);
     }
 
+    public function MessagesEdit($id)
+    {
+        $contact_us = ContactUs::all();
+        $messages_edit = ContactUs::where('id', $id)->first();
+        if ($messages_edit->read_unread == 0) {
+            ContactUs::where('id', $id)->update(['read_unread' => 1]);
+        }
+        return view('backend.messages_edit')->with(['contact_us' => $contact_us, 'messages_edit' => $messages_edit]);
+    }
+    //finish ContactUs/Messages
+
+
+
+    //Admin
+    public function Admins()
+    {
+        return view('backend.admins');
+    }
+
+    public function AdminsProject()
+    {
+        return view('backend.admins');
+    }
+
+    public function AdminsEditProject($id)
+    {
+        $admins = Admin::all();
+        $admins_edit = Admin::where('id', $id)->first();
+        return view('backend.admins_edit')->with(['admins' => $admins, 'admins_edit' => $admins_edit]);
+    }
+
+    public function AddAdmin() {
+        $add_admin = User::all();
+        return view('backend.add_admins')->with(['add_admin' => $add_admin]);
+    }
+
+
+    public function getAdminsProject()
+    {
+        $admins_project = DB::table('edocean.users')->select(DB::raw("edocean.users.id, edocean.admin.image,
+        edocean.users.name as first_name, edocean.admin.last_name,
+        edocean.admin.father_name, edocean.admin.birthday,
+        edocean.users.email, edocean.users.status as st,
+          (CASE edocean.users.status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))
+            ->where('edocean.users.author',1)
+            ->leftJoin('edocean.admin', 'edocean.admin.user_id', '=', 'edocean.users.id')
+            ->get();
+//        dd($admins_project);
+        return DataTables::of($admins_project)
+            ->editColumn('image', function ($model) {
+                return "<img style='display:block;width:80px;height:60px;' src='data:image/jpeg;base64," . base64_encode($model->image) . "'/>";
+            })
+            ->addColumn('options', function ($model) {
+                $return = '<a class="btn btn-xs btn-primary" href="' . route('admin.backend.admins_edit', $model->id) . '" ><i class="la la-user"></i></a>
+			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger mr-1" ><i class="la la-trash"></i></button>';
+                if ($model->st == 0) {
+                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-success"  name="btn_blok"
+                                        value="btn_blok" ><i class="la la-check"></i></button>';
+                } else if ($model->st == 1) {
+                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-dark" name="btn_unblok"  value="btn_unblok" ><i class="la la-close"></i></button>';
+                }
+                return $return;
+
+            })->rawColumns(['options' => true])->make(true);
+    }
+    //finish Admin
+
+
+
+
+    //Teacher
     public function Teacher()
     {
         return view('backend.teacher');
     }
-
     public function getTeacher()
     {
         $teacher = DB::table('edocean.teacher')->select(DB::raw("id,image,name,surname,gender,email,phone,subjects,lesson_price,balance,status as st,
@@ -105,7 +171,12 @@ class AdminGetController extends Controller
         $teacher_edit = Teacher::where('id', $id)->first();
         return view('backend.teacher_edit')->with(['teacher_edit' => $teacher_edit, 'teacher' => $teacher]);
     }
+    //finish Teacher
 
+
+
+
+    //Student
     public function Student()
     {
         return view('backend.student');
@@ -140,55 +211,12 @@ class AdminGetController extends Controller
         $student_edit = Student::where('id', $id)->first();
         return view('backend.student_edit')->with(['student_edit' => $student_edit, 'student' => $student]);
     }
+    //finish Student
 
 
-    public function AdminsProject()
-    {
-        return view('backend.admins');
-    }
 
 
-    public function getAdminsProject()
-    {
-        $admins_project = DB::table('edocean.users')->select(DB::raw("edocean.users.id, edocean.admin.image,
-        edocean.users.name as first_name, edocean.admin.last_name,
-        edocean.admin.father_name, edocean.admin.birthday,
-        edocean.users.email, edocean.users.status as st,
-          (CASE edocean.users.status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))
-            ->where('edocean.users.author',1)
-            ->leftJoin('edocean.admin', 'edocean.admin.user_id', '=', 'edocean.users.id')
-            ->get();
-//        dd($admins_project);
-        return DataTables::of($admins_project)
-            ->editColumn('image', function ($model) {
-                return "<img style='display:block;width:80px;height:60px;' src='data:image/jpeg;base64," . base64_encode($model->image) . "'/>";
-            })
-            ->addColumn('options', function ($model) {
-                $return = '<a class="btn btn-xs btn-primary" href="' . route('admin.backend.admins_edit', $model->id) . '" ><i class="la la-user"></i></a>
-			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger mr-1" ><i class="la la-trash"></i></button>';
-                if ($model->st == 0) {
-                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-success"  name="btn_blok"
-                                        value="btn_blok" ><i class="la la-check"></i></button>';
-                } else if ($model->st == 1) {
-                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-dark" name="btn_unblok"  value="btn_unblok" ><i class="la la-close"></i></button>';
-                }
-                return $return;
-
-            })->rawColumns(['options' => true])->make(true);
-    }
-
-    public function AdminsEditProject($id)
-    {
-        $admins = Admin::all();
-        $admins_edit = Admin::where('id', $id)->first();
-        return view('backend.admins_edit')->with(['admins' => $admins, 'admins_edit' => $admins_edit]);
-    }
-
-    public function AddAdmin() {
-        $add_admin = User::all();
-        return view('backend.add_admins')->with(['add_admin' => $add_admin]);
-    }
-
+    //Course
     public function Course()
     {
         return view('backend.course');
@@ -223,8 +251,12 @@ class AdminGetController extends Controller
         $course_edit = Course::where('id', $id)->first();
         return view('backend.course_edit')->with(['course' => $course, 'course_edit' => $course_edit]);
     }
+    //finish Course
 
 
+
+
+    //Blogs
     public function getBlogs()
     {
 //        dd(User::find(55));
@@ -272,8 +304,12 @@ class AdminGetController extends Controller
         $blog_category = BlogCategory::where('status', 1)->get();
         return view('backend.blogs_add')->with(['blog_category' => $blog_category, 'blogs' => $blogs]);
     }
+    //finish Blogs
 
 
+
+
+    //Blog Category
     public function getBlogCategory()
     {
         $blog_category = DB::table('edocean.blog_category')->select(DB::raw("id, name, slug,created_at,updated_at,
@@ -304,7 +340,13 @@ class AdminGetController extends Controller
     {
         return view('backend.blog_category');
     }
+    //finish Blog Category
 
+
+
+
+
+    //BlogComment
     public function getBlogComment()
     {
         $blog_comment = DB::table('edocean.blog_comment')->select(DB::raw("edocean.blogs.title as title_name,
@@ -332,10 +374,16 @@ class AdminGetController extends Controller
     {
         return view('backend.blog_comment');
     }
+    //finish BlogComment
 
+
+
+
+    //Menu
     public function Menu()
     {
         return view('backend.menu');
     }
+    //finish Menu
 
 }
