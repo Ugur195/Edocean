@@ -67,7 +67,7 @@
                             <!--end::Dropdown-->
                             <!--begin::Button-->
                             <a href="{{ route('AddAdmin') }}" class="btn btn-primary font-weight-bolder">
-                                <i class="la la-plus"></i>New Record</a>
+                                <i class="la la-plus"></i>Add Admin</a>
                             <!--end::Button-->
                         </div>
                     </div>

@@ -106,7 +106,7 @@
                     )
                     if (response.status === 'success') {
                         setTimeout(function () {
-                            window.location.href = '/admin/add_admins';
+                            window.location.href = '/admin/admins';
                         }, 1000)
                     }
 
