@@ -12,7 +12,7 @@ class BlogCategory extends Model
     protected $fillable = ['id', 'name', 'slug', 'status'];
 
     public function blogs() {
-        return $this->hasMany(Blogs::class, 'category', 'id');
+        return $this->hasMany(Blogs::class, 'category_id', 'id');
     }
 
     public function comments(): HasManyThrough
@@ -20,7 +20,7 @@ class BlogCategory extends Model
         return $this->hasManyThrough(
             BlogComment::class,
             Blogs::class,
-            'category',
+            'category_id',
             'blog_id',
             'id',
             'id'

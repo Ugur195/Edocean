@@ -265,7 +265,7 @@ class AdminPostController extends Controller
             $blogs->message_ru = $request->message_ru;
             $blogs->message_en = $request->message_en;
             $blogs->author = Auth::user()->id;
-            $blogs->category = $request->blog_category;
+            $blogs->category_id = $request->blog_category;
             $blogs->slug = $request->title;
             $blogs->status = 1;
             $blogs->likes = 0;

@@ -83,7 +83,7 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Category</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{\App\Models\BlogCategory::find($blogs_edit->category)->name}}" readonly/>
+                                                   value="{{\App\Models\BlogCategory::find($blogs_edit->category_id)->name}}" readonly/>
                                         </div>
                                     </div>
 
@@ -130,11 +130,8 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </form>
                             </div>
-
                         </div>
                     </div>
                 </div>
