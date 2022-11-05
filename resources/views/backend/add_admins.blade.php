@@ -50,7 +50,7 @@
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Password</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" name="password" type="text" value=""/>
+                                            <input class="form-control form-control-lg form-control-solid" name="password" type="password" value=""/>
                                         </div>
                                     </div>
 
