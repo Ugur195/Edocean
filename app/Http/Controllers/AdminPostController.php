@@ -9,6 +9,7 @@ use App\Models\BlogComment;
 use App\Models\Blogs;
 use App\Models\ContactUs;
 use App\Models\Course;
+use App\Models\Menu;
 use App\Models\Setting;
 use App\Models\Student;
 use App\Models\Teacher;
@@ -368,5 +369,17 @@ class AdminPostController extends Controller
         }
     }
     //finish BlogComment
+
+    //Menu
+    public function MenuDelete(Request $request){
+        try {
+            Menu::where('id', $request->id)->delete();
+            return response(['title' => 'Ugurlu!', 'message' => 'Menu Silindi', 'status' => 'success']);
+        }catch (\Exception $exception){
+            return response(['title' => 'Ugursuz!', 'message' => 'Menu silmek olmur!', 'status' => 'error']);
+        }
+
+    }
+    //finish Menu
 
 }

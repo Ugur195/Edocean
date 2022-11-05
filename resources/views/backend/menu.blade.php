@@ -77,6 +77,8 @@
                         <th>Name</th>
                         <th>Page</th>
                         <th>Slug</th>
+                        <th>Created At</th>
+                        <th>Updated At</th>
                         <th>Status</th>
                         <th>Options</th>
                     </tr>
@@ -87,6 +89,8 @@
                         <th>NAME</th>
                         <th>PAGE</th>
                         <th>SLUG</th>
+                        <th>CREATED AT</th>
+                        <th>UPDATED AT</th>
                         <th>STATUS</th>
                         <th>OPTIONS</th>
                     </tr>

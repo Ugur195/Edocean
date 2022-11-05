@@ -92,11 +92,11 @@ class AdminGetController extends Controller
     public function AdminsEditProject($id)
     {
         $admins_edit = Admin::where('user_id', $id)->first();
-        $userEdit=null;
-        if($admins_edit==null){
-            $userEdit=User::find($id);
-        }else{
-            $userEdit=$admins_edit;
+        $userEdit = null;
+        if ($admins_edit == null) {
+            $userEdit = User::find($id);
+        } else {
+            $userEdit = $admins_edit;
         }
         return view('backend.admins_edit')->with(['admins_edit' => $userEdit]);
     }
@@ -372,7 +372,7 @@ class AdminGetController extends Controller
 
     public function getMenu()
     {
-        $menu = DB::table('edocean.menu')->select(DB::raw("id, name, page, slug,
+        $menu = DB::table('edocean.menu')->select(DB::raw("id, name, page, slug,created_at,updated_at,
         (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
         return DataTables::of($menu)
             ->addColumn('options', function ($model) {
