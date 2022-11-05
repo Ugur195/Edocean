@@ -508,7 +508,7 @@
                                 <span class="svg-icon menu-icon">
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                              xmlns:xlink="http://www.w3.org/1999/xlink"
-                                             width="24px" height="24px" viewBox="0 0 24 24" version="1.1" style="width:30px; height: 30px; margin-left: -5px;">
+                                             width="24px" height="24px" viewBox="0 0 24 24" version="1.1" style="width:28px; height: 28px; margin-left: -5px;">
                                           <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <rect x="0" y="0" width="24" height="24"/>
                                            <path d="M5,8.6862915 L5,5 L8.6862915,5 L11.5857864,2.10050506 L14.4852814,
