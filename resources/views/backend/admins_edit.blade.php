@@ -21,7 +21,7 @@
                         <div class="tab-content pt-5">
                             <!--begin::Tab Content-->
                             <div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
-                                <form  class="form" method="POST">
+                                <form id="EditAdmin" class="form" method="POST">
                                     {{csrf_field()}}
                                     <div class="col-xl-3"></div>
 
@@ -30,9 +30,8 @@
                                         <div class="col-lg-9 col-xl-9">
                                             <div class="image-input image-input-outline" id="kt_contacts_edit_avatar"
                                                  style="background-image: url(assets/media/users/blank.png)">
-
                                                 <div class="image-input-wrapper"
-                                                     style="background-image: url('data:image/jpeg;base64,{{base64_encode($admins_edit->image)}}')">
+                                                    style="background-image: url('data:image/jpeg;base64,{{base64_encode($admins_edit->image)}}')">
                                                 </div>
                                                 <label
                                                     class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -58,7 +57,7 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">First Name</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$admins_edit->first_name}}" readonly/>
+                                                   value="{{$admins_edit->first_name}}"/>
                                         </div>
                                     </div>
 
@@ -66,23 +65,32 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Last Name</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$admins_edit->last_name}}" readonly/>
+                                                   value="{{$admins_edit->last_name}}"/>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Father Name<</label>
+                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Father Name</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$admins_edit->father_name}}" readonly/>
+                                                   value="{{$admins_edit->father_name}}"/>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Birthday</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$admins_edit->birthday}}" readonly/>
+                                            <div class="input-group input-group-solid date" id="kt_datetimepicker_3"
+                                                data-target-input="nearest">
+                                                <input type="text" name="birthday"
+                                                    class="form-control form-control-solid datetimepicker-input"
+                                                    value="{{$admins_edit->birthday}}"
+                                                    data-target="#kt_datetimepicker_3"/>
+                                                <div class="input-group-append" data-target="#kt_datetimepicker_3"
+                                                    data-toggle="datetimepicker">
+                                                    <span class="input-group-text"><i class="ki ki-calendar"></i></span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -91,7 +99,7 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Email</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$admins_edit->email}}" readonly/>
+                                                   value="{{$admins_edit->email}}"/>
                                         </div>
                                     </div>
 
@@ -109,6 +117,10 @@
                                                        class="btn btn-success font-weight-bolder text-uppercase px-9 py-4"
                                                        data-wizard-type="action-submit">Back
                                                     </a>
+                                                    <button
+                                                        class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4"
+                                                        data-wizard-type="action-next">Update
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -124,7 +136,40 @@
 @endsection
 
 @section('js')
+    <script src="{{asset('backendCssJs/assets/js/pages/custom/contacts/edit-contact.js')}}"></script>
+    <script src="{{asset('jsValidate/jquery.form.js')}}"></script>
 
+    <script>
+        $(document).ready(function () {
+            $('#EditAdmin').ajaxForm({
+                beforeSubmit: function () {
+                },
+
+                success: function (response) {
+                    Swal.fire({
+                            title: response.title,
+                            text: response.message,
+                            icon: response.status,
+                            allowOutsideClick: false
+                        }
+                    )
+                    if (response.status === 'success') {
+                        setTimeout(function () {
+                            window.location.href = '/admin/admins';
+                        }, 1000)
+                    }
+
+                }
+            });
+        });
+    </script>
+
+    <script>
+        //Birthday
+        $('#kt_datetimepicker_3').datetimepicker({
+            format: 'YYYY-MM-DD'
+        });
+    </script>
 @endsection
 
 

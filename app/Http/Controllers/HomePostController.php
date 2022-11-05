@@ -74,7 +74,7 @@ class HomePostController extends Controller
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
             $user->slug = Str::slug($request->name);
-            $user->status = 0;
+            $user->status = 1;
             $user->save();
 
             try {

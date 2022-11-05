@@ -229,6 +229,29 @@ class AdminPostController extends Controller
             return response(['title' => 'Ugursuz!', 'message' => 'Yeni Admin elave etmek mumkun olmadi', 'status' => 'error']);
         }
     }
+
+    public function AdminEdit(Request $request) {
+        $admin_edit = Admin::where('first_name', $request->name)->first();
+        $image = null;
+        if (isset($request->image)) {
+            $image = file_get_contents($request->file('image')->getRealPath());
+        }
+        if($admin_edit == null) {
+            $admin_edit = new Admin();
+            $admin_edit->image = $image;
+            $admin_edit->first_name = $request->first_name;
+            $admin_edit->last_name = $request->last_name;
+            $admin_edit->father_name = $request->father_name;
+            $admin_edit->birthday = $request->birthday;
+            $admin_edit->email = $request->email;
+            $admin_edit->status = 1;
+            $admin_edit->save();
+
+            return response(['title' => 'Ugurlu!', 'message' => 'Yeni Admin elave edildi!', 'status' => 'success']);
+        } else {
+            return response(['title' => 'Ugursuz!', 'message' => 'Yeni Admin elave etmek mumkun olmadi', 'status' => 'error']);
+        }
+    }
     //finish Admin
 
 

@@ -93,9 +93,14 @@ class AdminGetController extends Controller
 
     public function AdminsEditProject($id)
     {
-        $admins = Admin::all();
-        $admins_edit = Admin::where('id', $id)->first();
-        return view('backend.admins_edit')->with(['admins' => $admins, 'admins_edit' => $admins_edit]);
+        $admins_edit = Admin::where('user_id', $id)->first();
+        $userEdit=null;
+        if($admins_edit==null){
+            $userEdit=User::find($id);
+        }else{
+            $userEdit=$admins_edit;
+        }
+        return view('backend.admins_edit')->with(['admins_edit' => $userEdit]);
     }
 
     public function AddAdmin() {
