@@ -9,6 +9,7 @@ use App\Models\BlogComment;
 use App\Models\Blogs;
 use App\Models\ContactUs;
 use App\Models\Course;
+use App\Models\Menu;
 use App\Models\Setting;
 use App\Models\Student;
 use App\Models\Teacher;
@@ -28,7 +29,6 @@ class AdminGetController extends Controller
     //finish Home
 
 
-
     //Setting
     public function Setting()
     {
@@ -45,7 +45,6 @@ class AdminGetController extends Controller
         return view('backend.about_us')->with(['about_us' => $about_us]);
     }
     //finish AboutUs
-
 
 
     //ContactUs/Messages
@@ -79,7 +78,6 @@ class AdminGetController extends Controller
     //finish ContactUs/Messages
 
 
-
     //Admin
     public function Admins()
     {
@@ -103,7 +101,8 @@ class AdminGetController extends Controller
         return view('backend.admins_edit')->with(['admins_edit' => $userEdit]);
     }
 
-    public function AddAdmin() {
+    public function AddAdmin()
+    {
         $add_admin = User::all();
         return view('backend.add_admins')->with(['add_admin' => $add_admin]);
     }
@@ -116,7 +115,7 @@ class AdminGetController extends Controller
         edocean.admin.father_name, edocean.admin.birthday,
         edocean.users.email, edocean.users.status as st,
           (CASE edocean.users.status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))
-            ->where('edocean.users.author',1)
+            ->where('edocean.users.author', 1)
             ->leftJoin('edocean.admin', 'edocean.admin.user_id', '=', 'edocean.users.id')
             ->get();
 //        dd($admins_project);
@@ -140,13 +139,12 @@ class AdminGetController extends Controller
     //finish Admin
 
 
-
-
     //Teacher
     public function Teacher()
     {
         return view('backend.teacher');
     }
+
     public function getTeacher()
     {
         $teacher = DB::table('edocean.teacher')->select(DB::raw("id,image,name,surname,gender,email,phone,subjects,lesson_price,balance,status as st,
@@ -172,13 +170,10 @@ class AdminGetController extends Controller
 
     public function TeacherEdit($id)
     {
-        $teacher = Teacher::all();
         $teacher_edit = Teacher::where('id', $id)->first();
-        return view('backend.teacher_edit')->with(['teacher_edit' => $teacher_edit, 'teacher' => $teacher]);
+        return view('backend.teacher_edit')->with(['teacher_edit' => $teacher_edit]);
     }
     //finish Teacher
-
-
 
 
     //Student
@@ -212,13 +207,10 @@ class AdminGetController extends Controller
 
     public function StudentEdit($id)
     {
-        $student = Student::all();
         $student_edit = Student::where('id', $id)->first();
-        return view('backend.student_edit')->with(['student_edit' => $student_edit, 'student' => $student]);
+        return view('backend.student_edit')->with(['student_edit' => $student_edit]);
     }
     //finish Student
-
-
 
 
     //Course
@@ -252,13 +244,10 @@ class AdminGetController extends Controller
 
     public function CourseEdit($id)
     {
-        $course = Course::all();
         $course_edit = Course::where('id', $id)->first();
-        return view('backend.course_edit')->with(['course' => $course, 'course_edit' => $course_edit]);
+        return view('backend.course_edit')->with(['course_edit' => $course_edit]);
     }
     //finish Course
-
-
 
 
     //Blogs
@@ -293,9 +282,9 @@ class AdminGetController extends Controller
 
     public function BlogsEdit($id)
     {
-        $blogs = Blogs::all();
+
         $blogs_edit = Blogs::where('id', $id)->first();
-        return view('backend.blogs_edit')->with(['blogs' => $blogs, 'blogs_edit' => $blogs_edit]);
+        return view('backend.blogs_edit')->with(['blogs_edit' => $blogs_edit]);
     }
 
     public function Blogs()
@@ -310,8 +299,6 @@ class AdminGetController extends Controller
         return view('backend.blogs_add')->with(['blog_category' => $blog_category, 'blogs' => $blogs]);
     }
     //finish Blogs
-
-
 
 
     //Blog Category
@@ -335,9 +322,8 @@ class AdminGetController extends Controller
 
     public function BlogCategoryEdit($id)
     {
-        $blog_category = BlogCategory::all();
         $blog_category_edit = BlogCategory::where('id', $id)->first();
-        return view('backend.blog_category_edit')->with(['blog_category' => $blog_category, 'blog_category_edit' => $blog_category_edit]);
+        return view('backend.blog_category_edit')->with(['blog_category_edit' => $blog_category_edit]);
     }
 
 
@@ -346,9 +332,6 @@ class AdminGetController extends Controller
         return view('backend.blog_category');
     }
     //finish Blog Category
-
-
-
 
 
     //BlogComment
@@ -370,9 +353,8 @@ class AdminGetController extends Controller
 
     public function BlogCommentEdit($id)
     {
-        $blog_comment = BlogComment::all();
         $blog_comment_edit = BlogComment::where('id', $id)->first();
-        return view('backend.blog_comment_edit')->with(['blog_comment' => $blog_comment, 'blog_comment_edit' => $blog_comment_edit]);
+        return view('backend.blog_comment_edit')->with(['blog_comment_edit' => $blog_comment_edit]);
     }
 
     public function BlogComment()
@@ -382,12 +364,28 @@ class AdminGetController extends Controller
     //finish BlogComment
 
 
-
-
     //Menu
     public function Menu()
     {
         return view('backend.menu');
+    }
+
+    public function getMenu()
+    {
+        $menu = DB::table('edocean.menu')->select(DB::raw("id, name, page, slug,
+        (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
+        return DataTables::of($menu)
+            ->addColumn('options', function ($model) {
+                return
+                    '<a class="btn btn-xs btn-primary" href="' . route('admin.backend.menu_edit', $model->id) . '" ><i class="la la-pencil-square-o"></i></a>
+			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger" ><i class="la la-trash"></i></button>';
+            })->rawColumns(['options' => true])->make(true);
+    }
+
+    public function MenuEdit($id)
+    {
+        $menu_edit = Menu::where('id', $id)->first();
+        return view('backend.menu_edit')->with(['menu_edit' => $menu_edit]);
     }
     //finish Menu
 

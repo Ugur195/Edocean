@@ -70,6 +70,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'Admin'], function () {
     Route::get('/add_admins', [AdminGetController::class, 'AddAdmin'])->name('AddAdmin');
     Route::get('/admins_edit/{id}', [AdminGetController::class, 'AdminsEditProject'])->name('admin.backend.admins_edit');
     Route::get('/menu', [AdminGetController::class, 'Menu'])->name('AdminMenu');
+    Route::get('/menu_edit/{id}', [AdminGetController::class, 'MenuEdit'])->name('admin.backend.menu_edit');
 
 
 
