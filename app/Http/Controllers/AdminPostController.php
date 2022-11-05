@@ -25,6 +25,7 @@ use PharIo\Version\Exception;
 class AdminPostController extends Controller
 {
 
+    //Setting
     public function Setting(Request $request)
     {
         try {
@@ -44,7 +45,10 @@ class AdminPostController extends Controller
         }
 
     }
+    //finish Setting
 
+
+    //About_Us
     public function AboutUs(Request $request)
     {
         try {
@@ -59,18 +63,11 @@ class AdminPostController extends Controller
             return response(['title' => 'Ugursuz!', 'message' => 'Update ugursuz alindi!', 'status' => 'error']);
         }
     }
+    //finish About_Us
 
-    public function ContactUsDelete(Request $request)
-    {
-        try {
-            ContactUs::where('id', $request->id)->delete();
-            return response(['title' => 'Ugurlu!', 'message' => 'Mesaj Silindi', 'status' => 'success']);
-        } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => 'Mesaji silmek olmur!', 'status' => 'error']);
-        }
 
-    }
 
+    //ContactUs/Messages
     public function MessagesEdit(Request $request)
     {
         try {
@@ -84,6 +81,21 @@ class AdminPostController extends Controller
         }
     }
 
+    public function ContactUsDelete(Request $request)
+    {
+        try {
+            ContactUs::where('id', $request->id)->delete();
+            return response(['title' => 'Ugurlu!', 'message' => 'Mesaj Silindi', 'status' => 'success']);
+        } catch (\Exception $exception) {
+            return response(['title' => 'Ugursuz!', 'message' => 'Mesaji silmek olmur!', 'status' => 'error']);
+        }
+
+    }
+    //finish ContactUs/Messages
+
+
+
+    //Student
     public function StudentsBlockUnblockDelete(Request $request)
     {
         try {
@@ -108,8 +120,12 @@ class AdminPostController extends Controller
         }
 
     }
+    //finish Student
 
 
+
+
+    //Teacher
     public function TeachersBlockUnblockDelete(Request $request)
     {
         try {
@@ -133,34 +149,43 @@ class AdminPostController extends Controller
             return response(['title' => 'Ugursuz!', 'message' => 'Teacheri silmek olmur!', 'status' => 'error']);
         }
     }
+    //finish Teacher
 
 
-    public function BlogsBlockUnblockDelete(Request $request)
+
+
+    //Course
+    public function CoursesDelete(Request $request)
     {
         try {
             if ($request->btn_block != null) {
                 if ($request->status == 0) {
-                    Blogs::find($request->id)->update(['status' => 1]);
-                    return response(['title' => 'Ugurlu!', 'message' => 'Blogs blokdan cixdi!', 'status' => 'success']);
+                    Course::find($request->id)->update(['status' => 1]);
+                    return response(['title' => 'Ugurlu!', 'message' => 'Course blokdan cixdi!', 'status' => 'success']);
                 } else if ($request->status == 1) {
-                    Blogs::find($request->id)->update(['status' => 0]);
-                    return response(['title' => 'Ugurlu!', 'message' => 'Blogs bloklandi!', 'status' => 'success']);
+                    Course::find($request->id)->update(['status' => 0]);
+                    return response(['title' => 'Ugurlu!', 'message' => 'Course bloklandi!', 'status' => 'success']);
                 } else {
-                    return response(['title' => 'Ugursuz!', 'message' => 'Blogsi bloklamaq mumkun olmadi!', 'status' => 'error']);
+                    return response(['title' => 'Ugursuz!', 'message' => 'Coursu bloklamaq mumkun olmadi!', 'status' => 'error']);
                 }
             } else if ($request->btn_delete != null) {
-                Blogs::where('id', $request->id)->delete();
-                BlogComment::where('blog_id', $request->id)->delete();
-                return response(['title' => 'Ugurlu!', 'message' => 'Blogs ugurlu silindi!', 'status' => 'success']);
+                Course::where('id', $request->id)->delete();
+                return response(['title' => 'Ugurlu!', 'message' => 'Course ugurlu silindi!', 'status' => 'success']);
             } else {
-                return response(['title' => 'Ugursuz!', 'message' => 'Blogsi silmek mumkun olmadi!', 'status' => 'error']);
+                return response(['title' => 'Ugursuz!', 'message' => 'Coursu silmek mumkun olmadi!', 'status' => 'error']);
             }
         } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => 'Blogsi silmek olmur!', 'status' => 'error']);
+            return response(['title' => 'Ugursuz!', 'message' => 'Coursu silmek olmur!', 'status' => 'error']);
         }
+
     }
+    //finish Course
 
 
+
+
+
+    //Admin
     public function AdminsBlockUnblockDelete(Request $request)
     {
         try {
@@ -198,41 +223,18 @@ class AdminPostController extends Controller
             $add_admin->author = 1;
             $add_admin->slug = $request->name;
             $add_admin->status = 1;
-
             $add_admin->save();
             return response(['title' => 'Ugurlu!', 'message' => 'Yeni Admin elave edildi!', 'status' => 'success']);
         } else {
             return response(['title' => 'Ugursuz!', 'message' => 'Yeni Admin elave etmek mumkun olmadi', 'status' => 'error']);
         }
     }
+    //finish Admin
 
 
-    public function CoursesDelete(Request $request)
-    {
-        try {
-            if ($request->btn_block != null) {
-                if ($request->status == 0) {
-                    Course::find($request->id)->update(['status' => 1]);
-                    return response(['title' => 'Ugurlu!', 'message' => 'Course blokdan cixdi!', 'status' => 'success']);
-                } else if ($request->status == 1) {
-                    Course::find($request->id)->update(['status' => 0]);
-                    return response(['title' => 'Ugurlu!', 'message' => 'Course bloklandi!', 'status' => 'success']);
-                } else {
-                    return response(['title' => 'Ugursuz!', 'message' => 'Coursu bloklamaq mumkun olmadi!', 'status' => 'error']);
-                }
-            } else if ($request->btn_delete != null) {
-                Course::where('id', $request->id)->delete();
-                return response(['title' => 'Ugurlu!', 'message' => 'Course ugurlu silindi!', 'status' => 'success']);
-            } else {
-                return response(['title' => 'Ugursuz!', 'message' => 'Coursu silmek mumkun olmadi!', 'status' => 'error']);
-            }
-        } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => 'Coursu silmek olmur!', 'status' => 'error']);
-        }
-
-    }
 
 
+    //Blog
     public function BlogCategoryDelete(Request $request)
     {
         try {
@@ -249,7 +251,6 @@ class AdminPostController extends Controller
         }
 
     }
-
 
 
 
@@ -301,6 +302,32 @@ class AdminPostController extends Controller
     }
 
 
+    public function BlogsBlockUnblockDelete(Request $request)
+    {
+        try {
+            if ($request->btn_block != null) {
+                if ($request->status == 0) {
+                    Blogs::find($request->id)->update(['status' => 1]);
+                    return response(['title' => 'Ugurlu!', 'message' => 'Blogs blokdan cixdi!', 'status' => 'success']);
+                } else if ($request->status == 1) {
+                    Blogs::find($request->id)->update(['status' => 0]);
+                    return response(['title' => 'Ugurlu!', 'message' => 'Blogs bloklandi!', 'status' => 'success']);
+                } else {
+                    return response(['title' => 'Ugursuz!', 'message' => 'Blogsi bloklamaq mumkun olmadi!', 'status' => 'error']);
+                }
+            } else if ($request->btn_delete != null) {
+                Blogs::where('id', $request->id)->delete();
+                BlogComment::where('blog_id', $request->id)->delete();
+                return response(['title' => 'Ugurlu!', 'message' => 'Blogs ugurlu silindi!', 'status' => 'success']);
+            } else {
+                return response(['title' => 'Ugursuz!', 'message' => 'Blogsi silmek mumkun olmadi!', 'status' => 'error']);
+            }
+        } catch (\Exception $exception) {
+            return response(['title' => 'Ugursuz!', 'message' => 'Blogsi silmek olmur!', 'status' => 'error']);
+        }
+    }
+
+
     public function BlogCommentDelete(Request $request)
     {
         try {
@@ -310,5 +337,6 @@ class AdminPostController extends Controller
             return response(['title' => 'Ugursuz!', 'message' => 'BlogCommenti silmek olmur!', 'status' => 'error']);
         }
     }
+    //finish Blogs
 
 }
