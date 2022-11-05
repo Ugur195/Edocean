@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Menu;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,16 +21,15 @@ class HomeGetController extends Controller
     //finish welcome
 
 
-
     //home
     public function home()
     {
         $course = Course::all();
         $teacher = Teacher::all();
-        return view('frontend.index')->with(['course' => $course, 'teacher' => $teacher]);
+        $menu = Menu::where('status', 1);
+        return view('frontend.index')->with(['course' => $course, 'teacher' => $teacher, 'menu' => $menu]);
     }
     //finish home
-
 
 
     //ContactUs
@@ -40,14 +40,12 @@ class HomeGetController extends Controller
     //finish ContactUs
 
 
-
     //SignIn
     public function GetSignIn()
     {
         return view('frontend.sign_in');
     }
     //finish SignIn
-
 
 
     //SignUp

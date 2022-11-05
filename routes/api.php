@@ -28,3 +28,4 @@ Route::get('blogs', [AdminGetController::class, 'getBlogs']);
 Route::get('admins', [AdminGetController::class, 'getAdminsProject']);
 Route::get('blog_category', [AdminGetController::class, 'getBlogCategory']);
 Route::get('blog_comment', [AdminGetController::class, 'getBlogComment']);
+Route::get('menu', [AdminGetController::class, 'getMenu']);
