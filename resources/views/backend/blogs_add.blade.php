@@ -188,6 +188,7 @@
             element.style.height = (25 + element.scrollHeight) + "px";
         }
     </script>
+
     <script>
         $(document).ready(function () {
             $('#myAddBlog').ajaxForm({

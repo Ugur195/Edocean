@@ -70,6 +70,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'Admin'], function () {
     Route::get('/add_admins', [AdminGetController::class, 'AddAdmin'])->name('AddAdmin');
     Route::get('/admins_edit/{id}', [AdminGetController::class, 'AdminsEditProject'])->name('admin.backend.admins_edit');
     Route::get('/menu', [AdminGetController::class, 'Menu'])->name('AdminMenu');
+    Route::get('/add_menu', [AdminGetController::class, 'AddMenu'])->name('AddMenu');
     Route::get('/menu_edit/{id}', [AdminGetController::class, 'MenuEdit'])->name('admin.backend.menu_edit');
 
 
@@ -90,6 +91,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'Admin'], function () {
     Route::post('/admins_edit/{id}', [AdminPostController::class, 'AdminEdit']);
     Route::post('/blog_comment', [AdminPostController::class, 'BlogCommentDelete']);
     Route::post('/menu', [AdminPostController::class, 'MenuDelete']);
+    Route::post('/add_menu', [AdminPostController::class, 'AddMenu']);
+    Route::post('/menu_edit/{id}', [AdminPostController::class, 'MenuEdit']);
 
 
 
