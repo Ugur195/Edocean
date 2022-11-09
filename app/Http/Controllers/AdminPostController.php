@@ -231,8 +231,8 @@ class AdminPostController extends Controller
         }
     }
 
-    public function AdminEdit(Request $request) {
-        $admin_edit = Admin::where('first_name', $request->name)->first();
+    public function AdminEdit(Request $request, $id) {
+        $admin_edit = Admin::where('user_id', $id)->first();
         $image = null;
         if (isset($request->image)) {
             $image = file_get_contents($request->file('image')->getRealPath());
@@ -256,6 +256,7 @@ class AdminPostController extends Controller
             $admin_edit->father_name = $request->father_name;
             $admin_edit->birthday = $request->birthday;
             $admin_edit->email = $request->email;
+            $admin_edit->user_id = $request->user_id;
             $admin_edit->status = 1;
             $admin_edit->save();
         }
