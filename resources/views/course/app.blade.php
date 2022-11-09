@@ -367,7 +367,7 @@
         <div class="navi navi-spacer-x-0 p-0">
             <!--begin::Item-->
             <a href="#" class="navi-item">
-                <div class="navi-link">
+                <div class="navi-link" style="display: flex; align-items: center; padding: 15px 0;">
                     <div class="symbol symbol-40 bg-light mr-3">
                         <div class="symbol-label">
                             <span class="svg-icon svg-icon-md svg-icon-success">
@@ -391,7 +391,7 @@
                         </div>
                     </div>
                     <div class="navi-text">
-                        <a  href="{{url('admin/course/my_profile')}}" class="font-weight-bold">Profilim</a>
+                        <div   class="font-weight-bold"><a href="{{url('admin/course/my_profile')}}">Profilim</a></div>
                         <div class="text-muted">Hesab tənzimləmələri və başqaları</div>
                     </div>
                 </div>
@@ -399,7 +399,7 @@
             <!--end:Item-->
             <!--begin::Item-->
             <a href="#" class="navi-item" target="_blank">
-                <div class="navi-link">
+                <div class="navi-link" style="display: flex; align-items: center; padding: 15px 0;">
                     <div class="symbol symbol-40 bg-light mr-3">
                         <div class="symbol-label">
                             <span class="svg-icon svg-icon-md svg-icon-success">
@@ -407,7 +407,7 @@
                             </span>
                         </div>
                     </div>
-                    <div class="navi-text">
+                    <div class="navi-text" style="display: flex; align-items: center; padding: 15px 0;">
                         <a href="{{url('/')}}" class="font-weight-bold">Saytı ziyarət et</a>
                         <div class="text-muted">Əlavələrinizi vəya tanzimləməlrinizi yoxlayın</div>
                     </div>

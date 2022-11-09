@@ -14,83 +14,198 @@
     <title>Edocean</title>
 </head>
 <body>
-<header class="ed-header">
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top ed-navbar">
-        <div class="container-fluid">
-            <a class="navbar-brand" href=""
-            ><img class="edocean-logo" src="./frontendCss/images/edocean-logo.jpeg" alt=""
-                /></a>
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#mynavbar"
-            >
-                <span class="navbar-toggler-icon"></span>
-                <span class="navbar-toggler-icon"></span>
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="mynavbar">
-                <ul class="navbar-nav m-auto">
-                    <li class="nav-item me-2">
-                        <a class="nav-link" href="/index">Ana Səhifə</a>
-                    </li>
-                    <li class="nav-item me-2">
-                        <a class="nav-link" href="">Müəllimlər</a>
-                    </li>
-                    <li class="nav-item me-2">
-                        <a class="nav-link" href="">Kurslar</a>
-                    </li>
-                    <li class="nav-item me-2">
-                        <a class="nav-link" href="">Tələbələr</a>
-                    </li>
-                    <li class="nav-item me-2">
-                        <a class="nav-link" href="">Bloglar</a>
-                    </li>
-                    <li class="nav-item me-2">
-                        <a class="nav-link" href="">Haqqımızda</a>
-                    </li>
-                    <li class="nav-item me-2">
-                        <a class="nav-link" href="/contact_us">Əlaqə</a>
-                    </li>
+{{--<header class="ed-header">--}}
+{{--    <nav class="navbar navbar-expand-lg navbar-dark fixed-top ed-navbar">--}}
+{{--        <div class="container-fluid">--}}
+{{--            <a class="navbar-brand" href=""--}}
+{{--            ><img class="edocean-logo" src="./frontendCss/images/edocean-logo.jpeg" alt=""--}}
+{{--                /></a>--}}
+{{--            <button--}}
+{{--                class="navbar-toggler"--}}
+{{--                type="button"--}}
+{{--                data-bs-toggle="collapse"--}}
+{{--                data-bs-target="#mynavbar"--}}
+{{--            >--}}
+{{--                <span class="navbar-toggler-icon"></span>--}}
+{{--                <span class="navbar-toggler-icon"></span>--}}
+{{--                <span class="navbar-toggler-icon"></span>--}}
+{{--            </button>--}}
+{{--            <div class="collapse navbar-collapse" id="mynavbar">--}}
+{{--                <ul class="navbar-nav m-auto">--}}
+{{--                    <li class="nav-item me-2">--}}
+{{--                        <a class="nav-link" href="/index">Ana Səhifə</a>--}}
+{{--                    </li>--}}
+{{--                    <li class="nav-item me-2">--}}
+{{--                        <a class="nav-link" href="">Müəllimlər</a>--}}
+{{--                    </li>--}}
+{{--                    <li class="nav-item me-2">--}}
+{{--                        <a class="nav-link" href="">Kurslar</a>--}}
+{{--                    </li>--}}
+{{--                    <li class="nav-item me-2">--}}
+{{--                        <a class="nav-link" href="">Tələbələr</a>--}}
+{{--                    </li>--}}
+{{--                    <li class="nav-item me-2">--}}
+{{--                        <a class="nav-link" href="">Bloglar</a>--}}
+{{--                    </li>--}}
+{{--                    <li class="nav-item me-2">--}}
+{{--                        <a class="nav-link" href="">Haqqımızda</a>--}}
+{{--                    </li>--}}
+{{--                    <li class="nav-item me-2">--}}
+{{--                        <a class="nav-link" href="/contact_us">Əlaqə</a>--}}
+{{--                    </li>--}}
 
-                    @if (Auth::check())
-                        <li class="nav-item me-2 auth" style="padding-left: 140px">
-                            <a class="nav-link" href="{{route('logout')}}">Logout</a>
-                        </li>
-                        @if(Auth::user()->author==1)
-                            <li class="nav-item me-2 auth" style="font-size: 15px">
-                                <a class="nav-link" target="_blank" href="{{url('/admin/index')}}">Admin Page</a>
-                            </li>
-                        @elseif(Auth::user()->author==2)
-                            <li class="nav-item me-2 auth" style="font-size: 15px">
-                                <a class="nav-link" target="_blank" href="{{url('/admin/course/index')}}">Course Profile</a>
-                            </li>
-                        @elseif(Auth::user()->author==3)
-                            <li class="nav-item me-2 auth" style="font-size: 15px">
-                                <a class="nav-link" target="_blank" href="{{url('/admin/teacher/index')}}">Teacher
-                                    Profile</a>
-                            </li>
-                        @elseif(Auth::user()->author==4)
-                            <li class="nav-item me-2 auth" style="font-size: 15px">
-                                <a class="nav-link" target="_blank" href="{{url('/admin/student/student_attendance')}}">Student
-                                    Profile</a>
-                            </li>
-                        @endif
-                    @else
-                        <li class="nav-item me-2 auth" style="padding-left: 140px">
-                            <a class="nav-link" href="{{ route('sign_in') }}">Login</a>
-                        </li>
-                        <li class="nav-item me-2 auth"><a class="nav-link" href="{{ route('sign_up')}}">Register</a>
-                        </li>
-                    @endif
+{{--                    @if (Auth::check())--}}
+{{--                        <li class="nav-item me-2 auth" style="padding-left: 140px">--}}
+{{--                            <a class="nav-link" href="{{route('logout')}}">Logout</a>--}}
+{{--                        </li>--}}
+{{--                        @if(Auth::user()->author==1)--}}
+{{--                            <li class="nav-item me-2 auth" style="font-size: 15px">--}}
+{{--                                <a class="nav-link" target="_blank" href="{{url('/admin/index')}}">Admin Page</a>--}}
+{{--                            </li>--}}
+{{--                        @elseif(Auth::user()->author==2)--}}
+{{--                            <li class="nav-item me-2 auth" style="font-size: 15px">--}}
+{{--                                <a class="nav-link" target="_blank" href="{{url('/admin/course/index')}}">Course Profile</a>--}}
+{{--                            </li>--}}
+{{--                        @elseif(Auth::user()->author==3)--}}
+{{--                            <li class="nav-item me-2 auth" style="font-size: 15px">--}}
+{{--                                <a class="nav-link" target="_blank" href="{{url('/admin/teacher/index')}}">Teacher--}}
+{{--                                    Profile</a>--}}
+{{--                            </li>--}}
+{{--                        @elseif(Auth::user()->author==4)--}}
+{{--                            <li class="nav-item me-2 auth" style="font-size: 15px">--}}
+{{--                                <a class="nav-link" target="_blank" href="{{url('/admin/student/student_attendance')}}">Student--}}
+{{--                                    Profile</a>--}}
+{{--                            </li>--}}
+{{--                        @endif--}}
+{{--                    @else--}}
+{{--                        <li class="nav-item me-2 auth" style="padding-left: 140px">--}}
+{{--                            <a class="nav-link" href="{{ route('sign_in') }}">Login</a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item me-2 auth"><a class="nav-link" href="{{ route('sign_up')}}">Register</a>--}}
+{{--                        </li>--}}
+{{--                    @endif--}}
 
 
+{{--                </ul>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </nav>--}}
+{{--</header>--}}
+
+
+<nav class="navbar navbar-expand-lg  sticky-top ed-navbar">
+    <div class="container">
+        <a href=""><img class="edocean-logo" src="./frontendCss/images/edocean-logo.jpeg" alt=""></a>
+        <div class="navbar-desktop">
+            <ul class="navbar-nav pe-3">
+                @foreach($menu as $m)
+                    <li class="nav-item">
+                        <a class="nav-link" href="/{{$m->page}}">{{$m->name}} </a>
+                    </li>
+                @endforeach
+            </ul>
+            <div class="search-form-and-btn">
+                <form class="d-flex search-ed">
+                    <input class="form-control me-2" type="text" placeholder="Axtar...">
+                    <button class="btn search-iconn" type="button">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </button>
+                </form>
+
+
+
+                @if(Auth::check())
+
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            <img class="profile-dropdown-img"
+                                 src="data:image/jpeg;base64,{{base64_encode(Auth::user()->image)}}">
+                        </button>
+                        <ul class="dropdown-menu prfl-ul" aria-labelledby="dropdownMenu2">
+                            <li><a class="dropdown-item" href="">My Profile</a></li>
+                            @if(Auth::user()->author==1)
+                                <li><a class="dropdown-item" href="{{url('/admin/index')}}">Admin Page</a></li>
+                            @elseif(Auth::user()->author==2)
+                                <li><a class="dropdown-item" href="{{url('/admin/course/index')}}">Course Profile</a>
+                                </li>
+                            @elseif(Auth::user()->author==3)
+                                <li><a class="dropdown-item" href="{{url('/admin/teacher/index')}}">Teacher Profile</a>
+                                </li>
+                            @elseif(Auth::user()->author==4)
+                                <li><a class="dropdown-item" href="{{url('/admin/student/index')}}">Student Profile</a>
+                                </li>
+                            @endif
+                            <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
+                        </ul>
+                    </div>
+                @else
+                    <button class="btn login-btnn" type="button"><a href="{{route('sign_in')}}">Daxil ol</a></button>
+                @endif
+            </div>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <a href=""><img class="edocean-logo" src="./frontendCss/images/edocean-logo.jpeg" alt=""></a>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Ana Səhifə</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Müəllimlər</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Kurslar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Tələbələr</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Haqqımızda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Bloqlar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Əlaqə</a>
+                    </li>
+                    <div class="search-form-and-btn">
+                        <form class="d-flex search-ed">
+                            <input class="form-control me-2" type="text" placeholder="Axtar...">
+                            <button class="btn search-iconn" type="button">
+                                <ion-icon name="search-outline"></ion-icon>
+                            </button>
+
+                        </form>
+                        <button class="btn login-btnn" type="button"><a href="./login.html">Daxil ol</a></button>
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle" type="button" id="dropdownMenu2"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                <img class="profile-dropdown-img" src="./frontendCss/images/edocean-logo.jpeg" alt="">
+                            </button>
+                            <ul class="dropdown-menu prfl-ul" aria-labelledby="dropdownMenu2">
+                                <li><a class="dropdown-item" href="">Profile</a></li>
+                                <li><a class="dropdown-item" href=""> Lorem, ipsum.</a></li>
+                                <li><a class="dropdown-item" href="">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </ul>
             </div>
         </div>
-    </nav>
-</header>
+    </div>
+</nav>
 
 @yield('content')
 

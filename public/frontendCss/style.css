@@ -17,11 +17,21 @@ a{
     width: 70px;
     height: 70px;
 }
+.navbar-desktop{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .nav-link{
     color: black !important;
 }
 .search-ed{
     position: relative;
+    /* height: 50px; */
+}
+.search-form-and-btn{
+    display: flex;
 }
 .login-btnn{
     background-color: #14427C !important;
@@ -46,12 +56,23 @@ a{
     background-color: black !important;
     height: 5px !important;
 }
+.sticky-top{
+    position: sticky;
+}
+.profile-dropdown-img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.prfl-ul{
+    z-index: 9999 !important;
+}
 .auth a {
     color: #14427C !important;
 }
 #ed-video{
     height: 85vh !important;
-    margin-top: 95px;
+
     position: relative;
 }
 .fabs{
@@ -606,6 +627,9 @@ ion-icon[name="eye-off"]{
     }
 }
 @media (max-width: 992px){
+    .navbar-desktop{
+        display: none !important;
+    }
     .contact-form form{
         width: 90%;
     }

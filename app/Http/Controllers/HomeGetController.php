@@ -26,7 +26,7 @@ class HomeGetController extends Controller
     {
         $course = Course::all();
         $teacher = Teacher::all();
-        $menu = Menu::where('status', 1);
+        $menu = Menu::where('status', 1)->get();
         return view('frontend.index')->with(['course' => $course, 'teacher' => $teacher, 'menu' => $menu]);
     }
     //finish home
@@ -35,7 +35,8 @@ class HomeGetController extends Controller
     //ContactUs
     public function GetContactUs()
     {
-        return view('frontend.contact_us');
+        $menu = Menu::where('status', 1)->get();
+        return view('frontend.contact_us')->with(['menu' => $menu]);
     }
     //finish ContactUs
 
@@ -43,7 +44,8 @@ class HomeGetController extends Controller
     //SignIn
     public function GetSignIn()
     {
-        return view('frontend.sign_in');
+        $menu = Menu::where('status', 1)->get();
+        return view('frontend.sign_in')->with(['menu' => $menu]);
     }
     //finish SignIn
 
@@ -51,7 +53,8 @@ class HomeGetController extends Controller
     //SignUp
     public function GetSignUp()
     {
-        return view('frontend.sign_up');
+        $menu = Menu::where('status', 1)->get();
+        return view('frontend.sign_up')->with(['menu' => $menu]);
     }
     //finish SignUp
 
