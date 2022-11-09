@@ -249,8 +249,8 @@
                                 <span class="symbol symbol-lg-35 symbol-25 symbol-light-success">
                                     <span class="symbol-label font-size-h5 font-weight-bold">
 {{--                                        <img class="entry-logo img-responsive" style="width: 30px; height: 30px"--}}
-{{--                                             src="data:image/jpeg;base64,{{base64_encode($teacher->image)}}"--}}
-{{--                                             alt="logo" title="logo"/>--}}
+                                        {{--                                             src="data:image/jpeg;base64,{{base64_encode($teacher->image)}}"--}}
+                                        {{--                                             alt="logo" title="logo"/>--}}
                                     </span>
                                 </span>
                             </div>
@@ -311,9 +311,9 @@
         <div class="d-flex align-items-center mt-5">
             <div class="symbol symbol-100 mr-5">
                 <div class="symbol-label">
-{{--                    <img class="entry-logo img-responsive" style="width: 90px; height: 90px"--}}
-{{--                         src="data:image/jpeg;base64,{{base64_encode($teacher->image)}}" alt="logo"--}}
-{{--                         title="logo"/>--}}
+                    {{--                    <img class="entry-logo img-responsive" style="width: 90px; height: 90px"--}}
+                    {{--                         src="data:image/jpeg;base64,{{base64_encode($teacher->image)}}" alt="logo"--}}
+                    {{--                         title="logo"/>--}}
                 </div>
                 <i class="symbol-badge bg-success"></i>
             </div>
@@ -375,7 +375,7 @@
         <div class="navi navi-spacer-x-0 p-0">
             <!--begin::Item-->
             <a href="#" class="navi-item">
-                <div class="navi-link">
+                <div class="navi-link" style="display: flex; align-items: center; padding: 15px 0;">
                     <div class="symbol symbol-40 bg-light mr-3">
                         <div class="symbol-label">
                             <span class="svg-icon svg-icon-md svg-icon-success">
@@ -399,7 +399,7 @@
                         </div>
                     </div>
                     <div class="navi-text">
-                        <a href="{{url('admin/teacher/my_profile')}}" class="font-weight-bold">Profilim</a>
+                        <div  class="font-weight-bold"><a href="{{url('admin/teacher/my_profile')}}">Profilim</a></div>
                         <div class="text-muted">Hesab tənzimləmələri və başqaları</div>
                     </div>
                 </div>
@@ -407,7 +407,7 @@
             <!--end:Item-->
             <!--begin::Item-->
             <a href="#" class="navi-item" target="_blank">
-                <div class="navi-link">
+                <div class="navi-link" style="display: flex; align-items: center; padding: 15px 0;">
                     <div class="symbol symbol-40 bg-light mr-3">
                         <div class="symbol-label">
                             <span class="svg-icon svg-icon-md svg-icon-success">
@@ -416,7 +416,7 @@
                         </div>
                     </div>
                     <div class="navi-text">
-                        <a href="{{url('/')}}" class="font-weight-bold">Saytı ziyarət et</a>
+                        <div  class="font-weight-bold"><a href="{{url('/')}}">Saytı ziyarət et</a></div>
                         <div class="text-muted">Əlavələrinizi vəya tanzimləməlrinizi yoxlayın</div>
                     </div>
                 </div>
