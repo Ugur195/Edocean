@@ -67,6 +67,7 @@ class AdminPostController extends Controller
     //finish About_Us
 
 
+
     //ContactUs/Messages
     public function MessagesEdit(Request $request)
     {
@@ -92,6 +93,7 @@ class AdminPostController extends Controller
 
     }
     //finish ContactUs/Messages
+
 
 
     //Student
@@ -122,6 +124,8 @@ class AdminPostController extends Controller
     //finish Student
 
 
+
+
     //Teacher
     public function TeachersBlockUnblockDelete(Request $request)
     {
@@ -147,6 +151,8 @@ class AdminPostController extends Controller
         }
     }
     //finish Teacher
+
+
 
 
     //Course
@@ -177,6 +183,9 @@ class AdminPostController extends Controller
     //finish Course
 
 
+
+
+
     //Admin
     public function AdminsBlockUnblockDelete(Request $request)
     {
@@ -204,8 +213,7 @@ class AdminPostController extends Controller
     }
 
 
-    public function AddAdmin(Request $request)
-    {
+    public function AddAdmin(Request $request) {
         $add_admin = User::where('name', $request->name)->first();
         if ($add_admin == null) {
             $add_admin = new User();
@@ -223,14 +231,24 @@ class AdminPostController extends Controller
         }
     }
 
-    public function AdminEdit(Request $request)
-    {
-        $admin_edit = Admin::where('first_name', $request->name)->first();
+    public function AdminEdit(Request $request, $id) {
+        $admin_edit = Admin::where('user_id', $id)->first();
         $image = null;
         if (isset($request->image)) {
             $image = file_get_contents($request->file('image')->getRealPath());
         }
-        if ($admin_edit == null) {
+        if($admin_edit == null) {
+            Admin::creat([
+                'image' => $image,
+                'first_name' => $request->name,
+                'last_name' => $request->last_name,
+                'father_name' => $request->father_name,
+                'birthday' => $request->birthday,
+                'email' => $request->email,
+                'user_id' => $id,
+                'status' => $admin_edit->status=1,
+            ]);
+        }else {  
             $admin_edit = new Admin();
             $admin_edit->image = $image;
             $admin_edit->first_name = $request->first_name;
@@ -238,15 +256,15 @@ class AdminPostController extends Controller
             $admin_edit->father_name = $request->father_name;
             $admin_edit->birthday = $request->birthday;
             $admin_edit->email = $request->email;
+            $admin_edit->user_id = $request->user_id;
             $admin_edit->status = 1;
             $admin_edit->save();
-
-            return response(['title' => 'Ugurlu!', 'message' => 'Yeni Admin elave edildi!', 'status' => 'success']);
-        } else {
-            return response(['title' => 'Ugursuz!', 'message' => 'Yeni Admin elave etmek mumkun olmadi', 'status' => 'error']);
         }
+        return back();
     }
     //finish Admin
+
+
 
 
     //Blogs
@@ -309,6 +327,8 @@ class AdminPostController extends Controller
     //finish Blogs
 
 
+
+
     //Blog Category
     public function BlogCategoryDelete(Request $request)
     {
@@ -345,6 +365,8 @@ class AdminPostController extends Controller
     // finish BlogCategory
 
 
+
+
     //BlogComment
     public function BlogCommentDelete(Request $request)
     {
@@ -357,54 +379,15 @@ class AdminPostController extends Controller
     }
     //finish BlogComment
 
-
     //Menu
-
-    public function AddMenu(Request $request)
-    {
-        try {
-            $menu = Menu::where('name', $request->name)->first();
-            if ($menu == null) {
-                $date = Carbon::now()->format('Y-m-d:H:d:s');
-                $menu = new Menu();
-                $menu->name = $request->name;
-                $menu->name_ru = $request->name_ru;
-                $menu->name_en = $request->name_en;
-                $menu->page = $request->page;
-                $menu->slug = $request->name . $date;
-                $menu->status = 1;
-                $menu->save();
-                return response(['title' => 'Ugurlu', 'message' => 'Menu elave olundu!', 'status' => 'success']);
-            } else {
-                return response(['title' => 'Ugursuz!', 'message' => 'Bu Menu artiq elave edilib!', 'status' => 'error']);
-            }
-        } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => $exception->getMessage(), 'status' => 'error']);
-        }
-
-    }
-
-
-    public function MenuEdit(Request $request)
-    {
-        try {
-            Menu::where('id', $request->id)->update(['name' => $request->name, 'page' => $request->page,
-                'slug' => $request->slug, 'status' => $request->status]);
-            return response(['title' => 'Ugurlu!', 'message' => 'Menu update oldu', 'status' => 'success']);
-        } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => $exception->getMessage(), 'status' => 'error']);
-        }
-    }
-
-
-    public function MenuDelete(Request $request)
-    {
+    public function MenuDelete(Request $request){
         try {
             Menu::where('id', $request->id)->delete();
             return response(['title' => 'Ugurlu!', 'message' => 'Menu Silindi', 'status' => 'success']);
-        } catch (\Exception $exception) {
+        }catch (\Exception $exception){
             return response(['title' => 'Ugursuz!', 'message' => 'Menu silmek olmur!', 'status' => 'error']);
         }
+
     }
     //finish Menu
 
