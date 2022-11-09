@@ -64,7 +64,7 @@
                     </div>
                     <!--end::Dropdown-->
                     <!--begin::Button-->
-                    <a href="#" class="btn btn-primary font-weight-bolder">
+                    <a href="{{route('AddMenu')}}" class="btn btn-primary font-weight-bolder">
                         <i class="la la-plus"></i>Add Menu</a>
                     <!--end::Button-->
                 </div>

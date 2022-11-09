@@ -382,9 +382,14 @@ class AdminGetController extends Controller
             })->rawColumns(['options' => true])->make(true);
     }
 
+    public function AddMenu()
+    {
+        return view('backend.add_menu');
+    }
+
     public function MenuEdit($id)
     {
-        $menu_edit = Menu::where('id', $id)->first();
+        $menu_edit = Menu::find($id);
         return view('backend.menu_edit')->with(['menu_edit' => $menu_edit]);
     }
     //finish Menu
