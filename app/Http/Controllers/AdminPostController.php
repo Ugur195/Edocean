@@ -245,6 +245,7 @@ class AdminPostController extends Controller
                 'father_name' => $request->father_name,
                 'birthday' => $request->birthday,
                 'email' => $request->email,
+                'user_id' => $id,
                 'status' => $admin_edit->status=1,
             ]);
         }else {  
