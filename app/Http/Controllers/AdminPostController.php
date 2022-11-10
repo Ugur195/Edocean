@@ -183,16 +183,19 @@ class AdminPostController extends Controller
         try {
             if ($request->btn_block != null) {
                 if ($request->status == 0) {
-                    Admin::find($request->id)->update(['status' => 1]);
+                    User::where('id', $request->id)->update(['status' => 1]);
+                    Admin::where('user_id', $request->id)->update(['status' => 1]);
                     return response(['title' => 'Ugurlu!', 'message' => 'Admin blokdan cixdi!', 'status' => 'success']);
                 } else if ($request->status == 1) {
-                    Admin::find($request->id)->update(['status' => 0]);
+                    User::where('id', $request->id)->update(['status' => 0]);
+                    Admin::where('user_id', $request->id)->update(['status' => 0]);
                     return response(['title' => 'Ugurlu!', 'message' => 'Admin bloklandi!', 'status' => 'success']);
                 } else {
                     return response(['title' => 'Ugursuz!', 'message' => 'Admini bloklamaq mumkun olmadi!', 'status' => 'error']);
                 }
             } else if ($request->btn_delete != null) {
-                Admin::where('id', $request->id)->delete();
+                User::where('id', $request->id)->delete();
+                Admin::where('user_id', $request->id)->delete();
                 return response(['title' => 'Ugurlu!', 'message' => 'Admin ugurlu silindi!', 'status' => 'success']);
             } else {
                 return response(['title' => 'Ugursuz!', 'message' => 'Admini silmek mumkun olmadi!', 'status' => 'error']);
