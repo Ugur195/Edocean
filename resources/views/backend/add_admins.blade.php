@@ -64,7 +64,7 @@
                                                 <div class="mr-2">
                                                 </div>
                                                 <div>
-                                                    <a href="{{route('AdminStudent')}}" type="button"
+                                                    <a href="{{route('AdminEdocean')}}" type="button"
                                                        class="btn btn-success font-weight-bolder text-uppercase px-9 py-4"
                                                        data-wizard-type="action-submit">Back
                                                     </a>

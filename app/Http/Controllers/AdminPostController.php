@@ -245,7 +245,7 @@ class AdminPostController extends Controller
                 'email' => $request->email,
                 'user_id' => $id,
                 'password' => $userEdit->password,
-                'status' => 0,
+                'status' => 1,
             ]);
         } else {
             $image=$admin_edit->image;
@@ -260,7 +260,7 @@ class AdminPostController extends Controller
             $admin_edit->email = $request->email;
             $admin_edit->user_id = $id;
             $admin_edit->password = $userEdit->password;
-            $admin_edit->status = 0;
+            $admin_edit->status = 1;
             $admin_edit->save();
         }
         return response(['title' => 'Ugurlu!', 'message' => 'Yeni Blog elave edildi!', 'status' => 'success']);
