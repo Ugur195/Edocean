@@ -67,7 +67,6 @@ class AdminPostController extends Controller
     //finish About_Us
 
 
-
     //ContactUs/Messages
     public function MessagesEdit(Request $request)
     {
@@ -93,7 +92,6 @@ class AdminPostController extends Controller
 
     }
     //finish ContactUs/Messages
-
 
 
     //Student
@@ -124,8 +122,6 @@ class AdminPostController extends Controller
     //finish Student
 
 
-
-
     //Teacher
     public function TeachersBlockUnblockDelete(Request $request)
     {
@@ -151,8 +147,6 @@ class AdminPostController extends Controller
         }
     }
     //finish Teacher
-
-
 
 
     //Course
@@ -183,9 +177,6 @@ class AdminPostController extends Controller
     //finish Course
 
 
-
-
-
     //Admin
     public function AdminsBlockUnblockDelete(Request $request)
     {
@@ -213,7 +204,8 @@ class AdminPostController extends Controller
     }
 
 
-    public function AddAdmin(Request $request) {
+    public function AddAdmin(Request $request)
+    {
         $add_admin = User::where('name', $request->name)->first();
         if ($add_admin == null) {
             $add_admin = new User();
@@ -231,24 +223,26 @@ class AdminPostController extends Controller
         }
     }
 
-    public function AdminEdit(Request $request, $id) {
+
+    public function AdminEdit(Request $request, $id)
+    {
         $admin_edit = Admin::where('user_id', $id)->first();
         $image = null;
         if (isset($request->image)) {
             $image = file_get_contents($request->file('image')->getRealPath());
         }
-        if($admin_edit == null) {
-            Admin::creat([
+        if ($admin_edit == null) {
+            Admin::create([
                 'image' => $image,
-                'first_name' => $request->name,
+                'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
                 'father_name' => $request->father_name,
                 'birthday' => $request->birthday,
                 'email' => $request->email,
                 'user_id' => $id,
-                'status' => $admin_edit->status=1,
+                'status' => 1,
             ]);
-        }else {  
+        } else {
             $admin_edit = new Admin();
             $admin_edit->image = $image;
             $admin_edit->first_name = $request->first_name;
@@ -263,8 +257,6 @@ class AdminPostController extends Controller
         return back();
     }
     //finish Admin
-
-
 
 
     //Blogs
@@ -327,8 +319,6 @@ class AdminPostController extends Controller
     //finish Blogs
 
 
-
-
     //Blog Category
     public function BlogCategoryDelete(Request $request)
     {
@@ -365,8 +355,6 @@ class AdminPostController extends Controller
     // finish BlogCategory
 
 
-
-
     //BlogComment
     public function BlogCommentDelete(Request $request)
     {
@@ -380,11 +368,12 @@ class AdminPostController extends Controller
     //finish BlogComment
 
     //Menu
-    public function MenuDelete(Request $request){
+    public function MenuDelete(Request $request)
+    {
         try {
             Menu::where('id', $request->id)->delete();
             return response(['title' => 'Ugurlu!', 'message' => 'Menu Silindi', 'status' => 'success']);
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             return response(['title' => 'Ugursuz!', 'message' => 'Menu silmek olmur!', 'status' => 'error']);
         }
 

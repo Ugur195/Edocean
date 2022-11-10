@@ -21,7 +21,7 @@
                         <div class="tab-content pt-5">
                             <!--begin::Tab Content-->
                             <div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
-                                <form id="EditAdmin" class="form" method="POST">
+                                <form id="EditAdmin" class="form" method="POST" enctype="multipart/form-data">
                                     {{csrf_field()}}
                                     <div class="col-xl-3"></div>
 

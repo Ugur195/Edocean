@@ -58,7 +58,7 @@ class CoursePostController extends Controller
                 'city' => $request->city,
                 'user_id' => Auth::user()->id,
                 'verified_status' => $request->verified_status,
-                'status' => $request->lstatus
+                'status' => $request->status
 
 
             ]);
