@@ -241,7 +241,7 @@ class AdminPostController extends Controller
                 'birthday' => $request->birthday,
                 'email' => $request->email,
                 'user_id' => $id,
-                'password' => $userEdit->password, 
+                'password' => $userEdit->password,
                 'status' => 0,
             ]);
         } else {
@@ -260,7 +260,7 @@ class AdminPostController extends Controller
             $admin_edit->status = 0;
             $admin_edit->save();
         }
-        return back();
+        return response(['title' => 'Ugurlu!', 'message' => 'Yeni Blog elave edildi!', 'status' => 'success']);
     }
     //finish Admin
 
@@ -374,6 +374,18 @@ class AdminPostController extends Controller
     //finish BlogComment
 
     //Menu
+
+    public function MenuEdit(Request $request)
+    {
+        try {
+            Menu::where('id', $request->id)->update(['name' => $request->name, 'page' => $request->page,
+                'slug' => $request->slug, 'status' => $request->status]);
+            return response(['title' => 'Ugurlu!', 'message' => 'Menu update oldu', 'status' => 'success']);
+        } catch (\Exception $exception) {
+            return response(['title' => 'Ugursuz!', 'message' => 'Menu update olmadi', 'status' => 'error']);
+        }
+    }
+
     public function MenuDelete(Request $request)
     {
         try {
@@ -384,6 +396,7 @@ class AdminPostController extends Controller
         }
 
     }
+
     //finish Menu
 
 }
