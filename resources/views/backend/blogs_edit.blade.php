@@ -5,21 +5,6 @@
             font-size: 20px;
         }
 
-        .far {
-            vertical-align: -2px;
-        }
-
-        .small {
-            font-size: 13px;
-        }
-
-        textarea {
-            overflow: hidden;
-            padding: 10px;
-            border: 1px solid #556677;
-            min-height: 100px;
-        }
-
         .row {
             align-items: center;
         }
@@ -37,22 +22,6 @@
 
         .likes {
             margin-top: 5px !important;
-        }
-
-        .status {
-            margin-left: -200px;
-        }
-
-        .status svg {
-            color: #ffd300;
-        }
-
-        .placeholder {
-            height: 40px;
-        }
-
-        .fas {
-            color: #ffd300;
         }
 
     </style>
