@@ -22,35 +22,39 @@
                         <div class="tab-content pt-5">
                             <!--begin::Tab Content-->
                             <div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
-                                <form id="AddAdmin" class="form" method="POST">
+                                <form id="AddAdmin" class="form needs-validation" novalidate method="POST">
                                     {{csrf_field()}}
                                     <div class="col-xl-3"></div>
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">FIN</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" name="fin" type="text" minlength="7" maxlength="7" value=""/>
+                                            <input class="form-control form-control-lg form-control-solid" name="fin" type="text" minlength="7" maxlength="7" value="" required/>
+                                            <div class="invalid-feedback">Write your FIN correct.</div>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Name</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" name="name" type="text" value=""/>
+                                            <input class="form-control form-control-lg form-control-solid" name="name" type="text" value="" required/>
+                                            <div class="invalid-feedback">Write your Name</div>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Email</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" name="email" type="mail" value=""/>
+                                            <input class="form-control form-control-lg form-control-solid" name="email" type="email" value="" required/>
+                                            <div class="invalid-feedback">Write your Email correct.</div>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Password</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" name="password" type="password" value=""/>
+                                            <input class="form-control form-control-lg form-control-solid" name="password" type="password" minlength="6" value="" required/>
+                                            <div class="invalid-feedback">Write your Password correct.</div>
                                         </div>
                                     </div>
 
@@ -113,6 +117,21 @@
                 }
             });
         });
+
+
+        const forms = document.querySelectorAll('.needs-validation');
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms).forEach((form) => {
+            form.addEventListener('submit', (event) => {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+            }, false);
+        });
+
     </script>
 @endsection
 
