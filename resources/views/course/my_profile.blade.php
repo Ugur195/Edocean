@@ -2,7 +2,6 @@
 
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('cssValidate/sweetalert2.css')}}"/>
     <style>
         i {
             font-size: 20px;
@@ -32,7 +31,7 @@
             flex-direction: column;
         }
         .likes {
-            margin-top: 5px !important; 
+            margin-top: 5px !important;
         }
         .status {
             margin-left: -200px;
@@ -42,7 +41,7 @@
         }
         .placeholder {
             height: 40px;
-        }        
+        }
         .fas {
             color: #ffd300;
         }
@@ -101,7 +100,7 @@
                                                 </span>
                                             </div>
                                         </div>
-                                        <div class="form__item col-sm"> 
+                                        <div class="form__item col-sm">
                                                 <div class="placeholder" style="color: lightgray;">
                                                     <i class="far fa-star"></i>
                                                     <i class="far fa-star"></i>
@@ -111,7 +110,7 @@
                                                     <span class="small">({{ $course->rating }})</span>
 
                                                     <div class="overlay" style="position: relative;top: -22px;">
-                                                    
+
                                                         @while($course->rating>0)
                                                             @if($course->rating >0.5)
                                                                 <i class="fas fa-star"></i>
@@ -120,10 +119,10 @@
                                                             @endif
                                                             @php $course->rating--; @endphp
                                                         @endwhile
-                                            
-                                                    </div> 
+
+                                                    </div>
                                                 </div>
-                                        
+
                                             <div class="likes">
                                                 <span>{{ $course->likes }}</span>
                                                 <i style="color: green; vertical-align: -5px; font-size:30px; padding-right: 20px;" class="la la-thumbs-up"></i>
@@ -131,14 +130,14 @@
                                                 <i style="color:red; vertical-align: -5px; font-size:30px; padding-right: 20px;" class="la la-thumbs-down"></i>
                                             </div>
                                         </div>
-                                        <div class="form__item col-sm"> 
+                                        <div class="form__item col-sm">
                                             <div class="status">
                                                 <?xml version="1.0" encoding="iso-8859-1"?>
                                                 <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
                                                 <svg style="width: 60px;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                                     viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001;" xml:space="preserve">
                                                 <g>
-                                                        <polygon points="214.05,182.273 175.855,291.388 137.651,182.273 110.174,182.273 162.15,327.186 163.072,329.729 
+                                                        <polygon points="214.05,182.273 175.855,291.388 137.651,182.273 110.174,182.273 162.15,327.186 163.072,329.729
                                                             188.629,329.729 239.727,187.41 241.553,182.273" fill="#E1A907"/>
                                                         <rect x="252.203" y="182.273" width="26.999" height="147.447" fill="#E1A907"/>
                                                         <path d="M396.544,207.275c-2.97-5.598-7.168-10.351-12.467-14.123c-5.171-3.661-11.324-6.434-18.278-8.235
@@ -489,7 +488,7 @@
                                                         <span></span>
                                                         1 hour 30 min
                                                     </label>
-        
+
                                                     <label class="radio radio-primary">
                                                         <input type="radio" name="lessons_duration"
                                                             @if($course->lessons_duration=='2 hours') checked
@@ -520,7 +519,7 @@
                                                         <span></span>
                                                         3 times per week
                                                     </label>
-        
+
                                                     <label class="radio radio-primary">
                                                         <input type="radio" name="lessons_intensivity"
                                                             @if($course->lessons_intensivity=='5 times per week') checked
@@ -550,7 +549,7 @@
                                                         <span></span>
                                                         In a group (3-4 people)
                                                     </label>
-        
+
                                                     <label class="radio radio-primary">
                                                         <input type="radio" name="students_amount"
                                                             @if($course->students_amount=='In a group (5-7 people)') checked
@@ -673,13 +672,16 @@
             })
         }
     </script>
-    
+
     {{-- Phone --}}
     <script type="text/javascript">
         jQuery(function($){
         $("#tel").mask("+994(88) 888-88-88");
         });
-    </script>   
+    </script>
+
+
+
 
 
     <script>

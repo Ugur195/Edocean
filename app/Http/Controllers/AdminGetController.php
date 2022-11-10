@@ -282,9 +282,9 @@ class AdminGetController extends Controller
 
     public function BlogsEdit($id)
     {
-
+        $blog_category = BlogCategory::all();
         $blogs_edit = Blogs::where('id', $id)->first();
-        return view('backend.blogs_edit')->with(['blogs_edit' => $blogs_edit]);
+        return view('backend.blogs_edit')->with(['blogs_edit' => $blogs_edit, 'blog_category' => $blog_category]);
     }
 
     public function Blogs()

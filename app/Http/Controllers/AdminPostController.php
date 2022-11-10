@@ -248,9 +248,9 @@ class AdminPostController extends Controller
                 'status' => 1,
             ]);
         } else {
-            $image=$admin_edit->image;
+            $image = $admin_edit->image;
             if (isset($request->image)) {
-                $image= file_get_contents($request->file('image')->getRealPath());
+                $image = file_get_contents($request->file('image')->getRealPath());
             }
             $admin_edit->image = $image;
             $admin_edit->first_name = $request->first_name;
@@ -269,6 +269,25 @@ class AdminPostController extends Controller
 
 
     //Blogs
+
+    public function BlogsEdit(Request $request)
+    {
+        try {
+            Blogs::where('id', $request->id)->update(['title' => $request->title, 'title_ru' => $request->title_ru,
+                'title_en' => $request->title_en, 'message' => $request->message, 'message_ru' => $request->message_ru,
+                'message_en' => $request->message_en, 'author' => Auth::user()->id, 'category_id' => $request->category_id,
+                'likes' => $request->likes, 'dislike' => $request->dislike, 'see_count' => $request->see_count,
+                'slug' => $request->title, 'status' => $request->status]);
+            if (isset($request->image)) {
+                Blogs::where('id', $request->id)->update(['image' => file_get_contents($request->file('image'))]);
+            }
+            return response(['title' => 'Ugurlu!', 'message' => 'Blog update oldu', 'status' => 'success']);
+        } catch (\Exception $exception) {
+            return response(['title' => 'Ugursuz!', 'message' => $exception->getMessage(), 'status' => 'error']);
+        }
+    }
+
+
     public function BlogsAdd(Request $request)
     {
 
