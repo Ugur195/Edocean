@@ -57,11 +57,12 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">First Name</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input class="form-control form-control-lg form-control-solid" name="first_name" type="text"
-                                                @if ($admins_edit->first_name!== null)
-                                                    value="{{ $admins_edit->first_name }}"/>
+                                                @if ($admins_edit->first_name !== null)
+                                                    value="{{ $admins_edit->first_name }}"
                                                 @else
-                                                    value="{{$admins_edit->name}}"/>
+                                                    value="{{$admins_edit->name}}"
                                                 @endif
+                                            />
                                         </div>
                                     </div>
 
