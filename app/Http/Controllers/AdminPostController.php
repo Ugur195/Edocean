@@ -329,6 +329,18 @@ class AdminPostController extends Controller
 
 
     //Blog Category
+    public function BlogCategoryEdit(Request $request)
+    {
+        try {
+            BlogCategory::where('id', $request->id)->update(['name' => $request->name,
+                'slug' => $request->slug, 'status' => $request->status]);
+            return response(['title' => 'Ugurlu!', 'message' => 'BlogCategory update oldu', 'status' => 'success']);
+        } catch (\Exception $exception) {
+            return response(['title' => 'Ugursuz!', 'message' => 'BlogCategory update olmadi', 'status' => 'error']);
+        }
+    }
+
+
     public function BlogCategoryDelete(Request $request)
     {
         try {
