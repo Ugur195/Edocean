@@ -100,6 +100,8 @@
                                                 </span>
                                             </div>
                                         </div>
+
+
                                         <div class="form__item col-sm">
                                                 <div class="placeholder" style="color: lightgray;">
                                                     <i class="far fa-star"></i>
@@ -130,6 +132,9 @@
                                                 <i style="color:red; vertical-align: -5px; font-size:30px; padding-right: 20px;" class="la la-thumbs-down"></i>
                                             </div>
                                         </div>
+
+
+
                                         <div class="form__item col-sm">
                                             <div class="status">
                                                 <?xml version="1.0" encoding="iso-8859-1"?>

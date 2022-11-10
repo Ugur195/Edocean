@@ -1,5 +1,61 @@
 @extends('backend.app')
 @section('css')
+    <style>
+        i {
+            font-size: 20px;
+        }
+
+        .far {
+            vertical-align: -2px;
+        }
+
+        .small {
+            font-size: 13px;
+        }
+
+        textarea {
+            overflow: hidden;
+            padding: 10px;
+            border: 1px solid #556677;
+            min-height: 100px;
+        }
+
+        .row {
+            align-items: center;
+        }
+
+        .col-sm4 {
+            padding-left: 10px;
+        }
+
+        .form__item {
+            padding-left: 60px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .likes {
+            margin-top: 5px !important;
+        }
+
+        .status {
+            margin-left: -200px;
+        }
+
+        .status svg {
+            color: #ffd300;
+        }
+
+        .placeholder {
+            height: 40px;
+        }
+
+        .fas {
+            color: #ffd300;
+        }
+
+    </style>
 @endsection
 
 @section('content')
@@ -28,20 +84,19 @@
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Image</label>
-                                        <div class="col-lg-9 col-xl-9">
+                                        <div class="col-sm4">
                                             <div class="image-input image-input-outline" id="kt_contacts_edit_avatar"
                                                  style="background-image: url(assets/media/users/blank.png)">
 
                                                 <div class="image-input-wrapper"
-                                                     style="background-size:fill; background-position:center; background-image: url('data:image/jpeg;base64,{{base64_encode($blogs_edit->image)}}')">
+                                                     style="background-image: url('data:image/jpeg;base64,{{base64_encode($blogs_edit->image)}}')">
                                                 </div>
                                                 <label
                                                     class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
                                                     data-action="change" data-toggle="tooltip" title=""
                                                     data-original-title="Change avatar">
                                                     <i class="fa fa-pen icon-sm text-muted"></i>
-                                                    <input type="file" name="image" id="file"
-                                                           accept=".png, .jpg, .jpeg"/>
+                                                    <input type="file" name="image" id="file" accept=".png, .jpg, .jpeg"/>
                                                     <input type="hidden" name="profile_avatar_remove"/>
                                                 </label>
 
@@ -52,6 +107,17 @@
                                                 </span>
                                             </div>
                                         </div>
+
+
+                                        <div class="form__item col-sm">
+                                            <div class="likes">
+                                                <span>{{$blogs_edit->likes}}</span>
+                                                <i style="color: green; vertical-align: -5px; font-size:30px; padding-right: 20px;" class="la la-thumbs-up"></i>
+                                                <span>{{$blogs_edit->dislike}}</span>
+                                                <i style="color:red; vertical-align: -5px; font-size:30px; padding-right: 20px;" class="la la-thumbs-down"></i>
+                                            </div>
+                                        </div>
+
                                     </div>
 
 
@@ -135,33 +201,6 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Likes</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input name="likes" class="form-control form-control-lg form-control-solid"
-                                                   type="text"
-                                                   value="{{$blogs_edit->likes}}" readonly/>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Dislike</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input name="dislike"
-                                                   class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$blogs_edit->dislike}}" readonly/>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">See Count</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input name="see_count"
-                                                   class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$blogs_edit->see_count}}" readonly/>
-                                        </div>
-                                    </div>
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Slug</label>
