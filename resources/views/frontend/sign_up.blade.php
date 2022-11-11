@@ -108,9 +108,7 @@
                                     allowOutsideClick: false,
                                 })
                                 if(response.status === 'success') {
-                                    setTimeout(function () {
-                                        window.location.href = '/sign_in';
-                                    }, 500)
+                                    window.location.href = '/frontend/my_profile';
                                 }
                         }
                     }

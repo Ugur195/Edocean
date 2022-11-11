@@ -1,7 +1,6 @@
 @extends('frontend.app')
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('cssValidate/sweetalert2.css')}}"/>
 @endsection
 
 @section('content')
@@ -36,7 +35,6 @@
 
 @section('js')
     <script src="{{asset('jsValidate/jquery.form.js')}}"></script>
-    <script src="{{asset('jsValidate/sweetalert2.js')}}"></script>
 
     <script>
         $(document).ready(function () {
