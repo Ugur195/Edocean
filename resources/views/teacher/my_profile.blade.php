@@ -3,61 +3,191 @@
 
 @section('css')
     <link rel="stylesheet" href="{{asset('cssValidate/sweetalert2.css')}}"/>
+
+    <style>
+        i {
+            font-size: 20px;
+        }
+        .far {
+            vertical-align: -2px;
+        }
+        .small {
+            font-size: 13px;
+        }
+        textarea {
+            overflow: hidden;
+            padding: 10px;
+            border: 1px solid #556677;
+            min-height: 100px;
+        }
+        .row {
+            align-items: center;
+        }
+        .col-sm4 {
+            padding-left: 10px;
+        }
+        .form__item {
+            padding-left: 60px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .likes {
+            margin-top: 5px !important;
+        }
+        .status {
+            margin-left: -200px;
+        }
+        .status svg {
+            color: #ffd300;
+        }
+        .placeholder {
+            height: 40px;
+        }
+        .fas {
+            color: #ffd300;
+        }
+        .see_count {
+            margin-top: 20px;
+        }
+
+    </style>
 @endsection
 
 @section('content')
-    <div class="d-flex flex-column flex-column-fluid" id="kt_content">
-        <div class="d-flex flex-column-fluid">
-            <div class="container">
-                <!--begin::Card-->
-                <div class="card card-custom">
-                    <div class="card-header card-header-tabs-line">
-                        <div class="card-toolbar">
-                            <div class="d-flex align-items-center flex-wrap mr-2">
-                                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">My Teacher Profile</h5>
-                                <div
-                                    class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
-                            </div>
-
+<div class="d-flex flex-column flex-column-fluid" id="kt_content">
+    <div class="d-flex flex-column-fluid">
+        <div class="container">
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header card-header-tabs-line">
+                    <div class="card-toolbar">
+                        <div class="d-flex align-items-center flex-wrap mr-2">
+                            <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">My Profile</h5>
+                            <div
+                                class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
                         </div>
+
                     </div>
-                    <div class="card-body">
-                        <div class="tab-content pt-5">
-                            <!--begin::Tab Content-->
-                            <div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
-                                <form class="form" method="POST" enctype="multipart/form-data">
-                                    {{csrf_field()}}
-                                    <input name="id" class="form-control form-control-lg form-control-solid" hidden
-                                           type="text"
-                                           value="{{$teacher->id}}"/>
+                </div>
+                <div class="card-body">
+                    <div class="tab-content pt-5">
+                        <!--begin::Tab Content-->
+                        <div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
+                            <form class="form" method="POST" enctype="multipart/form-data">
+                                {{csrf_field()}}
+                                <input name="id" class="form-control form-control-lg form-control-solid" hidden
+                                       type="text"
+                                       value="{{$teacher->id}}"/>
 
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Image</label>
-                                        <div class="col-lg-9 col-xl-9">
-                                            <div class="image-input image-input-outline" id="kt_contacts_edit_avatar"
-                                                 style="background-image: url(assets/media/users/blank.png)">
+                                <div class="form-group row">
+                                    <label class="col-xl-3 col-lg-3 text-right col-form-label">Image</label>
+                                    <div class="col-sm4">
+                                        <div class="image-input image-input-outline" id="kt_contacts_edit_avatar"
+                                             style="background-size:fill; background-position:center; background-image: url(assets/media/users/blank.png)">
 
-                                                <div class="image-input-wrapper"
-                                                     style="background-image: url('data:image/jpeg;base64,{{base64_encode($teacher->image)}}')">
-                                                </div>
-                                                <label
-                                                    class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                    data-action="change" data-toggle="tooltip" title=""
-                                                    data-original-title="Change avatar">
-                                                    <i class="fa fa-pen icon-sm text-muted"></i>
-                                                    <input type="file" name="image" id="file"
-                                                           accept=".png, .jpg, .jpeg"/>
-                                                    <input type="hidden" name="profile_avatar_remove"/>
-                                                </label>
-
-                                                <span
-                                                    class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                    data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
-                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                    </span>
+                                            <div class="image-input-wrapper"
+                                                 style="background-size:fill; background-position:center; background-image: url('data:image/jpeg;base64,{{base64_encode($teacher->image)}}')">
                                             </div>
+                                            <label
+                                                class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                                data-action="change" data-toggle="tooltip" title=""
+                                                data-original-title="Change avatar">
+                                                <i class="fa fa-pen icon-sm text-muted"></i>
+                                                <input type="file" name="image" id="file" accept=".png, .jpg, .jpeg"/>
+                                                <input type="hidden" name="profile_avatar_remove"/>
+                                            </label>
+
+                                            <span
+                                                class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                                data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                                <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                            </span>
                                         </div>
                                     </div>
+
+
+                                    <div class="form__item col-sm">
+                                            <div class="placeholder" style="color: lightgray;">
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <span class="small">({{ $teacher->rating }})</span>
+
+                                                <div class="overlay" style="position: relative;top: -22px;">
+
+                                                    @while($teacher->rating>0)
+                                                        @if($teacher->rating >0.5)
+                                                            <i class="fas fa-star"></i>
+                                                        @else
+                                                            <i class="fas fa-star-half"></i>
+                                                        @endif
+                                                        @php $teacher->rating--; @endphp
+                                                    @endwhile
+
+                                                </div>
+                                            </div>
+
+                                        <div class="likes">
+                                            <span>{{ $teacher->likes }}</span>
+                                            <i style="color: green; vertical-align: -5px; font-size:30px; padding-right: 20px;" class="la la-thumbs-up"></i>
+                                            <span>{{ $teacher->dislike }}</span>
+                                            <i style="color:red; vertical-align: -5px; font-size:30px; padding-right: 20px;" class="la la-thumbs-down"></i>
+                                        </div>
+
+                                        <div class="see_count">
+                                            <span style="margin-right: 10px;">{{ $teacher->see_count }}</span>
+                                            <svg style="width: 30px; margin-bottom: 5px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                                                <path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3
+                                                 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4
+                                                 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 
+                                                 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 
+                                                 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4
+                                                 .4c5.3 9.3 8.4 20.1 8.4 31.6z" fill="#14427C";/></svg>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="form__item col-sm">
+                                        <div class="status">
+                                            <?xml version="1.0" encoding="iso-8859-1"?>
+                                            <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                                            <svg style="width: 60px;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001;" xml:space="preserve">
+                                            <g>
+                                                    <polygon points="214.05,182.273 175.855,291.388 137.651,182.273 110.174,182.273 162.15,327.186 163.072,329.729
+                                                        188.629,329.729 239.727,187.41 241.553,182.273" fill="#E1A907"/>
+                                                    <rect x="252.203" y="182.273" width="26.999" height="147.447" fill="#E1A907"/>
+                                                    <path d="M396.544,207.275c-2.97-5.598-7.168-10.351-12.467-14.123c-5.171-3.661-11.324-6.434-18.278-8.235
+                                                        c-6.775-1.749-14.199-2.637-22.05-2.637h-37.623v147.448h27v-55.202h5.803c8.576,0,16.7-1.067,24.149-3.174
+                                                        c7.526-2.15,14.174-5.274,19.746-9.301c5.675-4.087,10.197-9.139,13.423-15.027c3.226-5.939,4.872-12.663,4.872-19.985
+                                                        C401.118,219.597,399.565,212.95,396.544,207.275z M371.755,236.971c-1.579,2.935-3.874,5.504-6.827,7.612
+                                                        c-3.046,2.176-6.724,3.84-10.948,4.975c-4.352,1.178-9.208,1.766-14.43,1.766h-6.426v-45.85h10.001
+                                                        c4.446,0,8.721,0.435,12.723,1.297c3.772,0.785,7.074,2.091,9.847,3.866c2.628,1.715,4.727,3.874,6.204,6.46
+                                                        c1.476,2.56,2.227,5.828,2.227,9.728C374.127,230.639,373.325,234.053,371.755,236.971z" fill="#E1A907"/>
+                                                    <path d="M504.508,237.901l-59.981-59.981v-84.83c0-14.14-11.46-25.6-25.6-25.6h-84.838L274.108,7.51
+                                                        C269.303,2.697,262.793,0.001,256,0.001s-13.303,2.697-18.099,7.501L177.92,67.482H93.082c-14.14,0-25.6,11.46-25.6,25.6v84.83
+                                                        L7.501,237.893C-2.5,247.894-2.5,264.099,7.501,274.1l59.981,59.981v84.83c0,14.14,11.46,25.6,25.6,25.6h84.838l59.981,59.981
+                                                        c4.796,4.813,11.307,7.509,18.099,7.509s13.303-2.697,18.099-7.501l59.981-59.981h84.838c14.14,0,25.6-11.46,25.6-25.6v-84.83
+                                                        l59.981-59.981C514.5,264.107,514.5,247.894,504.508,237.901z M418.918,323.482v95.437h-95.437L256,486.401l-67.482-67.482H93.082
+                                                        v-95.437L25.6,256.001l67.482-67.482V93.082h95.437L256,25.601l67.482,67.482h95.437v95.437l67.482,67.482L418.918,323.482z" fill="#E1A907"/>
+                                                    <circle cx="256" cy="76.801" r="12.8" fill="#E1A907"/>
+                                                    <circle cx="256" cy="435.201" r="12.8" fill="#E1A907"/>
+                                                    <circle cx="129.28" cy="129.281" r="12.8" fill="#E1A907"/>
+                                                    <circle cx="382.711" cy="382.712" r="12.8" fill="#E1A907"/>
+                                                    <circle cx="382.711" cy="129.281" r="12.8" fill="#E1A907"/>
+                                                    <circle cx="129.28" cy="382.712" r="12.8" fill="#E1A907"/>
+                                                    <circle cx="435.2" cy="256.001" r="12.8" fill="#E1A907"/>
+                                                    <circle cx="76.8" cy="256.001" r="12.8" fill="#E1A907"/>
+                                            </g>
+                                            </svg>
+
+                                        </div>
+                                    </div>
+                                </div>
 
 
                                     <div class="form-group row">

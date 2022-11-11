@@ -79,10 +79,10 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Image</label>
                                         <div class="col-sm4">
                                             <div class="image-input image-input-outline" id="kt_contacts_edit_avatar"
-                                                 style="background-image: url(assets/media/users/blank.png)">
+                                                 style="background-size:fill; background-position:center; background-image: url(assets/media/users/blank.png)">
 
                                                 <div class="image-input-wrapper"
-                                                     style="background-image: url('data:image/jpeg;base64,{{base64_encode($course->image)}}')">
+                                                     style="background-size:fill; background-position:center; background-image: url('data:image/jpeg;base64,{{base64_encode($course->image)}}')">
                                                 </div>
                                                 <label
                                                     class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
