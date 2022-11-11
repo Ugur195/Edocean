@@ -100,48 +100,49 @@ Route::group(['prefix' => 'admin', 'middleware' => 'Admin'], function () {
 
 });
 
+Route::middleware('verified')->group(function() {
+    //student
+    Route::prefix('admin/student')->group( function () {
+        Route::get('/my_profile', [StudentGetController::class, 'getMyProfile']);
+        Route::get('/index', [StudentGetController::class, 'Student'])->middleware('verified');;
+        Route::get('/student_attendance', [StudentGetController::class, 'StudentAttendance']);
+        Route::get('/student_schedule', [StudentGetController::class, 'StudentSchedule']);
+        Route::get('GetSubCatStuEdit/{id}', [StudentGetController::class, 'GetSubCatStuEdit']);
 
-//student
-Route::group(['prefix' => 'admin/student'], function () {
-    Route::get('/my_profile', [StudentGetController::class, 'getMyProfile']);
-    Route::get('/index', [StudentGetController::class, 'Student']);
-    Route::get('/student_attendance', [StudentGetController::class, 'StudentAttendance']);
-    Route::get('/student_schedule', [StudentGetController::class, 'StudentSchedule']);
-    Route::get('GetSubCatStuEdit/{id}', [StudentGetController::class, 'GetSubCatStuEdit']);
+        Route::post('/my_profile', [StudentPostController::class, 'postMyProfile']);
 
-    Route::post('/my_profile', [StudentPostController::class, 'postMyProfile']);
+    });
 
+
+    //teacher
+    Route::group(['prefix' => 'admin/teacher'], function () {
+        Route::get('/my_profile', [TeacherGetController::class, 'getTeacherProfile']);
+        Route::get('/index', [TeacherGetController::class, 'Teacher'])->middleware('verified');;
+        Route::get('/teacher_schedule', [TeacherGetController::class, 'TeacherSchedule']);
+        Route::get('GetSubCatTeachEdit/{id}', [TeacherGetController::class, 'GetSubCatTeachEdit']);
+
+
+        Route::post('/my_profile', [TeacherPostController::class, 'postTeacherProfile']);
+
+
+    });
+
+
+    //course
+    Route::group(['prefix' => 'admin/course'], function () {
+        Route::get('/my_profile', [CourseGetController::class, 'MyCourse']);
+        Route::get('/index', [CourseGetController::class, 'Course'])->middleware('verified');
+        Route::get('/course_schedule', [CourseGetController::class, 'CourseSchedule']);
+        Route::get('GetSubCatEdit/{id}', [CourseGetController::class, 'GetSubCatEdit']);
+
+
+        Route::post('/my_profile', [CoursePostController::class, 'postMyProfile']);
+
+
+    });
 });
 
 
-//teacher
-Route::group(['prefix' => 'admin/teacher'], function () {
-    Route::get('/my_profile', [TeacherGetController::class, 'getTeacherProfile']);
-    Route::get('/index', [TeacherGetController::class, 'Teacher']);
-    Route::get('/teacher_schedule', [TeacherGetController::class, 'TeacherSchedule']);
-    Route::get('GetSubCatTeachEdit/{id}', [TeacherGetController::class, 'GetSubCatTeachEdit']);
-
-
-    Route::post('/my_profile', [TeacherPostController::class, 'postTeacherProfile']);
-
-
-});
-
-
-//course
-Route::group(['prefix' => 'admin/course'], function () {
-    Route::get('/my_profile', [CourseGetController::class, 'MyCourse']);
-    Route::get('/index', [CourseGetController::class, 'Course']);
-    Route::get('/course_schedule', [CourseGetController::class, 'CourseSchedule']);
-    Route::get('GetSubCatEdit/{id}', [CourseGetController::class, 'GetSubCatEdit']);
-
-
-    Route::post('/my_profile', [CoursePostController::class, 'postMyProfile']);
-
-
-});
-
-
-Auth::routes();
+Auth::routes(['verify' => true]);
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
