@@ -32,7 +32,6 @@ use Illuminate\Support\Facades\Auth;
 
 // front end
 Route::get('/', [HomeGetController::class, 'home'])->name('home');
-Route::get('/index', [HomeGetController::class, 'home']);
 Route::get('/contact_us', [HomeGetController::class, 'GetContactUs']);
 Route::get('/sign_in', [HomeGetController::class, 'GetSignIn'])->name('sign_in')->middleware('guest');
 Route::get('/sign_up', [HomeGetController::class, 'GetSignUp'])->name('sign_up')->middleware('guest');
@@ -104,7 +103,7 @@ Route::middleware('verified')->group(function() {
     //student
     Route::prefix('admin/student')->group( function () {
         Route::get('/my_profile', [StudentGetController::class, 'getMyProfile']);
-        Route::get('/index', [StudentGetController::class, 'Student'])->middleware('verified');;
+        Route::get('/index', [StudentGetController::class, 'Student']);
         Route::get('/student_attendance', [StudentGetController::class, 'StudentAttendance']);
         Route::get('/student_schedule', [StudentGetController::class, 'StudentSchedule']);
         Route::get('GetSubCatStuEdit/{id}', [StudentGetController::class, 'GetSubCatStuEdit']);
@@ -117,7 +116,7 @@ Route::middleware('verified')->group(function() {
     //teacher
     Route::group(['prefix' => 'admin/teacher'], function () {
         Route::get('/my_profile', [TeacherGetController::class, 'getTeacherProfile']);
-        Route::get('/index', [TeacherGetController::class, 'Teacher'])->middleware('verified');;
+        Route::get('/index', [TeacherGetController::class, 'Teacher']);
         Route::get('/teacher_schedule', [TeacherGetController::class, 'TeacherSchedule']);
         Route::get('GetSubCatTeachEdit/{id}', [TeacherGetController::class, 'GetSubCatTeachEdit']);
 
@@ -131,7 +130,7 @@ Route::middleware('verified')->group(function() {
     //course
     Route::group(['prefix' => 'admin/course'], function () {
         Route::get('/my_profile', [CourseGetController::class, 'MyCourse']);
-        Route::get('/index', [CourseGetController::class, 'Course'])->middleware('verified');
+        Route::get('/index', [CourseGetController::class, 'Course']);
         Route::get('/course_schedule', [CourseGetController::class, 'CourseSchedule']);
         Route::get('GetSubCatEdit/{id}', [CourseGetController::class, 'GetSubCatEdit']);
 
