@@ -32,11 +32,23 @@ class CourseGetController extends Controller
             $user = $course;
         }
 //        dd( explode(',',$course->language));
-        return view('course.my_profile', ['course' => $user,'data'=>$data]);
+        return view('course.my_profile', ['course' => $user, 'data' => $data]);
+    }
+
+    public function StudentRequests()
+    {
+        return view('course.student_requests');
+    }
+
+    public function TeacherRequests()
+    {
+        return view('course.teacher_requests');
+
     }
 
 
-    public function GetSubCatEdit($id) {
+    public function GetSubCatEdit($id)
+    {
         echo json_encode(DB::table('subjects')->where('subject_category_id', $id)->get());
     }
 }

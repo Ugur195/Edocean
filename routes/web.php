@@ -131,6 +131,8 @@ Route::middleware('verified')->group(function() {
     Route::group(['prefix' => 'admin/course'], function () {
         Route::get('/my_profile', [CourseGetController::class, 'MyCourse']);
         Route::get('/index', [CourseGetController::class, 'Course']);
+        Route::get('/student_requests',[CourseGetController::class,'StudentRequests']);
+        Route::get('/teacher_requests',[CourseGetController::class,'TeacherRequests']);
         Route::get('/course_schedule', [CourseGetController::class, 'CourseSchedule']);
         Route::get('GetSubCatEdit/{id}', [CourseGetController::class, 'GetSubCatEdit']);
 
