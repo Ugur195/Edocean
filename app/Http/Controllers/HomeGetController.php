@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Menu;
+use App\Models\Setting;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,7 +37,8 @@ class HomeGetController extends Controller
     public function GetContactUs()
     {
         $menu = Menu::where('status', 1)->get();
-        return view('frontend.contact_us')->with(['menu' => $menu]);
+        $setting = Setting::find(1);
+        return view('frontend.contact_us')->with(['menu' => $menu, 'setting' => $setting]);
     }
     //finish ContactUs
 
