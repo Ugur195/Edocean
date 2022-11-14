@@ -132,13 +132,13 @@ Route::middleware('verified')->group(function() {
         Route::get('/my_profile', [CourseGetController::class, 'MyCourse']);
         Route::get('/index', [CourseGetController::class, 'Course']);
         Route::get('/student_requests',[CourseGetController::class,'StudentRequests']);
-        Route::get('/teacher_requests',[CourseGetController::class,'TeacherRequests']);
         Route::get('/course_schedule', [CourseGetController::class, 'CourseSchedule']);
         Route::get('GetSubCatEdit/{id}', [CourseGetController::class, 'GetSubCatEdit']);
 
 
-        Route::post('/my_profile', [CoursePostController::class, 'postMyProfile']);
 
+        Route::post('/my_profile', [CoursePostController::class, 'postMyProfile']);
+        Route::post('/student_requests',[CoursePostController::class,'StudentRequestsChangeDelete']);
 
     });
 });

@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminGetController;
-use App\Http\Controllers\StudentGetController;
+use App\Http\Controllers\CourseGetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('contact_us', [AdminGetController::class, 'getContactUs']);
 Route::get('teacher', [AdminGetController::class, 'getTeacher']);
 Route::get('student', [AdminGetController::class, 'getStudent']);
+Route::get('student_requests', [CourseGetController::class, 'getStudentRequests']);
 Route::get('course', [AdminGetController::class, 'getCourse']);
 Route::get('blogs', [AdminGetController::class, 'getBlogs']);
 Route::get('admins', [AdminGetController::class, 'getAdminsProject']);

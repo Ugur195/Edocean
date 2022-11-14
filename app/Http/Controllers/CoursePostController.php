@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\CourseStudent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -101,4 +102,26 @@ class CoursePostController extends Controller
         }
         return back();
     }
+
+    public function StudentRequestsChangeDelete (Request $request)
+    {
+        try {
+            if ($request->button_accept != null) {
+                if ($request->status == 0) {
+                    CourseStudent::find($request->id)->update(['status' => 1]);
+                    return response(['title' => 'Ugurlu!', 'message' => 'Student gebul oldu!', 'status' => 'success']);
+                } else {
+                    return response(['title' => 'Ugursuz!', 'message' => 'Student gebul etmek mumkun olmadi!', 'status' => 'error']);
+                }
+            } else if ($request->btn_delete != null) {
+                CourseStudent::where('id', $request->id)->delete();
+                return response(['title' => 'Ugurlu!', 'message' => 'StudentRequests Silindi', 'status' => 'success']);
+            } else {
+                return response(['title' => 'Ugursuz!', 'message' => 'StudentRequests Silmek mumkun olmadi', 'status' => 'error']);
+            }
+        } catch (\Exception $exception) {
+            return response(['title' => 'Ugursuz!', 'message' => 'Studenti silmek olmur!', 'status' => 'error']);
+        }
+    }
+
 }
