@@ -54,23 +54,22 @@
                         <div class="information-detail">
                             <ion-icon name="location-outline"></ion-icon>
                             <div>
-                                <h3>New York Office</h3>
-                                <p>Maypole Crescent 70-80 Upper St Norwich NR2 1LT</p>
+                                <h3>Bizim Ofis</h3>
+                                <p>{{$setting->address}}</p>
                             </div>
                         </div>
                         <div class="information-detail">
                             <ion-icon name="mail-outline"></ion-icon>
                             <div>
-                                <h3>Email us directly</h3>
-                                <p>support@educal.com</p>
-                                <p></p>
+                                <h3>Email</h3>
+                                <p>{{$setting->email}}</p>
                             </div>
                         </div>
                         <div class="information-detail">
                             <ion-icon name="call-outline"></ion-icon>
                             <div>
                                 <h3>Phone</h3>
-                                <p>+(426) 742 26 44</p>
+                                <p>{{$setting->phone}}</p>
                             </div>
                         </div>
                     </div>

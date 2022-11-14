@@ -391,7 +391,7 @@
                         </div>
                     </div>
                     <div class="navi-text">
-                        <div  class="font-weight-bold"><a href="{{url('admin/course/my_profile')}}">Profilim</a></div>
+                        <div   class="font-weight-bold"><a target="_blank" href="{{url('admin/course/my_profile')}}">Profilim</a></div>
                         <div class="text-muted">Hesab tənzimləmələri və başqaları</div>
                     </div>
                 </div>
@@ -408,7 +408,7 @@
                         </div>
                     </div>
                     <div class="navi-text">
-                        <div  class="font-weight-bold"><a href="{{url('/')}}">Saytı ziyarət et</a></div>
+                        <div  class="font-weight-bold"><a target="_blank" href="{{url('/')}}">Saytı ziyarət et</a></div>
                         <div class="text-muted">Əlavələrinizi vəya tanzimləməlrinizi yoxlayın</div>
                     </div>
                 </div>
