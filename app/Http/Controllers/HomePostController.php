@@ -113,9 +113,9 @@ class HomePostController extends Controller
         $login = $request->only('fin', 'email', 'password');
         if (Auth::attempt($login)) {
             return response(['title' => 'Ugurlu!', 'message' => 'Melumat gondermek mumkun olmadi', 'status' => 'success']);
+        } else {
+            return response(['title' => 'Ugursuz!', 'message' => 'Daxil olmaq mumkun olmadi, sifre yalniwdir!', 'status' => 'error']);
         }
-         return response(['title' => 'Ugursuz!', 'message' => 'Daxil olmaq mumkun olmadi, sifre yalniwdir!', 'status' => 'error']);
-
     }
     //finish SignIn
 

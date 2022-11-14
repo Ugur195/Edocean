@@ -1,6 +1,7 @@
 @extends('frontend.app')
 
 @section('css')
+    <link rel="stylesheet" href="{{asset('cssValidate/sweetalert2.css')}}"/>
 @endsection
 
 @section('content')
@@ -34,6 +35,7 @@
 @endsection
 
 @section('js')
+    <script src="{{asset('jsValidate/sweetalert2.js')}}"></script>
     <script src="{{asset('jsValidate/jquery.form.js')}}"></script>
 
     <script>
@@ -63,7 +65,9 @@
                                     allowOutsideClick: false,
                                 })
                             } else {
-                                window.location = '/index';
+                                setTimeout(function() {
+                                    window.location = '/';
+                                }, 1000)
                             }
                         }
                     }
