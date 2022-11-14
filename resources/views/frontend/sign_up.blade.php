@@ -108,7 +108,7 @@
                                     allowOutsideClick: false,
                                 })
                                 if(response.status === 'success') {
-                                    window.location.href = '/frontend/my_profile';
+                                    window.location.href = '/sign_in';
                                 }
                         }
                     }

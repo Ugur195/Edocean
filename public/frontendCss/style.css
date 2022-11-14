@@ -364,7 +364,6 @@ ion-icon[name="calendar-number"]{
 
 /* contact css */
 .contact-header{
-    margin-top: 95px;
     height: 50vh;
     background-image: linear-gradient( rgba(87, 87, 100, 0.6), rgba(70, 70, 97, 0.6)),url(./images/contact-header-img.jpg);
     background-repeat: no-repeat;
