@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Menu;
 use App\Models\Setting;
+use App\Models\Student;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,6 +26,7 @@ class HomeGetController extends Controller
     //home
     public function home()
     {
+        return auth()->user()->userType();
         $course = Course::all();
         $teacher = Teacher::all();
         $menu = Menu::where('status', 1)->get();
