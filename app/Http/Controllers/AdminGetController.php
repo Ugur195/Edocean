@@ -156,7 +156,7 @@ class AdminGetController extends Controller
             ->addColumn('options', function ($model) {
 
                 $return = '<a class="btn btn-xs btn-primary" href="' . route('admin.backend.teacher_edit', $model->id) . '" ><i class="la la-user"></i></a>
-			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger mr-1" ><i class="la la-trash"></i></button>';
+			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger mr-1" name="btn_delete" value="btn_delete" ><i class="la la-trash"></i></button>';
                 if ($model->st == 0) {
                     $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-success mt-1 "  name="btn_blok"
                                         value="btn_blok" ><i class="la la-check"></i></button>';

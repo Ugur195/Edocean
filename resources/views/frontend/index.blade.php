@@ -6,7 +6,7 @@
     <style>
         img {
             object-fit: cover;
-            height: 300px; 
+            height: 300px;
         }
     </style>
 @endsection
@@ -44,7 +44,7 @@
                             <div class="course ">
                                 <img src="data:image/jpeg;base64,{{base64_encode($c->image)}}" alt="">
                                 <div>
-                                    <h3>{{ $c->name }}</h3>
+                                    <h3>{{$c->name }}</h3>
                                     <p>Web Development</p>
                                 </div>
                             </div>

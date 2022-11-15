@@ -90,7 +90,7 @@
             <div class="brand flex-column-auto" id="kt_brand">
                 <a href="" class="brand-logo">
                     {{--                                        <img class="entry-logo img-responsive"--}}
-                    {{--                                             src="data:image/jpeg;base64,{{base64_encode($setting->logo)}}" alt="logo"--}}
+                    {{--                                            src="data:image/jpeg;base64,{{base64_encode(auth()->user()->type()->image)}}"
                     {{--                                             title="logo"/>--}}
                 </a>
                 <button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">
@@ -237,9 +237,9 @@
                             <a href="{{url('admin/contact_us')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
                                         <svg style="width: 28px; height: 28px; margin-left: -5px;"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                            viewBox="0 0 24 24" version="1.1">
+                                             xmlns="http://www.w3.org/2000/svg"
+                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                             viewBox="0 0 24 24" version="1.1">
                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                          <rect x="0" y="0" width="24" height="24"/>
                                           <path d="M5,6 L19,6 C20.1045695,6 21,6.8954305 21,8 L21,17 C21,18.1045695 20.1045695,
@@ -266,7 +266,8 @@
                             aria-haspopup="true">
                             <a href="{{url('admin/teacher')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
-                                    <svg class="svg-icon" style="width: 26px; margin-left: -5px; vertical-align: middle;fill: currentColor;overflow: hidden;"
+                                    <svg class="svg-icon"
+                                         style="width: 26px; margin-left: -5px; vertical-align: middle;fill: currentColor;overflow: hidden;"
                                          viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M272.128 538.752l207.36 409.472H204.736c-31.488-1.152-57.728-12.224-78.72-33.28s-32.064-47.232-33.28-78.72v-185.472c1.152-31.488 12.224-57.728 33.28-78.72s47.232-32.064
                                         78.72-33.28h67.392z m88.768-414.784c38.784-39.104 87.616-59.52 146.56-61.248 58.944 1.728
@@ -434,26 +435,28 @@
                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                         viewBox="0 0 512 512" style="enable-background:new 0 0 512 512; height:22px;"
-                                        xml:space="preserve" >
+                                        xml:space="preserve">
                                              <g>
 	                                             <g>
 
-		                                            <rect width="237.268" height="237.268"  fill="#000000"/>
+		                                            <rect width="237.268" height="237.268" fill="#000000"/>
 	                                             </g>
                                              </g>
                                               <g>
 	                                             <g>
-		                                             <rect x="274.732" width="237.268" height="237.268"  fill="#000000"/>
+		                                             <rect x="274.732" width="237.268" height="237.268" fill="#000000"/>
 	                                             </g>
                                               </g>
                                                <g>
 	                                               <g>
-		                                              <rect y="274.732" width="237.268" height="237.268"  fill="#000000"/>
+		                                              <rect y="274.732" width="237.268" height="237.268"
+                                                            fill="#000000"/>
 	                                               </g>
                                                </g>
                                             <g>
 	                                           <g>
-		                                           <rect x="274.732" y="274.732" width="237.268" height="237.268"  fill="#000000"/>
+		                                           <rect x="274.732" y="274.732" width="237.268" height="237.268"
+                                                         fill="#000000"/>
 	                                            </g>
                                             </g>
                                    </svg>
@@ -508,7 +511,8 @@
                                 <span class="svg-icon menu-icon">
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                              xmlns:xlink="http://www.w3.org/1999/xlink"
-                                             width="24px" height="24px" viewBox="0 0 24 24" version="1.1" style="width:28px; height: 28px; margin-left: -5px;">
+                                             width="24px" height="24px" viewBox="0 0 24 24" version="1.1"
+                                             style="width:28px; height: 28px; margin-left: -5px;">
                                           <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <rect x="0" y="0" width="24" height="24"/>
                                            <path d="M5,8.6862915 L5,5 L8.6862915,5 L11.5857864,2.10050506 L14.4852814,
@@ -587,7 +591,8 @@
                                 <span class="symbol symbol-lg-35 symbol-25 symbol-light-success">
                                     <span class="symbol-label font-size-h5 font-weight-bold">
                                         <img class="entry-logo img-responsive" style="width: 30px; height: 30px"
-                                            src="data:image/jpeg;base64,{{base64_encode(auth()->user()->type()->image)}}" alt="logo" title="logo"/>
+                                             src="data:image/jpeg;base64,{{base64_encode(auth()->user()->type()->image)}}"
+                                             alt="logo" title="logo"/>
                                     </span>
                                 </span>
                             </div>
@@ -648,9 +653,9 @@
         <div class="d-flex align-items-center mt-5">
             <div class="symbol symbol-100 mr-5">
                 <div class="symbol-label">
-                    {{--                    <img class="entry-logo img-responsive" style="width: 90px; height: 90px"--}}
-                    {{--                         src="data:image/jpeg;base64,{{base64_encode(Auth::user()->image)}}" alt="logo"--}}
-                    {{--                         title="logo"/>--}}
+                    <img class="entry-logo img-responsive" style="width: 90px; height: 90px"
+                         src="data:image/jpeg;base64,{{base64_encode(auth()->user()->type()->image)}}" alt="logo"
+                         title="logo"/>
                 </div>
                 <i class="symbol-badge bg-success"></i>
             </div>
@@ -736,7 +741,7 @@
                         </div>
                     </div>
                     <div class="navi-text">
-                        <div  class="font-weight-bold"><a href="{{url('/my_profile')}}">Profilim</a></div>
+                        <div class="font-weight-bold"><a href="{{url('/my_profile')}}">Profilim</a></div>
                         <div class="text-muted">Hesab tənzimləmələri və başqaları</div>
                     </div>
                 </div>
@@ -753,7 +758,7 @@
                         </div>
                     </div>
                     <div class="navi-text">
-                        <div  class="font-weight-bold"><a href="{{url('/')}}">Saytı ziyarət et</a></div>
+                        <div class="font-weight-bold"><a href="{{url('/')}}">Saytı ziyarət et</a></div>
                         <div class="text-muted">Əlavələrinizi vəya tanzimləməlrinizi yoxlayın</div>
                     </div>
                 </div>

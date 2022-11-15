@@ -256,9 +256,9 @@
                                 </span>
                                 <span class="symbol symbol-lg-35 symbol-25 symbol-light-success">
                                     <span class="symbol-label font-size-h5 font-weight-bold">
-                                        {{-- <img class="entry-logo img-responsive" style="width: 30px; height: 30px"
-                                                                                     src="data:image/jpeg;base64,{{base64_encode($student->image)}}"
-                                                                                     alt="logo" title="logo"/> --}}
+                                         <img class="entry-logo img-responsive" style="width: 30px; height: 30px"
+                                              src="data:image/jpeg;base64,{{base64_encode(auth()->user()->type()->image)}}"
+                                              alt="logo" title="logo"/>
                                     </span>
                                 </span>
                             </div>
@@ -319,9 +319,9 @@
         <div class="d-flex align-items-center mt-5">
             <div class="symbol symbol-100 mr-5">
                 <div class="symbol-label">
-                    {{-- <img class="entry-logo img-responsive" style="width: 90px; height: 90px"
-                         src="data:image/jpeg;base64,{{base64_encode($student->image)}}" alt="logo"
-                         title="logo"/> --}}
+                    <img class="entry-logo img-responsive" style="width: 90px; height: 90px"
+                         src="data:image/jpeg;base64,{{base64_encode(auth()->user()->type()->image)}}" alt="logo"
+                         title="logo"/>
                 </div>
                 <i class="symbol-badge bg-success"></i>
             </div>
@@ -407,7 +407,8 @@
                         </div>
                     </div>
                     <div class="navi-text">
-                        <div  class="font-weight-bold"><a target="_blank" href="{{url('admin/student/my_profile')}}">Profilim</a></div>
+                        <div class="font-weight-bold"><a target="_blank" href="{{url('admin/student/my_profile')}}">Profilim</a>
+                        </div>
                         <div class="text-muted">Hesab tənzimləmələri və başqaları</div>
                     </div>
                 </div>
@@ -424,7 +425,7 @@
                         </div>
                     </div>
                     <div class="navi-text">
-                        <div  class="font-weight-bold"><a target="_blank" href="{{url('/')}}" >Saytı ziyarət et</a></div>
+                        <div class="font-weight-bold"><a target="_blank" href="{{url('/')}}">Saytı ziyarət et</a></div>
                         <div class="text-muted">Əlavələrinizi vəya tanzimləməlrinizi yoxlayın</div>
                     </div>
                 </div>

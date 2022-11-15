@@ -50,7 +50,7 @@ class User extends Authenticatable implements MustVerifyEmail
         $type = $this->findTable(); // $arr = [ADMIN, A] $arr[1]
 
 //        return DB::select("select to_bsase64(a.image) image from users u left join admin a on u.id = a.user_id");
-        return DB::select("select {$type[1]}.image from users u left join {$type[0]} ${type[1]} on u.id = ${type[1]}.user_id")[0];
+        return DB::select("select {$type[1]}.image from users u left join {$type[0]} ${type[1]} on u.id = ${type[1]}.user_id where u.id=?", [auth()->user()->id])[0];
     }
 
     private function findTable()
