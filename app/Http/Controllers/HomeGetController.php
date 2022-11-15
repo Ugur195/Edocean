@@ -7,8 +7,10 @@ use App\Models\Menu;
 use App\Models\Setting;
 use App\Models\Student;
 use App\Models\Teacher;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class HomeGetController extends Controller
@@ -26,7 +28,6 @@ class HomeGetController extends Controller
     //home
     public function home()
     {
-        return auth()->user()->userType();
         $course = Course::all();
         $teacher = Teacher::all();
         $menu = Menu::where('status', 1)->get();

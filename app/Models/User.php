@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -44,26 +45,34 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->author;
     }
 
-    public function userType()
+    public function type()
     {
-        // return $this->findModel();
-        if (! $this->findModel()) {
-            return $this->belongsTo($this->findModel(), 'id', 'user_id');
-        }
+        $type = $this->findTable(); // $arr = [ADMIN, A] $arr[1]
+
+//        return DB::select("select to_bsase64(a.image) image from users u left join admin a on u.id = a.user_id");
+        return DB::select("select {$type[1]}.image from users u left join {$type[0]} ${type[1]} on u.id = ${type[1]}.user_id")[0];
     }
 
-    private function findModel()
+    private function findTable()
     {
-        if (auth()->guest()) {
-            return false;
-        }
-
         if (! in_array(auth()->user()->author, [1, 2, 3, 4])) {
-            return false;
+            throw new \Exception("User type mismatch");
         }
 
         if (auth()->user()->author == 1) {
-            return Admin::class;
+            return ['admin', 'a'];
+        }
+
+        if (auth()->user()->author == 2) {
+            return ['course', 'c'];
+        }
+
+        if (auth()->user()->author == 3) {
+            return ['teacher', 't'];
+        }
+
+        if (auth()->user()->author == 4) {
+            return ['student', 's'];
         }
     }
 }
