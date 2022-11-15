@@ -590,9 +590,14 @@
                                 </span>
                                 <span class="symbol symbol-lg-35 symbol-25 symbol-light-success">
                                     <span class="symbol-label font-size-h5 font-weight-bold">
+<<<<<<< HEAD
                                         <img class="entry-logo img-responsive" style="width: 30px; height: 30px"
                                              src="data:image/jpeg;base64,{{base64_encode(auth()->user()->type()->image)}}"
                                              alt="logo" title="logo"/>
+=======
+                                        <img class="entry-logo img-responsive" style="width: 30px; height: 30px; background-size:fill; background-position:center;"
+                                            src="data:image/jpeg;base64,{{base64_encode(auth()->user()->type()->image)}}" alt="logo" title="logo"/>
+>>>>>>> 0cf36dbe917a920c93e37a1c8f52f45f352f61d8
                                     </span>
                                 </span>
                             </div>

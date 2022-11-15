@@ -99,7 +99,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'Admin'], function () {
 
 });
 
-Route::middleware('verified')->group(function() {
+Route::middleware('auth', 'verified')->group(function() {
     //student
     Route::prefix('admin/student')->group( function () {
         Route::get('/my_profile', [StudentGetController::class, 'getMyProfile']);
