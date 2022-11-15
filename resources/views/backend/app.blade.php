@@ -586,7 +586,7 @@
                                 </span>
                                 <span class="symbol symbol-lg-35 symbol-25 symbol-light-success">
                                     <span class="symbol-label font-size-h5 font-weight-bold">
-                                        <img class="entry-logo img-responsive" style="width: 30px; height: 30px"
+                                        <img class="entry-logo img-responsive" style="width: 30px; height: 30px; background-size:fill; background-position:center;"
                                             src="data:image/jpeg;base64,{{base64_encode(auth()->user()->type()->image)}}" alt="logo" title="logo"/>
                                     </span>
                                 </span>
