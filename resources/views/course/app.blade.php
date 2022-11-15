@@ -219,8 +219,6 @@
                                 <span class="menu-text">Course Schedule</span>
                             </a>
                         </li>
-
-
                     </ul>
                 </div>
             </div>

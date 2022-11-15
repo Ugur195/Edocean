@@ -109,7 +109,7 @@ class AdminPostController extends Controller
                     return response(['title' => 'Ugursuz!', 'message' => 'Studenti bloklamaq mumkun olmadi!', 'status' => 'error']);
                 }
             } else if ($request->btn_delete != null) {
-                User::where('id',$request->id)->delete();
+                User::where('id', $request->id)->delete();
                 Student::where('user_id', $request->id)->delete();
                 return response(['title' => 'Ugurlu!', 'message' => 'Student ugurlu silindi!', 'status' => 'success']);
             } else {
@@ -138,7 +138,7 @@ class AdminPostController extends Controller
                     return response(['title' => 'Ugursuz!', 'message' => 'Teacheri bloklamaq mumkun olmadi!', 'status' => 'error']);
                 }
             } else if ($request->btn_delete != null) {
-                User::where('id',$request->id)->delete();
+                User::where('id', $request->id)->delete();
                 Teacher::where('user_id', $request->id)->delete();
                 return response(['title' => 'Ugurlu!', 'message' => 'Teacher ugurlu silindi!', 'status' => 'success']);
             } else {
