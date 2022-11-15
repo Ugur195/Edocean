@@ -47,12 +47,13 @@ class CourseGetController extends Controller
           (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
         return DataTables::of($student_requests)
             ->addColumn('options', function ($model) {
-                $return = '<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger mr-1" ><i class="la la-trash"></i></button>';
+                $return= '<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger mr-1" ><i class="la la-trash"></i></button>';
                 if ($model->st == 0) {
                     $return .= '<button onclick="buttonAccept(' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-success mt-1 "  name="button_accept"
                                         value="button_accept" ><i class="la la-check"></i></button>';
                 }
                 return $return;
+
             })->rawColumns(['options' => true])->make(true);
 
     }
