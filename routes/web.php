@@ -80,7 +80,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'Admin'], function () {
     Route::post('/contact_us', [AdminPostController::class, 'ContactUsDelete']);
     Route::post('/teacher', [AdminPostController::class, 'TeachersBlockUnblockDelete']);
     Route::post('/student', [AdminPostController::class, 'StudentsBlockUnblockDelete']);
-    Route::post('/course', [AdminPostController::class, 'CoursesDelete']);
+    Route::post('/course', [AdminPostController::class, 'CoursesBlockUnblockDelete']);
     Route::post('/blogs', [AdminPostController::class, 'BlogsBlockUnblockDelete']);
     Route::post('/blogs_edit/{id}', [AdminPostController::class, 'BlogsEdit']);
     Route::post('/blogs_add', [AdminPostController::class, 'BlogsAdd']);

@@ -13,7 +13,7 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
-    use HasFactory; 
+    use HasFactory;
     use Notifiable;
 
     /**
@@ -82,4 +82,16 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(Teacher::class, 'user_id');
     }
+
+    public function student()
+    {
+        return $this->hasOne(Student::class, 'user_id');
+    }
+
+    public function course()
+    {
+        return $this->hasOne(Course::class, 'user_id');
+    }
+
+
 }
