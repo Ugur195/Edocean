@@ -168,9 +168,9 @@
                                 allowOutsideClick: false
                             })
                             if (response.status === 'success') {
-                                // setTimeout(function () {
-                                //     window.location.href = '/admin/teacher';
-                                // }, 1000)
+                                setTimeout(function () {
+                                    window.location.href = '/admin/teacher';
+                                }, 1000)
                             }
 
                         }
