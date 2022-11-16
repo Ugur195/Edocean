@@ -71,7 +71,7 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Course</th>
+                        <th>Teacher</th>
                         <th>Student</th>
                         <th>Created At</th>
                         <th>Updated At</th>
@@ -82,7 +82,7 @@
                     <tfoot>
                     <tr>
                         <th>ID</th>
-                        <th>COURSE</th>
+                        <th>Teacher</th>
                         <th>STUDENT</th>
                         <th>CREATED AT</th>
                         <th>UPDATED AT</th>
@@ -102,7 +102,7 @@
 
 @section('js')
     <script src="{{asset('backendCssJs/assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
-    <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/student_requests.js')}}"></script>
+    <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/course_students.js')}}"></script>
     <script src="{{asset('jsValidate/jquery.form.js')}}"></script>
 
 
@@ -151,7 +151,7 @@
                             })
                             if (response.status === 'success') {
                                 setTimeout(function () {
-                                    window.location.href = '/admin/course/student_requests';
+                                    window.location.href = '/admin/course/course_students';
                                 }, 1000)
                             }
 
@@ -182,6 +182,7 @@
                         url: '',
                         data: {
                             'id': id,
+                            'btn_delete': 'btn_delete',
                             '_token': CSRF_TOKEN
                         },
 
@@ -197,8 +198,8 @@
                             })
                             if (response.status === 'success') {
                                 setTimeout(function () {
-                                    window.location.href = '/admin/course/student_requests';
-                                }, 1000)
+                                    window.location.href = '/admin/course/course_students';
+                                }, 500)
                             }
 
                         }
@@ -206,7 +207,7 @@
                 }
             })
         }
-
     </script>
+
 @endsection
 

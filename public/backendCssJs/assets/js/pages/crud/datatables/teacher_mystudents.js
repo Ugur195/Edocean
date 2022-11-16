@@ -28,7 +28,7 @@ var KTDatatablesSearchOptionsColumnSearch = function () {
             serverSide: true,
             searchable: true,
             ajax: {
-                url: '/api/student_requests',
+                url: '/api/teacher_mystudents.js',
                 type: 'get',
             },
             columns: [

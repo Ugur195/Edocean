@@ -103,7 +103,7 @@ class CoursePostController extends Controller
         return back();
     }
 
-    public function StudentRequestsChangeDelete (Request $request)
+    public function StudentRequestsChangeDelete(Request $request)
     {
         try {
             if ($request->button_accept != null) {
