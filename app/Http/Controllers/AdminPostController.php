@@ -271,6 +271,11 @@ class AdminPostController extends Controller
             $admin_edit->status = 1;
             $admin_edit->save();
         }
+
+        if($request->first_name !== $userEdit->name) {
+            $userEdit->name=$request->first_name;
+            $userEdit->save();
+        }
         return response(['title' => 'Ugurlu!', 'message' => 'Yeni Blog elave edildi!', 'status' => 'success']);
     }
     //finish Admin
