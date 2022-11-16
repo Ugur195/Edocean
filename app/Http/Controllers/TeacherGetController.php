@@ -38,4 +38,15 @@ class TeacherGetController extends Controller
     {
         echo json_encode(DB::table('subjects')->where('subject_category_id', $id)->get());
     }
+
+
+    // Course
+    public function getCourses() {
+        return view('teacher.mycourses');
+    }
+
+    // Student
+    public function getStudents() {
+        return view('teacher.mystudents');
+    }
 }

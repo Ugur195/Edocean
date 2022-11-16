@@ -119,6 +119,8 @@ Route::middleware('auth', 'verified')->group(function() {
         Route::get('/index', [TeacherGetController::class, 'Teacher']);
         Route::get('/teacher_schedule', [TeacherGetController::class, 'TeacherSchedule']);
         Route::get('GetSubCatTeachEdit/{id}', [TeacherGetController::class, 'GetSubCatTeachEdit']);
+        Route::get('/mycourses', [TeacherGetController::class, 'getCourses'])->name('TeacherCourses');
+        Route::get('/mystudents', [TeacherGetController::class, 'getStudents'])->name('TeacherStudents');
 
 
         Route::post('/my_profile', [TeacherPostController::class, 'postTeacherProfile']);
