@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Teacher extends Model
 {
+    use HasFactory;
+
     protected $table = 'edocean.teacher';
     protected $fillable = ['id', 'image', 'name', 'surname', 'father_name', 'birthday', 'gender', 'email', 'password', 'country',
         'city', 'language', 'phone', 'skype_id', 'profile_title', 'about_teacher', 'subjects', 'student_level', 'teaching_time', 'subjects_category',
