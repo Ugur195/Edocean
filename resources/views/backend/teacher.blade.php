@@ -119,6 +119,7 @@
 
     <script>
         function blokUnblok(status, id) {
+            console.log(id)
             console.log('basildi' + status);
             let title = '';
             let text = '';
@@ -159,6 +160,7 @@
                         },
 
                         success: function (response) {
+                            console.log(response)
                             swal.fire({
                                 title: response.title,
                                 text: response.message,
@@ -166,9 +168,9 @@
                                 allowOutsideClick: false
                             })
                             if (response.status === 'success') {
-                                setTimeout(function () {
-                                    window.location.href = '/admin/teacher';
-                                }, 1000)
+                                // setTimeout(function () {
+                                //     window.location.href = '/admin/teacher';
+                                // }, 1000)
                             }
 
                         }
