@@ -134,7 +134,7 @@ Route::middleware('auth', 'verified')->group(function() {
         Route::get('/my_profile', [CourseGetController::class, 'MyCourse']);
         Route::get('/index', [CourseGetController::class, 'Course']);
         Route::get('/course_students',[CourseGetController::class,'CourseStudentRequests']);
-        Route::get('/course_teacher',[CourseGetController::class,'CourseTeacherRequests']);
+        Route::get('/course_teachers',[CourseGetController::class,'CourseTeacherRequests']);
         Route::get('/course_schedule', [CourseGetController::class, 'CourseSchedule']);
         Route::get('GetSubCatEdit/{id}', [CourseGetController::class, 'GetSubCatEdit']);
 

@@ -59,7 +59,7 @@ class CourseGetController extends Controller
 
     public function CourseTeacherRequests()
     {
-        return view('course.course_teacher');
+        return view('course.course_teachers');
 
     }
 
