@@ -20,7 +20,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use RealRashid\SweetAlert\Facades\Alert;
 use PharIo\Version\Exception;
 
 class AdminPostController extends Controller
@@ -126,13 +125,16 @@ class AdminPostController extends Controller
     //Teacher
     public function TeachersBlockUnblockDelete(Request $request)
     {
+//        return 'p';
         try {
             if ($request->btn_block != null) {
                 if ($request->status == 0) {
-                    Teacher::find($request->id)->update(['status' => 1]);
+                    User::where('id', $request->id)->update(['status' => 1]);
+                    Teacher::where('user_id', $request->id)->update(['status' => 1]);
                     return response(['title' => 'Ugurlu!', 'message' => 'Teacher blokdan cixdi!', 'status' => 'success']);
                 } else if ($request->status == 1) {
-                    Teacher::find($request->id)->update(['status' => 0]);
+                    User::where('id', $request->id)->update(['status' => 0]);
+                    Teacher::where('user_id', $request->id)->update(['status' => 0]);
                     return response(['title' => 'Ugurlu!', 'message' => 'Teacher bloklandi!', 'status' => 'success']);
                 } else {
                     return response(['title' => 'Ugursuz!', 'message' => 'Teacheri bloklamaq mumkun olmadi!', 'status' => 'error']);
@@ -182,6 +184,7 @@ class AdminPostController extends Controller
     //Admin
     public function AdminsBlockUnblockDelete(Request $request)
     {
+        return 'l';
         try {
             if ($request->btn_block != null) {
                 if ($request->status == 0) {
