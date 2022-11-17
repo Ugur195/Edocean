@@ -71,8 +71,8 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Teacher</th>
                         <th>Student</th>
+                        <th>Teacher</th>
                         <th>Created At</th>
                         <th>Updated At</th>
                         <th>Status</th>
@@ -82,8 +82,8 @@
                     <tfoot>
                     <tr>
                         <th>ID</th>
-                        <th>Teacher</th>
                         <th>STUDENT</th>
+                        <th>Teacher</th>
                         <th>CREATED AT</th>
                         <th>UPDATED AT</th>
                         <th>STATUS</th>
