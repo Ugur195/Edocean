@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\Facades\DataTables;
 
 class TeacherGetController extends Controller
 {
@@ -41,8 +42,22 @@ class TeacherGetController extends Controller
 
 
     // Course
-    public function getCourses() {
+    public function Courses() {
         return view('teacher.mycourses');
+    }
+
+    public function getCourses()
+    {
+        $teacher = DB::table('edocean.teacher_course')->select(DB::raw("id,course_id,created_at,updated_at, status as st,
+        (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
+
+        return DataTables::of($teacher)
+            ->addColumn('options', function ($model) {
+                $return = '<a class="btn btn-xs btn-primary" href="' . route('admin.backend.teacher_edit', $model->id) . '" ><i class="la la-user"></i></a>
+			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger mr-1" name="btn_delete" value="btn_delete" ><i class="la la-trash"></i></button>';
+                return $return;
+
+            })->rawColumns(['options' => true])->make(true);
     }
 
     // Student

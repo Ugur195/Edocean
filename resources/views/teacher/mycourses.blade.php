@@ -71,7 +71,6 @@
                     <tr>
                         <th>ID</th>
                         <th>Course</th>
-                        <th>Student</th>
                         <th>Created At</th>
                         <th>Updated At</th>
                         <th>Status</th>
@@ -82,7 +81,6 @@
                     <tr>
                         <th>ID</th>
                         <th>COURSE</th>
-                        <th>STUDENT</th>
                         <th>CREATED AT</th>
                         <th>UPDATED AT</th>
                         <th>STATUS</th>
@@ -101,7 +99,7 @@
 
 @section('js')
     <script src="{{asset('backendCssJs/assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
-    <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/teacher_courses.js')}}"></script>
+    <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/teacher_mycourses.js')}}"></script>
     <script src="{{asset('jsValidate/jquery.form.js')}}"></script>
 
 
@@ -150,7 +148,7 @@
                             })
                             if (response.status === 'success') {
                                 setTimeout(function () {
-                                    window.location.href = '/admin/course/student_requests';
+                                    window.location.href = '/admin/teacher/mycourses';
                                 }, 1000)
                             }
 
@@ -196,7 +194,7 @@
                             })
                             if (response.status === 'success') {
                                 setTimeout(function () {
-                                    window.location.href = '/admin/course/student_requests';
+                                    window.location.href = '/admin/teacher/mycourses';
                                 }, 1000)
                             }
 

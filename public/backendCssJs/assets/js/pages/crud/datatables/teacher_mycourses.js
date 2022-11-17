@@ -28,7 +28,7 @@ var KTDatatablesSearchOptionsColumnSearch = function () {
             serverSide: true,
             searchable: true,
             ajax: {
-                url: '/api/student_requests',
+                url: '/api/mycourses',
                 type: 'get',
             },
             columns: [
@@ -39,10 +39,6 @@ var KTDatatablesSearchOptionsColumnSearch = function () {
                 {
                     data: 'course_id',
                     name: 'course'
-                },
-                {
-                    data: 'student_id',
-                    name: 'student'
                 },
                 {
                     data: 'created_at',
@@ -72,7 +68,6 @@ var KTDatatablesSearchOptionsColumnSearch = function () {
                     switch (column.title()) {
                         case 'ID':
                         case 'Course':
-                        case 'Student':
                         case 'Created At':
                         case 'Updated At':
                             input = $(`<input type="text" class="form-control form-control-sm form-filter datatable-input" data-col-index="` + column.index() + `"/>`);

@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminGetController;
 use App\Http\Controllers\CourseGetController;
+use App\Http\Controllers\TeacherGetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ Route::get('teacher', [AdminGetController::class, 'getTeacher']);
 Route::get('student', [AdminGetController::class, 'getStudent']);
 Route::get('student_requests', [CourseGetController::class, 'getStudentRequests']);
 Route::get('course', [AdminGetController::class, 'getCourse']);
+Route::get('mycourses', [TeacherGetController::class, 'getCourses']);
 Route::get('blogs', [AdminGetController::class, 'getBlogs']);
 Route::get('admins', [AdminGetController::class, 'getAdminsProject']);
 Route::get('blog_category', [AdminGetController::class, 'getBlogCategory']);
