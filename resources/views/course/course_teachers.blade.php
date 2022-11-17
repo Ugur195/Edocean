@@ -67,7 +67,8 @@
                 </div>
             </div>
             <div class="card-body">
-                <table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
+                <table class="table table-separate table-head-custom table-checkable"
+                       data-user-id="{{auth()->user()->id}}" id="kt_datatable">
                     <thead>
                     <tr>
                         <th>ID</th>
