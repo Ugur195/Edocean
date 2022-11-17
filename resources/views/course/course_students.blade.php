@@ -67,7 +67,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
+                <table class="table table-separate table-head-custom table-checkable" data-user-id="{{ auth()->user()->id }}" id="kt_datatable">
                     <thead>
                     <tr>
                         <th>ID</th>
@@ -83,7 +83,7 @@
                     <tr>
                         <th>ID</th>
                         <th>STUDENT</th>
-                        <th>Teacher</th>
+                        <th>TEACHER</th>
                         <th>CREATED AT</th>
                         <th>UPDATED AT</th>
                         <th>STATUS</th>
@@ -102,7 +102,7 @@
 
 @section('js')
     <script src="{{asset('backendCssJs/assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
-    <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/course_students.js')}}"></script>
+    <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/course_students.js?v='.time())}}"></script>
     <script src="{{asset('jsValidate/jquery.form.js')}}"></script>
 
 
@@ -113,7 +113,7 @@
             let text = '';
             let icon = '';
             let confBtnText = '';
-           if (status == 0) {
+            if (status == 0) {
                 title = 'Studenti gebul etmek isteyirsiz?';
                 text = 'Studenti gebul etdikden sonra,silmek mumkundu!';
                 icon = 'warning';

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\CourseStudent;
 use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\User;
@@ -49,10 +50,16 @@ class CourseGetController extends Controller
         return view('course.course_students_edit')->with(['course_student_edit' => $course_students_edit]);
     }
 
-    public function getCourseStudentRequests()
+    public function getCourseStudentRequests(Request $request)
     {
-        $course_student = DB::table('edocean.course_student')->select(DB::raw("id,student_id,teacher_id,created_at,updated_at,status as st,
-          (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
+        $course_student = DB::table('edocean.course_student')->select(DB::raw("edocean.student.name as student_name,edocean.teacher.name as teacher_name,
+        edocean.course_student.id,edocean.course_student.student_id,edocean.course_student.teacher_id,edocean.course_student.created_at,
+        edocean.course_student.updated_at,edocean.course_student.status as st,
+          (CASE edocean.course_student.status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))
+            ->leftJoin('edocean.student', 'edocean.student.id', '=', 'edocean.course_student.student_id')
+            ->leftJoin('edocean.teacher', 'edocean.teacher.id', '=', 'edocean.course_student.teacher_id')
+            ->where('edocean.course_student.user_id', $request->user_id)
+            ->get();
         return DataTables::of($course_student)
             ->addColumn('options', function ($model) {
                 $return = '<a class="btn btn-xs btn-primary mr-1" href="' . route('admin.course.course_students_edit', $model->id) . '" ><i class="la la-user"></i></a>';
