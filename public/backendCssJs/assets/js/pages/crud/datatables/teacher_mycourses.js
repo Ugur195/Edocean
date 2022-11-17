@@ -30,6 +30,7 @@ var KTDatatablesSearchOptionsColumnSearch = function () {
             ajax: {
                 url: '/api/mycourses',
                 type: 'get',
+                data: {user_id: $('#kt_datatable').data('user-id')},
             },
             columns: [
                 {
@@ -37,7 +38,7 @@ var KTDatatablesSearchOptionsColumnSearch = function () {
                     name: 'id'
                 },
                 {
-                    data: 'course_id',
+                    data: 'course_name',
                     name: 'course'
                 },
                 {
