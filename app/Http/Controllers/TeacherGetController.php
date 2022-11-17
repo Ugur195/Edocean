@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Teacher;
+use App\Models\TeacherCourse;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -47,19 +48,27 @@ class TeacherGetController extends Controller
         return view('teacher.mycourses');
     }
 
-    public function getCourses()
+    public function CourseInfo($id)
     {
-        $teacher = DB::table('edocean.teacher_course')->select(DB::raw("id,course_id,created_at,updated_at, status as st,
-        (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
-        // $courseName = Course::where('id', $teacher->course_id)->first();
-        // if($courseName !== null) {
-        //     $teacher->course_id=$courseName->name;
-        // }
+        $course_id = Course::where('id', 'course_id');
+        $course = Course::find($id);
+        dd($course_id);
+        return view('teacher.info')->with(['course' => $course]);
+    }
+
+    public function getCourses(Request $request)
+    {
+        $teacher = DB::table('edocean.teacher_course')->select(DB::raw("edocean.course.name as course_name, edocean.teacher_course.id, edocean.teacher_course.created_at,  edocean.teacher_course.updated_at, 
+        edocean.teacher_course.status as st,
+        (CASE  edocean.teacher_course.status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))
+            ->leftJoin('edocean.course', 'edocean.course.id', '=', 'edocean.teacher_course.course_id')
+            ->where('edocean.teacher_course.user_id', $request->user_id)
+            ->get();
 
         return DataTables::of($teacher)
             ->addColumn('options', function ($model) {
-                $return = '<a class="btn btn-xs btn-primary" href="' . route('admin.backend.teacher_edit', $model->id) . '" ><i class="la la-user"></i></a>
-			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger mr-1" name="btn_delete" value="btn_delete" ><i class="la la-trash"></i></button>';
+                $return = '<a class="btn btn-xs btn-primary" href="' . route('admin.teacher_info', $model->id) . '" ><i style="font-size: 20px;" class="la la-info-circle"></i></a>
+			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger mr-1" name="btn_delete" value="btn_delete" ><i style="font-size:21px;" class="la la-trash"></i></button>';
                 return $return;
 
             })->rawColumns(['options' => true])->make(true);
