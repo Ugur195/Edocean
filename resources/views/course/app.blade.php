@@ -153,8 +153,8 @@
                         </li>
 
 
-                        <li class="menu-item   @if(Request::url()==url('admin/course/student_requests')) menu-item-active @endif ">
-                            <a href="{{url('admin/course/student_requests')}}" class="menu-link">
+                        <li class="menu-item   @if(Request::url()==url('admin/course/course_students')) menu-item-active @endif ">
+                            <a href="{{url('admin/course/course_students')}}" class="menu-link">
                                <span class="svg-icon menu-icon">
                                        <svg xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
@@ -174,8 +174,8 @@
                         </li>
 
 
-                        <li class="menu-item   @if(Request::url()==url('admin/course/teacher_requests')) menu-item-active @endif ">
-                            <a href="{{url('admin/course/teacher_requests')}}" class="menu-link">
+                        <li class="menu-item   @if(Request::url()==url('admin/course/course_teachers')) menu-item-active @endif ">
+                            <a href="{{url('admin/course/course_teachers')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
                                        <svg xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"

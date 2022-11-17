@@ -10,7 +10,7 @@
         <div class="card card-custom">
             <div class="card-header">
                 <div class="card-title">
-                    <h3 class="card-label">Student Requests</h3>
+                    <h3 class="card-label">Teacher Requests</h3>
                 </div>
                 <div class="card-toolbar">
                     <!--begin::Dropdown-->
@@ -71,7 +71,7 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Course</th>
+                        <th>Teacher</th>
                         <th>Student</th>
                         <th>Created At</th>
                         <th>Updated At</th>
@@ -82,7 +82,7 @@
                     <tfoot>
                     <tr>
                         <th>ID</th>
-                        <th>COURSE</th>
+                        <th>Teacher</th>
                         <th>STUDENT</th>
                         <th>CREATED AT</th>
                         <th>UPDATED AT</th>
@@ -97,12 +97,11 @@
         <!--end::Card-->
     </div>
     <!--end::Container-->
-
 @endsection
 
 @section('js')
     <script src="{{asset('backendCssJs/assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
-    <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/student_requests.js')}}"></script>
+    <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/course_teachers.js')}}"></script>
     <script src="{{asset('jsValidate/jquery.form.js')}}"></script>
 
 
@@ -113,9 +112,9 @@
             let text = '';
             let icon = '';
             let confBtnText = '';
-           if (status == 0) {
-                title = 'Studenti gebul etmek isteyirsiz?';
-                text = 'Studenti gebul etdikden sonra,silmek mumkundu!';
+            if (status == 0) {
+                title = 'Teacheri gebul etmek isteyirsiz?';
+                text = 'Teacheri gebul etdikden sonra,silmek mumkundu!';
                 icon = 'warning';
                 confBtnText = 'Gebul et';
             }
@@ -151,7 +150,7 @@
                             })
                             if (response.status === 'success') {
                                 setTimeout(function () {
-                                    window.location.href = '/admin/course/student_requests';
+                                    window.location.href = '/admin/course/course_teachers';
                                 }, 1000)
                             }
 
@@ -182,6 +181,7 @@
                         url: '',
                         data: {
                             'id': id,
+                            'btn_delete': 'btn_delete',
                             '_token': CSRF_TOKEN
                         },
 
@@ -197,16 +197,15 @@
                             })
                             if (response.status === 'success') {
                                 setTimeout(function () {
-                                    window.location.href = '/admin/course/student_requests';
-                                }, 1000)
+                                    window.location.href = '/admin/course/course_teachers';
+                                }, 500)
                             }
-
                         }
                     })
                 }
             })
         }
-
     </script>
+
 @endsection
 
