@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -50,6 +51,10 @@ class TeacherGetController extends Controller
     {
         $teacher = DB::table('edocean.teacher_course')->select(DB::raw("id,course_id,created_at,updated_at, status as st,
         (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
+        // $courseName = Course::where('id', $teacher->course_id)->first();
+        // if($courseName !== null) {
+        //     $teacher->course_id=$courseName->name;
+        // }
 
         return DataTables::of($teacher)
             ->addColumn('options', function ($model) {

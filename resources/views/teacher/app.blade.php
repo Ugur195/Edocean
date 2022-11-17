@@ -152,8 +152,8 @@
                             </a>
                         </li>
 
-                        <li class="menu-item   @if(Request::url()==route('TeacherCourses')) menu-item-active @endif ">
-                            <a href="{{route('TeacherCourses')}}" class="menu-link">
+                        <li class="menu-item   @if(Request::url()==url('admin/teacher/mycourses')) menu-item-active @endif ">
+                            <a href="{{url('admin/teacher/mycourses')}}" class="menu-link">
                                <span class="svg-icon menu-icon">
                                        <svg xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
@@ -173,8 +173,8 @@
                         </li>
 
 
-                        <li class="menu-item   @if(Request::url()==route('TeacherStudents')) menu-item-active @endif ">
-                            <a href="{{route('TeacherStudents')}}" class="menu-link">
+                        <li class="menu-item   @if(Request::url()==url('admin/teacher/mystudents')) menu-item-active @endif ">
+                            <a href="{{url('admin/teacher/mystudents')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
                                        <svg xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
