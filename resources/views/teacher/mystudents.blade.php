@@ -9,7 +9,7 @@
         <div class="card card-custom">
             <div class="card-header">
                 <div class="card-title">
-                    <h3 class="card-label">Student Requests</h3>
+                    <h3 class="card-label">Students</h3>
                 </div>
                 <div class="card-toolbar">
                     <!--begin::Dropdown-->
@@ -66,7 +66,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
+                <table class="table table-separate table-head-custom table-checkable"  data-user-id="{{ auth()->user()->id }}"  id="kt_datatable">
                     <thead>
                     <tr>
                         <th>ID</th>
@@ -101,7 +101,7 @@
 
 @section('js')
     <script src="{{asset('backendCssJs/assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
-    <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/teacher_courses.js')}}"></script>
+    <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/teacher_mystudents.js')}}"></script>
     <script src="{{asset('jsValidate/jquery.form.js')}}"></script>
 
 
