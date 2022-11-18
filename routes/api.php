@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminGetController;
 use App\Http\Controllers\CourseGetController;
 use App\Http\Controllers\TeacherGetController;
+use App\Http\Controllers\StudentGetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('contact_us', [AdminGetController::class, 'getContactUs']);
 Route::get('teacher', [AdminGetController::class, 'getTeacher']);
 Route::get('student', [AdminGetController::class, 'getStudent']);
+Route::get('student_course', [StudentGetController::class, 'getStudentCourse']);
 Route::get('course_students', [CourseGetController::class, 'getCourseStudentRequests']);
 Route::get('course_teachers', [CourseGetController::class, 'getCourseTeacherRequests']);
 Route::get('course', [AdminGetController::class, 'getCourse']);
