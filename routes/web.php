@@ -120,8 +120,9 @@ Route::middleware('auth', 'verified')->group(function() {
         Route::get('/teacher_schedule', [TeacherGetController::class, 'TeacherSchedule']);
         Route::get('GetSubCatTeachEdit/{id}', [TeacherGetController::class, 'GetSubCatTeachEdit']);
         Route::get('/mycourses', [TeacherGetController::class, 'Courses'])->name('TeacherCourses');
-        Route::get('/info/{id}', [TeacherGetController::class, 'CourseInfo'])->name('admin.teacher_info');
-        Route::get('/mystudents', [TeacherGetController::class, 'getStudents'])->name('TeacherStudents');
+        Route::get('/cInfo/{id}', [TeacherGetController::class, 'CourseInfo'])->name('admin.teacher_info');
+        Route::get('/mystudents', [TeacherGetController::class, 'Students'])->name('TeacherStudents');
+        Route::get('/sInfo/{id}', [TeacherGetController::class, 'StudentInfo'])->name('admin.student_info');
 
 
         Route::post('/my_profile', [TeacherPostController::class, 'postTeacherProfile']);

@@ -28,6 +28,7 @@ Route::get('course_students', [CourseGetController::class, 'getCourseStudentRequ
 Route::get('course_teachers', [CourseGetController::class, 'getCourseTeacherRequests']);
 Route::get('course', [AdminGetController::class, 'getCourse']);
 Route::get('mycourses', [TeacherGetController::class, 'getCourses']);
+Route::get('mystudents', [TeacherGetController::class, 'getStudents']);
 Route::get('blogs', [AdminGetController::class, 'getBlogs']);
 Route::get('admins', [AdminGetController::class, 'getAdminsProject']);
 Route::get('blog_category', [AdminGetController::class, 'getBlogCategory']);
