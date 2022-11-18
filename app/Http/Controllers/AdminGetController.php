@@ -9,6 +9,7 @@ use App\Models\BlogComment;
 use App\Models\Blogs;
 use App\Models\ContactUs;
 use App\Models\Course;
+use App\Models\CourseTeacher;
 use App\Models\Menu;
 use App\Models\Setting;
 use App\Models\Student;
@@ -169,7 +170,8 @@ class AdminGetController extends Controller
 
     public function TeacherEdit($id)
     {
-        $teacher_edit = Teacher::where('id', $id)->first();
+        $teacher_edit = CourseTeacher::where($id,'teacher_id')();
+
         return view('backend.teacher_edit')->with(['teacher_edit' => $teacher_edit]);
     }
     //finish Teacher

@@ -10,3 +10,6 @@ class CourseStudent extends Model
     protected $table = 'edocean.course_student';
     protected $fillable = ['id', 'student_id', 'teacher_id', 'user_id', 'status'];
 }
+
+
+

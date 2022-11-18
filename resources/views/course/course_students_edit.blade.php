@@ -11,7 +11,7 @@
                     <div class="card-header card-header-tabs-line">
                         <div class="card-toolbar">
                             <div class="d-flex align-items-center flex-wrap mr-2">
-                                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Student</h5>
+                                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">About Student</h5>
                                 <div
                                     class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
                             </div>

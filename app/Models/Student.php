@@ -12,3 +12,5 @@ class Student extends Model
         'city', 'phone', 'skype_id', 'parent', 'subjects', 'subjects_category', 'education_level', 'lesson_duration', 'lessons_intensivity', 'address', 'teacher_status',
         'teacher_gender', 'students_amount', 'student_mission', 'payment', 'balance', 'verified_status', 'user_id', 'status'];
 }
+
+

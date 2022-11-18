@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\CourseStudent;
+use App\Models\CourseTeacher;
 use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\User;
@@ -46,8 +47,9 @@ class CourseGetController extends Controller
 
     public function CourseStudentEdit($id)
     {
-        $course_students_edit = Student::find($id);
-        return view('course.course_students_edit')->with(['course_student_edit' => $course_students_edit]);
+        $course_students = CourseStudent::find($id, 'student_id');
+        $course_students_edit = Student::find($course_students->student_id);
+        return view('course.course_students_edit')->with(['course_students_edit' => $course_students_edit]);
     }
 
     public function getCourseStudentRequests(Request $request)
@@ -81,7 +83,8 @@ class CourseGetController extends Controller
 
     public function CourseTeacherEdit($id)
     {
-        $course_teachers_edit = Teacher::find($id);
+        $course_teachers = CourseTeacher::find($id, 'teacher_id');
+        $course_teachers_edit = Teacher::find($course_teachers->teacher_id);
         return view('course.course_teachers_edit')->with(['course_teachers_edit' => $course_teachers_edit]);
     }
 
