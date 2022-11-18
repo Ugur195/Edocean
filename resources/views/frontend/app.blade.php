@@ -46,17 +46,17 @@
                                  src="data:image/jpeg;base64,{{base64_encode(auth()->user()->type()->image)}}">
                         </button>
                         <ul class="dropdown-menu prfl-ul" aria-labelledby="dropdownMenu2">
-                            <li><a class="dropdown-item" href="">My Profile</a></li>
+                            <li><a  class="dropdown-item" href="">My Profile</a></li>
                             @if(Auth::user()->author==1)
-                                <li><a class="dropdown-item" href="{{url('/admin/index')}}">Admin Page</a></li>
+                                <li><a target="_blank" class="dropdown-item" href="{{url('/admin/index')}}">Admin Page</a></li>
                             @elseif(Auth::user()->author==2)
-                                <li><a class="dropdown-item" href="{{url('/admin/course/index')}}">Course Profile</a>
+                                <li><a target="_blank" class="dropdown-item" href="{{url('/admin/course/index')}}">Course Profile</a>
                                 </li>
                             @elseif(Auth::user()->author==3)
-                                <li><a class="dropdown-item" href="{{url('/admin/teacher/index')}}">Teacher Profile</a>
+                                <li><a target="_blank" class="dropdown-item" href="{{url('/admin/teacher/index')}}">Teacher Profile</a>
                                 </li>
                             @elseif(Auth::user()->author==4)
-                                <li><a class="dropdown-item" href="{{url('/admin/student/index')}}">Student Profile</a>
+                                <li><a target="_blank" class="dropdown-item" href="{{url('/admin/student/index')}}">Student Profile</a>
                                 </li>
                             @endif
                             <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>

@@ -134,7 +134,7 @@ Route::middleware('auth', 'verified')->group(function() {
     Route::group(['prefix' => 'admin/course'], function () {
         Route::get('/my_profile', [CourseGetController::class, 'MyCourse']);
         Route::get('/index', [CourseGetController::class, 'Course']);
-        Route::get('/course_students',[CourseGetController::class,'CourseStudentRequests']);
+        Route::get('/course_students',[CourseGetController::class,'CourseStudentRequests'])->name('CourseStudents');
         Route::get('/course_students_edit/{id}',[CourseGetController::class,'CourseStudentEdit'])->name('admin.course.course_students_edit');
         Route::get('/course_teachers',[CourseGetController::class,'CourseTeacherRequests']);
         Route::get('/course_teachers_edit/{id}',[CourseGetController::class,'CourseTeacherEdit'])->name('admin.course.course_teachers_edit');
