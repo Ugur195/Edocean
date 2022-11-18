@@ -10,5 +10,5 @@ class TeacherCourse extends Model
     use HasFactory;
 
     protected $table = 'edocean.teacher_course';
-    protected $fillable = ['id', 'teacher_id', 'course_id', 'status'];
+    protected $fillable = ['id', 'teacher_id', 'course_id', 'user_id', 'status'];
 }

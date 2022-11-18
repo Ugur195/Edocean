@@ -50,9 +50,9 @@ class TeacherGetController extends Controller
 
     public function CourseInfo($id)
     {
-        $course_id = Course::where('id', 'course_id');
-        $course = Course::find($id);
-        dd($course_id);
+        $teacher = TeacherCourse::find($id, 'course_id');
+        $course_id = $teacher->course_id;
+        $course = Course::find($course_id);
         return view('teacher.info')->with(['course' => $course]);
     }
 

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Teacher;
+use App\Models\TeacherCourse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class TeacherPostController extends Controller
 {
@@ -108,6 +110,23 @@ class TeacherPostController extends Controller
             $teacher->save();
         }
         return back();
+
+    }
+
+// Course
+
+    public function CourseDelete(Request $request)
+    {
+        try {
+            $courses = TeacherCourse::find($request->id);
+
+            DB::transaction(function () use ($courses) {
+                $courses->delete();
+            });
+            return response(['title' => 'Ugurlu!', 'message' => 'Course ugurlu silindi!', 'status' => 'success']);
+        } catch (\Exception $exception) {
+            return response(['title' => 'Ugursuz!', 'message' => 'Course silmek mumkun olmadi!', 'status' => 'error']);
+        }
 
     }
 }

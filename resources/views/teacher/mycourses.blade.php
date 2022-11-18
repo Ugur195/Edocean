@@ -9,7 +9,7 @@
         <div class="card card-custom">
             <div class="card-header">
                 <div class="card-title">
-                    <h3 class="card-label">Student Requests</h3>
+                    <h3 class="card-label">Courses</h3>
                 </div>
                 <div class="card-toolbar">
                     <!--begin::Dropdown-->
