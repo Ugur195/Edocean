@@ -36,6 +36,8 @@ Route::get('/contact_us', [HomeGetController::class, 'GetContactUs']);
 Route::get('/sign_in', [HomeGetController::class, 'GetSignIn'])->name('sign_in')->middleware('guest');
 Route::get('/sign_up', [HomeGetController::class, 'GetSignUp'])->name('sign_up')->middleware('guest');
 Route::get('/logout', [HomeGetController::class, 'GetLogout'])->name('logout');
+Route::get('/blogs', [HomeGetController::class, 'Blogs']);
+Route::get('/single.blog{id}', [HomeGetController::class, 'SingleBlog']);
 
 
 Route::post('/contact_us', [HomePostController::class, 'PostContactUs']);

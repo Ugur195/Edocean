@@ -98,7 +98,7 @@
                         <a class="nav-link" href="#">Haqqımızda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Bloqlar</a>
+                        <a class="nav-link" href="">Bloqlar</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Əlaqə</a>

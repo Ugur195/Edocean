@@ -489,7 +489,249 @@ ion-icon[name="calendar-number"]{
     flex-direction: column;
     gap: 10px;
 }
+/* blog css */
+.blog-header-div h1{
+    font-weight: 800;
+}
+.blog-main{
+    padding: 90px 0;
+}
+.blog-card-container{
+    margin-bottom: 20px;
+    border-radius: 10px ;
+    display: flex;
+}
+.blog-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 20px 30px #0417764d;
+}
+.blog-card-img{
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+p{
+    margin-bottom: 0 !important;
+}
+.details-1 h5 a{
+    color: black;
+}
+.details-1 h5 a:hover{
+    color: #14427C;
+}
+ion-icon[name="chatbubble"]{
+    margin-bottom: -3px;
+    margin-right: 5px;
+    font-size: 22px;
+    color: #53545b;
+}
+.date-and-button p{
+    color: #53545b;
+}
+.blog-btn{
+    padding: 20px 30px;
+    display: flex;
+    border-top: 1px solid #f0f0f5;
+    justify-content: flex-end;
+}
+.blog-btn button{
+    background: none;
+    border: none;
+    font-size: 18px;
+}
+.blog-btn button:hover{
+    color: #1c5ba8;
+}
+.blog-date{
+    border-top: none;
+    padding-top: 0;
+}
 
+.recent-post-div{
+    gap: 20px;
+}
+.recent-post-text{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.recent-post-div img{
+    height: 80px ;
+    width: 80px;
+    border-radius: 7px;
+}
+.recent-posts, .blog-categories{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
+    margin: auto;
+    padding-bottom: 40px;
+}
+.recent-posts h4, .blog-categories h4{
+    font-weight: 800;
+    font-size: 20px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #f0f0f5;
+}
+
+.recent-post-text h5 a{
+    color: #0e1133;
+    font-size: 18px;
+    font-weight: 800;
+}
+.recent-post-text h5 a:hover{
+    color: #1c5ba8;
+}
+.bl-cat{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.bl-cat  a{
+    color: #53545b;
+    font-weight: 500;
+}
+/* blog-details css */
+.blog-details-bg-img{
+    height: 90vh;
+    background-image: linear-gradient( rgba(47, 47, 104, 0.6), rgba(48, 48, 98, 0.6)),url(./images/blog-details-bg-img.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    display: flex;
+    align-items: center;
+}
+.blog-details-header-div h1{
+    font-size: 80px;
+    font-weight: 800;
+    color: white;
+}
+.author-and-date{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.author{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.author-img{
+    border: 2px solid white;
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+}
+.author-name{
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+}
+.detail-time{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.detail-time ion-icon{
+    font-size: 20px;
+    color: wheat;
+}
+.detail-time span{
+    color: white;
+    font-size: 16px;
+}
+.blog-detail-img{
+    width: 100%;
+    border-radius: 10px;
+}
+.blog-detail-info h3{
+    font-size: 36px;
+    font-weight: 800;
+
+}
+.blog-detail-info p{
+    font-size: 18px;
+    color: #53545b;
+    border-bottom: 1px solid #f0f0f5;
+}
+.comment-item img{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    border: 2px solid white;
+}
+.comment-item{
+    gap: 20px;
+    background-color: #f3f4f8;
+    padding: 20px 30px;
+    border-radius: 7px;
+}
+.comment-detail p{
+    border: none;
+    font-size: 18px;
+    color: #53545b;
+}
+.comment-detail h5{
+    font-size: 16px;
+    margin-bottom: 0 !important;
+    font-weight: 700;
+}
+.comment-detail  .comment-time{
+    font-size: 14px;
+    color: #53545b;
+}
+.comment-detail a{
+    background-color: rgba(43,78,255,.1);
+    font-size: 16px;
+    padding:0 10px;
+    border-radius: 5px;
+}
+.comment-detail a:hover{
+    color: white;
+    background-color: #1c5ba8;
+}
+.blog-comments h3, .write_review{
+    font-size: 30px;
+}
+.name_and_email{
+    gap: 20px;
+
+}
+.name_and_email input{
+    width: 50%;
+    padding: 13px;
+    border-radius: 5px;
+    border: none;
+    background-color: #f0f0f5;
+    outline: none;
+}
+#comment_textarea{
+    padding: 20px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: #f0f0f5;
+    height: 150px;
+    outline: none;
+}
+.comment_button{
+    padding: 13px 30px;
+    border: none;
+    background-color: #2b4eff;
+    color: white;
+    border-radius: 5px;
+    font-size: 17px;
+
+}
+.comment_button:hover{
+    box-shadow: 0 10px 24px #0417764d;
+}
 
 /* Login  and Register css */
 

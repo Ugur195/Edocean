@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BlogCategory;
+use App\Models\Blogs;
 use App\Models\Course;
 use App\Models\Menu;
 use App\Models\Setting;
@@ -71,7 +73,28 @@ class HomeGetController extends Controller
         Auth::logout();
         return redirect('/');
     }
+
     //finish Logout
+
+    public function Blogs()
+    {
+        $menu = Menu::where('status', 1)->get();
+        $setting = Setting::find(1);
+        $blogs = Blogs::all();
+        $blog_category = BlogCategory::all();
+        return view('frontend.blogs')->with(['menu' => $menu, 'setting' => $setting, 'blogs' => $blogs,
+            'blog_category' => $blog_category]);
+    }
+
+//    public function SingleBlog($id)
+//    {
+//        $setting = Setting::find(1);
+//        $menu = Menu::where('status', 1)->get();
+//        $blogs = Blogs::all();
+//        $blog_category = BlogCategory::all();
+//        return view('frontend.single.blog')->with(['menu' => $menu, 'blogs' => $blogs, 'setting' => $setting,
+//            'blog_category' => $blog_category]);
+//    }
 
 
 }
