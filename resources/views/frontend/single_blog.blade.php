@@ -52,8 +52,10 @@
                         <h3 class="mb-3 write_review">Leave a comment</h3>
                         <form action="" class="comment_form col-lg-12">
                             <div class="name_and_email mb-3 d-flex justify-content-between ">
-                                <input class="name_input" type="text" placeholder="Your name">
-                                <input class="email_input" type="text" placeholder="Your email">
+                                @if(!Auth::check())
+                                    <input class="name_input" type="text" placeholder="Your name">
+                                    <input class="email_input" type="text" placeholder="Your email">
+                                @endif
                             </div>
                             <textarea class="comment_textarea mb-3" name="" id="comment_textarea" cols="30" rows="10"
                                       placeholder="Enter your comment ..."></textarea>
