@@ -1,6 +1,14 @@
 @extends('frontend.app')
 
 @section('css')
+ <style>
+    .teacher-card-img {
+        width: 70% !important;
+        margin-left:auto;
+        margin-right:auto;
+        margin-top: 20px;
+    }
+ </style>
 @endsection
 
 @section('content')
@@ -20,6 +28,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-md-12 col-sm-12 mb-5">
+                        <div class="row">
                         @foreach ($teacher as $t)
                             <div class="col-lg-6 col-md-6 col-sm-12 blog-card-container">
                                 <div class="blog-card">
@@ -27,20 +36,22 @@
                                          src="data:image/jpeg;base64,{{base64_encode($t->image)}}" alt="">
                                     <div class="details">
                                         <div class="details-1">
-                                            <div class="rating-and-views">
-                                                <p>
-                                                    <ion-icon name="eye"></ion-icon>
-                                                    {{ $t->see_count }}
-                                                </p>
-                                                <p>
-                                                    <ion-icon name="star"></ion-icon>
-                                                    4.6(50)
-                                                </p>
-                                            </div>
-                                            <h5>{{ $t->speciality }}</h5>
-                                            <div class="name-and-img">
-                                                <img src="./frontendCss/images/kanan.png" alt="">
-                                                <p>{{ $t->name.' '.$t->surname }}</p>
+                                            <hr style="margin-top:-5px;" />
+                                            <div class="row">
+                                                <div class="name-and-img">
+                                                    <h3>{{ $t->name }} <br /> {{$t->surname}}</h3>
+                                                    <h5 style="margin-left: auto;">{{ $t->speciality }}</h5>
+                                                </div>
+                                                <div class="rating-and-views" style="margin-top: 20px">
+                                                    <p>
+                                                        <ion-icon name="eye"></ion-icon>
+                                                        {{ $t->see_count }}
+                                                    </p>
+                                                    <p>
+                                                        <ion-icon name="star"></ion-icon>
+                                                        4.6(50)
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="date-and-button">
@@ -58,6 +69,7 @@
                                 </div>
                             </div>
                         @endforeach
+                        </div>
                     </div>
                     <div class="col-lg-4 col-md-12 col-sm-12 blog-main-right-container">
                         <div class="recent-posts">
