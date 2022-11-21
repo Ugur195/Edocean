@@ -38,6 +38,7 @@ Route::get('/sign_up', [HomeGetController::class, 'GetSignUp'])->name('sign_up')
 Route::get('/logout', [HomeGetController::class, 'GetLogout'])->name('logout');
 Route::get('/blogs', [HomeGetController::class, 'Blogs']);
 Route::get('/single_blog/{id}', [HomeGetController::class, 'SingleBlog']);
+Route::get('/teachers', [HomeGetController::class, 'Teachers']);
 
 
 Route::post('/contact_us', [HomePostController::class, 'PostContactUs']);

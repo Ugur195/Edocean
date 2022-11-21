@@ -9,6 +9,7 @@ use App\Models\Menu;
 use App\Models\Setting;
 use App\Models\Student;
 use App\Models\Teacher;
+use App\Models\TeacherCourse;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -94,6 +95,17 @@ class HomeGetController extends Controller
         $blog_category = BlogCategory::all();
         return view('frontend.single_blog')->with(['menu' => $menu, 'blogs' => $blogs, 'setting' => $setting,
             'blog_category' => $blog_category]);
+    }
+
+
+    public function Teachers()
+    {
+        $menu = Menu::where('status', 1)->get();
+        $setting = Setting::find(1);
+        $teachers = Teacher::all();
+        $teachers_course = TeacherCourse::all();
+        return view('frontend.teachers')->with(['menu' => $menu, 'setting' => $setting, 'teacher' => $teachers,
+            'teachers_course' => $teachers_course]);
     }
 
 
