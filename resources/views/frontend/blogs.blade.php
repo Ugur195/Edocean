@@ -1,7 +1,6 @@
 @extends('frontend.app')
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('cssValidate/sweetalert2.css')}}"/>
 @endsection
 
 @section('content')
@@ -10,7 +9,7 @@
             <div class="blog-header-div container">
                 <h1>Bloqlar</h1>
                 <p>
-                    <a href="./index.html"> Ana səhifə</a
+                    <a href="{{url('/')}}"> Ana səhifə</a
                     >
                     <ion-icon name="arrow-forward-outline"></ion-icon>
                     Bloqlar
@@ -28,10 +27,10 @@
                                         <img class="blog-card-img" src="./images/teacher-card-img.jpg" alt="">
                                         <div class="details">
                                             <div class="details-1">
-                                                <h5><a href="">{{$b->title}}</a>
+                                                <h5><a href="{{url('single_blog/'.$b->id)}}">{{$b->title}}</a>
                                                 </h5>
                                                 <div class="name-and-img">
-                                                    <img src="./images/kanan.png" alt="">
+{{--                                                    <img src="data:image/jpeg;base64,{{base64_encode(->image)}}" alt="">--}}
                                                     <p>Kənan Məmmədov</p>
                                                 </div>
                                             </div>

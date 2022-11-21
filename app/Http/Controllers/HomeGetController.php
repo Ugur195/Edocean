@@ -86,15 +86,15 @@ class HomeGetController extends Controller
             'blog_category' => $blog_category]);
     }
 
-//    public function SingleBlog($id)
-//    {
-//        $setting = Setting::find(1);
-//        $menu = Menu::where('status', 1)->get();
-//        $blogs = Blogs::all();
-//        $blog_category = BlogCategory::all();
-//        return view('frontend.single.blog')->with(['menu' => $menu, 'blogs' => $blogs, 'setting' => $setting,
-//            'blog_category' => $blog_category]);
-//    }
+    public function SingleBlog($id)
+    {
+        $setting = Setting::find(1);
+        $menu = Menu::where('status', 1)->get();
+        $blogs = Blogs::find($id);
+        $blog_category = BlogCategory::all();
+        return view('frontend.single_blog')->with(['menu' => $menu, 'blogs' => $blogs, 'setting' => $setting,
+            'blog_category' => $blog_category]);
+    }
 
 
 }

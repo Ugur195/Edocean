@@ -10,10 +10,12 @@
             <div class="blog-details-header-div container ">
                 <h1>The Challenge Of Global Learning In Public Education</h1>
                 <div class="author-and-date">
+                    @foreach($blogs as $b)
                     <div class="author">
-                        <img class="author-img" src="./images/kanan.png" alt="">
-                        <p class="author-name">Kanan Mammadov</p>
+{{--                        <img class="author-img"   src="data:image/jpeg;base64,{{base64_encode($b->image)}}" alt="">--}}
+                        <p class="author-name">{{$b->author}}</p>
                     </div>
+                    @endforeach
                     <p class="detail-time"><ion-icon name="time-outline"></ion-icon><span>18.11.2022</span></p>
                 </div>
             </div>
@@ -91,7 +93,6 @@
                     </div>
                 </div>
             </div>
-
         </section>
     </main>
 @endsection
