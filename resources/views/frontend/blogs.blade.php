@@ -23,7 +23,6 @@
                         <div class="row">
                             @foreach($blogs as $b)
                                 @php($user=\App\Models\User::find($b->author))
-{{--                                @php($admin=\App\Models\Admin::find($b->user_id))--}}
                                 <div class="col-lg-6 col-md-6 col-sm-12 blog-card-container">
                                     <div class="blog-card">
                                         <img class="blog-card-img" src="data:image/jpeg;base64,{{base64_encode($b->image)}}" alt="">
@@ -32,7 +31,7 @@
                                                 <h5><a href="">{{$b->title}}</a>
                                                 </h5>
                                                 <div class="name-and-img">
-{{--                                                    <img src="data:image/jpeg;base64,{{base64_encode($b)}}"--}}
+                                                    <img src="data:image/jpeg;base64,{{base64_encode($b->image)}}"
                                                          alt="">
                                                     <p>{{$user->name}}</p>
                                                 </div>
