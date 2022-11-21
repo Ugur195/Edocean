@@ -289,7 +289,6 @@ class AdminPostController extends Controller
             Blogs::where('id', $request->id)->update(['title' => $request->title, 'title_ru' => $request->title_ru,
                 'title_en' => $request->title_en, 'message' => $request->message, 'message_ru' => $request->message_ru,
                 'message_en' => $request->message_en, 'author' => Auth::user()->id, 'category_id' => $request->category_id,
-                'likes' => $request->likes, 'dislike' => $request->dislike, 'see_count' => $request->see_count,
                 'slug' => $request->title, 'status' => $request->status]);
             if (isset($request->image)) {
                 Blogs::where('id', $request->id)->update(['image' => file_get_contents($request->file('image'))]);

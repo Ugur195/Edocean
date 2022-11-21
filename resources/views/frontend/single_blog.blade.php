@@ -12,7 +12,8 @@
                 <div class="author-and-date">
                     <div class="author">
                         <img class="author-img" src="./images/kanan.png" alt="">
-                        <p class="author-name">Kanan Mammadov</p>
+                        @php($user=\App\Models\User::find($blogs->author))
+                        <p class="author-name">{{$user->name}}</p>
                     </div>
                     <p class="detail-time">
                         <ion-icon name="time-outline"></ion-icon>
@@ -25,13 +26,10 @@
                 <div class="row">
                     <div class="col-lg-8 col-md-12 col-sm-12 blog-detail-info mb-5">
                         <img class="blog-detail-img mb-5" src="./images/blog-detail-img.jpg" alt="">
-                        <h3 class="mb-3">Build a beautiful website with Quillow</h3>
-                        <p class="pb-4">Some dodgy chav car boot blower starkers bonnet tickety-boo no biggie cheesed
-                            off, Oxford bloke fantastic the wireless bevvy cobblers chancer give us a bell, bleeder
-                            jolly good hanky panky do one gormless matie boy. Pear shaped my good sir I cobblers at
-                            public school quaint tickety-boo crikey bits and bobs, wellies bugger all mate golly gosh
-                            brolly matie boy fanny around chimney pot cracking goal my lady, bodge so I said spiffing
-                            posh the full monty don't get shirty with me no biggie.</p>
+                        <h3 class="mb-3">{{$blogs->title}}</h3>
+                        <p class="pb-4">
+                            {{$blogs->message}}
+                        </p>
                         <div class="blog-comments mb-5">
                             <h3 class="mt-4 mb-4">Comments</h3>
                             <div class="comment-item d-flex align-items-flex-start mb-1">
