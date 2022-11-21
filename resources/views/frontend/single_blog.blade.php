@@ -8,16 +8,21 @@
     <main class="blog-single-main">
         <section class="blog-details-bg-img">
             <div class="blog-details-header-div container ">
-                <h1>The Challenge Of Global Learning In Public Education</h1>
+                @foreach($about_us as $ab)
+                    <h1>{{$ab->our_responsib}}</h1>
+                @endforeach
                 <div class="author-and-date">
                     <div class="author">
                         <img class="author-img" src="./images/kanan.png" alt="">
                         @php($user=\App\Models\User::find($blogs->author))
+
                         <p class="author-name">{{$user->name}}</p>
                     </div>
                     <p class="detail-time">
+                        @php($vaxt=$blogs->created_at)
+                        @php($vaxt->setLocale('az'))
                         <ion-icon name="time-outline"></ion-icon>
-                        <span>18.11.2022</span></p>
+                        <span> {{$vaxt->diffForHumans()}}</span></p>
                 </div>
             </div>
         </section>
@@ -25,7 +30,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-md-12 col-sm-12 blog-detail-info mb-5">
-                        <img class="blog-detail-img mb-5" src="./images/blog-detail-img.jpg" alt="">
+                        <img class="blog-detail-img mb-5" src="data:image/jpeg;base64,{{base64_encode($blogs->image)}} "
+                             alt="">
                         <h3 class="mb-3">{{$blogs->title}}</h3>
                         <p class="pb-4">
                             {{$blogs->message}}
@@ -43,7 +49,7 @@
                                 </div>
                             </div>
                         </div>
-                        <h3 class="mb-3 write_review">Write a review</h3>
+                        <h3 class="mb-3 write_review">Leave a comment</h3>
                         <form action="" class="comment_form col-lg-12">
                             <div class="name_and_email mb-3 d-flex justify-content-between ">
                                 <input class="name_input" type="text" placeholder="Your name">
