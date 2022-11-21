@@ -17,7 +17,7 @@
 
 <nav class="navbar navbar-expand-lg  sticky-top ed-navbar">
     <div class="container">
-        <a href=""><img class="edocean-logo" src="./frontendCss/images/edocean-logo.jpeg" alt=""></a>
+        <a href="/"><img class="edocean-logo" src="./frontendCss/images/edocean-logo.jpeg" alt=""></a>
         <div class="navbar-desktop">
             <ul class="navbar-nav pe-3">
                 @foreach($menu as $m)
