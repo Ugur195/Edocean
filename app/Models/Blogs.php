@@ -15,8 +15,10 @@ class Blogs extends Model
     public function comments() {
         return $this->hasMany(BlogComment::class, 'blog_id');
     }
-    public function image(){
-        return $this->hasOne(Admin::class,'user_id','author');
+    public function admin(){
+        return $this->hasOne(Admin::class, 'user_id', 'author');
     }
-
+    public function users(){
+        return $this->hasOne(User::class, 'id', 'author');
+    }
 }

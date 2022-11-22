@@ -22,20 +22,22 @@
                     <div class="col-lg-8 col-md-12 col-sm-12 mb-5">
                         <div class="row">
                             @foreach($blogs as $b)
-                                @php($user=\App\Models\User::find($b->author))
-                            @php($admin=\App\Models\Admin::find($b->author))
-                            @php(dd($admin))
+                                @php($user=\App\Models\User::find($b->author)->with('admin')->get())
                                 <div class="col-lg-6 col-md-6 col-sm-12 blog-card-container">
                                     <div class="blog-card">
-                                        <img class="blog-card-img" src="data:image/jpeg;base64,{{base64_encode($admin->image)}}" alt="">
+                                        <img class="blog-card-img" src="data:image/jpeg;base64,{{base64_encode($b->image)}}" alt="">
                                         <div class="details">
                                             <div class="details-1">
                                                 <h5><a href="">{{$b->title}}</a>
                                                 </h5>
                                                 <div class="name-and-img">
-                                                    <img src="data:image/jpeg;base64,{{base64_encode($b->image)}}"
+                                                    <img src="data:image/jpeg;base64,{{base64_encode($b->admin->image)}}"
                                                          alt="">
-                                                    <p>{{$user->name}}</p>
+                                                    @if($b->admin->name != null)
+                                                        <p>{{$b->admin->name}}</p>
+                                                    @else 
+                                                        <p>{{$b->users->name}}</p>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="date-and-button blog-date">
