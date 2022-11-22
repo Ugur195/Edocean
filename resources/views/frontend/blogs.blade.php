@@ -23,6 +23,7 @@
                         <div class="row">
                             @foreach($blogs as $b)
                                 @php($user=\App\Models\User::find($b->author)->with('admin')->get())
+                                @php( $blogs_comments = \App\Models\BlogComment::where(['blog_id'=>$b->id,'status' => 1])->get())
                                 <div class="col-lg-6 col-md-6 col-sm-12 blog-card-container">
                                     <div class="blog-card">
                                         <img class="blog-card-img" src="data:image/jpeg;base64,{{base64_encode($b->image)}}" alt="">
@@ -35,7 +36,7 @@
                                                          alt="">
                                                     @if($b->admin->name != null)
                                                         <p>{{$b->admin->name}}</p>
-                                                    @else 
+                                                    @else
                                                         <p>{{$b->users->name}}</p>
                                                     @endif
                                                 </div>
@@ -47,10 +48,13 @@
                                                     <ion-icon name="calendar-number"></ion-icon>
                                                     {{$vaxt->diffForHumans()}}
                                                 </p>
-                                                <p>
-                                                    <ion-icon name="chatbubble"></ion-icon>
-                                                    5 komment
-                                                </p>
+                                                <a href="{{url('single_blog/'.$b->id)}}">
+                                                    <p>
+                                                        <ion-icon  name="chatbubble"></ion-icon>
+                                                        ({{count($blogs_comments)}}) komment
+                                                    </p>
+                                                </a>
+
                                             </div>
                                             <div class="blog-btn">
                                                 <a href="{{url('single_blog/'.$b->id)}}">

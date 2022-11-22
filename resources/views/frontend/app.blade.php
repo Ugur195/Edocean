@@ -17,7 +17,7 @@
 
 <nav class="navbar navbar-expand-lg  sticky-top ed-navbar">
     <div class="container">
-        <a href="/"><img class="edocean-logo" src="./frontendCss/images/edocean-logo.jpeg" alt=""></a>
+        <a href="/"><img class="edocean-logo" src="/frontendCss/images/edocean-logo.jpeg" alt=""></a>
         <div class="navbar-desktop">
             <ul class="navbar-nav pe-3">
                 @foreach($menu as $m)
@@ -138,7 +138,7 @@
             <div class="row">
                 <div class="logo-and-social col-lg-4 col-md-3 col-sm-6 mb-5">
                     <div class="logo-and-p">
-                        <img src="./frontendCss/images/edocean-footer-logo.jpeg" alt=""/>
+                        <img src="/frontendCss/images/edocean-footer-logo.jpeg" alt=""/>
                         <p>
                             Great lesson ideas and lesson plans for ESL teachers! Educators
                             can customize lesson plans to best.

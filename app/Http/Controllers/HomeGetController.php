@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AboutUs;
 use App\Models\BlogCategory;
+use App\Models\BlogComment;
 use App\Models\Blogs;
 use App\Models\Course;
 use App\Models\Menu;
@@ -93,11 +94,13 @@ class HomeGetController extends Controller
     {
         $setting = Setting::find(1);
         $menu = Menu::where('status', 1)->get();
-        $blogs = Blogs::find($id);
+        $blogs_id = Blogs::find($id);
+        $blogs = Blogs::with('admin')->get();
         $blog_category = BlogCategory::all();
         $about_us = AboutUs::all();
+        $blogs_comments = BlogComment::where(['blog_id' => $blogs_id->id, 'status' => 1])->get();
         return view('frontend.single_blog')->with(['menu' => $menu, 'blogs' => $blogs, 'setting' => $setting,
-            'blog_category' => $blog_category, 'about_us' => $about_us]);
+            'blog_category' => $blog_category, 'about_us' => $about_us, 'blogs_id' => $blogs_id, 'blogs_comments' => $blogs_comments]);
     }
 
 

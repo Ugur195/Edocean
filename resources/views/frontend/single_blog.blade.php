@@ -13,13 +13,17 @@
                 @endforeach
                 <div class="author-and-date">
                     <div class="author">
-                        <img class="author-img" src="./images/kanan.png" alt="">
-                        @php($user=\App\Models\User::find($blogs->author))
-
-                        <p class="author-name">{{$user->name}}</p>
+                        @php($user=\App\Models\User::find($blogs_id->author)->with('admin')->get())
+                        <img class="author-img" src="data:image/jpeg;base64,{{base64_encode($blogs_id->admin->image)}}"
+                             alt="">
+                        @if($blogs_id->admin->name != null)
+                            <p>{{$blogs_id->admin->name}}</p>
+                        @else
+                            <p>{{$blogs_id->users->name}}</p>
+                        @endif
                     </div>
                     <p class="detail-time">
-                        @php($vaxt=$blogs->created_at)
+                        @php($vaxt=$blogs_id->created_at)
                         @php($vaxt->setLocale('az'))
                         <ion-icon name="time-outline"></ion-icon>
                         <span> {{$vaxt->diffForHumans()}}</span></p>
@@ -30,11 +34,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-md-12 col-sm-12 blog-detail-info mb-5">
-                        <img class="blog-detail-img mb-5" src="data:image/jpeg;base64,{{base64_encode($blogs->image)}} "
+                        <img class="blog-detail-img mb-5" src="data:image/jpeg;base64,{{base64_encode($blogs_id->image)}} "
                              alt="">
-                        <h3 class="mb-3">{{$blogs->title}}</h3>
+                        <h3 class="mb-3">{{$blogs_id->title}}</h3>
                         <p class="pb-4">
-                            {{$blogs->message}}
+                            {{$blogs_id->message}}
                         </p>
                         <div class="blog-comments mb-5">
                             <h3 class="mt-4 mb-4">Comments</h3>
