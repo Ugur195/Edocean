@@ -9,6 +9,7 @@ use App\Models\Course;
 use App\Models\Menu;
 use App\Models\Setting;
 use App\Models\Student;
+use App\Models\SubjectCategory;
 use App\Models\Teacher;
 use App\Models\TeacherCourse;
 use App\Models\User;
@@ -104,10 +105,9 @@ class HomeGetController extends Controller
     {
         $menu = Menu::where('status', 1)->get();
         $setting = Setting::find(1);
-        $teachers = Teacher::all();
+        $teachers = Teacher::with('subjects')->get();
         $teachers_course = TeacherCourse::all();
-        return view('frontend.teachers')->with(['menu' => $menu, 'setting' => $setting, 'teacher' => $teachers,
-            'teachers_course' => $teachers_course]);
+        return view('frontend.teachers')->with(['menu' => $menu, 'setting' => $setting, 'teacher' => $teachers, 'teachers_course' => $teachers_course]);
     }
 
 
