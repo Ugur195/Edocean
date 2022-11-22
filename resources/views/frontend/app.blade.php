@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg  sticky-top ed-navbar">
+<nav class="navbar navbar-expand-lg  sticky-top ed-navbar" style="margin-bottom: 20px;">
     <div class="container">
         <a href="/"><img class="edocean-logo" src="./frontendCss/images/edocean-logo.jpeg" alt=""></a>
         <div class="navbar-desktop">
