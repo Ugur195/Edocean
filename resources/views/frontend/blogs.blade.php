@@ -31,7 +31,7 @@
                                                 <h5><a href="">{{$b->title}}</a>
                                                 </h5>
                                                 <div class="name-and-img">
-                                                    <img src="data:image/jpeg;base64,{{base64_encode($b->admin->image)}}"
+                                                    <img style="object-fit: cover" src="data:image/jpeg;base64,{{base64_encode($b->admin->image)}}"
                                                          alt="">
                                                     @if($b->admin->name != null)
                                                         <p>{{$b->admin->name}}</p>
