@@ -108,7 +108,7 @@ Route::middleware('auth', 'verified')->group(function() {
         Route::get('/my_profile', [StudentGetController::class, 'getMyProfile']);
         Route::get('/index', [StudentGetController::class, 'Student']);
         Route::get('/student_course', [StudentGetController::class, 'StudentCourse'])->name('StudentCourse');
-        Route::get('/student_course_edit', [StudentGetController::class, 'StudentCourseEdit'])->name('admin.student_course_edit');
+        Route::get('/student_course_edit/{id}', [StudentGetController::class, 'StudentCourseEdit'])->name('admin.student_course_edit');
         Route::get('/student_attendance', [StudentGetController::class, 'StudentAttendance']);
         Route::get('/student_schedule', [StudentGetController::class, 'StudentSchedule']);
         Route::get('GetSubCatStuEdit/{id}', [StudentGetController::class, 'GetSubCatStuEdit']);
