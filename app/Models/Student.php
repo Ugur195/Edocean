@@ -11,6 +11,15 @@ class Student extends Model
     protected $fillable = ['id', 'image', 'name', 'surname', 'father_name', 'birthday', 'gender', 'language', 'email', 'password', 'country',
         'city', 'phone', 'skype_id', 'parent', 'subjects', 'subjects_category', 'education_level', 'lesson_duration', 'lessons_intensivity', 'address', 'teacher_status',
         'teacher_gender', 'students_amount', 'student_mission', 'payment', 'balance', 'verified_status', 'user_id', 'status'];
+
+
+    public function subjects() {
+        return $this->hasOne(Subjects::class, 'id', 'subjects');
+    }
+
+    public function category() {
+        return $this->hasOne(SubjectCategory::class, 'id', 'subjects_category');
+    }
 }
 
 

@@ -42,8 +42,7 @@
                         <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
                                 aria-expanded="false">
 {{--                                {{  Auth::user()->id }}--}}
-                            <img class="profile-dropdown-img"
-                                 src="data:image/jpeg;base64,{{base64_encode(auth()->user()->type()->image)}}">
+                            <img class="profile-dropdown-img" style="object-fit: contain" src="data:image/jpeg;base64,{{base64_encode(auth()->user()->type()->image)}}">
                         </button>
                         <ul class="dropdown-menu prfl-ul" aria-labelledby="dropdownMenu2">
                             <li><a  class="dropdown-item" href="">My Profile</a></li>

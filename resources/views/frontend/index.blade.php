@@ -8,6 +8,9 @@
             object-fit: cover;
             height: 300px;
         }
+        nav {
+            margin-bottom: 0px !important;
+        }
     </style>
 @endsection
 

@@ -109,8 +109,24 @@ class HomeGetController extends Controller
         $menu = Menu::where('status', 1)->get();
         $setting = Setting::find(1);
         $teachers = Teacher::with('subjects')->get();
-        $teachers_course = TeacherCourse::all();
-        return view('frontend.teachers')->with(['menu' => $menu, 'setting' => $setting, 'teacher' => $teachers, 'teachers_course' => $teachers_course]);
+        $subjects = SubjectCategory::all();
+        return view('frontend.teachers')->with(['menu' => $menu, 'setting' => $setting, 'teacher' => $teachers, 'subjects' => $subjects]);
+    }
+
+    public function Students() {
+        $menu = Menu::where('status', 1)->get();
+        $setting = Setting::find(1);
+        $students = Student::with('subjects')->get();
+        $subjects = SubjectCategory::all();
+        return view('frontend.students')->with(['menu' => $menu, 'setting' => $setting, 'students' => $students, 'subjects' => $subjects]);
+    }
+
+    public function Courses() {
+        $menu = Menu::where('status', 1)->get();
+        $setting = Setting::find(1);
+        $courses = Course::with('subjects')->get();
+        $subjects = SubjectCategory::all();
+        return view('frontend.courses')->with(['menu' => $menu, 'setting' => $setting, 'courses' => $courses, "subjects" => $subjects]);
     }
 
 
