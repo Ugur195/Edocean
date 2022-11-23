@@ -11,8 +11,9 @@
                     <div class="card-header card-header-tabs-line">
                         <div class="card-toolbar">
                             <div class="d-flex align-items-center flex-wrap mr-2">
-                                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Teacher</h5>
-                                <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
+                                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Course</h5>
+                                <div
+                                    class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
                             </div>
 
                         </div>
@@ -21,7 +22,7 @@
                         <div class="tab-content pt-5">
                             <!--begin::Tab Content-->
                             <div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
-                                <form  class="form" method="POST">
+                                <form class="form" method="POST">
                                     {{csrf_field()}}
                                     <div class="col-xl-3"></div>
 
@@ -39,7 +40,8 @@
                                                     data-action="change" data-toggle="tooltip" title=""
                                                     data-original-title="Change avatar">
                                                     <i class="fa fa-pen icon-sm text-muted"></i>
-                                                    <input type="file" name="logo" id="file" accept=".png, .jpg, .jpeg"/>
+                                                    <input type="file" name="logo" id="file"
+                                                           accept=".png, .jpg, .jpeg"/>
                                                     <input type="hidden" name="profile_avatar_remove"/>
                                                 </label>
 
@@ -82,7 +84,8 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Subjects</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$course_edit->subjects}}" readonly/>
+                                                   value="{{\App\Models\Subjects::find($course_edit->subjects)->name}}"
+                                                   readonly/>
                                         </div>
                                     </div>
 
@@ -121,11 +124,8 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </form>
                             </div>
-
                         </div>
                     </div>
                 </div>

@@ -105,52 +105,5 @@
     <script src="{{asset('jsValidate/jquery.form.js')}}"></script>
 
 
-    <script>
-        function sil(setir, id) {
-            var sira = setir.parentNode.parentNode.rowIndex;
-            console.log(sira);
-            swal.fire({
-                title: 'Silmek Isteyirsinizmi?',
-                text: 'Sildikden sonra berpa etmek olmayacaq!',
-                icon: 'warning',
-                allowOutsideClick: false,
-                showCancelButton: true,
-                cancelButtonText: 'Bagla',
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Sil',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content')
-                    $.ajax({
-                        type: "Post",
-                        url: '',
-                        data: {
-                            'id': id,
-                            '_token': CSRF_TOKEN
-                        },
-
-                        success: function (response) {
-                            if (response.status == 'success') {
-                                document.getElementById("kt_datatable").deleteRow(sira);
-                            }
-                            swal.fire({
-                                title: response.title,
-                                text: response.message,
-                                icon: response.status,
-                                allowOutsideClick: false
-                            })
-                            if (response.status === 'success') {
-                                setTimeout(function () {
-                                    window.location.href = '/admin/course/course_student';
-                                }, 1000)
-                            }
-
-                        }
-                    })
-                }
-            })
-        }
-
-    </script>
+   
 @endsection

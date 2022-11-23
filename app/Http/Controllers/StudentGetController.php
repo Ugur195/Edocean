@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Student;
+use App\Models\StudentCourse;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,9 +33,11 @@ class StudentGetController extends Controller
         return view('student.student_course');
     }
 
-    public function StudentCourseEdit()
+    public function StudentCourseEdit($id)
     {
-        return view('student.student_course_edit');
+        $student_course = StudentCourse::find($id, 'course_id');
+        $student_course_edit = Course::find($student_course->course_id);
+        return view('student.student_course_edit')->with(['student_course_edit' => $student_course_edit]);
     }
 
     public function getStudentCourse(Request $request)
@@ -49,8 +53,7 @@ class StudentGetController extends Controller
             ->get();
         return DataTables::of($student_course)
             ->addColumn('options', function ($model) {
-                $return = '<a class="btn btn-xs btn-primary mr-1" href="' . route('admin.student_course_edit', $model->id) . '" ><i class="la la-user"></i></a>';
-                $return .= '<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger mr-1" name="btn_delete" value="btn_delete" ><i class="la la-trash"></i></button>';
+                $return = '<a class="btn btn-xs btn-primary mr-1" href="' . route('admin.student_course_edit', $model->id) . '" ><i class="la la-pencil-square-o"></i></a>';
                 return $return;
             })->rawColumns(['options' => true])->make(true);
     }

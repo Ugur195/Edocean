@@ -154,23 +154,22 @@ class AdminGetController extends Controller
             ->editColumn('image', function ($model) {
                 return "<img style='display:block;width:80px;height:60px;' src='data:image/jpeg;base64," . base64_encode($model->image) . "'/>";
             })
-            ->addColumn('options', function ($model) {
-                $return = '<a class="btn btn-xs btn-primary" href="' . route('admin.backend.teacher_edit', $model->id) . '" ><i class="la la-user"></i></a>
-			    	<button onclick="sil(this,' . $model->user_id . ')"  class="btn btn-xs btn-danger mr-1" name="btn_delete" value="btn_delete" ><i class="la la-trash"></i></button>';
-                if ($model->st == 0) {
-                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->user_id . ')"  class="btn btn-xs btn-success mt-1 "  name="btn_blok"
+                ->addColumn('options', function ($model) {
+                    $return = '<a class="btn btn-xs btn-primary mr-1" href="' . route('admin.backend.teacher_edit', $model->id)  . '" ><i class="la la-user"></i></a>';
+                    if ($model->st == 0) {
+                        $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->user_id . ')"  class="btn btn-xs btn-success mr-1"  name="btn_blok"
                                         value="btn_blok" ><i class="la la-check"></i></button>';
-                } else if ($model->st == 1) {
-                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->user_id . ')"  class="btn btn-xs btn-dark mt-1" name="btn_unblok"  value="btn_unblok" ><i class="la la-close"></i></button>';
-                }
-                return $return;
-
+                    } else if ($model->st == 1) {
+                        $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->user_id . ')"  class="btn btn-xs btn-dark mr-1" name="btn_unblok"  value="btn_unblok" ><i class="la la-close"></i></button>';
+                    }
+                    $return .= '<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger mt-1" ><i class="la la-trash"></i></button>';
+                    return $return;
             })->rawColumns(['options' => true])->make(true);
     }
 
     public function TeacherEdit($id)
     {
-        $teacher_edit = CourseTeacher::where($id,'teacher_id')();
+        $teacher_edit = Teacher::find($id);
         return view('backend.teacher_edit')->with(['teacher_edit' => $teacher_edit]);
     }
     //finish Teacher
@@ -191,16 +190,16 @@ class AdminGetController extends Controller
             ->editColumn('image', function ($model) {
                 return "<img style='display:block;width:80px;height:60px;' src='data:image/jpeg;base64," . base64_encode($model->image) . "'/>";
             })
-            ->addColumn('options', function ($model) {
-                $return = '<a class="btn btn-xs btn-primary" href="' . route('admin.backend.student_edit', $model->id) . '" ><i class="la la-user"></i></a>
-			    	<button onclick="sil(this,' . $model->user_id . ')"  class="btn btn-xs btn-danger mr-1" ><i class="la la-trash"></i></button>';
-                if ($model->st == 0) {
-                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->user_id . ')"  class="btn btn-xs btn-success mt-1 "  name="btn_blok"
+                ->addColumn('options', function ($model) {
+                    $return = '<a class="btn btn-xs btn-primary mr-1" href="' . route('admin.backend.student_edit', $model->id)   . '" ><i class="la la-user"></i></a>';
+                    if ($model->st == 0) {
+                        $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->user_id . ')"  class="btn btn-xs btn-success mr-1"  name="btn_blok"
                                         value="btn_blok" ><i class="la la-check"></i></button>';
-                } else if ($model->st == 1) {
-                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->user_id . ')"  class="btn btn-xs btn-dark mt-1" name="btn_unblok"  value="btn_unblok" ><i class="la la-close"></i></button>';
-                }
-                return $return;
+                    } else if ($model->st == 1) {
+                        $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->user_id . ')"  class="btn btn-xs btn-dark mr-1" name="btn_unblok"  value="btn_unblok" ><i class="la la-close"></i></button>';
+                    }
+                    $return .= '<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger mt-1" ><i class="la la-trash"></i></button>';
+                    return $return;
             })->rawColumns(['options' => true])->make(true);
     }
 
@@ -227,16 +226,16 @@ class AdminGetController extends Controller
             ->editColumn('image', function ($model) {
                 return "<img style='display:block;width:80px;height:60px;' src='data:image/jpeg;base64," . base64_encode($model->image) . "'/>";
             })
-            ->addColumn('options', function ($model) {
-                $return = '<a class="btn btn-xs btn-primary" href="' . route('admin.backend.course_edit', $model->id) . '" ><i class="la la-user"></i></a>
-			    	<button onclick="sil(this,' . $model->user_id . ')"  class="btn btn-xs btn-danger mr-1" ><i class="la la-trash"></i></button>';
-                if ($model->st == 0) {
-                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->user_id . ')"  class="btn btn-xs btn-success"  name="btn_blok"
+                ->addColumn('options', function ($model) {
+                    $return = '<a class="btn btn-xs btn-primary mr-1" href="' . route('admin.backend.course_edit', $model->id)  . '" ><i class="la la-user"></i></a>';
+                    if ($model->st == 0) {
+                        $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->user_id . ')"  class="btn btn-xs btn-success mr-1"  name="btn_blok"
                                         value="btn_blok" ><i class="la la-check"></i></button>';
-                } else if ($model->st == 1) {
-                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->user_id . ')"  class="btn btn-xs btn-dark" name="btn_unblok"  value="btn_unblok" ><i class="la la-close"></i></button>';
-                }
-                return $return;
+                    } else if ($model->st == 1) {
+                        $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->user_id . ')"  class="btn btn-xs btn-dark mr-1" name="btn_unblok"  value="btn_unblok" ><i class="la la-close"></i></button>';
+                    }
+                    $return .= '<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger mr-1" ><i class="la la-trash"></i></button>';
+                    return $return;
 
             })->rawColumns(['options' => true])->make(true);
     }
@@ -244,7 +243,7 @@ class AdminGetController extends Controller
 
     public function CourseEdit($id)
     {
-        $course_edit = Course::where('id', $id)->first();
+        $course_edit = Course::find($id);
         return view('backend.course_edit')->with(['course_edit' => $course_edit]);
     }
     //finish Course
@@ -267,16 +266,16 @@ class AdminGetController extends Controller
             ->editColumn('image', function ($model) {
                 return "<img style='display:block;width:80px;height:60px;' src='data:image/jpeg;base64," . base64_encode($model->image) . "'/>";
             })
-            ->addColumn('options', function ($model) {
-                $return = '<a class="btn btn-xs btn-primary" href="' . route('admin.backend.blogs_edit', $model->id) . '" ><i class="la la-user"></i></a>
-			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger mt-1" ><i class="la la-trash"></i></button>';
-                if ($model->st == 0) {
-                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-success mt-1 "  name="btn_blok"
+                ->addColumn('options', function ($model) {
+                    $return = '<a class="btn btn-xs btn-primary mt-1" href="' . route('admin.backend.blogs_edit', $model->id)  . '" ><i class="la la-user"></i></a>';
+                    if ($model->st == 0) {
+                        $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-success mt-1"  name="btn_blok"
                                         value="btn_blok" ><i class="la la-check"></i></button>';
-                } else if ($model->st == 1) {
-                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-dark mt-1" name="btn_unblok"  value="btn_unblok" ><i class="la la-close"></i></button>';
-                }
-                return $return;
+                    } else if ($model->st == 1) {
+                        $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-dark mt-1" name="btn_unblok"  value="btn_unblok" ><i class="la la-close"></i></button>';
+                    }
+                    $return .= '<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger mt-1" ><i class="la la-trash"></i></button>';
+                    return $return;
             })->rawColumns(['options' => true])->make(true);
     }
 
