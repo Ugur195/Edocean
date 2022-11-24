@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Student;
 use App\Models\StudentCourse;
+use App\Models\Teacher;
+use App\Models\TeacherCourse;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -40,6 +42,14 @@ class StudentGetController extends Controller
         return view('student.student_course_edit')->with(['student_course_edit' => $student_course_edit]);
     }
 
+    public function TeacherInfoEdit($id)
+    {
+        $teacher = StudentCourse::find($id, 'teacher_id');
+        $teacher_edit = Teacher::find($teacher->teacher_id);
+        return view('student.teacher_info')->with(['teacher_edit' => $teacher_edit]);
+    }
+
+
     public function getStudentCourse(Request $request)
     {
         $student_course = DB::table('edocean.student_course')->select(DB::raw("edocean.course.name as course_name,
@@ -52,10 +62,14 @@ class StudentGetController extends Controller
             ->where('edocean.student_course.user_id', $request->user_id)
             ->get();
         return DataTables::of($student_course)
+            ->addColumn('teacher', function ($model) {
+                $return = '<a href="' . route('admin.student.teacher_info', $model->id) . '" >Teacher</a>';
+                return $return;
+            })
             ->addColumn('options', function ($model) {
                 $return = '<a class="btn btn-xs btn-primary mr-1" href="' . route('admin.student_course_edit', $model->id) . '" ><i class="la la-pencil-square-o"></i></a>';
                 return $return;
-            })->rawColumns(['options' => true])->make(true);
+            })->rawColumns(['teacher', 'options'])->make(true);
     }
 
 

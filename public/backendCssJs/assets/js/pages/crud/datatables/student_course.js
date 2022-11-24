@@ -1,4 +1,5 @@
 "use strict";
+
 var KTDatatablesSearchOptionsColumnSearch = function () {
 
     $.fn.dataTable.Api.register('column().title()', function () {
@@ -42,7 +43,7 @@ var KTDatatablesSearchOptionsColumnSearch = function () {
                     name: 'course'
                 },
                 {
-                    data: 'teacher_name',
+                    data: 'teacher',
                     name: 'teacher'
                 },
                 {
