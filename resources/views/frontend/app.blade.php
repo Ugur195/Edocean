@@ -9,13 +9,12 @@
     <link rel="stylesheet" href="{{asset('frontendCss/style.css')}}"/>
     <link rel="stylesheet" href="{{asset('frontendCss/bootstrap.css')}}">
 
-
     @yield('css')
     <title>Edocean</title>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg  sticky-top ed-navbar" style="margin-bottom: 20px;">
+<nav class="navbar navbar-expand-lg  sticky-top ed-navbar">
     <div class="container">
         <a href="/"><img class="edocean-logo" src="/frontendCss/images/edocean-logo.jpeg" alt=""></a>
         <div class="navbar-desktop">
