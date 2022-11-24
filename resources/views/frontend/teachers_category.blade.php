@@ -24,6 +24,8 @@
                     <div class="col-lg-8 col-md-12 col-sm-12 mb-5">
                         <div class="row">
                         @foreach ($category as $c)
+                            @php ($sub = \App\Models\Subjects::find($c->subjects))
+                            @php ($cat = \App\Models\SubjectCategory::find($c->subjects_category))
                             @if($c->subjects_category == $subjects_category->id)
                                 <div class="col-lg-6 col-md-6 col-sm-12 blog-card-container">
                                     <div class="blog-card">
@@ -36,11 +38,11 @@
                                                 <div class="category" style="align-items: center; display: flex; flex-direction:row;">
                                                     <h5 style="margin: 0 15px 0 15px;">Tags:</h5>
                                                     @if($c->subjects_category == 2)
-                                                        <button style="margin: 0 15px 0 15px;" type="button" class="btn btn-outline-primary">{{ $c->subjects }}</button>
-                                                        <button type="button" class="btn btn-outline-primary">{{ $c->subjects_category }}</button>
+                                                        <button style="margin: 0 15px 0 15px;" type="button" class="btn btn-outline-primary">{{ $sub->name }}</button>
+                                                        <button type="button" class="btn btn-outline-primary">{{ $cat->name }}</button>
                                                     @elseif($c->subjects_category == 3)
-                                                        <button style="margin: 0 15px 0 15px;" type="button" class="btn btn-outline-success">{{ $c->subjects }}</button>
-                                                        <button type="button" class="btn btn-outline-success">{{ $c->subjects_category }}</button> 
+                                                        <button style="margin: 0 15px 0 15px;" type="button" class="btn btn-outline-success">{{ $sub->name }}</button>
+                                                        <button type="button" class="btn btn-outline-success">{{ $cat->name }}</button> 
                                                     @endif         
                                                 </div>
                                             </div>
@@ -94,8 +96,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            @else 
-                                <h1>Something Strange</h1>
                             @endif
                         @endforeach
                         </div>
@@ -104,33 +104,35 @@
                         <div class="recent-posts">
                             <h4>Yeni Muellimler</h4>
                             @foreach($category as $c)
-                                <div class="recent-post-div d-flex align-items-center">
-                                    <img style="object-fit: contain;" class="blog-card-img" src="data:image/jpeg;base64,{{base64_encode($c->image)}}" alt="">
-                                    <div class="recent-post-text">
-                                        <h5><a href="">{{ $c->name . " " . $c->surname }}</a></h5>
-                                        <p>
-                                            <ion-icon name="star"></ion-icon>
-                                            4.6
-                                            <ion-icon name="eye" style="padding-left: 10px"></ion-icon>
-                                                {{ $c->see_count }}
-                                        </p>
-                                        <p>
-                                            @php($vaxt=$c->created_at)
-                                            @php($vaxt->setLocale('az'))
-                                            {{$vaxt->diffForHumans()}}
-                                        </p>
+                                @if($c->subjects_category == $subjects_category->id)
+                                    <div class="recent-post-div d-flex align-items-center">
+                                        <img style="object-fit: contain;" class="blog-card-img" src="data:image/jpeg;base64,{{base64_encode($c->image)}}" alt="">
+                                        <div class="recent-post-text">
+                                            <h5><a href="">{{ $c->name . " " . $c->surname }}</a></h5>
+                                            <p>
+                                                <ion-icon name="star"></ion-icon>
+                                                4.6
+                                                <ion-icon name="eye" style="padding-left: 10px"></ion-icon>
+                                                    {{ $c->see_count }}
+                                            </p>
+                                            <p>
+                                                @php($vaxt=$c->created_at)
+                                                @php($vaxt->setLocale('az'))
+                                                {{$vaxt->diffForHumans()}}
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
                             @endforeach
                         </div>
                         <div class="blog-categories">
                             <h4>Category</h4>
                             <ul class="bl-cat">
-                                {{-- @foreach($subjects as $sb)
-                                    <a href="">
+                                @foreach($categories as $sb)
+                                    <a href="{{ route('Category', ['category' => $sb->id]) }}">
                                         <li>{{$sb->name}}</li>
                                     </a>
-                                @endforeach --}}
+                                @endforeach
                             </ul>
                         </div>
                     </div>
