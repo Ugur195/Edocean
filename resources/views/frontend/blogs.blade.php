@@ -22,8 +22,8 @@
                     <div class="col-lg-8 col-md-12 col-sm-12 mb-5">
                         <div class="row">
                             @foreach($blogs as $b)
-                                @php($user=\App\Models\User::find($b->author))
-                                @php($blogs_comments = \App\Models\BlogComment::where(['blog_id'=>$b->id,'status' => 1]))
+                                @php($user=\App\Models\User::find($b->author)->with('admin')->get())
+                                @php($blogs_comments = \App\Models\BlogComment::where(['blog_id'=>$b->id,'status' => 1])->get())
                                 <div class="col-lg-6 col-md-6 col-sm-12 blog-card-container">
                                     <div class="blog-card">
                                         <img class="blog-card-img" src="data:image/jpeg;base64,{{base64_encode($b->image)}}" alt="">
@@ -37,7 +37,6 @@
                                                     @if($b->admin->name != null)
                                                         <p>{{$b->admin->name}}</p>
                                                     @else
-                                                        @php(dd($b->users))
                                                         <p>{{$b->users->name}}</p>
                                                     @endif
                                                 </div>
