@@ -9,7 +9,7 @@
     <main class="blog">
         <section class="blog-header">
             <div class="blog-header-div container">
-                <h1>Kurslar</h1>
+                <h1 class="Start">Kurslar</h1>
                 <p>
                     <a href="{{url('/')}}"> Ana səhifə</a
                     >

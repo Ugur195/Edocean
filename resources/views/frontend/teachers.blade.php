@@ -9,7 +9,7 @@
     <main class="blog">
         <section class="blog-header">
             <div class="blog-header-div container">
-                <h1>Muellimler</h1>
+                <h1 class="Start">Muellimler</h1>
                 <p>
                     <a href="{{url('/')}}"> Ana səhifə</a
                     >
@@ -38,10 +38,10 @@
                                             <h5 style="margin: 0 15px 0 15px;">Tags:</h5>
                                             @if($cat->name == 'IT')
                                                 <button style="margin: 0 15px 0 15px;" type="button" class="btn btn-outline-primary">{{ $sub->name }}</button>
-                                                <button type="button" class="btn btn-outline-primary">{{ $cat->name }}</button>
+                                                <a href="{{ route('Category', ['subjects_category' => $cat->id]) }}"><button type="button" class="btn btn-outline-primary">{{ $cat->name }}</button></a>
                                             @elseif($cat->name == 'Diller')
                                                 <button style="margin: 0 15px 0 15px;" type="button" class="btn btn-outline-success">{{ $sub->name }}</button>
-                                                <button type="button" class="btn btn-outline-success">{{ $cat->name }}</button> 
+                                                <a href="{{ route('Category', ['subjects_category' => $cat->id]) }}"><button type="button" class="btn btn-outline-success">{{ $cat->name }}</button></a>
                                             @endif         
                                         </div>
                                     </div>
@@ -125,7 +125,7 @@
                             <h4>Category</h4>
                             <ul class="bl-cat">
                                 @foreach($subjects as $sb)
-                                    <a href="">
+                                    <a href="{{ route('Category', ['subjects_category' => 3]) }}">
                                         <li>{{$sb->name}}</li>
                                     </a>
                                 @endforeach
