@@ -101,24 +101,28 @@
                     <div class="col-lg-4 col-md-12 col-sm-12 blog-main-right-container">
                         <div class="recent-posts">
                             <h4>Yeni Muellimler</h4>
+                            @php($count = 0)
                             @foreach($teacher as $t)
-                                <div class="recent-post-div d-flex align-items-center">
-                                    <img style="object-fit: contain;" class="blog-card-img" src="data:image/jpeg;base64,{{base64_encode($t->image)}}" alt="">
-                                    <div class="recent-post-text">
-                                        <h5><a href="">{{ $t->name . " " . $t->surname }}</a></h5>
-                                        <p>
-                                            <ion-icon name="star"></ion-icon>
-                                            4.6
-                                            <ion-icon name="eye" style="padding-left: 10px"></ion-icon>
-                                                {{ $t->see_count }}
-                                        </p>
-                                        <p>
-                                            @php($vaxt=$t->created_at)
-                                            @php($vaxt->setLocale('az'))
-                                            {{$vaxt->diffForHumans()}}
-                                        </p>
+                                @if($count < 4)
+                                    <div class="recent-post-div d-flex align-items-center">
+                                        <img style="object-fit: contain;" class="blog-card-img" src="data:image/jpeg;base64,{{base64_encode($t->image)}}" alt="">
+                                        <div class="recent-post-text">
+                                            <h5><a href="">{{ $t->name . " " . $t->surname }}</a></h5>
+                                            <p>
+                                                <ion-icon name="star"></ion-icon>
+                                                4.6
+                                                <ion-icon name="eye" style="padding-left: 10px"></ion-icon>
+                                                    {{ $t->see_count }}
+                                            </p>
+                                            <p>
+                                                @php($vaxt=$t->created_at)
+                                                @php($vaxt->setLocale('az'))
+                                                {{$vaxt->diffForHumans()}}
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
+                                    @php($count++)
+                                @endif
                             @endforeach
                         </div>
                         <div class="blog-categories">
