@@ -11,6 +11,7 @@ use App\Models\Menu;
 use App\Models\Setting;
 use App\Models\Student;
 use App\Models\SubjectCategory;
+use App\Models\Subjects;
 use App\Models\Teacher;
 use App\Models\TeacherCourse;
 use App\Models\User;
@@ -126,7 +127,7 @@ class HomeGetController extends Controller
     public function TeachersSubject($category) {
         $setting = Setting::find(1);
         $menu = Menu::where('status', 1)->get();
-        $subjects_category = SubjectCategory::find($category);
+        $subjects_category = Subjects::find($category);
         $category = Teacher::with('subjects')->get();
         $categories = SubjectCategory::all();
         return view('frontend.teachers_category')->with(['menu' => $menu, 'setting' => $setting, 'subjects_category' => $subjects_category, 'category' => $category, 'categories' => $categories]);

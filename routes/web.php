@@ -39,8 +39,8 @@ Route::get('/logout', [HomeGetController::class, 'GetLogout'])->name('logout');
 Route::get('/blogs', [HomeGetController::class, 'Blogs']);
 Route::get('/single_blog/{id}', [HomeGetController::class, 'SingleBlog']);
 Route::get('/teachers', [HomeGetController::class, 'Teachers']);
-Route::get('/teachers/{category}',[HomeGetController::class, 'TeachersCategory'])->name('Category');
-Route::get('/teachers/{subject}',[HomeGetController::class, 'TeachersSubjct'])->name('Subject');
+Route::get('/teachers/category/{category}',[HomeGetController::class, 'TeachersCategory'])->name('subjects_category');
+Route::get('/teachers/subject/{category}',[HomeGetController::class, 'TeachersSubject'])->name('subjects');
 Route::get('/students', [HomeGetController::class, 'Students']);
 Route::get('/courses', [HomeGetController::class, 'Courses']);
 

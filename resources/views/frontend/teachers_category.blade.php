@@ -19,6 +19,7 @@
             </div>
         </section>
         <section class="blog-main">
+            @php ($class = Route::currentRouteName())
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-md-12 col-sm-12 mb-5">
@@ -26,7 +27,7 @@
                         @foreach ($category as $c)
                             @php ($sub = \App\Models\Subjects::find($c->subjects))
                             @php ($cat = \App\Models\SubjectCategory::find($c->subjects_category))
-                            @if($c->subjects_category == $subjects_category->id)
+                            @if($subjects_category->id == $c->$class)
                                 <div class="col-lg-6 col-md-6 col-sm-12 blog-card-container">
                                     <div class="blog-card">
                                         <img class="blog-card-img" src="data:image/jpeg;base64,{{base64_encode($c->image)}}" alt="">
@@ -37,13 +38,13 @@
                                                 </div>
                                                 <div class="category" style="align-items: center; display: flex; flex-direction:row;">
                                                     <h5 style="margin: 0 15px 0 15px;">Tags:</h5>
-                                                    @if($c->subjects_category == 2)
-                                                        <button style="margin: 0 15px 0 15px;" type="button" class="btn btn-outline-primary">{{ $sub->name }}</button>
-                                                        <button type="button" class="btn btn-outline-primary">{{ $cat->name }}</button>
-                                                    @elseif($c->subjects_category == 3)
-                                                        <button style="margin: 0 15px 0 15px;" type="button" class="btn btn-outline-success">{{ $sub->name }}</button>
-                                                        <button type="button" class="btn btn-outline-success">{{ $cat->name }}</button> 
-                                                    @endif         
+                                                    @if($cat->name == 'IT')
+                                                        <a href="{{ route('subjects', ['category' => $sub->id]) }}"><button style="margin: 0 15px 0 15px;" type="button" class="btn btn-outline-primary">{{ $sub->name }}</button>
+                                                        <a href="{{ route('subjects_category', ['category' => $cat->id]) }}"><button type="button" class="btn btn-outline-primary">{{ $cat->name }}</button></a>
+                                                    @elseif($cat->name == 'Diller')
+                                                        <a href="{{ route('subjects', ['category' => $sub->id]) }}"><button style="margin: 0 15px 0 15px;" type="button" class="btn btn-outline-success">{{ $sub->name }}</button>
+                                                        <a href="{{ route('subjects_category', ['category' => $cat->id]) }}"><button type="button" class="btn btn-outline-success">{{ $cat->name }}</button></a>
+                                                    @endif             
                                                 </div>
                                             </div>
                                                 <div class="details-1" style="display: flex; flex-direction:row;">
@@ -104,7 +105,7 @@
                         <div class="recent-posts">
                             <h4>Yeni Muellimler</h4>
                             @foreach($category as $c)
-                                @if($c->subjects_category == $subjects_category->id)
+                                @if($subjects_category->id == $c->$class)
                                     <div class="recent-post-div d-flex align-items-center">
                                         <img style="object-fit: contain;" class="blog-card-img" src="data:image/jpeg;base64,{{base64_encode($c->image)}}" alt="">
                                         <div class="recent-post-text">
@@ -129,7 +130,7 @@
                             <h4>Category</h4>
                             <ul class="bl-cat">
                                 @foreach($categories as $sb)
-                                    <a href="{{ route('Category', ['category' => $sb->id]) }}">
+                                    <a href="{{ route('subjects_category', ['category' => $sb->id]) }}">
                                         <li>{{$sb->name}}</li>
                                     </a>
                                 @endforeach
