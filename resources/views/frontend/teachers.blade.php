@@ -37,11 +37,11 @@
                                         <div class="category" style="align-items: center; display: flex; flex-direction:row;">
                                             <h5 style="margin: 0 15px 0 15px;">Tags:</h5>
                                             @if($cat->name == 'IT')
-                                                <a href="{{ route('Subject', ['subject' => $sub->id]) }}"><button style="margin: 0 15px 0 15px;" type="button" class="btn btn-outline-primary">{{ $sub->name }}</button>
-                                                <a href="{{ route('Category', ['category' => $cat->id]) }}"><button type="button" class="btn btn-outline-primary">{{ $cat->name }}</button></a>
+                                                <a href="{{ route('subjects', ['category' => $sub->id]) }}"><button style="margin: 0 15px 0 15px;" type="button" class="btn btn-outline-primary">{{ $sub->name }}</button>
+                                                <a href="{{ route('subjects_category', ['category' => $cat->id]) }}"><button type="button" class="btn btn-outline-primary">{{ $cat->name }}</button></a>
                                             @elseif($cat->name == 'Diller')
-                                                <a href="{{ route('Subject', ['subject' => $sub->id]) }}"><button style="margin: 0 15px 0 15px;" type="button" class="btn btn-outline-success">{{ $sub->name }}</button>
-                                                <a href="{{ route('Category', ['category' => $cat->id]) }}"><button type="button" class="btn btn-outline-success">{{ $cat->name }}</button></a>
+                                                <a href="{{ route('subjects', ['category' => $sub->id]) }}"><button style="margin: 0 15px 0 15px;" type="button" class="btn btn-outline-success">{{ $sub->name }}</button>
+                                                    <a href="{{ route('subjects_category', ['category' => $cat->id]) }}"><button type="button" class="btn btn-outline-success">{{ $cat->name }}</button></a>
                                             @endif         
                                         </div>
                                     </div>
@@ -125,7 +125,7 @@
                             <h4>Category</h4>
                             <ul class="bl-cat">
                                 @foreach($categories as $sb)
-                                    <a href="{{ route('Category', ['category' => $sb->id]) }}">
+                                    <a href="{{ route('subjects_category', ['category' => $sb->id]) }}">
                                         <li>{{$sb->name}}</li>
                                     </a>
                                 @endforeach
