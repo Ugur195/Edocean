@@ -50,27 +50,92 @@
                                     @php($user=$bc->UsersComments)
                                     @if($bc->parent_id==0)
                                         <div class="comment-item d-flex align-items-flex-start mb-1">
-                                            <img
-                                                src="@if($bc->user_id!=0)
-                                                data:image/jpeg;base64,{{base64_encode($bc->AdminComments->image)}}
-                                            @else
-                                                /frontendCss/images/kanan.png @endif">
-                                            <div class="comment-detail">
-                                                <h5>
-                                                    @if($bc->user_id==0)
-                                                        {{$bc->name}}
+                                            @if($user->teacher!=null)
+                                                <img
+                                                    src="@if($user->teacher->image!=null)
+                                                        data:image/jpeg;base64,{{base64_encode($user->teacher->image)}}
                                                     @else
-                                                        {{$user->name}}
-                                                    @endif
-                                                </h5>
-                                                @php($vaxt=$bc->created_at)
-                                                @php($vaxt->setLocale('az'))
-                                                <p class="comment-time mb-3">{{$vaxt->diffForHumans()}}</p>
-                                                <p class="mb-3">
-                                                    {{$bc->message}}
-                                                </p>
-                                                <a onclick="parentBlogsComments('{{$bc->id}}')">Reply</a>
-                                            </div>
+                                                        /frontendCss/images/kanan.png @endif">
+                                                <div class="comment-detail">
+                                                    <h5>
+                                                        @if($bc->user_id==0)
+                                                            {{$bc->name}}
+                                                        @else
+                                                            {{$user->teacher->name}}
+                                                        @endif
+                                                    </h5>
+                                                    @php($vaxt=$bc->created_at)
+                                                    @php($vaxt->setLocale('az'))
+                                                    <p class="comment-time mb-3">{{$vaxt->diffForHumans()}}</p>
+                                                    <p class="mb-3">
+                                                        {{$bc->message}}
+                                                    </p>
+                                                    <a onclick="parentBlogsComments('{{$bc->id}}')">Reply</a>
+                                                </div>
+                                            @elseif($user->student!=null)
+                                                <img
+                                                    src="@if($user->student->image!=null)
+                                                        data:image/jpeg;base64,{{base64_encode($user->student->image)}}
+                                                    @else
+                                                        /frontendCss/images/kanan.png @endif">
+                                                <div class="comment-detail">
+                                                    <h5>
+                                                        @if($bc->user_id==0)
+                                                            {{$bc->name}}
+                                                        @else
+                                                            {{$user->student->name}}
+                                                        @endif
+                                                    </h5>
+                                                    @php($vaxt=$bc->created_at)
+                                                    @php($vaxt->setLocale('az'))
+                                                    <p class="comment-time mb-3">{{$vaxt->diffForHumans()}}</p>
+                                                    <p class="mb-3">
+                                                        {{$bc->message}}
+                                                    </p>
+                                                    <a onclick="parentBlogsComments('{{$bc->id}}')">Reply</a>
+                                                </div>
+                                            @elseif($user->course!=null)
+                                                <img
+                                                    src="@if($user->course->image!=null)
+                                                        data:image/jpeg;base64,{{base64_encode($user->course->image)}}
+                                                    @else
+                                                        /frontendCss/images/kanan.png @endif">
+                                                <div class="comment-detail">
+                                                    <h5>
+                                                        @if($bc->user_id==0)
+                                                            {{$bc->name}}
+                                                        @else
+                                                            {{$user->course->name}}
+                                                        @endif
+                                                    </h5>
+                                                    @php($vaxt=$bc->created_at)
+                                                    @php($vaxt->setLocale('az'))
+                                                    <p class="comment-time mb-3">{{$vaxt->diffForHumans()}}</p>
+                                                    <p class="mb-3">
+                                                        {{$bc->message}}
+                                                    </p>
+                                                    <a onclick="parentBlogsComments('{{$bc->id}}')">Reply</a>
+                                                </div>
+                                            @else
+                                                <img
+                                                    src="/frontendCss/images/kanan.png">
+                                                <div class="comment-detail">
+                                                    <h5>
+                                                        @if($bc->user_id==0)
+                                                            {{$bc->name}}
+                                                        @else
+                                                            {{$user->name}}
+                                                        @endif
+                                                    </h5>
+                                                    @php($vaxt=$bc->created_at)
+                                                    @php($vaxt->setLocale('az'))
+                                                    <p class="comment-time mb-3">{{$vaxt->diffForHumans()}}</p>
+                                                    <p class="mb-3">
+                                                        {{$bc->message}}
+                                                    </p>
+                                                    <a onclick="parentBlogsComments('{{$bc->id}}')">Reply</a>
+                                                </div>
+                                            @endif
                                         </div>
                                     @endif
                                 @endforeach
@@ -81,8 +146,10 @@
                             <form action="" class="comment_form col-lg-12">
                                 <div class="name_and_email mb-3 d-flex justify-content-between ">
                                     @if(!Auth::check())
-                                        <input class="name_input" id="name" name="name" type="text" placeholder="Your name">
-                                        <input class="email_input" id="email" name="email" type="text" placeholder="Your email">
+                                        <input class="name_input" id="name" name="name" type="text"
+                                               placeholder="Your name">
+                                        <input class="email_input" id="email" name="email" type="text"
+                                               placeholder="Your email">
                                     @endif
                                 </div>
                                 <textarea class="comment_textarea" name="comment" id="comment" cols="30"
