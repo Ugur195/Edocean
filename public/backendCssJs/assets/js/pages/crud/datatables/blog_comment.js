@@ -54,8 +54,8 @@ var KTDatatablesSearchOptionsColumnSearch = function () {
                     name: 'title_name'
                 },
                 {
-                    data: 'parent_comment',
-                    name: 'parent_comment'
+                    data: 'parent_id',
+                    name: 'parent_id'
                 },
                 {
                     data: 'status',

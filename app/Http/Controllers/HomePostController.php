@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BlogComment;
 use App\Models\ContactUs;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -50,8 +52,6 @@ class HomePostController extends Controller
     //finish ContactUs
 
 
-
-
     //SignUp
     public function PostSignUp(Request $request)
     {
@@ -94,8 +94,6 @@ class HomePostController extends Controller
     //finish SignUp
 
 
-
-
     //SignIn
     public function PostSignIn(Request $request)
     {
@@ -118,5 +116,40 @@ class HomePostController extends Controller
         }
     }
     //finish SignIn
+
+
+    //Blogs
+    public function SingleBlog(Request $request, $id)
+    {
+
+        try {
+            $blogs_comments = new BlogComment();
+            if (Auth::check()) {
+                $blogs_comments->name = Auth::user()->name;
+                $blogs_comments->email = Auth::user()->email;
+                $blogs_comments->user_id = Auth::user()->id;
+            } else {
+                $blogs_comments->name = $request->name;
+                $blogs_comments->email = $request->email;
+                $blogs_comments->user_id = 0;
+            }
+
+            if ($request->parent_id != null) {
+                $blogs_comments->parent_id = $request->parent_id;
+            } else {
+                $blogs_comments->parent_id = 0;
+            }
+
+            $blogs_comments->message = $request->comment;
+            $blogs_comments->blog_id = $id;
+            $blogs_comments->status = 1;
+            $blogs_comments->save();
+
+            return response(['title' => 'Ugurlu', 'message' => 'Reyiniz gonderildi,admin terefinden tesdiqlikden sonra yayinlanacaq!', 'status' => 'success']);
+        } catch (\Exception $exception) {
+            return response(['title' => 'Ugursuz!', 'message' => 'Reyiniz gonderilmedi!', 'status' => 'error']);
+        }
+    }
+    // finish Blogs
 
 }

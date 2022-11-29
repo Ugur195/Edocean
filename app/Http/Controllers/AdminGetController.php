@@ -338,7 +338,7 @@ class AdminGetController extends Controller
     {
         $blog_comment = DB::table('edocean.blog_comment')->select(DB::raw("edocean.blogs.title as title_name,
         edocean.blog_comment.id, edocean.blog_comment.name,
-		edocean.blog_comment.email, edocean.blog_comment.message, edocean.blog_comment.blog_id, edocean.blog_comment.parent_comment,
+		edocean.blog_comment.email, edocean.blog_comment.message, edocean.blog_comment.blog_id, edocean.blog_comment.parent_id,
         (CASE edocean.blog_comment.status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))
             ->leftJoin('edocean.blogs', 'edocean.blogs.id', '=', 'edocean.blog_comment.blog_id')
             ->get();

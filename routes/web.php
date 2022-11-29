@@ -45,9 +45,11 @@ Route::get('/students', [HomeGetController::class, 'Students']);
 Route::get('/courses', [HomeGetController::class, 'Courses']);
 
 
-Route::post('/contact_us', [HomePostController::class, 'PostContactUs']);
+
 Route::post('/sign_in', [HomePostController::class, 'PostSignIn']);
 Route::post('/sign_up', [HomePostController::class, 'PostSignUp']);
+Route::post('/contact_us', [HomePostController::class, 'PostContactUs']);
+Route::post('/single_blog/{id}', [HomePostController::class, 'SingleBlog']);
 
 
 //admin
