@@ -10,7 +10,7 @@ class BlogComment extends Model
     protected $table = 'edocean.blog_comment';
     protected $fillable = ['id', 'name', 'email', 'message', 'blog_id', 'parent_id', 'user_id', 'status'];
 
-    public function myParentBlogsComments()
+    public function ParentBlogsComments()
     {
         return $this->hasMany(BlogComment::class, 'parent_id');
     }
