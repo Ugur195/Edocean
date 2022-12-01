@@ -87,20 +87,6 @@
                                     <h5><a href="">The Importance Intrinsic Motivation.</a></h5>
                                 </div>
                             </div>
-                            <div class="recent-post-div d-flex align-items-center">
-                                <img src="./images/teacher-card-img.jpg" alt="">
-                                <div class="recent-post-text">
-                                    <p>October 15, 2021</p>
-                                    <h5><a href="">The Importance Intrinsic Motivation.</a></h5>
-                                </div>
-                            </div>
-                            <div class="recent-post-div d-flex align-items-center">
-                                <img src="./images/teacher-card-img.jpg" alt="">
-                                <div class="recent-post-text">
-                                    <p>October 15, 2021</p>
-                                    <h5><a href="">The Importance Intrinsic Motivation.</a></h5>
-                                </div>
-                            </div>
                         </div>
                         <div class="blog-categories">
                             <h4>Category</h4>

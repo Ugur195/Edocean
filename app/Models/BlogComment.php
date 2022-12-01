@@ -19,6 +19,7 @@ class BlogComment extends Model
     {
         return $this->hasOne(User::class, 'id', 'user_id');
     }
+
     public function AdminComments()
     {
         return $this->hasOne(Admin::class, 'user_id', 'user_id');
