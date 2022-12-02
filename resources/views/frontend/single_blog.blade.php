@@ -50,7 +50,7 @@
                                     @php($user=$bc->UsersComments)
                                     @if($bc->parent_id==0)
                                         <div class="comment-item d-flex align-items-flex-start mb-1">
-                                            @if($user->teacher!=null)
+                                            @if(isset($user->teacher))
                                                 @php(dd($user))
                                                 <img
                                                     src="@if($user->teacher->image!=null)
@@ -73,7 +73,7 @@
                                                     </p>
                                                     <a onclick="parentBlogsComments('{{$bc->id}}')">Reply</a>
                                                 </div>
-                                            @elseif($user->student!=null)
+                                            @elseif(isset($user->student))
                                                 <img
                                                     src="@if($user->student->image!=null)
                                                         data:image/jpeg;base64,{{base64_encode($user->student->image)}}
@@ -95,7 +95,7 @@
                                                     </p>
                                                     <a onclick="parentBlogsComments('{{$bc->id}}')">Reply</a>
                                                 </div>
-                                            @elseif($user->course!=null)
+                                            @elseif(isset($user->course))
                                                 <img
                                                     src="@if($user->course->image!=null)
                                                         data:image/jpeg;base64,{{base64_encode($user->course->image)}}
@@ -142,7 +142,7 @@
                                     @foreach($bc->ParentBlogsComments->where('status',1) as $bb)
                                         @php($user=$bb->UsersComments)
                                         <div class="comment-item d-flex align-items-flex-start mb-1">
-                                            @if($user->teacher!=null)
+                                            @if(isset($user->teacher))
                                                 <img
                                                     src="@if($user->teacher->image!=null)
                                                         data:image/jpeg;base64,{{base64_encode($user->teacher->image)}}
@@ -164,7 +164,7 @@
                                                     </p>
                                                     <a onclick="parentBlogsComments('{{$bb->id}}')">Reply</a>
                                                 </div>
-                                            @elseif($user->student!=null)
+                                            @elseif(isset($user->student))
                                                 <img
                                                     src="@if($user->student->image!=null)
                                                         data:image/jpeg;base64,{{base64_encode($user->student->image)}}
@@ -186,7 +186,7 @@
                                                     </p>
                                                     <a onclick="parentBlogsComments('{{$bb->id}}')">Reply</a>
                                                 </div>
-                                            @elseif($user->course!=null)
+                                            @elseif(isset($user->course))
                                                 <img
                                                     src="@if($user->course->image!=null)
                                                         data:image/jpeg;base64,{{base64_encode($user->course->image)}}
