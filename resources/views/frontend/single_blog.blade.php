@@ -141,7 +141,7 @@
                                     @endif
                                     @foreach($bc->ParentBlogsComments->where('status',1) as $bb)
                                         @php($user=$bb->UsersComments)
-                                        <div class="comment-item d-flex align-items-flex-start mb-1">
+                                        <div style="margin-left: 20px; background-color:red;" class="comment-item d-flex align-items-flex-start mb-1">
                                             @if(isset($user->teacher))
                                                 <img
                                                     src="@if($user->teacher->image!=null)
