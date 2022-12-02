@@ -272,8 +272,8 @@ class AdminPostController extends Controller
             $admin_edit->save();
         }
 
-        if($request->first_name !== $userEdit->name) {
-            $userEdit->name=$request->first_name;
+        if ($request->first_name !== $userEdit->name) {
+            $userEdit->name = $request->first_name;
             $userEdit->save();
         }
         return response(['title' => 'Ugurlu!', 'message' => 'Yeni Blog elave edildi!', 'status' => 'success']);
@@ -408,13 +408,25 @@ class AdminPostController extends Controller
 
 
     //BlogComment
-    public function BlogCommentDelete(Request $request)
+    public function BlogCommentPublishUnpublishDelete(Request $request)
     {
         try {
-            BlogComment::where('id', $request->id)->delete();
-            return response(['title' => 'Ugurlu!', 'message' => 'BlogComment Silindi', 'status' => 'success']);
+            if ($request->btn_publish != null) {
+                if ($request->status == 0) {
+                    BlogComment::find($request->id)->update(['status' => 1]);
+                    return response(['title' => 'Ugurlu!', 'message' => 'Reyiniz Yayimlandi', 'status' => 'success']);
+                } else if ($request->status == 1) {
+                    BlogComment::find($request->id)->update(['status' => 0]);
+                    return response(['title' => 'Ugurlu!', 'message' => 'Reyiniz Saytda artiq yayinlanmir', 'status' => 'success']);
+                } else if ($request->btn_delete != null) {
+                    BlogComment::where('id', $request->id)->delete();
+                    return response(['title' => 'Ugurlu!', 'message' => 'BlogComment Silindi', 'status' => 'success']);
+                } else {
+                    return response(['title' => 'Ugursuz!', 'message' => 'BlogCommenti silmek olmur!', 'status' => 'error']);
+                }
+            }
         } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => 'BlogCommenti silmek olmur!', 'status' => 'error']);
+            return response(['title' => 'Ugursuz!', 'message' => 'BlogsCommenti silmek olmur!', 'status' => 'error']);
         }
     }
     //finish BlogComment

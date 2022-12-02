@@ -11,7 +11,7 @@
                     <div class="card-header card-header-tabs-line">
                         <div class="card-toolbar">
                             <div class="d-flex align-items-center flex-wrap mr-2">
-                                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Blog Comment Edit</h5>
+                                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Blog Comment</h5>
                                 <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
                             </div>
 
@@ -21,7 +21,7 @@
                         <div class="tab-content pt-5">
                             <!--begin::Tab Content-->
                             <div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
-                                <form id="mySetting" class="form" method="POST">
+                                <form class="form" method="POST">
                                     {{csrf_field()}}
                                     <div class="col-xl-3"></div>
 

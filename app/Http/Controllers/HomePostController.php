@@ -142,7 +142,7 @@ class HomePostController extends Controller
 
             $blogs_comments->message = $request->comment;
             $blogs_comments->blog_id = $id;
-            $blogs_comments->status = 1;
+            $blogs_comments->status = 0;
             $blogs_comments->save();
 
             return response(['title' => 'Ugurlu', 'message' => 'Reyiniz gonderildi,admin terefinden tesdiqlikden sonra yayinlanacaq!', 'status' => 'success']);
