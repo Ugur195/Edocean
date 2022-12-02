@@ -62,7 +62,7 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Parent Comment</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$blog_comment_edit->parent_comment}}" readonly/>
+                                                   value="{{$blog_comment_edit->parent_id}}" readonly/>
                                         </div>
                                     </div>
 
