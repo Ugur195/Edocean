@@ -117,43 +117,6 @@
                                                     </p>
                                                     <a onclick="parentBlogsComments('{{$bc->id}}')">Reply</a>
                                                 </div>
-                                                @elseif(!isset($user->teacher) && !isset($user->student) && !isset($user->course))
-                                                <img
-                                                    src="/frontendCss/images/kanan.png">
-                                                <div class="comment-detail">
-                                                    <h5>
-                                                        {{$bc->name}}
-                                                    </h5>
-                                                    @php($vaxt=$bc->created_at)
-                                                    @php($vaxt->setLocale('az'))
-                                                    <p class="comment-time mb-3">{{$vaxt->diffForHumans()}}</p>
-                                                    <p class="mb-3">
-                                                        {{$bc->message}}
-                                                    </p>
-                                                    <a onclick="parentBlogsComments('{{$bc->id}}')">Reply</a>
-                                                </div>
-                                                @elseif($user->student!=null)
-                                                <img
-                                                    src="@if($user->student->image!=null)
-                                                        data:image/jpeg;base64,{{base64_encode($user->student->image)}}
-                                                    @else
-                                                        /frontendCss/images/kanan.png @endif">
-                                                <div class="comment-detail">
-                                                    <h5>
-                                                        @if($bc->user_id==0)
-                                                            {{$bc->name}}
-                                                        @else
-                                                            {{$user->student->name}}
-                                                        @endif
-                                                    </h5>
-                                                    @php($vaxt=$bc->created_at)
-                                                    @php($vaxt->setLocale('az'))
-                                                    <p class="comment-time mb-3">{{$vaxt->diffForHumans()}}</p>
-                                                    <p class="mb-3">
-                                                        {{$bc->message}}
-                                                    </p>
-                                                    <a onclick="parentBlogsComments('{{$bc->id}}')">Reply</a>
-                                                </div>
                                             @else
                                                 <img
                                                     src="/frontendCss/images/kanan.png">
