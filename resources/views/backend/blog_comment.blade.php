@@ -112,6 +112,65 @@
     <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/blog_comment.js?v='.time())}}"></script>
 
     <script>
+        function publishUnpublish(status, id) {
+            console.log('basildi' + status);
+            let title = '';
+            let text = '';
+            let icon = '';
+            let confBtnText = '';
+            if (status == 0) {
+                title = 'Reyin Yayinlamaqin isteyirsiz?';
+                text = 'Bu rey yayinlandiqdan sonra saytda gorunecek!';
+                icon = 'warning';
+                confBtnText = 'Yayinla';
+            } else if (status == 1) {
+                title = 'Isteyirsiz reyiniz,artiq yayinlanmasin?';
+                text = 'Bu rey saytda artiq  gorunmeyecek!';
+                icon = 'warning';
+                confBtnText = 'Yayinlama';
+            }
+            swal.fire({
+                title: title,
+                text: text,
+                icon: icon,
+                allowOutsideClick: false,
+                showCancelButton: true,
+                cancelButtonText: 'Bagla',
+                confirmButtonColor: '#098ca3',
+                cancelButtonColor: '#d33',
+                confirmButtonText: confBtnText,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content')
+                    $.ajax({
+                        type: "Post",
+                        url: '',
+                        data: {
+                            'id': id,
+                            'status': status,
+                            'btn_publish': 'btn_publish',
+                            '_token': CSRF_TOKEN
+                        },
+
+                        success: function (response) {
+                            swal.fire({
+                                title: response.title,
+                                text: response.message,
+                                icon: response.status,
+                                allowOutsideClick: false
+                            })
+                            if (response.status === 'success') {
+                                setTimeout(function () {
+                                    window.location.href = '/admin/blog_comment';
+                                }, 1000)
+                            }
+
+                        }
+                    })
+                }
+            })
+        }
+
         function sil(setir, id) {
             var sira = setir.parentNode.parentNode.rowIndex;
             console.log(sira);
@@ -133,6 +192,7 @@
                         url: '',
                         data: {
                             'id': id,
+                            'btn_delete': 'btn_delete',
                             '_token': CSRF_TOKEN
                         },
 
