@@ -150,7 +150,7 @@
                             })
                             if (response.status === 'success') {
                                 setTimeout(function () {
-                                    window.location.href = '/admin/course/student_requests';
+                                    window.location.href = '/admin/teacher/mystudents';
                                 }, 1000)
                             }
 
@@ -181,6 +181,7 @@
                         url: '',
                         data: {
                             'id': id,
+                            'btn_delete': 'btn_delete',
                             '_token': CSRF_TOKEN
                         },
 
@@ -196,7 +197,7 @@
                             })
                             if (response.status === 'success') {
                                 setTimeout(function () {
-                                    window.location.href = '/admin/course/student_requests';
+                                    window.location.href = '/admin/teacher/mystudents';
                                 }, 1000)
                             }
 

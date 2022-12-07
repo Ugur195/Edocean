@@ -46,7 +46,8 @@ class TeacherGetController extends Controller
 
 
     // Course
-    public function Courses() {
+    public function Courses()
+    {
         return view('teacher.mycourses');
     }
 
@@ -59,7 +60,7 @@ class TeacherGetController extends Controller
 
     public function getCourses(Request $request)
     {
-        $teacher = DB::table('edocean.teacher_course')->select(DB::raw("edocean.course.name as course_name, edocean.teacher_course.id, edocean.teacher_course.created_at,  edocean.teacher_course.updated_at, 
+        $teacher = DB::table('edocean.teacher_course')->select(DB::raw("edocean.course.name as course_name, edocean.teacher_course.id, edocean.teacher_course.created_at,  edocean.teacher_course.updated_at,
         edocean.teacher_course.status as st,
         (CASE  edocean.teacher_course.status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))
             ->leftJoin('edocean.course', 'edocean.course.id', '=', 'edocean.teacher_course.course_id')
@@ -76,13 +77,14 @@ class TeacherGetController extends Controller
     }
 
     // Student
-    public function Students() {
+    public function Students()
+    {
         return view('teacher.mystudents');
     }
 
     public function getStudents(Request $request)
     {
-        $teacher = DB::table('edocean.teacher_student')->select(DB::raw("edocean.student.name as student_name, edocean.course.name as course_name, edocean.teacher_student.id, edocean.teacher_student.created_at,  edocean.teacher_student.updated_at, 
+        $teacher = DB::table('edocean.teacher_student')->select(DB::raw("edocean.student.name as student_name, edocean.course.name as course_name, edocean.teacher_student.id, edocean.teacher_student.created_at,  edocean.teacher_student.updated_at,
         edocean.teacher_student.status as st,
         (CASE  edocean.teacher_student.status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))
             ->leftJoin('edocean.student', 'edocean.student.id', '=', 'edocean.teacher_student.student_id')
@@ -92,8 +94,12 @@ class TeacherGetController extends Controller
 
         return DataTables::of($teacher)
             ->addColumn('options', function ($model) {
-                $return = '<a class="btn btn-xs btn-primary" href="' . route('admin.student_info', $model->id) . '" ><i style="font-size: 20px;" class="la la-info-circle"></i></a>
-			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger mr-1" name="btn_delete" value="btn_delete" ><i style="font-size:21px;" class="la la-trash"></i></button>';
+                $return = '<a class="btn btn-xs btn-primary mr-1" href="' . route('admin.student_info', $model->id) . '" ><i style="font-size: 20px;" class="la la-info-circle"></i></a>';
+                if ($model->st == 0) {
+                    $return .= '<button onclick="buttonAccept(' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-success mr-1 "  name="button_accept"
+                                        value="button_accept" ><i style="font-size:21px;" class="la la-check"></i></button>';
+                }
+                $return .= '<button onclick = "sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger mr-1" name = "btn_delete" value = "btn_delete" ><i style = "font-size:21px;" class="la la-trash" ></i ></button > ';
                 return $return;
 
             })->rawColumns(['options' => true])->make(true);

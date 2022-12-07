@@ -137,7 +137,7 @@ Route::middleware('auth', 'verified')->group(function() {
 
 
         Route::post('/my_profile', [TeacherPostController::class, 'postTeacherProfile']);
-        Route::post('/mycourses', [TeacherPostController::class, 'CourseDelete']);
+        Route::post('/mystudents', [TeacherPostController::class, 'StudentRequestsChangeDelete']);
 
 
     });
