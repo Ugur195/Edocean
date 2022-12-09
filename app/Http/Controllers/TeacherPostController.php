@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Teacher;
-use App\Models\TeacherCourse;
 use App\Models\TeacherStudent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class TeacherPostController extends Controller
 {
@@ -27,6 +26,8 @@ class TeacherPostController extends Controller
             if (isset($request->image)) {
                 $image = file_get_contents($request->file('image')->getRealPath());
             }
+
+
             Teacher::create([
                 'image' => $image,
                 'name' => $request->name,
