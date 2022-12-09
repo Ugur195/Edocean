@@ -92,6 +92,14 @@ class HomeGetController extends Controller
             'blog_category' => $blog_category]);
     }
 
+    public function BlogsCategory($category) {
+        $setting = Setting::find(1);
+        $menu = Menu::where('status', 1)->get();
+        $blogs_category = BlogCategory::find($category);
+        $blogs = Blogs::with('admin')->get();
+        return view('frontend.teachers_category')->with(['menu' => $menu, 'setting' => $setting, 'blogs_category' => $blogs_category, 'blogs' => $blogs]);
+    }
+
     public function SingleBlog($id)
     {
         $setting = Setting::find(1);
