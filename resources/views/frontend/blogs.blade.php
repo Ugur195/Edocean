@@ -8,12 +8,7 @@
         <section class="blog-header">
             <div class="blog-header-div container">
                 <h1 class="Start">Bloqlar</h1>
-                <p>
-                    <a href="{{url('/')}}"> Ana səhifə</a
-                    >
-                    <ion-icon name="arrow-forward-outline"></ion-icon>
-                    Bloqlar
-                </p>
+                <p><a href="{{url('/')}}"> Ana səhifə</a><ion-icon name="arrow-forward-outline"></ion-icon>Bloqlar</p>
             </div>
         </section>
         <section class="blog-main">
@@ -70,23 +65,22 @@
                             @endforeach
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-12 col-sm-12 blog-main-right-container">
+                    <div class="col-lg-4 col-md-12 col-sm-12 blog-main-right-container"> 
                         <div class="recent-posts">
                             <h4>Recent posts</h4>
-                            <div class="recent-post-div d-flex align-items-center">
-                                <img src="./images/teacher-card-img.jpg" alt="">
-                                <div class="recent-post-text">
-                                    <p>October 15, 2021</p>
-                                    <h5><a href="">The Importance Intrinsic Motivation.</a></h5>
+                            @foreach($blogs as $bl)
+                                <div class="recent-post-div d-flex align-items-center">
+                                    <img style="object-fit: contain;" class="blog-card-img" src="data:image/jpeg;base64,{{base64_encode($bl->image)}}" alt="">
+                                    <div class="recent-post-text">
+                                        <p>
+                                            @php($vaxt=$bl->created_at)
+                                            @php($vaxt->setLocale('az'))
+                                            {{$vaxt->diffForHumans()}}
+                                        </p>
+                                        <h5><a href="">{{ $bl->message }}</a></h5>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="recent-post-div d-flex align-items-center">
-                                <img src="./images/teacher-card-img.jpg" alt="">
-                                <div class="recent-post-text">
-                                    <p>October 15, 2021</p>
-                                    <h5><a href="">The Importance Intrinsic Motivation.</a></h5>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                         <div class="blog-categories">
                             <h4>Category</h4>
