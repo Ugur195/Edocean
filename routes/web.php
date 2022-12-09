@@ -37,6 +37,7 @@ Route::get('/sign_in', [HomeGetController::class, 'GetSignIn'])->name('sign_in')
 Route::get('/sign_up', [HomeGetController::class, 'GetSignUp'])->name('sign_up')->middleware('guest');
 Route::get('/logout', [HomeGetController::class, 'GetLogout'])->name('logout');
 Route::get('/blogs', [HomeGetController::class, 'Blogs']);
+Route::get('/blogs/category/{category}',[HomeGetController::class, 'BlogsCategory'])->name('blogs_category');
 Route::get('/single_blog/{id}', [HomeGetController::class, 'SingleBlog']);
 Route::get('/teachers', [HomeGetController::class, 'Teachers']);
 Route::get('/teachers/category/{category}',[HomeGetController::class, 'TeachersCategory'])->name('subjects_category');
