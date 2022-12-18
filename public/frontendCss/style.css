@@ -873,7 +873,170 @@ ion-icon[name="chatbubble"] {
 .comment_button:hover {
     box-shadow: 0 10px 24px #0417764d;
 }
+/*teacher single css*/
+.tchr_single{
+    background-color: #f0f0f5;
+    padding: 60px 0;
+}
+.tchr_prfl{
+    background-color: white;
+    width: 70% ;
+    margin: auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 20px 30px #0417764d;
+}
+.teacher-sidebar{
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.sidebar_img {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+}
+.sidebar_img img{
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+.sidebar_content{
+    flex-direction: column;
+}
+.sidebar_content h5{
+    font-weight: 700;
+    font-size: 24px;
+    color: #2b4eff;
+}
+.sidebar_content p{
+    font-size: 16px;
+    margin-bottom: 10px !important;
+    color: #0e1133;
+}
+.sidebar_content button{
+    border: none;
+    background-color: #2b4eff;
+    padding: 6px 30px;
+    border-radius: 6px;
+    color: white;
+}
+.sidebar_content button a{
+    color: white;
+}
+.soc_net{
+    font-size: 24px;
+    gap: 20px;
+}
+.soc_net a{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+.soc_net .whatsapp-logo{
+    color: green;
+}
+.soc_net .whatsapp-logo:hover{
+    background-color: green;
+    color: white;
+}
+.soc_net .facebook-logo:hover{
+    background-color: #2b4eff;
+    color: white;
+}
+.soc_net .instagram-logo{
+    color: rgb(228, 64, 95);
+}
+.soc_net .instagram-logo:hover{
+    background-color: rgb(228, 64, 95);
+    color: white;
+}
+.soc_net .linkedin-logo:hover{
+    background-color: #2b4eff;
+    color: white;
+}
+.about_tchr{
+    background-color: white;
+    border-radius: 8px;
+}
+.about_tchr_row{
+    gap: 60px;
+    padding: 20px 0 10px 0;
+    border-bottom: 1px solid #f0f0f5;
+}
+.about_tchr_row h5{
+    font-size: 22px;
+    font-weight: 700;
+    color: #14427C;
+}
+.about_tchr_row p{
+    color: rgb(122, 121, 121);
+    font-size: 18px;
+    font-weight: 500;
+}
+.tchr_about{
+    padding: 40px 0;
+}
+.tchr_about h1{
+    font-size: 24px;
+    font-weight: 700;
+    color: #2b4eff;
 
+}
+.tchr_about p{
+    font-size: 20px;
+    color: rgb(122, 121, 121);
+    font-weight: 500;
+}
+.tchr-certficates{
+    width: 100%;
+    padding: 70px 0;
+}
+.tchr_crtf{
+    width: 70%;
+    margin: auto;
+}
+.tchr_crtf h3{
+    font-size: 36px;
+    font-weight: 700;
+    color: #2b4eff;
+}
+.crtf{
+    width: 100%;
+    margin: auto;
+    padding: 60px 0;
+    background-color: #9A9CA0 ;
+}
+.crtf img{
+    margin: auto;
+    width: 80%;
+    height: 450px;
+    box-shadow:  0 20px 30px #0417764d;;
+}
+.tchr_videos{
+    padding: 70px 0;
+    background-color: #f0f0f5;
+}
+.tchr_vds{
+    width: 70%;
+    margin: auto;
+}
+.tchr_vds h3{
+    font-size: 36px;
+    font-weight: 700;
+    color: #2b4eff;
+}
+.tchr_video{
+    width: 100%;
+    border-radius: 10px;
+}
 /* Login  and Register css */
 
 .login-page {
@@ -1050,6 +1213,13 @@ ion-icon[name="eye-off"] {
     .logo-and-social p {
         width: 100%;
     }
+    /* teacher-single css */
+    .tchr_prfl .tchr_prfl_row{
+        flex-direction: column-reverse;
+    }
+    .crtf img{
+        height: 400px;
+    }
 }
 
 @media (max-width: 830px) {
@@ -1072,6 +1242,7 @@ ion-icon[name="eye-off"] {
     .teacher {
         max-width: 500px;
     }
+
 }
 
 @media (max-width: 768px) {
@@ -1111,6 +1282,11 @@ ion-icon[name="eye-off"] {
     .categories-course li {
         width: 47%;
     }
+    /* teacher-single css */
+    .crtf img{
+        width: 85%;
+        height: 300px;
+    }
 }
 
 @media (max-width: 576px) {
@@ -1146,5 +1322,19 @@ ion-icon[name="eye-off"] {
     .categories-course li {
         width: 100%;
         text-align: center;
+    }
+    /* teacher single page */
+    .tchr_prfl,.tchr_crtf,.tchr_vds{
+        width: 90%;
+    }
+    .crtf{
+        padding: 30px 0;
+    }
+    .crtf img{
+        width: 90%;
+        height: 250px;
+    }
+    .tchr_crtf h3, .tchr_vds h3{
+        font-size: 24px;
     }
 }
