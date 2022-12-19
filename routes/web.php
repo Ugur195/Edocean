@@ -40,6 +40,7 @@ Route::get('/blogs', [HomeGetController::class, 'Blogs']);
 Route::get('/blogs/category/{category}', [HomeGetController::class, 'BlogsCategory'])->name('blogs_category');
 Route::get('/single_blog/{id}', [HomeGetController::class, 'SingleBlog']);
 Route::get('/teachers', [HomeGetController::class, 'Teachers']);
+Route::get('/single_teacher/{id}', [HomeGetController::class, 'SingleTeacher'])->name('single_teacher');
 Route::get('/teachers/category/{category}', [HomeGetController::class, 'TeachersCategory'])->name('subjects_category');
 Route::get('/teachers/subject/{category}', [HomeGetController::class, 'TeachersSubject'])->name('subjects');
 Route::get('/students', [HomeGetController::class, 'Students']);
