@@ -20,11 +20,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use PharIo\Version\Exception;
 
 class AdminPostController extends Controller
 {
-
     //Setting
     public function Setting(Request $request)
     {
@@ -302,15 +302,24 @@ class AdminPostController extends Controller
 
     public function BlogsAdd(Request $request)
     {
+        $sekiller = $request->file('image');
+        $prod_image = '';
+        if (!empty($sekiller)) {
+            $i = 0;
+            foreach ($sekiller as $sk) {
+                $sekil_uzanti = $sk->getClientOriginalExtension();
+                $sekil_ad = $i . '.' . $sekil_uzanti;
+                Storage::disk('uploads')->makeDirectory('blogImg/blogs/');
+                Storage::disk('uploads')->put('blogImg/blogs/'. $sekil_ad, file_get_contents($sk));
+                $prod_image = $prod_image . file_get_contents($sk) . '(xx)';
+                $i++;
+            }
+        }
 
         $blogs = Blogs::where('title', $request->title)->first();
         if ($blogs == null) {
-            $image = null;
-            if (isset($request->image)) {
-                $image = file_get_contents($request->file('image')->getRealPath());
-            }
             $blogs = new Blogs();
-            $blogs->image = $image;
+            $blogs->image = $prod_image;
             $blogs->title = $request->title;
             $blogs->title_ru = $request->title_ru;
             $blogs->title_en = $request->title_en;

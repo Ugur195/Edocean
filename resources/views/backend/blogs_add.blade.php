@@ -31,7 +31,7 @@
                         <div class="tab-content pt-5">
                             <!--begin::Tab Content-->
                             <div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
-                                <form id="myAddBlog" class="form" method="POST" enctype="multipart/form-data">
+                                <form action="{{route('admin.add.blog')}}" id="myAddBlog" class="form" method="POST" enctype="multipart/form-data">
                                     {{csrf_field()}}
                                     <div class="col-xl-3"></div>
 
@@ -50,8 +50,9 @@
                                                     data-action="change" data-toggle="tooltip" title=""
                                                     data-original-title="Change avatar">
                                                     <i class="fa fa-pen icon-sm text-muted"></i>
-                                                    <input type="file" name="image" id="file"
-                                                           accept=".png, .png(), .jpg, .jpg(), .jpeg, .jpeg()"/>
+                                                    <input type="file" name="image[]"
+                                                           accept=".png, .png(), .jpg, .jpg(), .jpeg, .jpeg()"
+                                                           multiple/>
                                                     <input type="hidden" name="profile_avatar_remove"/>
                                                 </label>
 
@@ -156,11 +157,11 @@
                                                 <div>
                                                     <a href="{{url('admin/blogs')}}" type="button"
                                                        class="btn btn-success font-weight-bolder text-uppercase px-9 py-4"
-                                                       data-wizard-type="action-submit">Back
+                                                       >Back
                                                     </a>
-                                                    <button
+                                                    <button type="submit"
                                                         class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4"
-                                                        data-wizard-type="action-next">Create
+                                                        >Create
                                                     </button>
 
                                                 </div>

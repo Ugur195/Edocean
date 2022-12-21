@@ -12,133 +12,134 @@
                 <div class="row tchr_prfl_row">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <div class="teacher-sidebar">
-                                        <div class="sidebar_img">
-                                            <img src="data:image/jpeg;base64,{{base64_encode($teacher->image)}}" alt=""/>
-                                        </div>
-                                        <div class="sidebar_content text-center d-flex">
-                                            <h5>{{$teacher->name." ".$teacher->surname}}</h5>
-                                            <p>{{$teacher->speciality}}</p>
-                                            <div
-                                                class="d-flex align-items-center justify-content-center w-100 soc_net"
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="teacher-sidebar">
+                                    <div class="sidebar_img">
+                                        <img src="data:image/jpeg;base64,{{base64_encode($teacher->image)}}" alt=""/>
+                                    </div>
+                                    <div class="sidebar_content text-center d-flex">
+                                        <h5>{{$teacher->name." ".$teacher->surname}}</h5>
+                                        <p>{{$teacher->speciality}}</p>
+                                        <div
+                                            class="d-flex align-items-center justify-content-center w-100 soc_net"
+                                        >
+                                            <a href="" class="whatsapp-logo"
                                             >
-                                                <a href="" class="whatsapp-logo"
+                                                <ion-icon name="logo-whatsapp"></ion-icon
                                                 >
-                                                    <ion-icon name="logo-whatsapp"></ion-icon
-                                                    >
-                                                </a>
-                                                <a href="" class="facebook-logo"
+                                            </a>
+                                            <a href="" class="facebook-logo"
+                                            >
+                                                <ion-icon name="logo-facebook"></ion-icon
                                                 >
-                                                    <ion-icon name="logo-facebook"></ion-icon
-                                                    >
-                                                </a>
-                                                <a href="" class="instagram-logo"
+                                            </a>
+                                            <a href="" class="instagram-logo"
+                                            >
+                                                <ion-icon name="logo-instagram"></ion-icon
                                                 >
-                                                    <ion-icon name="logo-instagram"></ion-icon
-                                                    >
-                                                </a>
-                                                <a href="" class="linkedin-logo"
+                                            </a>
+                                            <a href="" class="linkedin-logo"
+                                            >
+                                                <ion-icon name="logo-linkedin"></ion-icon
                                                 >
-                                                    <ion-icon name="logo-linkedin"></ion-icon
-                                                    >
-                                                </a>
-                                            </div>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12 tchr_about">
-                                    <h1 class="mb-4">Müəllim haqqında</h1>
-                                    <p>
-                                        {{$teacher->about_teacher}}
-                                    </p>
-                                </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <div class="about_tchr">
-                                        <div class="about_tchr_row">
-                                            <div class="row">
-                                                <h5 class="col-lg-3">Fən:</h5>
-                                                <p class="col-lg-9">
-                                                    {{\App\Models\Subjects::find($teacher->subjects)->name}}
-                                                </p>
-                                            </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 tchr_about">
+                                <h1 class="mb-4">Müəllim haqqında</h1>
+                                <p>
+                                    {{$teacher->about_teacher}}
+                                </p>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="about_tchr">
+                                    <div class="about_tchr_row">
+                                        <div class="row">
+                                            <h5 class="col-lg-3">Fən:</h5>
+                                            <p class="col-lg-9">
+                                                {{\App\Models\Subjects::find($teacher->subjects)->name}}
+                                            </p>
                                         </div>
-                                        <div class="about_tchr_row">
-                                            <div class="row">
-                                                <h5 class="col-lg-3">Təhsil:</h5>
-                                                <p class="col-lg-9">
-                                                   {{$teacher->education_place}}
-                                                </p>
-                                            </div>
+                                    </div>
+                                    <div class="about_tchr_row">
+                                        <div class="row">
+                                            <h5 class="col-lg-3">Təhsil:</h5>
+                                            <p class="col-lg-9">
+                                                {{$teacher->education_place}}
+                                            </p>
                                         </div>
+                                    </div>
 
-                                        <div class="about_tchr_row">
-                                            <div class="row">
-                                                <h5 class="col-lg-3">Ölkə:</h5>
-                                                <p class="col-lg-9">
-                                                    {{$teacher->country}}
-                                                </p>
-                                            </div>
+                                    <div class="about_tchr_row">
+                                        <div class="row">
+                                            <h5 class="col-lg-3">Ölkə:</h5>
+                                            <p class="col-lg-9">
+                                                {{$teacher->country}}
+                                            </p>
                                         </div>
+                                    </div>
 
-                                        <div class="about_tchr_row">
-                                            <div class="row">
-                                                <h5 class="col-lg-3">Şəhər:</h5>
-                                                <p class="col-lg-9">
-                                                    {{$teacher->city}}
-                                                </p>
-                                            </div>
+                                    <div class="about_tchr_row">
+                                        <div class="row">
+                                            <h5 class="col-lg-3">Şəhər:</h5>
+                                            <p class="col-lg-9">
+                                                {{$teacher->city}}
+                                            </p>
                                         </div>
+                                    </div>
 
 
+                                    <div class="about_tchr_row">
+                                        <div class="row">
+                                            <h5 class="col-lg-3">İş yeri:</h5>
+                                            <p class="col-lg-9">{{$teacher->work_place}}</p>
+                                        </div>
+                                    </div>
 
-                                        <div class="about_tchr_row">
-                                            <div class="row">
-                                                <h5 class="col-lg-3">İş yeri:</h5>
-                                                <p class="col-lg-9">{{$teacher->work_place}}</p>
-                                            </div>
+                                    <div class="about_tchr_row">
+                                        <div class="row">
+                                            <h5 class="col-lg-3">İş təcrübəsi:</h5>
+                                            <p class="col-lg-9">{{$teacher->work_experience}}</p>
                                         </div>
+                                    </div>
 
-                                        <div class="about_tchr_row">
-                                            <div class="row">
-                                                <h5 class="col-lg-3">İş təcrübəsi:</h5>
-                                                <p class="col-lg-9">{{$teacher->work_experience}}</p>
-                                            </div>
+                                    <div class="about_tchr_row">
+                                        <div class="row">
+                                            <h5 class="col-lg-3">Yaş:</h5>
+                                            @php($birth=$teacher->birthday)
+                                            @php($age=\Carbon\Carbon::parse($birth)->diff(\Carbon\Carbon::now())->format('%y yaş'))
+                                            <p class="col-lg-9">{{$age}}</p>
                                         </div>
+                                    </div>
 
-                                        <div class="about_tchr_row">
-                                            <div class="row">
-                                                <h5 class="col-lg-3">Yaş:</h5>
-                                                <p class="col-lg-9">21</p>
-                                            </div>
+                                    <div class="about_tchr_row">
+                                        <div class="row">
+                                            <h5 class="col-lg-3">Telefon:</h5>
+                                            <p class="col-lg-9">{{$teacher->phone}}</p>
                                         </div>
-
-                                        <div class="about_tchr_row">
-                                            <div class="row">
-                                                <h5 class="col-lg-3">Telefon:</h5>
-                                                <p class="col-lg-9">{{$teacher->phone}}</p>
-                                            </div>
+                                    </div>
+                                    <div class="about_tchr_row">
+                                        <div class="row">
+                                            <h5 class="col-lg-3">Email:</h5>
+                                            <p class="col-lg-9">{{$teacher->email}}</p>
                                         </div>
-                                        <div class="about_tchr_row">
-                                            <div class="row">
-                                                <h5 class="col-lg-3">Email:</h5>
-                                                <p class="col-lg-9">{{$teacher->email}}</p>
-                                            </div>
+                                    </div>
+                                    <div class="about_tchr_row">
+                                        <div class="row">
+                                            <h5 class="col-lg-3">Cinsi:</h5>
+                                            <p class="col-lg-9">{{$teacher->gender}}</p>
                                         </div>
-                                        <div class="about_tchr_row">
-                                            <div class="row">
-                                                <h5 class="col-lg-3">Cinsi:</h5>
-                                                <p class="col-lg-9">{{$teacher->gender}}</p>
-                                            </div>
-                                        </div>
-                                        <div class="about_tchr_row">
-                                            <div class="row">
-                                                <h5 class="col-lg-3">Ünvan:</h5>
-                                                <p class="col-lg-9">{{$teacher->teacher_address}}</p>
-                                            </div>
+                                    </div>
+                                    <div class="about_tchr_row">
+                                        <div class="row">
+                                            <h5 class="col-lg-3">Ünvan:</h5>
+                                            <p class="col-lg-9">{{$teacher->teacher_address}}</p>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                         </div>
                     </div>
                 </div>

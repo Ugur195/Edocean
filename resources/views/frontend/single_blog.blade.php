@@ -37,9 +37,41 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-8 col-md-12 col-sm-12 blog-detail-info mb-5">
-                            <img class="blog-detail-img mb-5"
-                                 src="data:image/jpeg;base64,{{base64_encode($blogs_id->image)}} "
-                                 alt="">
+                            {{--                            <img class="blog-detail-img mb-5"--}}
+                            {{--                                 src="data:image/jpeg;base64,{{base64_encode($blogs_id->image)}} "--}}
+                            {{--                                 alt="">--}}
+                            <section class="tchr-certficates">
+                                <div class="tchr_crtf">
+                                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+                                            @foreach(explode('(xx)',$blogs_id->image) as $key => $bimg)
+                                                @if($bimg !="")
+                                                    <div class="carousel-item {{$key == 0 ? 'active' : ''}} crtf">
+
+                                                        <img
+                                                            class="d-block"
+                                                            src="data:image/jpeg;base64,{{base64_encode($bimg)}}"
+                                                            alt="">
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                        <button class="carousel-control-prev" type="button"
+                                                data-bs-target="#carouselExampleControls"
+                                                data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button"
+                                                data-bs-target="#carouselExampleControls"
+                                                data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </section>
+
                             <h3 class="mb-3">{{$blogs_id->title}}</h3>
                             <p class="pb-4">
                                 {{$blogs_id->message}}
@@ -141,7 +173,8 @@
                                     @endif
                                     @foreach($bc->ParentBlogsComments->where('status',1) as $bb)
                                         @php($user=$bb->UsersComments)
-                                        <div style="margin-left: 20px; background-color:red;" class="comment-item d-flex align-items-flex-start mb-1">
+                                        <div style="margin-left: 20px; background-color:red;"
+                                             class="comment-item d-flex align-items-flex-start mb-1">
                                             @if(isset($user->teacher))
                                                 <img
                                                     src="@if($user->teacher->image!=null)
@@ -316,9 +349,6 @@
             }, 1000);
         }
     </script>
-
-
-
 
 @endsection
 

@@ -93,7 +93,7 @@ Route::prefix('admin')->middleware('Admin')->group(function () {
         Route::post('/course', [AdminPostController::class, 'CoursesBlockUnblockDelete']);
         Route::post('/blogs', [AdminPostController::class, 'BlogsBlockUnblockDelete']);
         Route::post('/blogs_edit/{id}', [AdminPostController::class, 'BlogsEdit']);
-        Route::post('/blogs_add', [AdminPostController::class, 'BlogsAdd']);
+        Route::post('/blogs_add', [AdminPostController::class, 'BlogsAdd'])->name('admin.add.blog');
         Route::post('/blog_category', [AdminPostController::class, 'BlogCategoryDelete']);
         Route::post('/blog_category_edit/{id}', [AdminPostController::class, 'BlogCategoryEdit']);
         Route::post('/add_blog_category', [AdminPostController::class, 'AddBlogCategory']);
