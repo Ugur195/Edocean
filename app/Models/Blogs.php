@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Blogs extends Model
 {
     protected $table = 'edocean.blogs';
-    protected $fillable = ['id','image', 'title', 'title_ru', 'title_en', 'message', 'message_ru', 'message_en', 'author',
+    protected $fillable = ['image', 'title', 'title_ru', 'title_en', 'message', 'message_ru', 'message_en', 'author',
         'category_id', 'likes', 'dislike', 'slug', 'see_count', 'status'];
 
 

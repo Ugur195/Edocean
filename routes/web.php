@@ -92,7 +92,8 @@ Route::prefix('admin')->middleware('Admin')->group(function () {
         Route::post('/student', [AdminPostController::class, 'StudentsBlockUnblockDelete']);
         Route::post('/course', [AdminPostController::class, 'CoursesBlockUnblockDelete']);
         Route::post('/blogs', [AdminPostController::class, 'BlogsBlockUnblockDelete']);
-        Route::post('/blogs_edit/{id}', [AdminPostController::class, 'BlogsEdit']);
+        Route::post('/blogs_image_delete', [AdminPostController::class, 'BlogsImageDelete']);
+        Route::post('/blogs_edit/{id}', [AdminPostController::class, 'BlogsEdit'])->name('admin.edit.blog');
         Route::post('/blogs_add', [AdminPostController::class, 'BlogsAdd'])->name('admin.add.blog');
         Route::post('/blog_category', [AdminPostController::class, 'BlogCategoryDelete']);
         Route::post('/blog_category_edit/{id}', [AdminPostController::class, 'BlogCategoryEdit']);

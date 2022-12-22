@@ -283,19 +283,56 @@ class AdminPostController extends Controller
 
     //Blogs
 
-    public function BlogsEdit(Request $request)
+    public function BlogsEdit(Request $request, $id)
     {
         try {
-            Blogs::where('id', $request->id)->update(['title' => $request->title, 'title_ru' => $request->title_ru,
+            $blog = Blogs::find(90);
+dd($blog);
+            $image = $request->file('image');
+
+            $edit_blog_image = $blog->image;
+            if (!empty($image)) {
+                foreach ($image as $img) {
+                    $edit_blog_image .= file_get_contents($img->getRealPath()) . '(xx)';
+                }
+            }
+            $blog->update(['title' => $request->title, 'title_ru' => $request->title_ru,
                 'title_en' => $request->title_en, 'message' => $request->message, 'message_ru' => $request->message_ru,
                 'message_en' => $request->message_en, 'author' => Auth::user()->id, 'category_id' => $request->category_id,
-                'slug' => $request->title, 'status' => $request->status]);
-            if (isset($request->image)) {
-                Blogs::where('id', $request->id)->update(['image' => file_get_contents($request->file('image'))]);
-            }
+                'slug' => $request->title, 'status' => $request->status, 'image' => $edit_blog_image]);
+
+
             return response(['title' => 'Ugurlu!', 'message' => 'Blog update oldu', 'status' => 'success']);
         } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => $exception->getMessage(), 'status' => 'error']);
+            return response(['title' => 'Ugursuz!', 'message' => 'Blog update mumkun olmadi'.$exception->getMessage(), 'status' => 'error']);
+        }
+    }
+
+    public function BlogsImageDelete(Request $request)
+    {
+        try {
+            $blogs_image = Blogs::find($request->id);
+            $image_name = '';
+            $count_image = 0;
+            foreach (explode('(xx)', $blogs_image->image) as $im) {
+                if ($im != '') {
+                    $count_image++;
+                }
+            }
+            if ($count_image > 1) {
+                foreach (explode('(xx)', $blogs_image->image) as $image) {
+                    if (base64_encode($image) != $request->image_name) {
+                        $image_name = $image_name . $image . '(xx)';
+                    }
+                }
+            } else {
+                $image_name = null;
+            }
+            $blogs_image->image = $image_name;
+            $blogs_image->save();
+            return response(['title' => 'Uğurlu!', 'message' => 'Şəkil uğurla silindi', 'status' => 'success']);
+        } catch (\Exception $exception) {
+            return response(['title' => 'Uğursuz!', 'message' => 'Şəkili silmək mümkün olmadı! Yenidən cəhd edin', 'status' => 'error']);
         }
     }
 
@@ -310,7 +347,7 @@ class AdminPostController extends Controller
                 $sekil_uzanti = $sk->getClientOriginalExtension();
                 $sekil_ad = $i . '.' . $sekil_uzanti;
                 Storage::disk('uploads')->makeDirectory('blogImg/blogs/');
-                Storage::disk('uploads')->put('blogImg/blogs/'. $sekil_ad, file_get_contents($sk));
+                Storage::disk('uploads')->put('blogImg/blogs/' . $sekil_ad, file_get_contents($sk));
                 $prod_image = $prod_image . file_get_contents($sk) . '(xx)';
                 $i++;
             }
