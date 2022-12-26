@@ -81,7 +81,7 @@
                                 @foreach($blogs_comments as $bc)
                                     @php($user=$bc->UsersComments)
                                     @if($bc->parent_id==0)
-                                        <div class="comment-item d-flex align-items-flex-start mb-1">
+                                        <div class="comment-item d-flex align-items-flex-start mb-3">
                                             @if(isset($user->teacher))
                                                 @php(dd($user))
                                                 <img
@@ -173,8 +173,8 @@
                                     @endif
                                     @foreach($bc->ParentBlogsComments->where('status',1) as $bb)
                                         @php($user=$bb->UsersComments)
-                                        <div style="margin-left: 20px; background-color:red;"
-                                             class="comment-item d-flex align-items-flex-start mb-1">
+                                        <div
+                                             class="comment-item d-flex align-items-flex-start mb-3 comment-reply">
                                             @if(isset($user->teacher))
                                                 <img
                                                     src="@if($user->teacher->image!=null)

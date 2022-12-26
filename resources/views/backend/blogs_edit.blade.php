@@ -52,32 +52,7 @@
                                     <div class="col-xl-3"></div>
 
                                     <div class="form-group row">
-                                        {{--                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Image</label>--}}
-                                        {{--                                        <div class="col-sm4">--}}
-                                        {{--                                            <div class="image-input image-input-outline" id="kt_contacts_edit_avatar"--}}
-                                        {{--                                                 style="background-image: url(assets/media/users/blank.png)">--}}
-
-                                        {{--                                                <div class="image-input-wrapper"--}}
-                                        {{--                                                     style="background-image: url('data:image/jpeg;base64,{{base64_encode($blogs_edit->image)}}')">--}}
-                                        {{--                                                </div>--}}
-                                        {{--                                                <label--}}
-                                        {{--                                                    class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"--}}
-                                        {{--                                                    data-action="change" data-toggle="tooltip" title=""--}}
-                                        {{--                                                    data-original-title="Change avatar">--}}
-                                        {{--                                                    <i class="fa fa-pen icon-sm text-muted"></i>--}}
-                                        {{--                                                    <input type="file" name="image" id="file" accept=".png, .jpg, .jpeg"/>--}}
-                                        {{--                                                    <input type="hidden" name="profile_avatar_remove"/>--}}
-                                        {{--                                                </label>--}}
-
-                                        {{--                                                <span--}}
-                                        {{--                                                    class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"--}}
-                                        {{--                                                    data-action="cancel" data-toggle="tooltip" title="Cancel avatar">--}}
-                                        {{--                                                    <i class="ki ki-bold-close icon-xs text-muted"></i>--}}
-                                        {{--                                                </span>--}}
-                                        {{--                                            </div>--}}
-                                        {{--                                        </div>--}}
-
-                                        <section class="content-with-menu content-with-menu-has-toolbar media-gallery">
+                                        <section class="content-with-menu content-with-menu-has-toolbar media-gallery col-lg-12">
                                             <div class="content-with-menu-container">
                                                 <div class="inner-body mg-main">
                                                     <div class="row mg-files" data-sort-destination
@@ -87,16 +62,16 @@
                                                                 <div
                                                                     class="isotope-item image col-sm-6 col-md-4 col-lg-2">
                                                                     <div class="thumbnail">
-                                                                        <div class="thumb-preview">
+                                                                        <div class="thumb-preview" style="position:relative">
                                                                             <img
                                                                                 src="data:image/jpeg;base64,{{base64_encode($image)}}"
                                                                                 class="img-fluid" alt="Şəkil yoxdur!">
                                                                             <div class="mg-thumb-options">
-                                                                                <div class="mg-zoom">
-                                                                                    <button type="button"
+                                                                                <div class="mg-zoom" style="position: absolute; top: 0; left: 0; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px;">
+                                                                                    <button type="button" style="background: none; border: none"
                                                                                             onclick="sil('{{base64_encode($image)}}','{{$blogs_edit->id}}')"
-                                                                                            class="btn btn-danger"><i
-                                                                                            class="fa fa-trash"></i>
+                                                                                            class="btn btn-danger" >
+                                                                                        <i class="fa fa-trash" style="color: red;"></i>
                                                                                     </button>
                                                                                 </div>
                                                                             </div>
@@ -125,7 +100,7 @@
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Image</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input name="image" class="form-control form-control-lg form-control-solid"
+                                            <input name="image[]" class="form-control form-control-lg form-control-solid"
                                                    type="file"  accept=".png, .png(), .jpg, .jpg(), .jpeg, .jpeg()"
                                                    multiple
                                                    value=""/>
@@ -330,10 +305,8 @@
                             allowOutsideClick: false
                         }
                     )
-                    if (response.status === 'success') {
-                        setTimeout(function () {
-                            window.location.href = '/admin/blogs';
-                        }, 1000)
+                    if (response.status == 'success') {
+                        window.location.href = '/admin/blogs_edit/'+ {{$blogs_edit->id}};
                     }
                 },
                 error: function (response) {

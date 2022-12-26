@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use PharIo\Version\Exception;
 
 class AdminPostController extends Controller
@@ -283,30 +284,79 @@ class AdminPostController extends Controller
 
     //Blogs
 
+
+    public function BlogsAdd(Request $request)
+    {
+        $sekiller = $request->file('image');
+        $prod_image = '';
+        if (!empty($sekiller)) {
+            $i = 0;
+            foreach ($sekiller as $sk) {
+                $sekil_uzanti = $sk->getClientOriginalExtension();
+                $sekil_ad = $i . '.' . $sekil_uzanti;
+                Storage::disk('uploads')->makeDirectory('blogs/');
+                $image = Image::make($sk->getRealPath())->resize(320, 220)->save('uploads/blogs/' . $sekil_ad);
+                Storage::disk('uploads')->deleteDirectory('blogs');
+                $prod_image = $prod_image . $image . '(xx)';
+                $i++;
+            }
+        }
+
+        $blogs = Blogs::where('title', $request->title)->first();
+        if ($blogs == null) {
+            $blogs = new Blogs();
+            $blogs->image = $prod_image;
+            $blogs->title = $request->title;
+            $blogs->title_ru = $request->title_ru;
+            $blogs->title_en = $request->title_en;
+            $blogs->message = $request->message;
+            $blogs->message_ru = $request->message_ru;
+            $blogs->message_en = $request->message_en;
+            $blogs->author = Auth::user()->id;
+            $blogs->category_id = $request->blog_category;
+            $blogs->slug = $request->title;
+            $blogs->status = 1;
+            $blogs->likes = 0;
+            $blogs->dislike = 0;
+            $blogs->see_count = 0;
+            $blogs->save();
+            return response(['title' => 'Ugurlu!', 'message' => 'Yeni Blog elave edildi!', 'status' => 'success']);
+        } else {
+            return response(['title' => 'Ugursuz!', 'message' => 'Yeni Blog elave etmek mumkun olmadi' . $exception->getMessage(), 'status' => 'error']);
+        }
+    }
+
     public function BlogsEdit(Request $request, $id)
     {
         try {
-            $blog = Blogs::find(90);
-dd($blog);
+            $blog = Blogs::find($id);
             $image = $request->file('image');
-
             $edit_blog_image = $blog->image;
+
+
             if (!empty($image)) {
                 foreach ($image as $img) {
-                    $edit_blog_image .= file_get_contents($img->getRealPath()) . '(xx)';
+                    $edit_blog_image .= file_get_contents($img) . '(xx)';
                 }
+                $blog->update(['title' => $request->title, 'title_ru' => $request->title_ru,
+                    'title_en' => $request->title_en, 'message' => $request->message, 'message_ru' => $request->message_ru,
+                    'message_en' => $request->message_en, 'author' => Auth::user()->id, 'category_id' => $request->category_id,
+                    'slug' => $request->title, 'status' => $request->status, 'image' => $edit_blog_image]);
+            } else {
+                $blog->update(['title' => $request->title, 'title_ru' => $request->title_ru,
+                    'title_en' => $request->title_en, 'message' => $request->message, 'message_ru' => $request->message_ru,
+                    'message_en' => $request->message_en, 'author' => Auth::user()->id, 'category_id' => $request->category_id,
+                    'slug' => $request->title, 'status' => $request->status]);
             }
-            $blog->update(['title' => $request->title, 'title_ru' => $request->title_ru,
-                'title_en' => $request->title_en, 'message' => $request->message, 'message_ru' => $request->message_ru,
-                'message_en' => $request->message_en, 'author' => Auth::user()->id, 'category_id' => $request->category_id,
-                'slug' => $request->title, 'status' => $request->status, 'image' => $edit_blog_image]);
 
 
             return response(['title' => 'Ugurlu!', 'message' => 'Blog update oldu', 'status' => 'success']);
         } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => 'Blog update mumkun olmadi'.$exception->getMessage(), 'status' => 'error']);
+            return response(['title' => 'Ugursuz!', 'message' => 'Blog update mumkun olmadi' . $exception->getMessage(), 'status' => 'error']);
         }
     }
+
+
 
     public function BlogsImageDelete(Request $request)
     {
@@ -333,47 +383,6 @@ dd($blog);
             return response(['title' => 'Uğurlu!', 'message' => 'Şəkil uğurla silindi', 'status' => 'success']);
         } catch (\Exception $exception) {
             return response(['title' => 'Uğursuz!', 'message' => 'Şəkili silmək mümkün olmadı! Yenidən cəhd edin', 'status' => 'error']);
-        }
-    }
-
-
-    public function BlogsAdd(Request $request)
-    {
-        $sekiller = $request->file('image');
-        $prod_image = '';
-        if (!empty($sekiller)) {
-            $i = 0;
-            foreach ($sekiller as $sk) {
-                $sekil_uzanti = $sk->getClientOriginalExtension();
-                $sekil_ad = $i . '.' . $sekil_uzanti;
-                Storage::disk('uploads')->makeDirectory('blogImg/blogs/');
-                Storage::disk('uploads')->put('blogImg/blogs/' . $sekil_ad, file_get_contents($sk));
-                $prod_image = $prod_image . file_get_contents($sk) . '(xx)';
-                $i++;
-            }
-        }
-
-        $blogs = Blogs::where('title', $request->title)->first();
-        if ($blogs == null) {
-            $blogs = new Blogs();
-            $blogs->image = $prod_image;
-            $blogs->title = $request->title;
-            $blogs->title_ru = $request->title_ru;
-            $blogs->title_en = $request->title_en;
-            $blogs->message = $request->message;
-            $blogs->message_ru = $request->message_ru;
-            $blogs->message_en = $request->message_en;
-            $blogs->author = Auth::user()->id;
-            $blogs->category_id = $request->blog_category;
-            $blogs->slug = $request->title;
-            $blogs->status = 1;
-            $blogs->likes = 0;
-            $blogs->dislike = 0;
-            $blogs->see_count = 0;
-            $blogs->save();
-            return response(['title' => 'Ugurlu!', 'message' => 'Yeni Blog elave edildi!', 'status' => 'success']);
-        } else {
-            return response(['title' => 'Ugursuz!', 'message' => 'Yeni Blog elave etmek mumkun olmadi', 'status' => 'error']);
         }
     }
 
