@@ -173,6 +173,7 @@
 
         function sil(setir, id) {
             var sira = setir.parentNode.parentNode.rowIndex;
+            console.log(id)
             console.log(sira);
             swal.fire({
                 title: 'Silmek Isteyirsinizmi?',

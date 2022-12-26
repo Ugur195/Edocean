@@ -12,7 +12,6 @@ use App\Http\Controllers\TeacherPostController;
 use App\Http\Controllers\CourseGetController;
 use App\Http\Controllers\CoursePostController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Auth;
 
 /*

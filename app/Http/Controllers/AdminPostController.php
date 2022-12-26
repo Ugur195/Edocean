@@ -322,7 +322,7 @@ class AdminPostController extends Controller
             $blogs->save();
             return response(['title' => 'Ugurlu!', 'message' => 'Yeni Blog elave edildi!', 'status' => 'success']);
         } else {
-            return response(['title' => 'Ugursuz!', 'message' => 'Yeni Blog elave etmek mumkun olmadi' . $exception->getMessage(), 'status' => 'error']);
+            return response(['title' => 'Ugursuz!', 'message' => 'Yeni Blog elave etmek mumkun olmadi' , 'status' => 'error']);
         }
     }
 
@@ -335,8 +335,15 @@ class AdminPostController extends Controller
 
 
             if (!empty($image)) {
+                $i=0;
                 foreach ($image as $img) {
-                    $edit_blog_image .= file_get_contents($img) . '(xx)';
+                    $sekil_uzanti = $img->getClientOriginalExtension();
+                    $sekil_ad = $i . '.' . $sekil_uzanti;
+                    Storage::disk('uploads')->makeDirectory('blogsEdit/');
+                    $image2 = Image::make($img->getRealPath())->resize(320, 220)->save('uploads/blogsEdit/' . $sekil_ad);
+                    Storage::disk('uploads')->deleteDirectory('blogsEdit');
+                    $edit_blog_image = $edit_blog_image . $image2 . '(xx)';
+                    $i++;
                 }
                 $blog->update(['title' => $request->title, 'title_ru' => $request->title_ru,
                     'title_en' => $request->title_en, 'message' => $request->message, 'message_ru' => $request->message_ru,
@@ -348,14 +355,11 @@ class AdminPostController extends Controller
                     'message_en' => $request->message_en, 'author' => Auth::user()->id, 'category_id' => $request->category_id,
                     'slug' => $request->title, 'status' => $request->status]);
             }
-
-
             return response(['title' => 'Ugurlu!', 'message' => 'Blog update oldu', 'status' => 'success']);
         } catch (\Exception $exception) {
             return response(['title' => 'Ugursuz!', 'message' => 'Blog update mumkun olmadi' . $exception->getMessage(), 'status' => 'error']);
         }
     }
-
 
 
     public function BlogsImageDelete(Request $request)
@@ -473,12 +477,14 @@ class AdminPostController extends Controller
                 } else if ($request->status == 1) {
                     BlogComment::find($request->id)->update(['status' => 0]);
                     return response(['title' => 'Ugurlu!', 'message' => 'Reyiniz Saytda artiq yayinlanmir', 'status' => 'success']);
-                } else if ($request->btn_delete != null) {
-                    BlogComment::where('id', $request->id)->delete();
-                    return response(['title' => 'Ugurlu!', 'message' => 'BlogComment Silindi', 'status' => 'success']);
                 } else {
-                    return response(['title' => 'Ugursuz!', 'message' => 'BlogCommenti silmek olmur!', 'status' => 'error']);
+                    return response(['title' => 'Ugursuz!', 'message' => 'Blogsi bloklamaq mumkun olmadi!', 'status' => 'error']);
                 }
+            } else if ($request->btn_delete != null) {
+                BlogComment::where('id', $request->id)->delete();
+                return response(['title' => 'Ugurlu!', 'message' => 'BlogComment Silindi', 'status' => 'success']);
+            } else {
+                return response(['title' => 'Ugursuz!', 'message' => 'BlogCommenti silmek olmur!', 'status' => 'error']);
             }
         } catch (\Exception $exception) {
             return response(['title' => 'Ugursuz!', 'message' => 'BlogsCommenti silmek olmur!', 'status' => 'error']);

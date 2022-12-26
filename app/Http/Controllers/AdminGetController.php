@@ -264,7 +264,26 @@ class AdminGetController extends Controller
 //        dd($blogs);
         return DataTables::of($blogs)
             ->editColumn('image', function ($model) {
-                return "<img style='display:block;width:80px;height:60px;' src='data:image/jpeg;base64," . base64_encode($model->image) . "'/>";
+                $html = '';
+                foreach (explode('(xx)', $model->image) as $key => $image) {
+                    if($image!=''){
+                        $html .= '<div class="carousel-item ' . ($key == 0 ? 'active' : '') . '">
+                 <img style="display:block;width:80px;height:60px;" class="d-block w-100" src="data:image/jpeg;base64,' . base64_encode($image) . '" alt="First slide">
+                  </div>';
+                    }
+                }
+                return '<div id="carouselExampleControls'.$model->id.'" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">' . $html . '</div>
+                 <a class="carousel-control-prev" href="#carouselExampleControls'.$model->id.'" role="button" data-slide="prev">
+                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                   <span class="sr-only">Previous</span>
+                 </a>
+                 <a class="carousel-control-next" href="#carouselExampleControls'.$model->id.'" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                 </a>
+                 </div>';
+//                return "<img style='display:block;width:80px;height:60px;' src='data:image/jpeg;base64," . base64_encode($model->image) . "'/>";
             })
             ->addColumn('options', function ($model) {
                 $return = '<a class="btn btn-xs btn-primary mr-1" href="' . route('admin.backend.blogs_edit', $model->id) . '" ><i class="la la-info"></i></a>';

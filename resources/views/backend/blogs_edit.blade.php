@@ -43,12 +43,13 @@
 
                         </div>
                     </div>
+                    <form id="BlogEdit" class="form" method="POST" action="{{route('admin.edit.blog', $blogs_edit->id)}}">
+                        {{csrf_field()}}
                     <div class="card-body">
                         <div class="tab-content pt-5">
                             <!--begin::Tab Content-->
                             <div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
-                                <form id="BlogEdit" class="form" method="POST" action="{{route('admin.edit.blog', $blogs_edit->id)}}">
-                                    {{csrf_field()}}
+
                                     <div class="col-xl-3"></div>
 
                                     <div class="form-group row">
@@ -235,10 +236,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                </form>
                             </div>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
