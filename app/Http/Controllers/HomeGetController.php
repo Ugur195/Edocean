@@ -85,7 +85,7 @@ class HomeGetController extends Controller
     {
         $menu = Menu::where('status', 1)->get();
         $setting = Setting::find(1);
-        $blogs = Blogs::with('admin')->where('status',1)->get();
+        $blogs = Blogs::with('admin')->where('status', 1)->get();
         $blog_category = BlogCategory::all();
         return view('frontend.blogs')->with(['menu' => $menu, 'setting' => $setting, 'blogs' => $blogs,
             'blog_category' => $blog_category]);
@@ -161,6 +161,16 @@ class HomeGetController extends Controller
         $students = Student::with('subjects')->get();
         $subjects = SubjectCategory::all();
         return view('frontend.students')->with(['menu' => $menu, 'setting' => $setting, 'students' => $students, 'subjects' => $subjects]);
+    }
+
+    public function SingleStudent($id)
+    {
+        $menu = Menu::where('status', 1)->get();
+        $setting = Setting::find(1);
+        $student = Student::find($id);
+        $categories = SubjectCategory::all();
+        return view('frontend.single_student')->with(['menu' => $menu, 'setting' => $setting,
+            'student' => $student, 'categories' => $categories]);
     }
 
     public function Courses()

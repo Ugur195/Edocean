@@ -1,7 +1,6 @@
 @extends('frontend.app')
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('cssValidate/sweetalert2.css')}}"/>
 @endsection
 
 
@@ -60,6 +59,23 @@
                                     </p>
                                 </div>
                             </div>
+
+                            <div class="about_tchr_row">
+                                <div class="row">
+                                    <h5 class="col-lg-3">Iş mövqeyi:</h5>
+                                    <p class="col-lg-9">
+                                        {{$teacher->work_position}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="about_tchr_row">
+                                <div class="row">
+                                    <h5 class="col-lg-3">Fən:</h5>
+                                    <p class="col-lg-9">
+                                        {{\App\Models\Subjects::find($teacher->subjects)->name}}
+                                    </p>
+                                </div>
+                            </div>
                             <div class="about_tchr_row">
                                 <div class="row">
                                     <h5 class="col-lg-3">İş yeri:</h5>
@@ -108,6 +124,48 @@
                         </div>
                     </div>
                 </div>
+
+
+                <div id="teacher_request" class="tchr_tab_content">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="about_tchr">
+                            <div class="about_tchr_row">
+                                <div class="row">
+                                    <h5 class="col-lg-3">Tələbə səviyyəsi:</h5>
+                                    <p class="col-lg-9">{{$teacher->student_level}}</p>
+                                </div>
+                            </div>
+                            <div class="about_tchr_row">
+                                <div class="row">
+                                    <h5 class="col-lg-3">Tələbələrin sayı:</h5>
+                                    <p class="col-lg-9">{{$teacher->students_amount}}</p>
+                                </div>
+                            </div>
+
+                            <div class="about_tchr_row">
+                                <div class="row">
+                                    <h5 class="col-lg-3">Dərs müddəti:</h5>
+                                    <p class="col-lg-9">{{$teacher->lessons_duration}}</p>
+                                </div>
+                            </div>
+                            <div class="about_tchr_row">
+                                <div class="row">
+                                    <h5 class="col-lg-3">Dərs intensivliyi:</h5>
+                                    <p class="col-lg-9">{{$teacher->lessons_intensivity}}</p>
+                                </div>
+                            </div>
+                            <div class="about_tchr_row">
+                                <div class="row">
+                                    <h5 class="col-lg-3">Dərs qiyməti:</h5>
+                                    <p class="col-lg-9">{{$teacher->lesson_price}}</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
                 <div id="certficates" class="tchr_tab_content">
                     <div class="tchr_crtf">
                         <div

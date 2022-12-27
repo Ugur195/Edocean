@@ -43,6 +43,7 @@ Route::get('/single_teacher/{id}', [HomeGetController::class, 'SingleTeacher'])-
 Route::get('/teachers/category/{category}', [HomeGetController::class, 'TeachersCategory'])->name('subjects_category');
 Route::get('/teachers/subject/{category}', [HomeGetController::class, 'TeachersSubject'])->name('subjects');
 Route::get('/students', [HomeGetController::class, 'Students']);
+Route::get('/single_student/{id}', [HomeGetController::class, 'SingleStudent'])->name('single_student');
 Route::get('/courses', [HomeGetController::class, 'Courses']);
 
 

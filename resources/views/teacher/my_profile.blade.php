@@ -640,7 +640,7 @@
                                                 </label>
                                                 <label class="radio radio-primary">
                                                     <input type="radio" name="lessons_duration"
-                                                           @if($teacher->lessons_duration=='1 saat 30 30 dəqiqə') checked
+                                                           @if($teacher->lessons_duration=='1 saat 30  dəqiqə') checked
                                                            @endif value="1 saat 30 30 dəqiqə"/>
                                                     <span></span>
                                                     1 hour 30 min
@@ -696,8 +696,8 @@
                                             <div class="radio-inline">
                                                 <label class="radio radio-primary">
                                                     <input type="radio" name="student_level"
-                                                           @if($teacher->student_level=='Başlanğıc') checked
-                                                           @endif value="Başlanğıc"/>
+                                                           @if($teacher->student_level=='Ibditai') checked
+                                                           @endif value="Ibditai"/>
                                                     <span></span>
                                                     Beginner
                                                 </label>

@@ -155,12 +155,12 @@ class AdminGetController extends Controller
                 return "<img style='display:block;width:80px;height:60px;' src='data:image/jpeg;base64," . base64_encode($model->image) . "'/>";
             })
             ->addColumn('options', function ($model) {
-                $return = '<a class="btn btn-xs btn-primary mr-1" href="' . route('admin.backend.teacher_edit', $model->id) . '" ><i class="la la-user"></i></a>';
+                $return = '<a class="btn btn-xs btn-primary mt-1" href="' . route('admin.backend.teacher_edit', $model->id) . '" ><i class="la la-user"></i></a>';
                 if ($model->st == 0) {
-                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->user_id . ')"  class="btn btn-xs btn-success mr-1"  name="btn_blok"
+                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->user_id . ')"  class="btn btn-xs btn-success mt-1"  name="btn_blok"
                                         value="btn_blok" ><i class="la la-check"></i></button>';
                 } else if ($model->st == 1) {
-                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->user_id . ')"  class="btn btn-xs btn-dark mr-1" name="btn_unblok"  value="btn_unblok" ><i class="la la-close"></i></button>';
+                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->user_id . ')"  class="btn btn-xs btn-dark mt-1" name="btn_unblok"  value="btn_unblok" ><i class="la la-close"></i></button>';
                 }
                 $return .= '<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger mt-1" ><i class="la la-trash"></i></button>';
                 return $return;
@@ -202,6 +202,7 @@ class AdminGetController extends Controller
                 return $return;
             })->rawColumns(['options' => true])->make(true);
     }
+
 
 
     public function StudentEdit($id)
@@ -268,7 +269,7 @@ class AdminGetController extends Controller
                 foreach (explode('(xx)', $model->image) as $key => $image) {
                     if($image!=''){
                         $html .= '<div class="carousel-item ' . ($key == 0 ? 'active' : '') . '">
-                 <img style="display:block;width:80px;height:60px;" class="d-block w-100" src="data:image/jpeg;base64,' . base64_encode($image) . '" alt="First slide">
+                 <img style="display:block;width:100px;height:60px;" class="d-block w-100" src="data:image/jpeg;base64,' . base64_encode($image) . '" alt="First slide">
                   </div>';
                     }
                 }

@@ -102,14 +102,14 @@
                                     <div class="col-9 col-form-label">
                                         <div class="radio-inline">
                                             <label class="radio radio-primary">
-                                                <input type="radio" name="gender" @if($student->gender=='M') checked
-                                                    @endif value="M"/>
+                                                <input type="radio" name="gender" @if($student->gender=='Kişi') checked
+                                                    @endif value="Kişi"/>
                                                 <span></span>
                                                 Male
                                             </label>
                                             <label class="radio radio-primary">
-                                                <input type="radio" name="gender" @if($student->gender=='F') checked
-                                                    @endif value="F"/>
+                                                <input type="radio" name="gender" @if($student->gender=='Qadın') checked
+                                                    @endif value="Qadın"/>
                                                 <span></span>
                                                 Female
                                             </label>
@@ -221,14 +221,14 @@
                                     <div class="col-9 col-form-label">
                                         <div class="radio-inline">
                                             <label class="radio radio-primary">
-                                                <input type="radio" name="parent" @if($student->parent=='Yes') checked
-                                                    @endif value="Yes"/>
+                                                <input type="radio" name="parent" @if($student->parent=='Var') checked
+                                                    @endif value="Var"/>
                                                 <span></span>
                                                 Yes
                                             </label>
                                             <label class="radio radio-primary">
-                                                <input type="radio" name="parent" @if($student->parent=='No') checked
-                                                    @endif value="No"/>
+                                                <input type="radio" name="parent" @if($student->parent=='Yoxdu') checked
+                                                    @endif value="Yoxdu"/>
                                                 <span></span>
                                                 No
                                             </label>
@@ -271,22 +271,22 @@
                                         <div class="radio-inline">
                                             <label class="radio radio-primary">
                                                 <input type="radio" name="education_level"
-                                                    @if($student->education_level=='Elementary') checked
-                                                    @endif value="Elemen"/>
+                                                    @if($student->education_level=='İbtidai') checked
+                                                    @endif value="İbtidai"/>
                                                 <span></span>
                                                 Elementary
                                             </label>
                                             <label class="radio radio-primary">
                                                 <input type="radio" name="education_level"
-                                                    @if($student->education_level=='Secondary') checked
-                                                    @endif value="Secondary"/>
+                                                    @if($student->education_level=='Orta') checked
+                                                    @endif value="Orta"/>
                                                 <span></span>
                                                 Secondary
                                             </label>
 
                                             <label class="radio radio-primary">
                                                 <input type="radio" name="education_level"
-                                                    @if($student->education_level=='Higher') checked @endif value="Higher"/>
+                                                    @if($student->education_level=='Ali') checked @endif value="Ali"/>
                                                 <span></span>
                                                 Higher
                                             </label>
@@ -300,22 +300,22 @@
                                         <div class="radio-inline">
                                             <label class="radio radio-primary">
                                                 <input type="radio" name="lesson_duration"
-                                                    @if($student->lesson_duration=='1 hour') checked @endif value="1 hour"/>
+                                                    @if($student->lesson_duration=='1 saat') checked @endif value="1 saat"/>
                                                 <span></span>
                                                 1 hour
                                             </label>
                                             <label class="radio radio-primary">
                                                 <input type="radio" name="lesson_duration"
-                                                    @if($student->lesson_duration=='1 hour 30 min') checked
-                                                    @endif value="1 hour 30 min"/>
+                                                    @if($student->lesson_duration=='1 saat 30 dəqiqə') checked
+                                                    @endif value="1 saat 30 dəqiqə"/>
                                                 <span></span>
                                                 1 hour 30 min
                                             </label>
 
                                             <label class="radio radio-primary">
                                                 <input type="radio" name="lesson_duration"
-                                                    @if($student->lesson_duration=='2 hours') checked
-                                                    @endif value="2 hours"/>
+                                                    @if($student->lesson_duration=='2 saat') checked
+                                                    @endif value="2 saat"/>
                                                 <span></span>
                                                 2 hours
                                             </label>
@@ -329,23 +329,23 @@
                                         <div class="radio-inline">
                                             <label class="radio radio-primary">
                                                 <input type="radio" name="lessons_intensivity"
-                                                    @if($student->lessons_intensivity=='2 times per week') checked
-                                                    @endif value="2 times per week"/>
+                                                    @if($student->lessons_intensivity=='həftədə 2 dəfə') checked
+                                                    @endif value="həftədə 2 dəfə"/>
                                                 <span></span>
                                                 2 times per week
                                             </label>
                                             <label class="radio radio-primary">
                                                 <input type="radio" name="lessons_intensivity"
-                                                    @if($student->lessons_intensivity=='3 times per week') checked
-                                                    @endif value="3 times per week"/>
+                                                    @if($student->lessons_intensivity=='həftədə 3 dəfə') checked
+                                                    @endif value="həftədə 3 dəfə"/>
                                                 <span></span>
                                                 3 times per week
                                             </label>
 
                                             <label class="radio radio-primary">
                                                 <input type="radio" name="lessons_intensivity"
-                                                    @if($student->lessons_intensivity=='5 times per week') checked
-                                                    @endif value="5 times per week"/>
+                                                    @if($student->lessons_intensivity=='həftədə 5 dəfə') checked
+                                                    @endif value="həftədə 5 dəfə"/>
                                                 <span></span>
                                                 5 times per week
                                             </label>
@@ -368,20 +368,20 @@
                                     <div class="col-lg-9 col-xl-6">
                                         <select name="teacher_status" class=" custom-select form-control  form-control-solid">
                                             <option disabled  selected>Open this select menu</option>
-                                            <option value="primary education (I-IV)"
-                                                    @if($student->teacher_status=='primary education (I-IV)')selected @endif>
+                                            <option value="Ibtidai təhsil (I-IV)"
+                                                    @if($student->teacher_status=='Ibtidai təhsil (I-IV)')selected @endif>
                                                 primary education (I-IV)
                                             </option>
-                                            <option value="general secondary education (V-IX)"
-                                                    @if($student->teacher_status=='general secondary education (V-IX)') selected @endif>
+                                            <option value="Ümumi orta təhsil (V-IX)"
+                                                    @if($student->teacher_status=='Ümumi orta təhsil (V-IX)') selected @endif>
                                                 general secondary education (V-IX)
                                             </option>
-                                            <option value="complete secondary education (X-XI)"
-                                                    @if($student->teacher_status=='complete secondary education (X-XI)') selected @endif>
+                                            <option value="Tam orta təhsil (X-XI)"
+                                                    @if($student->teacher_status=='Tam orta təhsil (X-XI)') selected @endif>
                                                 complete secondary education (X-XI)
                                             </option>
-                                            <option value="higher education (bachelors , masters , doctoral degrees)"
-                                                    @if($student->teacher_status=='higher education (bachelors , masters , doctoral degrees)') selected @endif>
+                                            <option value="Ali təhsil (bakalavr, magistr, doktorantura)"
+                                                    @if($student->teacher_status=='Ali təhsil (bakalavr, magistr, doktorantura)') selected @endif>
                                                 higher education (bachelor's, master's, doctoral degrees)
                                             </option>
                                         </select>
@@ -395,13 +395,13 @@
                                         <div class="radio-inline">
                                             <label class="radio radio-primary">
                                                 <input type="radio" name="teacher_gender"
-                                                    @if($student->teacher_gender=='M') checked @endif value="M"/>
+                                                    @if($student->teacher_gender=='Kişi') checked @endif value="Kişi"/>
                                                 <span></span>
                                                 Male
                                             </label>
                                             <label class="radio radio-primary">
                                                 <input type="radio" name="teacher_gender"
-                                                    @if($student->teacher_gender=='F') checked @endif value="F"/>
+                                                    @if($student->teacher_gender=='Qadın') checked @endif value="Qadın"/>
                                                 <span></span>
                                                 Female
                                             </label>
@@ -415,22 +415,22 @@
                                         <div class="radio-inline">
                                             <label class="radio radio-primary">
                                                 <input type="radio" name="students_amount"
-                                                    @if($student->students_amount=='Alone') checked @endif value="Alone"/>
+                                                    @if($student->students_amount=='Tək') checked @endif value="Tək"/>
                                                 <span></span>
                                                 Alone
                                             </label>
                                             <label class="radio radio-primary">
                                                 <input type="radio" name="students_amount"
-                                                    @if($student->students_amount=='In a group (3-4 people)') checked
-                                                    @endif value="In a group (3-4 people)"/>
+                                                    @if($student->students_amount=='Qrup şəklində (3-4 nəfər)') checked
+                                                    @endif value="Qrup şəklində (3-4 nəfər)"/>
                                                 <span></span>
                                                 In a group (3-4 people)
                                             </label>
 
                                             <label class="radio radio-primary">
                                                 <input type="radio" name="students_amount"
-                                                    @if($student->students_amount=='In a group (5-7 people)') checked
-                                                    @endif value="In a group (5-7 people)"/>
+                                                    @if($student->students_amount=='Qrup şəklində (5-7 nəfər)') checked
+                                                    @endif value="Qrup şəklində (5-7 nəfər)"/>
                                                 <span></span>
                                                 In a group (5-7 people)
                                             </label>
