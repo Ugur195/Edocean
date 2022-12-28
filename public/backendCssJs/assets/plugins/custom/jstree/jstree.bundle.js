@@ -84,7 +84,7 @@
 		idregex : /[\\:&!^|()\[\]<>@*'+~#";.,=\- \/${}%?`]/g,
 		root : '#'
 	};
-	
+
 	/**
 	 * creates a jstree instance
 	 * @name $.jstree.create(el [, options])
@@ -454,7 +454,7 @@
 		 */
 		restore_focus : true,
 		/**
-		 * Force to compute and set "aria-setsize" and "aria-posinset" explicitly for each treeitem. 
+		 * Force to compute and set "aria-setsize" and "aria-posinset" explicitly for each treeitem.
 		 * Some browsers may compute incorrect elements position and produce wrong announcements for screen readers. Defaults to `false`
 		 * @name $.jstree.defaults.core.compute_elements_positions
 		 */
@@ -4963,7 +4963,7 @@
 		return d;
 	};
 	$.vakata.trim = function (text) {
-		return String.prototype.trim ? 
+		return String.prototype.trim ?
 			String.prototype.trim.call(text.toString()) :
 			text.toString().replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
 	};
@@ -5425,9 +5425,9 @@
 			this.element.find('.jstree-closed').not(':has(.jstree-children)')
 				.each(function () {
 					var tmp = tt.get_node(this), tmp2;
-					
+
 					if(!tmp) { return; }
-					
+
 					if(!tmp.state.loaded) {
 						if(tmp.original && tmp.original.state && tmp.original.state.undetermined && tmp.original.state.undetermined === true) {
 							if(o[tmp.id] === undefined && tmp.id !== $.jstree.root) {
@@ -5811,7 +5811,7 @@
 				this.trigger('uncheck_node', { 'node' : obj, 'selected' : this._data.checkbox.selected, 'event' : e });
 			}
 		};
-		
+
 		/**
 		 * checks all nodes in the tree (only if tie_selection in checkbox settings is false, otherwise select_all will be called internally)
 		 * @name check_all()
@@ -6008,7 +6008,7 @@
 /**
  * ### Contextmenu plugin
  *
- * Shows a context menu when a node is right-clicked.
+ * Shows a context menus when a node is right-clicked.
  */
 
 	/**
@@ -6018,13 +6018,13 @@
 	 */
 	$.jstree.defaults.contextmenu = {
 		/**
-		 * a boolean indicating if the node should be selected when the context menu is invoked on it. Defaults to `true`.
+		 * a boolean indicating if the node should be selected when the context menus is invoked on it. Defaults to `true`.
 		 * @name $.jstree.defaults.contextmenu.select_node
 		 * @plugin contextmenu
 		 */
 		select_node : true,
 		/**
-		 * a boolean indicating if the menu should be shown aligned with the node. Defaults to `true`, otherwise the mouse coordinates are used.
+		 * a boolean indicating if the menus should be shown aligned with the node. Defaults to `true`, otherwise the mouse coordinates are used.
 		 * @name $.jstree.defaults.contextmenu.show_at_node
 		 * @plugin contextmenu
 		 */
@@ -6032,16 +6032,16 @@
 		/**
 		 * an object of actions, or a function that accepts a node and a callback function and calls the callback function with an object of actions available for that node (you can also return the items too).
 		 *
-		 * Each action consists of a key (a unique name) and a value which is an object with the following properties (only label and action are required). Once a menu item is activated the `action` function will be invoked with an object containing the following keys: item - the contextmenu item definition as seen below, reference - the DOM node that was used (the tree node), element - the contextmenu DOM element, position - an object with x/y properties indicating the position of the menu.
+		 * Each action consists of a key (a unique name) and a value which is an object with the following properties (only label and action are required). Once a menus item is activated the `action` function will be invoked with an object containing the following keys: item - the contextmenu item definition as seen below, reference - the DOM node that was used (the tree node), element - the contextmenu DOM element, position - an object with x/y properties indicating the position of the menus.
 		 *
 		 * * `separator_before` - a boolean indicating if there should be a separator before this item
 		 * * `separator_after` - a boolean indicating if there should be a separator after this item
 		 * * `_disabled` - a boolean indicating if this action should be disabled
 		 * * `label` - a string - the name of the action (could be a function returning a string)
 		 * * `title` - a string - an optional tooltip for the item
-		 * * `action` - a function to be executed if this item is chosen, the function will receive 
+		 * * `action` - a function to be executed if this item is chosen, the function will receive
 		 * * `icon` - a string, can be a path to an icon or a className, if using an image that is in the current directory use a `./` prefix, otherwise it will be detected as a class
-		 * * `shortcut` - keyCode which will trigger the action if the menu is open (for example `113` for rename, which equals F2)
+		 * * `shortcut` - keyCode which will trigger the action if the menus is open (for example `113` for rename, which equals F2)
 		 * * `shortcut_label` - shortcut label (like for example `F2` for rename)
 		 * * `submenu` - an object with the same structure as $.jstree.defaults.contextmenu.items which can be used to create a submenu - each key will be rendered as a separate option in a submenu that will appear once the current item is hovered
 		 *
@@ -6245,11 +6245,11 @@
 		};
 
 		/**
-		 * prepare and show the context menu for a node
+		 * prepare and show the context menus for a node
 		 * @name show_contextmenu(obj [, x, y])
 		 * @param {mixed} obj the node
-		 * @param {Number} x the x-coordinate relative to the document to show the menu at
-		 * @param {Number} y the y-coordinate relative to the document to show the menu at
+		 * @param {Number} x the x-coordinate relative to the document to show the menus at
+		 * @param {Number} y the y-coordinate relative to the document to show the menus at
 		 * @param {Object} e the event if available that triggered the contextmenu
 		 * @plugin contextmenu
 		 * @trigger show_contextmenu.jstree
@@ -6282,11 +6282,11 @@
 			}
 		};
 		/**
-		 * show the prepared context menu for a node
+		 * show the prepared context menus for a node
 		 * @name _show_contextmenu(obj, x, y, i)
 		 * @param {mixed} obj the node
-		 * @param {Number} x the x-coordinate relative to the document to show the menu at
-		 * @param {Number} y the y-coordinate relative to the document to show the menu at
+		 * @param {Number} x the x-coordinate relative to the document to show the menus at
+		 * @param {Number} y the y-coordinate relative to the document to show the menus at
 		 * @param {Number} i the object of items to show
 		 * @plugin contextmenu
 		 * @trigger show_contextmenu.jstree
@@ -6307,8 +6307,8 @@
 			 * @event
 			 * @name show_contextmenu.jstree
 			 * @param {Object} node the node
-			 * @param {Number} x the x-coordinate of the menu relative to the document
-			 * @param {Number} y the y-coordinate of the menu relative to the document
+			 * @param {Number} x the x-coordinate of the menus relative to the document
+			 * @param {Number} y the y-coordinate of the menus relative to the document
 			 * @plugin contextmenu
 			 */
 			this.trigger('show_contextmenu', { "node" : obj, "x" : x, "y" : y });
@@ -6402,8 +6402,8 @@
 				 * @plugin contextmenu
 				 * @name context_parse.vakata
 				 * @param {jQuery} reference the element that was right clicked
-				 * @param {jQuery} element the DOM element of the menu itself
-				 * @param {Object} position the x & y coordinates of the menu
+				 * @param {jQuery} element the DOM element of the menus itself
+				 * @param {Object} position the x & y coordinates of the menus
 				 */
 				if(!is_callback) { vakata_context.html = str; $.vakata.context._trigger("parse"); }
 				return str.length > 10 ? str : false;
@@ -6506,8 +6506,8 @@
 					 * @plugin contextmenu
 					 * @name context_show.vakata
 					 * @param {jQuery} reference the element that was right clicked
-					 * @param {jQuery} element the DOM element of the menu itself
-					 * @param {Object} position the x & y coordinates of the menu
+					 * @param {jQuery} element the DOM element of the menus itself
+					 * @param {Object} position the x & y coordinates of the menus
 					 */
 					$.vakata.context._trigger("show");
 				}
@@ -6522,8 +6522,8 @@
 					 * @plugin contextmenu
 					 * @name context_hide.vakata
 					 * @param {jQuery} reference the element that was right clicked
-					 * @param {jQuery} element the DOM element of the menu itself
-					 * @param {Object} position the x & y coordinates of the menu
+					 * @param {jQuery} element the DOM element of the menus itself
+					 * @param {Object} position the x & y coordinates of the menus
 					 */
 					$.vakata.context._trigger("hide");
 				}
@@ -7330,7 +7330,7 @@
 	 *		"id1" : [{ "text" : "Child of ID1", "id" : "c1" }, { "text" : "Another child of ID1", "id" : "c2" }],
 	 *		"id2" : [{ "text" : "Child of ID2", "id" : "c3" }]
 	 *	}
-	 * 
+	 *
 	 * @name $.jstree.defaults.massload
 	 * @plugin massload
 	 */
@@ -7341,7 +7341,7 @@
 			parent.init.call(this, el, options);
 		};
 		this._load_nodes = function (nodes, callback, is_callback, force_reload) {
-			var s = this.settings.massload,				
+			var s = this.settings.massload,
 				toLoad = [],
 				m = this._model.data,
 				i, j, dom;

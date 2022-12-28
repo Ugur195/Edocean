@@ -37,7 +37,7 @@ var KTDatatablesDataSourceAjaxClient = function() {
 								<a href="javascript:;" class="btn btn-sm btn-clean btn-icon" data-toggle="dropdown">\
 	                                <i class="la la-cog"></i>\
 	                            </a>\
-							  	<div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">\
+							  	<div class="dropdown-menus dropdown-menus-sm dropdown-menus-right">\
 									<ul class="nav nav-hoverable flex-column">\
 							    		<li class="nav-item"><a class="nav-link" href="#"><i class="nav-icon la la-edit"></i><span class="nav-text">Edit Details</span></a></li>\
 							    		<li class="nav-item"><a class="nav-link" href="#"><i class="nav-icon la la-leaf"></i><span class="nav-text">Update Status</span></a></li>\

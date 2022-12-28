@@ -110,7 +110,7 @@ var KTApp = function() {
         }
 
         $('body').on('show.bs.dropdown', context, function(e) {
-        	dropdownMenu = $(e.target).find('.dropdown-menu');
+        	dropdownMenu = $(e.target).find('.dropdown-menus');
         	$('body').append(dropdownMenu.detach());
         	dropdownMenu.css('display', 'block');
         	dropdownMenu.position({
@@ -126,16 +126,16 @@ var KTApp = function() {
 
     var initAbsoluteDropdowns = function() {
         $('body').on('show.bs.dropdown', function(e) {
-            // e.target is always parent (contains toggler and menu)
+            // e.target is always parent (contains toggler and menus)
             var $toggler = $(e.target).find("[data-attach='body']");
             if ($toggler.length === 0) {
                 return;
             }
-            var $dropdownMenu = $(e.target).find('.dropdown-menu');
-            // save detached menu
+            var $dropdownMenu = $(e.target).find('.dropdown-menus');
+            // save detached menus
             var $detachedDropdownMenu = $dropdownMenu.detach();
-            // save reference to detached menu inside data of toggler
-            $toggler.data('dropdown-menu', $detachedDropdownMenu);
+            // save reference to detached menus inside data of toggler
+            $toggler.data('dropdown-menus', $detachedDropdownMenu);
 
             $('body').append($detachedDropdownMenu);
             $detachedDropdownMenu.css('display', 'block');
@@ -151,9 +151,9 @@ var KTApp = function() {
             if ($toggler.length === 0) {
                 return;
             }
-            // access to reference of detached menu from data of toggler
-            var $detachedDropdownMenu = $toggler.data('dropdown-menu');
-            // re-append detached menu inside parent
+            // access to reference of detached menus from data of toggler
+            var $detachedDropdownMenu = $toggler.data('dropdown-menus');
+            // re-append detached menus inside parent
             $(e.target).append($detachedDropdownMenu.detach());
             // hide dropdown
             $detachedDropdownMenu.hide();
@@ -367,10 +367,10 @@ var KTCard = function(elementId, options) {
             if (KTUtil.data(element).has('card')) {
                 the = KTUtil.data(element).get('card');
             } else {
-                // reset menu
+                // reset menus
                 Plugin.init(options);
 
-                // build menu
+                // build menus
                 Plugin.build();
 
                 KTUtil.data(element).set('card', the);
@@ -1251,10 +1251,10 @@ var KTImageInput = function(elementId, options) {
             if (KTUtil.data(element).has('imageinput')) {
                 the = KTUtil.data(element).get('imageinput');
             } else {
-                // reset menu
+                // reset menus
                 Plugin.init(options);
 
-                // build menu
+                // build menus
                 Plugin.build();
 
                 KTUtil.data(element).set('imageinput', the);
@@ -1434,9 +1434,9 @@ var KTMenu = function(elementId, options) {
         // accordion submenu mode
         accordion: {
             slideSpeed: 200, // accordion toggle slide speed in milliseconds
-            autoScroll: false, // enable auto scrolling(focus) to the clicked menu item
+            autoScroll: false, // enable auto scrolling(focus) to the clicked menus item
             autoScrollSpeed: 1200,
-            expandAll: true // allow having multiple expanded accordions in the menu
+            expandAll: true // allow having multiple expanded accordions in the menus
         },
 
         // dropdown submenu mode
@@ -1458,13 +1458,13 @@ var KTMenu = function(elementId, options) {
             if (KTUtil.data(element).has('menu')) {
                 the = KTUtil.data(element).get('menu');
             } else {
-                // reset menu
+                // reset menus
                 Plugin.init(options);
 
-                // reset menu
+                // reset menus
                 Plugin.reset();
 
-                // build menu
+                // build menus
                 Plugin.build();
 
                 KTUtil.data(element).set('menu', the);
@@ -1485,7 +1485,7 @@ var KTMenu = function(elementId, options) {
             // merge default and user defined options
             the.options = KTUtil.deepExtend({}, defaultOptions, options);
 
-            // pause menu
+            // pause menus
             the.pauseDropdownHoverTime = 0;
 
             the.uid = KTUtil.getUniqueID();
@@ -1495,25 +1495,25 @@ var KTMenu = function(elementId, options) {
             // merge default and user defined options
             the.options = KTUtil.deepExtend({}, defaultOptions, options);
 
-            // pause menu
+            // pause menus
             the.pauseDropdownHoverTime = 0;
 
-             // reset menu
+             // reset menus
             Plugin.reset();
 
             the.eventHandlers = {};
 
-            // build menu
+            // build menus
             Plugin.build();
 
             KTUtil.data(element).set('menu', the);
         },
 
         reload: function() {
-             // reset menu
+             // reset menus
             Plugin.reset();
 
-            // build menu
+            // build menus
             Plugin.build();
 
             // reset submenu props
@@ -1521,35 +1521,35 @@ var KTMenu = function(elementId, options) {
         },
 
         /**
-         * Reset menu
+         * Reset menus
          * @returns {KTMenu}
          */
         build: function() {
             // General accordion submenu toggle
-            the.eventHandlers['event_1'] = KTUtil.on( element, '.menu-toggle', 'click', Plugin.handleSubmenuAccordion);
+            the.eventHandlers['event_1'] = KTUtil.on( element, '.menus-toggle', 'click', Plugin.handleSubmenuAccordion);
 
             // Dropdown mode(hoverable)
             if (Plugin.getSubmenuMode() === 'dropdown' || Plugin.isConditionalSubmenuDropdown()) {
                 // dropdown submenu - hover toggle
-                the.eventHandlers['event_2'] = KTUtil.on( element, '[data-menu-toggle="hover"]', 'mouseover', Plugin.handleSubmenuDrodownHoverEnter);
-                the.eventHandlers['event_3'] = KTUtil.on( element, '[data-menu-toggle="hover"]', 'mouseout', Plugin.handleSubmenuDrodownHoverExit);
+                the.eventHandlers['event_2'] = KTUtil.on( element, '[data-menus-toggle="hover"]', 'mouseover', Plugin.handleSubmenuDrodownHoverEnter);
+                the.eventHandlers['event_3'] = KTUtil.on( element, '[data-menus-toggle="hover"]', 'mouseout', Plugin.handleSubmenuDrodownHoverExit);
 
                 // dropdown submenu - click toggle
-                the.eventHandlers['event_4'] = KTUtil.on( element, '[data-menu-toggle="click"] > .menu-toggle, [data-menu-toggle="click"] > .menu-link .menu-toggle', 'click', Plugin.handleSubmenuDropdownClick);
-                the.eventHandlers['event_5'] = KTUtil.on( element, '[data-menu-toggle="tab"] > .menu-toggle, [data-menu-toggle="tab"] > .menu-link .menu-toggle', 'click', Plugin.handleSubmenuDropdownTabClick);
+                the.eventHandlers['event_4'] = KTUtil.on( element, '[data-menus-toggle="click"] > .menus-toggle, [data-menus-toggle="click"] > .menus-link .menus-toggle', 'click', Plugin.handleSubmenuDropdownClick);
+                the.eventHandlers['event_5'] = KTUtil.on( element, '[data-menus-toggle="tab"] > .menus-toggle, [data-menus-toggle="tab"] > .menus-link .menus-toggle', 'click', Plugin.handleSubmenuDropdownTabClick);
             }
 
             // Handle general link click
-            the.eventHandlers['event_6'] = KTUtil.on(element, '.menu-item > .menu-link:not(.menu-toggle):not(.menu-link-toggle-skip)', 'click', Plugin.handleLinkClick);
+            the.eventHandlers['event_6'] = KTUtil.on(element, '.menus-item > .menus-link:not(.menus-toggle):not(.menus-link-toggle-skip)', 'click', Plugin.handleLinkClick);
 
-            // Init scrollable menu
+            // Init scrollable menus
             if (the.options.scroll && the.options.scroll.height) {
                 Plugin.scrollInit();
             }
         },
 
         /**
-         * Reset menu
+         * Reset menus
          * @returns {KTMenu}
          */
         reset: function() {
@@ -1568,7 +1568,7 @@ var KTMenu = function(elementId, options) {
         },
 
         /**
-         * Init scroll menu
+         * Init scroll menus
          *
         */
         scrollInit: function() {
@@ -1581,7 +1581,7 @@ var KTMenu = function(elementId, options) {
         },
 
         /**
-         * Update scroll menu
+         * Update scroll menus
         */
         scrollUpdate: function() {
             if ( the.options.scroll && the.options.scroll.height ) {
@@ -1599,12 +1599,12 @@ var KTMenu = function(elementId, options) {
         },
 
         /**
-         * Get submenu mode for current breakpoint and menu state
+         * Get submenu mode for current breakpoint and menus state
          * @returns {KTMenu}
          */
         getSubmenuMode: function(el) {
             if ( KTUtil.isBreakpointUp('lg') ) {
-                if (el && KTUtil.hasAttr(el, 'data-menu-toggle') && KTUtil.attr(el, 'data-menu-toggle') == 'hover') {
+                if (el && KTUtil.hasAttr(el, 'data-menus-toggle') && KTUtil.attr(el, 'data-menus-toggle') == 'hover') {
                     return 'dropdown';
                 }
 
@@ -1627,7 +1627,7 @@ var KTMenu = function(elementId, options) {
         },
 
         /**
-         * Get submenu mode for current breakpoint and menu state
+         * Get submenu mode for current breakpoint and menus state
          * @returns {KTMenu}
          */
         isConditionalSubmenuDropdown: function() {
@@ -1644,7 +1644,7 @@ var KTMenu = function(elementId, options) {
          * @returns {KTMenu}
          */
         resetSubmenuProps: function(e) {
-            var submenus = KTUtil.findAll(element, '.menu-submenu');
+            var submenus = KTUtil.findAll(element, '.menus-submenu');
             if ( submenus ) {
                 for (var i = 0, len = submenus.length; i < len; i++) {
                     var submenu = submenus[0];
@@ -1653,8 +1653,8 @@ var KTMenu = function(elementId, options) {
                     KTUtil.css(submenu, 'overflow', '');
 
                     if (submenu.hasAttribute('data-hor-direction')) {
-                        KTUtil.removeClass(submenu, 'menu-submenu-left');
-                        KTUtil.removeClass(submenu, 'menu-submenu-right');
+                        KTUtil.removeClass(submenu, 'menus-submenu-left');
+                        KTUtil.removeClass(submenu, 'menus-submenu-right');
                         KTUtil.addClass(submenu, submenu.getAttribute('data-hor-direction'));
                     }
                 }
@@ -1720,7 +1720,7 @@ var KTMenu = function(elementId, options) {
                 return;
             }
 
-            var item = this.closest('.menu-item');
+            var item = this.closest('.menus-item');
 
             // Trigger click event handlers
             var result = Plugin.eventTrigger('submenuToggle', this, e);
@@ -1728,15 +1728,15 @@ var KTMenu = function(elementId, options) {
                 return;
             }
 
-            if ( item.getAttribute('data-menu-submenu-mode') == 'accordion' ) {
+            if ( item.getAttribute('data-menus-submenu-mode') == 'accordion' ) {
                 return;
             }
 
-            if ( KTUtil.hasClass(item, 'menu-item-hover') === false ) {
-                KTUtil.addClass(item, 'menu-item-open-dropdown');
+            if ( KTUtil.hasClass(item, 'menus-item-hover') === false ) {
+                KTUtil.addClass(item, 'menus-item-open-dropdown');
                 Plugin.showSubmenuDropdown(item);
             } else {
-                KTUtil.removeClass(item, 'menu-item-open-dropdown' );
+                KTUtil.removeClass(item, 'menus-item-open-dropdown' );
                 Plugin.hideSubmenuDropdown(item, true);
             }
 
@@ -1751,7 +1751,7 @@ var KTMenu = function(elementId, options) {
             if (Plugin.getSubmenuMode(this) === 'accordion') {
                 return;
             }
-            var item = this.closest('.menu-item');
+            var item = this.closest('.menus-item');
 
             // Trigger click event handlers
             var result = Plugin.eventTrigger('submenuToggle', this, e);
@@ -1759,12 +1759,12 @@ var KTMenu = function(elementId, options) {
                 return;
             }
 
-            if (item.getAttribute('data-menu-submenu-mode') == 'accordion') {
+            if (item.getAttribute('data-menus-submenu-mode') == 'accordion') {
                 return;
             }
 
-            if (KTUtil.hasClass(item, 'menu-item-hover') == false) {
-                KTUtil.addClass(item, 'menu-item-open-dropdown');
+            if (KTUtil.hasClass(item, 'menus-item-hover') == false) {
+                KTUtil.addClass(item, 'menus-item-open-dropdown');
                 Plugin.showSubmenuDropdown(item);
             }
 
@@ -1776,7 +1776,7 @@ var KTMenu = function(elementId, options) {
          * @returns {KTMenu}
          */
         handleLinkClick: function(e) {
-            var submenu = this.closest('.menu-item.menu-item-submenu');
+            var submenu = this.closest('.menus-item.menus-item-submenu');
 
             // Trigger click event handlers
             var result = Plugin.eventTrigger('linkClick', this, e);
@@ -1799,10 +1799,10 @@ var KTMenu = function(elementId, options) {
                 return;
             }
 
-            var shown = element.querySelectorAll('.menu-item.menu-item-submenu.menu-item-hover:not(.menu-item-tabs)');
+            var shown = element.querySelectorAll('.menus-item.menus-item-submenu.menus-item-hover:not(.menus-item-tabs)');
 
             // check if currently clicked link's parent item ha
-            if (shown.length > 0 && KTUtil.hasClass(el, 'menu-toggle') === false && el.querySelectorAll('.menu-toggle').length === 0) {
+            if (shown.length > 0 && KTUtil.hasClass(el, 'menus-toggle') === false && el.querySelectorAll('.menus-toggle').length === 0) {
                 // close opened dropdown menus
                 for (var i = 0, len = shown.length; i < len; i++) {
                     Plugin.hideSubmenuDropdown(shown[0], true);
@@ -1824,17 +1824,17 @@ var KTMenu = function(elementId, options) {
                 return;
             }
 
-            if ( Plugin.getSubmenuMode(el) === 'dropdown' && (query = item.closest('.menu-item') ) ) {
-                if (query.getAttribute('data-menu-submenu-mode') != 'accordion' ) {
+            if ( Plugin.getSubmenuMode(el) === 'dropdown' && (query = item.closest('.menus-item') ) ) {
+                if (query.getAttribute('data-menus-submenu-mode') != 'accordion' ) {
                     e.preventDefault();
                     return;
                 }
             }
 
-            var li = item.closest('.menu-item');
-            var submenu = KTUtil.child(li, '.menu-submenu, .menu-inner');
+            var li = item.closest('.menus-item');
+            var submenu = KTUtil.child(li, '.menus-submenu, .menus-inner');
 
-            if (KTUtil.hasClass(item.closest('.menu-item'), 'menu-item-open-always')) {
+            if (KTUtil.hasClass(item.closest('.menus-item'), 'menus-item-open-always')) {
                 return;
             }
 
@@ -1843,20 +1843,20 @@ var KTMenu = function(elementId, options) {
                 var speed = the.options.accordion.slideSpeed;
                 var hasClosables = false;
 
-                if ( KTUtil.hasClass(li, 'menu-item-open') === false ) {
+                if ( KTUtil.hasClass(li, 'menus-item-open') === false ) {
                     // hide other accordions
                     if ( the.options.accordion.expandAll === false ) {
-                        var subnav = item.closest('.menu-nav, .menu-subnav');
-                        var closables = KTUtil.children(subnav, '.menu-item.menu-item-open.menu-item-submenu:not(.menu-item-here):not(.menu-item-open-always)');
+                        var subnav = item.closest('.menus-nav, .menus-subnav');
+                        var closables = KTUtil.children(subnav, '.menus-item.menus-item-open.menus-item-submenu:not(.menus-item-here):not(.menus-item-open-always)');
 
                         if ( subnav && closables ) {
                             for (var i = 0, len = closables.length; i < len; i++) {
                                 var el_ = closables[0];
-                                var submenu_ = KTUtil.child(el_, '.menu-submenu');
+                                var submenu_ = KTUtil.child(el_, '.menus-submenu');
                                 if ( submenu_ ) {
                                     KTUtil.slideUp(submenu_, speed, function() {
                                         Plugin.scrollUpdate();
-                                        KTUtil.removeClass(el_, 'menu-item-open');
+                                        KTUtil.removeClass(el_, 'menus-item-open');
                                     });
                                 }
                             }
@@ -1870,7 +1870,7 @@ var KTMenu = function(elementId, options) {
                         Plugin.eventTrigger('submenuToggle', submenu, e);
                     });
 
-                    KTUtil.addClass(li, 'menu-item-open');
+                    KTUtil.addClass(li, 'menus-item-open');
 
                 } else {
                     KTUtil.slideUp(submenu, speed, function() {
@@ -1879,7 +1879,7 @@ var KTMenu = function(elementId, options) {
                         Plugin.eventTrigger('submenuToggle', submenu, e);
                     });
 
-                    KTUtil.removeClass(li, 'menu-item-open');
+                    KTUtil.removeClass(li, 'menus-item-open');
                 }
             }
         },
@@ -1890,7 +1890,7 @@ var KTMenu = function(elementId, options) {
          */
         scrollToItem: function(item) {
             // handle auto scroll for accordion submenus
-            if ( KTUtil.isBreakpointUp('lg')  && the.options.accordion.autoScroll && element.getAttribute('data-menu-scroll') !== '1' ) {
+            if ( KTUtil.isBreakpointUp('lg')  && the.options.accordion.autoScroll && element.getAttribute('data-menus-scroll') !== '1' ) {
                 KTUtil.scrollTo(item, the.options.accordion.autoScrollSpeed);
             }
         },
@@ -1902,15 +1902,15 @@ var KTMenu = function(elementId, options) {
         hideSubmenuDropdown: function(item, classAlso) {
             // remove submenu activation class
             if ( classAlso ) {
-                KTUtil.removeClass(item, 'menu-item-hover');
-                KTUtil.removeClass(item, 'menu-item-active-tab');
+                KTUtil.removeClass(item, 'menus-item-hover');
+                KTUtil.removeClass(item, 'menus-item-active-tab');
             }
 
             // clear timeout
             item.removeAttribute('data-hover');
 
-            if ( item.getAttribute('data-menu-toggle-class') ) {
-                KTUtil.removeClass(body, item.getAttribute('data-menu-toggle-class'));
+            if ( item.getAttribute('data-menus-toggle-class') ) {
+                KTUtil.removeClass(body, item.getAttribute('data-menus-toggle-class'));
             }
 
             var timeout = item.getAttribute('data-timeout');
@@ -1924,7 +1924,7 @@ var KTMenu = function(elementId, options) {
          */
         hideSubmenuDropdowns: function() {
             var items;
-            if ( items = element.querySelectorAll('.menu-item-submenu.menu-item-hover:not(.menu-item-tabs):not([data-menu-toggle="tab"])') ) {
+            if ( items = element.querySelectorAll('.menus-item-submenu.menus-item-hover:not(.menus-item-tabs):not([data-menus-toggle="tab"])') ) {
                 for (var j = 0, cnt = items.length; j < cnt; j++) {
                     Plugin.hideSubmenuDropdown(items[j], true);
                 }
@@ -1937,7 +1937,7 @@ var KTMenu = function(elementId, options) {
          */
         showSubmenuDropdown: function(item) {
             // close active submenus
-            var list = element.querySelectorAll('.menu-item-submenu.menu-item-hover, .menu-item-submenu.menu-item-active-tab');
+            var list = element.querySelectorAll('.menus-item-submenu.menus-item-hover, .menus-item-submenu.menus-item-active-tab');
 
             if ( list ) {
                 for (var i = 0, len = list.length; i < len; i++) {
@@ -1949,29 +1949,29 @@ var KTMenu = function(elementId, options) {
             }
 
             // add submenu activation class
-            KTUtil.addClass(item, 'menu-item-hover');
+            KTUtil.addClass(item, 'menus-item-hover');
 
             // Change the alignment of submenu is offscreen.
-            var submenu = KTUtil.find(item, '.menu-submenu');
+            var submenu = KTUtil.find(item, '.menus-submenu');
 
             if (submenu && submenu.hasAttribute('data-hor-direction') === false) {
-                if (KTUtil.hasClass(submenu, 'menu-submenu-left')) {
-                    submenu.setAttribute('data-hor-direction', 'menu-submenu-left');
-                } else if (KTUtil.hasClass(submenu, 'menu-submenu-right')) {
-                    submenu.setAttribute('data-hor-direction', 'menu-submenu-right');
+                if (KTUtil.hasClass(submenu, 'menus-submenu-left')) {
+                    submenu.setAttribute('data-hor-direction', 'menus-submenu-left');
+                } else if (KTUtil.hasClass(submenu, 'menus-submenu-right')) {
+                    submenu.setAttribute('data-hor-direction', 'menus-submenu-right');
                 }
             }
 
             if ( submenu && KTUtil.isOffscreen(submenu, 'left', 15) === true ) {
-                KTUtil.removeClass(submenu, 'menu-submenu-left');
-                KTUtil.addClass(submenu, 'menu-submenu-right');
+                KTUtil.removeClass(submenu, 'menus-submenu-left');
+                KTUtil.addClass(submenu, 'menus-submenu-right');
             } else if ( submenu && KTUtil.isOffscreen(submenu, 'right', 15) === true ) {
-                KTUtil.removeClass(submenu, 'menu-submenu-right');
-                KTUtil.addClass(submenu, 'menu-submenu-left');
+                KTUtil.removeClass(submenu, 'menus-submenu-right');
+                KTUtil.addClass(submenu, 'menus-submenu-left');
             }
 
-            if ( item.getAttribute('data-menu-toggle-class') ) {
-                KTUtil.addClass(body, item.getAttribute('data-menu-toggle-class'));
+            if ( item.getAttribute('data-menus-toggle-class') ) {
+                KTUtil.addClass(body, item.getAttribute('data-menus-toggle-class'));
             }
         },
 
@@ -1981,9 +1981,9 @@ var KTMenu = function(elementId, options) {
          */
         createSubmenuDropdownClickDropoff: function(el) {
             var query;
-            var zIndex = (query = KTUtil.child(el, '.menu-submenu') ? KTUtil.css(query, 'z-index') : 0) - 1;
+            var zIndex = (query = KTUtil.child(el, '.menus-submenu') ? KTUtil.css(query, 'z-index') : 0) - 1;
 
-            var dropoff = document.createElement('<div class="menu-dropoff" style="background: transparent; position: fixed; top: 0; bottom: 0; left: 0; right: 0; z-index: ' + zIndex + '"></div>');
+            var dropoff = document.createElement('<div class="menus-dropoff" style="background: transparent; position: fixed; top: 0; bottom: 0; left: 0; right: 0; z-index: ' + zIndex + '"></div>');
 
             body.appendChild(dropoff);
 
@@ -2016,75 +2016,75 @@ var KTMenu = function(elementId, options) {
         },
 
         /**
-         * Reset menu's current active item
+         * Reset menus's current active item
          * @returns {KTMenu}
          */
         resetActiveItem: function(item) {
             var list;
             var parents;
 
-            list = element.querySelectorAll('.menu-item-active');
+            list = element.querySelectorAll('.menus-item-active');
 
             for (var i = 0, len = list.length; i < len; i++) {
                 var el = list[0];
-                KTUtil.removeClass(el, 'menu-item-active');
-                KTUtil.hide( KTUtil.child(el, '.menu-submenu') );
-                parents = KTUtil.parents(el, '.menu-item-submenu') || [];
+                KTUtil.removeClass(el, 'menus-item-active');
+                KTUtil.hide( KTUtil.child(el, '.menus-submenu') );
+                parents = KTUtil.parents(el, '.menus-item-submenu') || [];
 
                 for (var i_ = 0, len_ = parents.length; i_ < len_; i_++) {
                     var el_ = parents[i];
-                    KTUtil.removeClass(el_, 'menu-item-open');
-                    KTUtil.hide( KTUtil.child(el_, '.menu-submenu') );
+                    KTUtil.removeClass(el_, 'menus-item-open');
+                    KTUtil.hide( KTUtil.child(el_, '.menus-submenu') );
                 }
             }
 
             // close open submenus
             if ( the.options.accordion.expandAll === false ) {
-                if ( list = element.querySelectorAll('.menu-item-open') ) {
+                if ( list = element.querySelectorAll('.menus-item-open') ) {
                     for (var i = 0, len = list.length; i < len; i++) {
-                        KTUtil.removeClass(parents[0], 'menu-item-open');
+                        KTUtil.removeClass(parents[0], 'menus-item-open');
                     }
                 }
             }
         },
 
         /**
-         * Sets menu's active item
+         * Sets menus's active item
          * @returns {KTMenu}
          */
         setActiveItem: function(item) {
             // reset current active item
             Plugin.resetActiveItem();
 
-            var parents = KTUtil.parents(item, '.menu-item-submenu') || [];
+            var parents = KTUtil.parents(item, '.menus-item-submenu') || [];
             for (var i = 0, len = parents.length; i < len; i++) {
-                KTUtil.addClass(parents[i], 'menu-item-open');
+                KTUtil.addClass(parents[i], 'menus-item-open');
             }
 
-            KTUtil.addClass(item, 'menu-item-active');
+            KTUtil.addClass(item, 'menus-item-active');
         },
 
         /**
-         * Returns page breadcrumbs for the menu's active item
+         * Returns page breadcrumbs for the menus's active item
          * @returns {KTMenu}
          */
         getBreadcrumbs: function(item) {
             var query;
             var breadcrumbs = [];
-            var link = KTUtil.child(item, '.menu-link');
+            var link = KTUtil.child(item, '.menus-link');
 
             breadcrumbs.push({
-                text: (query = KTUtil.child(link, '.menu-text') ? query.innerHTML : ''),
+                text: (query = KTUtil.child(link, '.menus-text') ? query.innerHTML : ''),
                 title: link.getAttribute('title'),
                 href: link.getAttribute('href')
             });
 
-            var parents = KTUtil.parents(item, '.menu-item-submenu');
+            var parents = KTUtil.parents(item, '.menus-item-submenu');
             for (var i = 0, len = parents.length; i < len; i++) {
-                var submenuLink = KTUtil.child(parents[i], '.menu-link');
+                var submenuLink = KTUtil.child(parents[i], '.menus-link');
 
                 breadcrumbs.push({
-                    text: (query = KTUtil.child(submenuLink, '.menu-text') ? query.innerHTML : ''),
+                    text: (query = KTUtil.child(submenuLink, '.menus-text') ? query.innerHTML : ''),
                     title: submenuLink.getAttribute('title'),
                     href: submenuLink.getAttribute('href')
                 });
@@ -2094,13 +2094,13 @@ var KTMenu = function(elementId, options) {
         },
 
         /**
-         * Returns page title for the menu's active item
+         * Returns page title for the menus's active item
          * @returns {KTMenu}
          */
         getPageTitle: function(item) {
             var query;
 
-            return (query = KTUtil.child(item, '.menu-text') ? query.innerHTML : '');
+            return (query = KTUtil.child(item, '.menus-text') ? query.innerHTML : '');
         },
 
         /**
@@ -2172,7 +2172,7 @@ var KTMenu = function(elementId, options) {
     };
 
     /**
-     * Set active menu item
+     * Set active menus item
      */
     the.setActiveItem = function(item) {
         return Plugin.setActiveItem(item);
@@ -2187,14 +2187,14 @@ var KTMenu = function(elementId, options) {
     };
 
     /**
-     * Set breadcrumb for menu item
+     * Set breadcrumb for menus item
      */
     the.getBreadcrumbs = function(item) {
         return Plugin.getBreadcrumbs(item);
     };
 
     /**
-     * Set page title for menu item
+     * Set page title for menus item
      */
     the.getPageTitle = function(item) {
         return Plugin.getPageTitle(item);
@@ -2224,7 +2224,7 @@ var KTMenu = function(elementId, options) {
     };
 
     /**
-     * Disable menu for given time
+     * Disable menus for given time
      * @returns {Object}
      */
     the.pauseDropdownHover = function(time) {
@@ -2232,7 +2232,7 @@ var KTMenu = function(elementId, options) {
     };
 
     /**
-     * Disable menu for given time
+     * Disable menus for given time
      * @returns {Object}
      */
     the.resumeDropdownHover = function() {
@@ -2284,9 +2284,9 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 document.addEventListener("click", function (e) {
     var body = KTUtil.getByTagName('body')[0];
     var query;
-    if ( query = body.querySelectorAll('.menu-nav .menu-item.menu-item-submenu.menu-item-hover:not(.menu-item-tabs)[data-menu-toggle="click"]') ) {
+    if ( query = body.querySelectorAll('.menus-nav .menus-item.menus-item-submenu.menus-item-hover:not(.menus-item-tabs)[data-menus-toggle="click"]') ) {
         for (var i = 0, len = query.length; i < len; i++) {
-            var element = query[i].closest('.menu-nav').parentNode;
+            var element = query[i].closest('.menus-nav').parentNode;
 
             if ( element ) {
                 var the = KTUtil.data(element).get('menu');
@@ -2816,10 +2816,10 @@ var KTToggle = function(toggleElement, targetElement, options) {
             if (KTUtil.data(element).has('toggle')) {
                 the = KTUtil.data(element).get('toggle');
             } else {
-                // reset menu
+                // reset menus
                 Plugin.init(options);
 
-                // build menu
+                // build menus
                 Plugin.build();
 
                 KTUtil.data(element).set('toggle', the);
@@ -4876,10 +4876,10 @@ var KTWizard = function(elementId, options) {
             if (KTUtil.data(element).has('wizard')) {
                 the = KTUtil.data(element).get('wizard');
             } else {
-                // reset menu
+                // reset menus
                 Plugin.init(options);
 
-                // build menu
+                // build menus
                 Plugin.build();
 
                 KTUtil.data(element).set('wizard', the);
@@ -5553,7 +5553,7 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 			dropdownFix: function() {
 				var dropdownMenu;
 				$('body').on('show.bs.dropdown', '.' + pfx + 'datatable .' + pfx + 'datatable-body', function(e) {
-					dropdownMenu = $(e.target).find('.dropdown-menu');
+					dropdownMenu = $(e.target).find('.dropdown-menus');
 					$('body').append(dropdownMenu.detach());
 					dropdownMenu.css('display', 'block');
 					dropdownMenu.position({
@@ -9268,10 +9268,10 @@ var KTLayoutAsideMenu = function() {
 
 	// Initialize
 	var _init = function() {
-		var menuDesktopMode = (KTUtil.attr(_element, 'data-menu-dropdown') === '1' ? 'dropdown' : 'accordion');
+		var menuDesktopMode = (KTUtil.attr(_element, 'data-menus-dropdown') === '1' ? 'dropdown' : 'accordion');
         var scroll;
 
-		if (KTUtil.attr(_element, 'data-menu-scroll') === '1') {
+		if (KTUtil.attr(_element, 'data-menus-scroll') === '1') {
 			scroll = {
 				rememberPosition: true, // remember position on page reload
 				height: function() { // calculate available scrollable area height
@@ -9295,13 +9295,13 @@ var KTLayoutAsideMenu = function() {
 			// Submenu setup
 			submenu: {
 				desktop: menuDesktopMode,
-				tablet: 'accordion', // menu set to accordion in tablet mode
-				mobile: 'accordion' // menu set to accordion in mobile mode
+				tablet: 'accordion', // menus set to accordion in tablet mode
+				mobile: 'accordion' // menus set to accordion in mobile mode
 			},
 
 			// Accordion setup
 			accordion: {
-				expandAll: false // allow having multiple expanded accordions in the menu
+				expandAll: false // allow having multiple expanded accordions in the menus
 			}
 		});
 	}
@@ -9381,7 +9381,7 @@ var KTLayoutAsideMenu = function() {
                 return;
             }
 
-            // Initialize menu
+            // Initialize menus
             _init();
             _initHover();
 		},
@@ -9434,12 +9434,12 @@ var KTLayoutAsideToggle = function() {
                 KTLayoutStickyCard.update();
             }
 
-            // Pause header menu dropdowns
+            // Pause header menus dropdowns
             if (typeof KTLayoutHeaderMenu !== 'undefined') {
                 KTLayoutHeaderMenu.pauseDropdownHover(800);
             }
 
-            // Pause aside menu dropdowns
+            // Pause aside menus dropdowns
             if (typeof KTLayoutAsideMenu !== 'undefined') {
                 KTLayoutAsideMenu.pauseDropdownHover(800);
             }
@@ -9696,7 +9696,7 @@ var KTLayoutHeaderMenu = function() {
 	var _init = function() {
 		_offcanvasObject = new KTOffcanvas(_offcanvasElement, {
 			overlay: true,
-			baseClass: 'header-menu-wrapper',
+			baseClass: 'header-menus-wrapper',
 			closeBy: 'kt_header_menu_mobile_close_btn',
 			toggleBy: {
 				target: 'kt_header_mobile_toggle',
@@ -9712,7 +9712,7 @@ var KTLayoutHeaderMenu = function() {
 			},
 			accordion: {
 				slideSpeed: 200, // accordion toggle slide speed in milliseconds
-				expandAll: false // allow having multiple expanded accordions in the menu
+				expandAll: false // allow having multiple expanded accordions in the menus
 			}
 		});
 
@@ -9734,7 +9734,7 @@ var KTLayoutHeaderMenu = function() {
                 return;
             }
 
-            // Initialize menu
+            // Initialize menus
             _init();
 		},
 
@@ -11155,7 +11155,7 @@ var KTLayoutSearch = function() {
             _input = KTUtil.find(_target, '.form-control');
             _closeIcon = KTUtil.find(_target, '.quick-search-close');
             _resultWrapper = KTUtil.find(_target, '.quick-search-wrapper');
-            _resultDropdown = KTUtil.find(_target, '.dropdown-menu');
+            _resultDropdown = KTUtil.find(_target, '.dropdown-menus');
             _resultDropdownToggle = KTUtil.find(_target, '[data-toggle="dropdown"]');
             _inputGroup = KTUtil.find(_target, '.input-group');
             _closeIconContainer = KTUtil.find(_target, '.input-group .input-group-append');

@@ -41,7 +41,7 @@ var KTAppsEducationSchoolTeacher = function() {
 					width: 250,
                     template: function(data) {
                         var number = KTUtil.getRandomInt(1, 10);
-                        
+
                         var avatarsGirl = {
                             1: {'file': '002-girl.svg'},
                             2: {'file': '003-girl-1.svg'},
@@ -160,7 +160,7 @@ var KTAppsEducationSchoolTeacher = function() {
 										</svg>\
 									</span>\
 	                            </a>\
-	                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">\
+	                            <div class="dropdown-menus dropdown-menus-sm dropdown-menus-right">\
 	                                <ul class="navi flex-column navi-hover py-2">\
 	                                    <li class="navi-header font-weight-bolder text-uppercase font-size-xs text-primary pb-2">\
 	                                        Choose an action:\

@@ -456,7 +456,7 @@ var KTDatatableModal = function() {
                                     </svg>\
                                 </span>\
                             </a>\
-                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">\
+                            <div class="dropdown-menus dropdown-menus-sm dropdown-menus-right">\
                                 <ul class="navi flex-column navi-hover py-2">\
                                     <li class="navi-header font-weight-bolder text-uppercase font-size-xs text-primary pb-2">\
                                         Choose an action:\
@@ -737,7 +737,7 @@ var KTDatatableModal = function() {
                                     </svg>\
                                 </span>\
                             </a>\
-                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">\
+                            <div class="dropdown-menus dropdown-menus-sm dropdown-menus-right">\
                                 <ul class="navi flex-column navi-hover py-2">\
                                     <li class="navi-header font-weight-bolder text-uppercase font-size-xs text-primary pb-2">\
                                         Choose an action:\

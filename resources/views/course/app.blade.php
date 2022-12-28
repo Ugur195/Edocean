@@ -28,7 +28,7 @@
     <!--begin::Layout Themes(used by all pages)-->
     <link href="{{asset('backendCssJs/assets/css/themes/layout/header/base/light.css')}}" rel="stylesheet"
           type="text/css"/>
-    <link href="{{asset('backendCssJs/assets/css/themes/layout/header/menu/light.css')}}" rel="stylesheet"
+    <link href="{{asset('backendCssJs/assets/css/themes/layout/header/menus/light.css')}}" rel="stylesheet"
           type="text/css"/>
     <link href="{{asset('backendCssJs/assets/css/themes/layout/brand/dark.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('backendCssJs/assets/css/themes/layout/aside/dark.css')}}" rel="stylesheet" type="text/css"/>

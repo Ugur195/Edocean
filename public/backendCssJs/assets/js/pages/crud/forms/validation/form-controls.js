@@ -88,7 +88,7 @@ var KTFormControls = function () {
 							stringLength: {
 								min:50,
 								max:100,
-								message: 'Please enter a menu within text length range 50 and 100'
+								message: 'Please enter a menus within text length range 50 and 100'
 							}
 						}
 					},

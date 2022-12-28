@@ -38,7 +38,7 @@ class HomeGetController extends Controller
         $course = Course::all();
         $teacher = Teacher::all();
         $menu = Menu::where('status', 1)->get();
-        return view('frontend.index')->with(['course' => $course, 'teacher' => $teacher, 'menu' => $menu]);
+        return view('frontend.index')->with(['course' => $course, 'teacher' => $teacher, 'menus' => $menu]);
     }
     //finish home
 
@@ -48,7 +48,7 @@ class HomeGetController extends Controller
     {
         $menu = Menu::where('status', 1)->get();
         $setting = Setting::find(1);
-        return view('frontend.contact_us')->with(['menu' => $menu, 'setting' => $setting]);
+        return view('frontend.contact_us')->with(['menus' => $menu, 'setting' => $setting]);
     }
     //finish ContactUs
 
@@ -57,7 +57,7 @@ class HomeGetController extends Controller
     public function GetSignIn()
     {
         $menu = Menu::where('status', 1)->get();
-        return view('frontend.sign_in')->with(['menu' => $menu]);
+        return view('frontend.sign_in')->with(['menus' => $menu]);
     }
     //finish SignIn
 
@@ -66,7 +66,7 @@ class HomeGetController extends Controller
     public function GetSignUp()
     {
         $menu = Menu::where('status', 1)->get();
-        return view('frontend.sign_up')->with(['menu' => $menu]);
+        return view('frontend.sign_up')->with(['menus' => $menu]);
     }
     //finish SignUp
 
@@ -87,7 +87,7 @@ class HomeGetController extends Controller
         $setting = Setting::find(1);
         $blogs = Blogs::with('admin')->where('status', 1)->get();
         $blog_category = BlogCategory::all();
-        return view('frontend.blogs')->with(['menu' => $menu, 'setting' => $setting, 'blogs' => $blogs,
+        return view('frontend.blogs')->with(['menus' => $menu, 'setting' => $setting, 'blogs' => $blogs,
             'blog_category' => $blog_category]);
     }
 
@@ -97,7 +97,7 @@ class HomeGetController extends Controller
         $menu = Menu::where('status', 1)->get();
         $blogs_category = BlogCategory::find($category);
         $blogs = Blogs::with('admin')->get();
-        return view('frontend.teachers_category')->with(['menu' => $menu, 'setting' => $setting, 'blogs_category' => $blogs_category, 'blogs' => $blogs]);
+        return view('frontend.teachers_category')->with(['menus' => $menu, 'setting' => $setting, 'blogs_category' => $blogs_category, 'blogs' => $blogs]);
     }
 
     public function SingleBlog($id)
@@ -109,7 +109,7 @@ class HomeGetController extends Controller
         $blog_category = BlogCategory::all();
         $about_us = AboutUs::all();
         $blogs_comments = BlogComment::where(['blog_id' => $blogs_id->id, 'status' => 1])->get();
-        return view('frontend.single_blog')->with(['menu' => $menu, 'blogs' => $blogs, 'setting' => $setting,
+        return view('frontend.single_blog')->with(['menus' => $menu, 'blogs' => $blogs, 'setting' => $setting,
             'blog_category' => $blog_category, 'about_us' => $about_us, 'blogs_id' => $blogs_id, 'blogs_comments' => $blogs_comments]);
     }
 
@@ -120,7 +120,7 @@ class HomeGetController extends Controller
         $setting = Setting::find(1);
         $teachers = Teacher::with('subjects')->get();
         $categories = SubjectCategory::all();
-        return view('frontend.teachers')->with(['menu' => $menu, 'setting' => $setting,
+        return view('frontend.teachers')->with(['menus' => $menu, 'setting' => $setting,
             'teacher' => $teachers, 'categories' => $categories]);
     }
 
@@ -130,7 +130,7 @@ class HomeGetController extends Controller
         $setting = Setting::find(1);
         $teacher = Teacher::find($id);
         $categories = SubjectCategory::all();
-        return view('frontend.single_teacher')->with(['menu' => $menu, 'setting' => $setting,
+        return view('frontend.single_teacher')->with(['menus' => $menu, 'setting' => $setting,
             'teacher' => $teacher, 'categories' => $categories]);
     }
 
@@ -141,7 +141,7 @@ class HomeGetController extends Controller
         $subjects_category = SubjectCategory::find($category);
         $category = Teacher::with('subjects')->get();
         $categories = SubjectCategory::all();
-        return view('frontend.teachers_category')->with(['menu' => $menu, 'setting' => $setting, 'subjects_category' => $subjects_category, 'category' => $category, 'categories' => $categories]);
+        return view('frontend.teachers_category')->with(['menus' => $menu, 'setting' => $setting, 'subjects_category' => $subjects_category, 'category' => $category, 'categories' => $categories]);
     }
 
     public function TeachersSubject($category)
@@ -151,7 +151,7 @@ class HomeGetController extends Controller
         $subjects_category = Subjects::find($category);
         $category = Teacher::with('subjects')->get();
         $categories = SubjectCategory::all();
-        return view('frontend.teachers_category')->with(['menu' => $menu, 'setting' => $setting, 'subjects_category' => $subjects_category, 'category' => $category, 'categories' => $categories]);
+        return view('frontend.teachers_category')->with(['menus' => $menu, 'setting' => $setting, 'subjects_category' => $subjects_category, 'category' => $category, 'categories' => $categories]);
     }
 
     public function Students()
@@ -160,7 +160,7 @@ class HomeGetController extends Controller
         $setting = Setting::find(1);
         $students = Student::with('subjects')->get();
         $subjects = SubjectCategory::all();
-        return view('frontend.students')->with(['menu' => $menu, 'setting' => $setting, 'students' => $students, 'subjects' => $subjects]);
+        return view('frontend.students')->with(['menus' => $menu, 'setting' => $setting, 'students' => $students, 'subjects' => $subjects]);
     }
 
     public function SingleStudent($id)
@@ -169,7 +169,7 @@ class HomeGetController extends Controller
         $setting = Setting::find(1);
         $student = Student::find($id);
         $categories = SubjectCategory::all();
-        return view('frontend.single_student')->with(['menu' => $menu, 'setting' => $setting,
+        return view('frontend.single_student')->with(['menus' => $menu, 'setting' => $setting,
             'student' => $student, 'categories' => $categories]);
     }
 
@@ -179,7 +179,7 @@ class HomeGetController extends Controller
         $setting = Setting::find(1);
         $courses = Course::with('subjects')->get();
         $subjects = SubjectCategory::all();
-        return view('frontend.courses')->with(['menu' => $menu, 'setting' => $setting, 'courses' => $courses, "subjects" => $subjects]);
+        return view('frontend.courses')->with(['menus' => $menu, 'setting' => $setting, 'courses' => $courses, "subjects" => $subjects]);
     }
 
 

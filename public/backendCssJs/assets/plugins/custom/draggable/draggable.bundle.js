@@ -4617,7 +4617,7 @@ class MouseSensor extends _Sensor2.default {
     this.mouseDownTimeout = null;
 
     /**
-     * Indicates if context menu has been opened during drag operation
+     * Indicates if context menus has been opened during drag operation
      * @property openedContextMenu
      * @type {Boolean}
      */
@@ -14396,7 +14396,7 @@ class MouseSensor extends _Sensor2.default {
     this.mouseDownTimeout = null;
 
     /**
-     * Indicates if context menu has been opened during drag operation
+     * Indicates if context menus has been opened during drag operation
      * @property openedContextMenu
      * @type {Boolean}
      */
@@ -18352,7 +18352,7 @@ class MouseSensor extends _Sensor2.default {
     this.mouseDownTimeout = null;
 
     /**
-     * Indicates if context menu has been opened during drag operation
+     * Indicates if context menus has been opened during drag operation
      * @property openedContextMenu
      * @type {Boolean}
      */
@@ -22857,7 +22857,7 @@ class MouseSensor extends _Sensor2.default {
     this.mouseDownTimeout = null;
 
     /**
-     * Indicates if context menu has been opened during drag operation
+     * Indicates if context menus has been opened during drag operation
      * @property openedContextMenu
      * @type {Boolean}
      */
@@ -27918,7 +27918,7 @@ class MouseSensor extends _Sensor2.default {
     this.mouseDownTimeout = null;
 
     /**
-     * Indicates if context menu has been opened during drag operation
+     * Indicates if context menus has been opened during drag operation
      * @property openedContextMenu
      * @type {Boolean}
      */
@@ -32888,7 +32888,7 @@ class MouseSensor extends _Sensor2.default {
     this.mouseDownTimeout = null;
 
     /**
-     * Indicates if context menu has been opened during drag operation
+     * Indicates if context menus has been opened during drag operation
      * @property openedContextMenu
      * @type {Boolean}
      */

@@ -26,28 +26,6 @@ use PharIo\Version\Exception;
 
 class AdminPostController extends Controller
 {
-    //Setting
-    public function Setting(Request $request)
-    {
-        try {
-            Setting::where('id', $request->id)->update(['url' => $request->url, 'title' => $request->title, 'description' => $request->description,
-                'description_ru' => $request->description_ru, 'description_en' => $request->description_en, 'keywords' => $request->keywords,
-                'author' => $request->author, 'phone' => $request->phone, 'fax' => $request->fax, 'email' => $request->email, 'address' => $request->address,
-                'country' => $request->country, 'city' => $request->city, 'maps' => $request->maps, 'analytics' => $request->analytics,
-                'facebook' => $request->facebook, 'twitter' => $request->twitter, 'instagram' => $request->instagram, 'youtube' => $request->youtube,
-                'whatsapp' => $request->whatsapp, 'google' => $request->google, 'smpt_user' => $request->smpt_user, 'smpt_password' => $request->smpt_password,
-                'host' => $request->host, 'port' => $request->port]);
-            if (isset($request->logo)) {
-                Setting::where('id', $request->id)->update(['logo' => file_get_contents($request->file('logo'))]);
-            }
-            return response(['title' => 'Ugurlu!', 'message' => 'Setting update oldu', 'status' => 'success']);
-        } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => 'Update ugursuz alindi!', 'status' => 'error']);
-        }
-
-    }
-    //finish Setting
-
 
     //About_Us
     public function AboutUs(Request $request)
@@ -492,30 +470,5 @@ class AdminPostController extends Controller
     }
     //finish BlogComment
 
-    //Menu
-
-    public function MenuEdit(Request $request)
-    {
-        try {
-            Menu::where('id', $request->id)->update(['name' => $request->name, 'page' => $request->page,
-                'slug' => $request->slug, 'status' => $request->status]);
-            return response(['title' => 'Ugurlu!', 'message' => 'Menu update oldu', 'status' => 'success']);
-        } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => 'Menu update olmadi', 'status' => 'error']);
-        }
-    }
-
-    public function MenuDelete(Request $request)
-    {
-        try {
-            Menu::where('id', $request->id)->delete();
-            return response(['title' => 'Ugurlu!', 'message' => 'Menu Silindi', 'status' => 'success']);
-        } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => 'Menu silmek olmur!', 'status' => 'error']);
-        }
-
-    }
-
-    //finish Menu
 
 }

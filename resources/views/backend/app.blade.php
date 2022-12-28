@@ -428,9 +428,9 @@
                         </li>
 
 
-                        <li class="menu-item  @if(Request::url()==url('admin/menu')) menu-item-active @endif "
+                        <li class="menu-item  @if(Request::url()==url('admin/menus')) menu-item-active @endif "
                             aria-haspopup="true">
-                            <a href="{{url('admin/menu')}}" class="menu-link">
+                            <a href="{{url('admin/menus')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"

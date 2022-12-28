@@ -30,13 +30,6 @@ class AdminGetController extends Controller
     //finish Home
 
 
-    //Setting
-    public function Setting()
-    {
-        $setting = Setting::find(1);
-        return view('backend.setting')->with(['setting' => $setting]);
-    }
-    //finish Setting
 
 
     //AboutUs
@@ -389,35 +382,5 @@ class AdminGetController extends Controller
     }
     //finish BlogComment
 
-
-    //Menu
-    public function Menu()
-    {
-        return view('backend.menu');
-    }
-
-    public function getMenu()
-    {
-        $menu = DB::table('edocean.menu')->select(DB::raw("id, name, page, slug,created_at,updated_at,
-        (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
-        return DataTables::of($menu)
-            ->addColumn('options', function ($model) {
-                return
-                    '<a class="btn btn-xs btn-primary" href="' . route('admin.backend.menu_edit', $model->id) . '" ><i class="la la-pencil-square-o"></i></a>
-			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger" ><i class="la la-trash"></i></button>';
-            })->rawColumns(['options' => true])->make(true);
-    }
-
-    public function AddMenu()
-    {
-        return view('backend.add_menu');
-    }
-
-    public function MenuEdit($id)
-    {
-        $menu_edit = Menu::find($id);
-        return view('backend.menu_edit')->with(['menu_edit' => $menu_edit]);
-    }
-    //finish Menu
 
 }

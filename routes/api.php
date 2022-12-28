@@ -1,11 +1,12 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\AdminGetController;
 use App\Http\Controllers\CourseGetController;
-use App\Http\Controllers\TeacherGetController;
 use App\Http\Controllers\StudentGetController;
+use App\Http\Controllers\TeacherGetController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,4 +36,4 @@ Route::get('blogs', [AdminGetController::class, 'getBlogs']);
 Route::get('admins', [AdminGetController::class, 'getAdminsProject']);
 Route::get('blog_category', [AdminGetController::class, 'getBlogCategory']);
 Route::get('blog_comment', [AdminGetController::class, 'getBlogComment']);
-Route::get('menu', [AdminGetController::class, 'getMenu']);
+Route::get('menus', [MenuController::class, 'getMenu']);

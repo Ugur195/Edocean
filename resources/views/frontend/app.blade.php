@@ -19,7 +19,7 @@
         <a href="/"><img class="edocean-logo" src="/frontendCss/images/edocean-logo.jpeg" alt=""></a>
         <div class="navbar-desktop">
             <ul class="navbar-nav pe-3">
-                @foreach($menu as $m)
+                @foreach($menus as $m)
                     <li class="nav-item">
                         <a class="nav-link" href="/{{$m->page}}">{{$m->name}} </a>
                     </li>

@@ -1889,7 +1889,7 @@
 
       if (this.disabled // Handle mouse event and pointer event and ignore touch event
       || (event.type === 'mousedown' || event.type === 'pointerdown' && event.pointerType === 'mouse') && ( // No primary button (Usually the left button)
-      isNumber(buttons) && buttons !== 1 || isNumber(button) && button !== 0 // Open context menu
+      isNumber(buttons) && buttons !== 1 || isNumber(button) && button !== 0 // Open context menus
       || event.ctrlKey)) {
         return;
       }
