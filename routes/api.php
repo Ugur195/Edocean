@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\{
+    MenuController,ContactUsController
+};
 use App\Http\Controllers\AdminGetController;
 use App\Http\Controllers\CourseGetController;
 use App\Http\Controllers\StudentGetController;
@@ -23,7 +25,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('contact_us', [AdminGetController::class, 'getContactUs']);
+Route::get('contact_us', [ContactUsController::class, 'getContactUs']);
+Route::get('menus', [MenuController::class, 'getMenu']);
 Route::get('teacher', [AdminGetController::class, 'getTeacher']);
 Route::get('student', [AdminGetController::class, 'getStudent']);
 Route::get('student_course', [StudentGetController::class, 'getStudentCourse']);
@@ -36,4 +39,4 @@ Route::get('blogs', [AdminGetController::class, 'getBlogs']);
 Route::get('admins', [AdminGetController::class, 'getAdminsProject']);
 Route::get('blog_category', [AdminGetController::class, 'getBlogCategory']);
 Route::get('blog_comment', [AdminGetController::class, 'getBlogComment']);
-Route::get('menus', [MenuController::class, 'getMenu']);
+

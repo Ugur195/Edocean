@@ -60,10 +60,9 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id):View
+    public function show($id)
     {
-//        $menu_edit = Menu::find($id);
-//        return view('backend.menus.edit')->with(['menu_edit' => $menu_edit]);
+
     }
 
     /**

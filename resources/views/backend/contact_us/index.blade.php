@@ -67,7 +67,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
+                <table class="table table-separate table-head-custom table-checkable" id="kt_datatable" >
                     <thead>
                     <tr>
                         <th>ID</th>
@@ -111,7 +111,8 @@
     <script>
         function sil(setir, id) {
             var sira = setir.parentNode.parentNode.rowIndex;
-            console.log(sira);
+            let action = $(setir).data('action');
+            console.log(sira, {action});
             swal.fire({
                 title: 'Silmek Isteyirsinizmi?',
                 text: 'Sildikden sonra berpa etmek olmayacaq!',
@@ -126,11 +127,12 @@
                 if (result.isConfirmed) {
                     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content')
                     $.ajax({
-                        type: "Post",
-                        url: '',
+                        type: "post",
+                        url: action,
                         data: {
                             'id': id,
-                            '_token': CSRF_TOKEN
+                            '_token': CSRF_TOKEN,
+                            '_method': 'delete'
                         },
 
                         success: function (response) {
@@ -154,6 +156,5 @@
                 }
             })
         }
-
     </script>
 @endsection

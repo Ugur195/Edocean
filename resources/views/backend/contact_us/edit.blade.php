@@ -13,8 +13,10 @@
                         </div>
                     </div>
                     <!--begin::Form-->
-                    <form id="MyMessages" method="POST" class="form">
-                        {{csrf_field()}}
+                    <form id="MyMessages" action="{{route('admin.contact_us.update',$messages_edit->id)}}" method="POST"
+                          class="form">
+                        @method('put')
+                        @csrf
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-xl-3"></div>
@@ -38,13 +40,14 @@
                                         <label>Subject</label>
                                         <input type="text" value="{{$messages_edit->subject}}"
                                                class="form-control form-control-solid form-control-lg"
-                                                readonly/>
+                                               readonly/>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="exampleTextarea">Message</label>
                                         <textarea class="form-control form-control-solid form-control-lg"
-                                                  id="exampleTextarea" rows="3" readonly>{{$messages_edit->message}} </textarea>
+                                                  id="exampleTextarea" rows="3"
+                                                  readonly>{{$messages_edit->message}} </textarea>
                                     </div>
 
                                     <div class="form-group">

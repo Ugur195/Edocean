@@ -59,7 +59,6 @@
                         </div>
                         <!--end::Dropdown Menu-->
                     </div>
-                    <!--end::Dropdown-->
                     <!--begin::Button-->
                     <a href="{{route('admin.menus.store')}}" class="btn btn-primary font-weight-bolder">
                         <i class="la la-plus"></i>Add Menu</a>

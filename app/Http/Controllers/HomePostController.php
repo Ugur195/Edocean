@@ -18,37 +18,37 @@ use PHPUnit\Exception;
 class HomePostController extends Controller
 {
     //ContactUs
-    public function PostContactUs(Request $request)
-    {
-        try {
-
-            $validate = Validator::make($request->all(), [
-                'full_name' => 'required|string',
-                'email' => 'required|email|unique:contact_us,email',
-                'subject' => 'required|string',
-                'message' => 'required|string'
-            ]);
-
-
-            if ($validate->fails()) {
-                return response(['title' => 'Ugursuz!', 'message' => 'Melumat gondermek mumkun olmadi', 'status' => 'validation-error',
-                    'errors' => $validate->errors()]);
-            }
-            $contact_us = new ContactUs();
-            $contact_us->full_name = $request->full_name;
-            $contact_us->subject = $request->subject;
-            $contact_us->email = $request->email;
-            $contact_us->message = $request->message;
-            $contact_us->read_unread = 0;
-            $contact_us->status = 1;
-            $contact_us->save();
-            return response(['title' => 'Ugurlu!', 'message' => 'Mesajiniz gonderildi,tezlikle elaqe saxliyaciyiq!', 'status' => 'success']);
-
-        } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => 'Mesajiniz gonderilmedi!', 'status' => 'error']);
-        }
-
-    }
+//    public function PostContactUs(Request $request)
+//    {
+//        try {
+//
+//            $validate = Validator::make($request->all(), [
+//                'full_name' => 'required|string',
+//                'email' => 'required|email|unique:contact_us,email',
+//                'subject' => 'required|string',
+//                'message' => 'required|string'
+//            ]);
+//
+//
+//            if ($validate->fails()) {
+//                return response(['title' => 'Ugursuz!', 'message' => 'Melumat gondermek mumkun olmadi', 'status' => 'validation-error',
+//                    'errors' => $validate->errors()]);
+//            }
+//            $contact_us = new ContactUs();
+//            $contact_us->full_name = $request->full_name;
+//            $contact_us->subject = $request->subject;
+//            $contact_us->email = $request->email;
+//            $contact_us->message = $request->message;
+//            $contact_us->read_unread = 0;
+//            $contact_us->status = 1;
+//            $contact_us->save();
+//            return response(['title' => 'Ugurlu!', 'message' => 'Mesajiniz gonderildi,tezlikle elaqe saxliyaciyiq!', 'status' => 'success']);
+//
+//        } catch (\Exception $exception) {
+//            return response(['title' => 'Ugursuz!', 'message' => 'Mesajiniz gonderilmedi!', 'status' => 'error']);
+//        }
+//
+//    }
     //finish ContactUs
 
 

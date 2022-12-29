@@ -43,14 +43,14 @@ class HomeGetController extends Controller
     //finish home
 
 
-    //ContactUs
-    public function GetContactUs()
-    {
-        $menu = Menu::where('status', 1)->get();
-        $setting = Setting::find(1);
-        return view('frontend.contact_us')->with(['menus' => $menu, 'setting' => $setting]);
-    }
-    //finish ContactUs
+//    //ContactUs
+//    public function GetContactUs()
+//    {
+//        $menu = Menu::where('status', 1)->get();
+//        $setting = Setting::find(1);
+//        return view('frontend.contact_us')->with(['menus' => $menu, 'setting' => $setting]);
+//    }
+//    //finish ContactUs
 
 
     //SignIn

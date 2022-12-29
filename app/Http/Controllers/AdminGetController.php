@@ -30,48 +30,6 @@ class AdminGetController extends Controller
     //finish Home
 
 
-
-
-    //AboutUs
-    public function AboutUs()
-    {
-        $about_us = AboutUs::find(1);
-        return view('backend.about_us')->with(['about_us' => $about_us]);
-    }
-    //finish AboutUs
-
-
-    //ContactUs/Messages
-    public function ContactUs()
-    {
-        return view('backend.contact_us');
-    }
-
-    public function getContactUs()
-    {
-        $contact_us = DB::table('edocean.contact_us')->select(DB::raw("id, full_name, subject, message, email,
-        (CASE read_unread WHEN  0 then 'Oxunmayib' WHEN 1 then 'Oxunub' END) as read_unread,
-        (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
-        return DataTables::of($contact_us)
-            ->addColumn('options', function ($model) {
-                return
-                    '<a class="btn btn-xs btn-primary" href="' . route('admin.messages_edit', $model->id) . '" ><i class="la la-pencil-square-o"></i></a>
-			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger" ><i class="la la-trash"></i></button>';
-            })->rawColumns(['options' => true])->make(true);
-    }
-
-    public function MessagesEdit($id)
-    {
-        $contact_us = ContactUs::all();
-        $messages_edit = ContactUs::where('id', $id)->first();
-        if ($messages_edit->read_unread == 0) {
-            ContactUs::where('id', $id)->update(['read_unread' => 1]);
-        }
-        return view('backend.messages_edit')->with(['contact_us' => $contact_us, 'messages_edit' => $messages_edit]);
-    }
-    //finish ContactUs/Messages
-
-
     //Admin
     public function Admins()
     {

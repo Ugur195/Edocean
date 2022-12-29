@@ -1,7 +1,13 @@
 <?php
 
 use App\Http\Controllers\Admin\{
-    MenuController, SettingController
+    MenuController,
+    SettingController,
+    AboutUsController,
+    ContactUsController
+};
+use App\Http\Controllers\Frontend\{
+  ContactUsController as ContactUsFrontController
 };
 use App\Http\Controllers\AdminGetController;
 use App\Http\Controllers\AdminPostController;
@@ -34,7 +40,8 @@ use Illuminate\Support\Facades\Route;
 
 // front end
 Route::get('/', [HomeGetController::class, 'home'])->name('home');
-Route::get('/contact_us', [HomeGetController::class, 'GetContactUs']);
+Route::get('contact_us',[ContactUsFrontController::class, 'index']);
+Route::post('contact_us/send_message',[ContactUsFrontController::class, 'sendMessage'])->name('contact_us.send_message');
 Route::get('/sign_in', [HomeGetController::class, 'GetSignIn'])->name('sign_in')->middleware('guest');
 Route::get('/sign_up', [HomeGetController::class, 'GetSignUp'])->name('sign_up')->middleware('guest');
 Route::get('/logout', [HomeGetController::class, 'GetLogout'])->name('logout');
@@ -52,7 +59,6 @@ Route::get('/courses', [HomeGetController::class, 'Courses']);
 
 Route::post('/sign_in', [HomePostController::class, 'PostSignIn']);
 Route::post('/sign_up', [HomePostController::class, 'PostSignUp']);
-Route::post('/contact_us', [HomePostController::class, 'PostContactUs']);
 Route::post('/single_blog/{id}', [HomePostController::class, 'SingleBlog']);
 
 
@@ -60,9 +66,6 @@ Route::post('/single_blog/{id}', [HomePostController::class, 'SingleBlog']);
 Route::prefix('admin')->middleware(['Admin', 'permission:1'])->group(function () {
     Route::get('/index', [AdminGetController::class, 'home']);
     Route::get('/admins', [AdminGetController::class, 'Admins']);
-    Route::get('/contact_us', [AdminGetController::class, 'ContactUs']);
-    Route::get('/messages_edit/{id}', [AdminGetController::class, 'MessagesEdit'])->name('admin.messages_edit');
-    Route::get('/about_us', [AdminGetController::class, 'AboutUs']);
     Route::get('/teacher', [AdminGetController::class, 'Teacher'])->name('AdminTeacher');
     Route::get('/teacher_edit/{id}', [AdminGetController::class, 'TeacherEdit'])->name('admin.backend.teacher_edit');
     Route::get('/student', [AdminGetController::class, 'Student'])->name('AdminStudent');
@@ -83,12 +86,11 @@ Route::prefix('admin')->middleware(['Admin', 'permission:1'])->group(function ()
     Route::name('admin.')->group(function () {
         Route::resource('menus', MenuController::class);
         Route::resource('setting', SettingController::class);
+        Route::resource('about_us', AboutUsController::class);
+        Route::resource('contact_us', ContactUsController::class);
     });
 
 
-    Route::post('/about_us', [AdminPostController::class, 'AboutUs']);
-    Route::post('/messages_edit/{id}', [AdminPostController::class, 'MessagesEdit']);
-    Route::post('/contact_us', [AdminPostController::class, 'ContactUsDelete']);
     Route::post('/teacher', [AdminPostController::class, 'TeachersBlockUnblockDelete']);
     Route::post('/student', [AdminPostController::class, 'StudentsBlockUnblockDelete']);
     Route::post('/course', [AdminPostController::class, 'CoursesBlockUnblockDelete']);

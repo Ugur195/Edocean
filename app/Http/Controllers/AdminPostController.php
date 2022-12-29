@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AboutUs;
+
 use App\Models\Admin;
 use App\Models\BlogCategory;
 use App\Models\BlogComment;
 use App\Models\Blogs;
-use App\Models\ContactUs;
 use App\Models\Course;
-use App\Models\Menu;
-use App\Models\Setting;
 use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\User;
@@ -26,52 +23,6 @@ use PharIo\Version\Exception;
 
 class AdminPostController extends Controller
 {
-
-    //About_Us
-    public function AboutUs(Request $request)
-    {
-        try {
-            AboutUs::where('id', $request->id)->update(['our_responsib' => $request->our_responsib, 'our_responsib_ru' => $request->our_responsib_ru,
-                'our_responsib_en' => $request->our_responsib_en, 'content_az' => $request->content_az, 'content_ru' => $request->content_ru, 'content_en' =>
-                    $request->content_en, 'video_link' => $request->video_link, 'video_sub_title' => $request->video_sub_title, 'video_sub_title_ru' => $request->
-                video_sub_title_ru, 'video_sub_title_en' => $request->video_sub_title_en, 'our_purpose' => $request->our_purpose,
-                'our_purpose_ru' => $request->our_purpose_ru, 'our_purpose_en' => $request->our_purpose_en]);
-            return response(['title' => 'Ugurlu!', 'message' => 'About Us update oldu', 'status' => 'success']);
-
-        } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => 'Update ugursuz alindi!', 'status' => 'error']);
-        }
-    }
-    //finish About_Us
-
-
-    //ContactUs/Messages
-    public function MessagesEdit(Request $request)
-    {
-        try {
-            Mail::send('emails.mesaj_gonder', ['msg' => 'Answer: ' . $request->answer], function ($message) use ($request) {
-                $message->to($request->email, $request->full_name)->subject('Mail linki');
-                $message->from('edocean_course@mail.ru', 'Edocean Course');
-            });
-            return response(['title' => 'Ugurlu!', 'message' => 'Mesajiniz gonderildi!', 'status' => 'success']);
-        } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => 'Mesajinizi gondermek mumkun olmadi', 'status' => 'error']);
-        }
-    }
-
-    public function ContactUsDelete(Request $request)
-    {
-        try {
-            ContactUs::where('id', $request->id)->delete();
-            return response(['title' => 'Ugurlu!', 'message' => 'Mesaj Silindi', 'status' => 'success']);
-        } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => 'Mesaji silmek olmur!', 'status' => 'error']);
-        }
-
-    }
-    //finish ContactUs/Messages
-
-
     //Student
     public function StudentsBlockUnblockDelete(Request $request)
     {
