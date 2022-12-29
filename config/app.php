@@ -177,6 +177,10 @@ return [
         App\Providers\RouteServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
 
+        /*
+         * Custom Service Providers
+         */
+        App\Providers\ViewServiceProvider::class
     ],
 
     /*

@@ -1,13 +1,13 @@
 <?php
 
 use App\Http\Controllers\Admin\{
-    MenuController,
-    SettingController,
-    AboutUsController,
-    ContactUsController
+    MenuController, SettingController,
+    AboutUsController, ContactUsController,
+    AuthController
 };
 use App\Http\Controllers\Frontend\{
-  ContactUsController as ContactUsFrontController
+  ContactUsController as ContactUsFrontController,
+    AuthController as AuthFrontController
 };
 use App\Http\Controllers\AdminGetController;
 use App\Http\Controllers\AdminPostController;
@@ -42,9 +42,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeGetController::class, 'home'])->name('home');
 Route::get('contact_us',[ContactUsFrontController::class, 'index']);
 Route::post('contact_us/send_message',[ContactUsFrontController::class, 'sendMessage'])->name('contact_us.send_message');
-Route::get('/sign_in', [HomeGetController::class, 'GetSignIn'])->name('sign_in')->middleware('guest');
-Route::get('/sign_up', [HomeGetController::class, 'GetSignUp'])->name('sign_up')->middleware('guest');
-Route::get('/logout', [HomeGetController::class, 'GetLogout'])->name('logout');
+Route::get('/login', [AuthFrontController::class, 'login'])->name('login')->middleware('guest');
+Route::get('/register', [AuthFrontController::class, 'register'])->name('register')->middleware('guest');
+Route::get('/logout', [AuthFrontController::class, 'logout'])->name('logout');
+Route::post('/login/user', [AuthFrontController::class, 'loginUser'])->name('login.user');
+Route::post('/register/user', [AuthFrontController::class, 'registerUser'])->name('register.user');
 Route::get('/blogs', [HomeGetController::class, 'Blogs']);
 Route::get('/blogs/category/{category}', [HomeGetController::class, 'BlogsCategory'])->name('blogs_category');
 Route::get('/single_blog/{id}', [HomeGetController::class, 'SingleBlog']);
@@ -57,9 +59,9 @@ Route::get('/single_student/{id}', [HomeGetController::class, 'SingleStudent'])-
 Route::get('/courses', [HomeGetController::class, 'Courses']);
 
 
-Route::post('/sign_in', [HomePostController::class, 'PostSignIn']);
-Route::post('/sign_up', [HomePostController::class, 'PostSignUp']);
-Route::post('/single_blog/{id}', [HomePostController::class, 'SingleBlog']);
+//Route::post('/sign_in', [HomePostController::class, 'PostSignIn']);
+//Route::post('/sign_up', [HomePostController::class, 'PostSignUp']);
+//Route::post('/single_blog/{id}', [HomePostController::class, 'SingleBlog']);
 
 
 //admin

@@ -61,7 +61,7 @@
                         </ul>
                     </div>
                 @else
-                    <button class="btn login-btnn" type="button"><a href="{{route('sign_in')}}">Daxil ol</a></button>
+                    <button class="btn login-btnn" type="button"><a href="{{route('login')}}">Daxil ol</a></button>
                 @endif
             </div>
         </div>

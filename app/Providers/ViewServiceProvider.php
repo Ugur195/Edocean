@@ -6,7 +6,7 @@ use App\Models\Menu;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View;
 
-class AppServiceProvider extends ServiceProvider
+class ViewServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
@@ -25,6 +25,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-       //
+        view()->composer('*', function ($view)
+        {
+            $menu = Menu::where('status', 1)->get();
+
+            $view->with('menus', $menu);
+        });
     }
 }

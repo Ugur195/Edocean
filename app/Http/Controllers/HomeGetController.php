@@ -42,44 +42,33 @@ class HomeGetController extends Controller
     }
     //finish home
 
-
-//    //ContactUs
-//    public function GetContactUs()
+//
+//    //SignIn
+//    public function GetSignIn()
 //    {
 //        $menu = Menu::where('status', 1)->get();
-//        $setting = Setting::find(1);
-//        return view('frontend.contact_us')->with(['menus' => $menu, 'setting' => $setting]);
+//        return view('frontend.sign_in')->with(['menus' => $menu]);
 //    }
-//    //finish ContactUs
-
-
-    //SignIn
-    public function GetSignIn()
-    {
-        $menu = Menu::where('status', 1)->get();
-        return view('frontend.sign_in')->with(['menus' => $menu]);
-    }
-    //finish SignIn
-
-
-    //SignUp
-    public function GetSignUp()
-    {
-        $menu = Menu::where('status', 1)->get();
-        return view('frontend.sign_up')->with(['menus' => $menu]);
-    }
-    //finish SignUp
-
-
-    //Logout
-    public function GetLogout()
-    {
-        Session::flush();
-        Auth::logout();
-        return redirect('/');
-    }
-
-    //finish Logout
+//    //finish SignIn
+//
+//
+//    //SignUp
+//    public function GetSignUp()
+//    {
+//        $menu = Menu::where('status', 1)->get();
+//        return view('frontend.sign_up')->with(['menus' => $menu]);
+//    }
+//    //finish SignUp
+//
+//
+//    //Logout
+//    public function GetLogout()
+//    {
+//        Session::flush();
+//        Auth::logout();
+//        return redirect('/');
+//    }
+//    //finish Logout
 
     public function Blogs()
     {

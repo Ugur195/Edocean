@@ -9,7 +9,7 @@
         <img class="man-1" src="./frontendCss/images/man-1.png" alt="">
         <img class="man-2" src="./frontendCss/images/man-2.png" alt="">
         <img class="sign-up-img" src="./frontendCss/images/sign-up.png" alt="">
-        <form id="formSignUp" class="login-form" method="POST">
+        <form id="formSignUp" class="login-form" action="{{route('register.user')}}" method="POST">
             @csrf
             <h2 class="login-h2">Qeydiyyat</h2>
             <div class="login-form-div">
@@ -66,7 +66,7 @@
                 </div>
                 <div class="btn-and-txt">
                     <button class="btn login-submit" id="submit-btn" type="button">Qeydiyyatdan Keç</button>
-                    <a href="{{url('sign_in')}}">Giriş</a>
+                    <a href="{{url('login')}}">Giriş</a>
                 </div>
             </div>
         </form>
@@ -108,7 +108,7 @@
                                     allowOutsideClick: false,
                                 })
                                 if(response.status === 'success') {
-                                    window.location.href = '/sign_in';
+                                    window.location.href = '/login';
                                 }
                         }
                     }
