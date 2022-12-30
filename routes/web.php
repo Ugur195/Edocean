@@ -47,9 +47,12 @@ Route::get('/register', [AuthFrontController::class, 'register'])->name('registe
 Route::get('/logout', [AuthFrontController::class, 'logout'])->name('logout');
 Route::post('/login/user', [AuthFrontController::class, 'loginUser'])->name('login.user');
 Route::post('/register/user', [AuthFrontController::class, 'registerUser'])->name('register.user');
+
 Route::get('/blogs', [HomeGetController::class, 'Blogs']);
 Route::get('/blogs/category/{category}', [HomeGetController::class, 'BlogsCategory'])->name('blogs_category');
 Route::get('/single_blog/{id}', [HomeGetController::class, 'SingleBlog']);
+Route::post('/single_blog/{id}', [HomePostController::class, 'SingleBlog']);
+
 Route::get('/teachers', [HomeGetController::class, 'Teachers']);
 Route::get('/single_teacher/{id}', [HomeGetController::class, 'SingleTeacher'])->name('single_teacher');
 Route::get('/teachers/category/{category}', [HomeGetController::class, 'TeachersCategory'])->name('subjects_category');
@@ -59,9 +62,6 @@ Route::get('/single_student/{id}', [HomeGetController::class, 'SingleStudent'])-
 Route::get('/courses', [HomeGetController::class, 'Courses']);
 
 
-//Route::post('/sign_in', [HomePostController::class, 'PostSignIn']);
-//Route::post('/sign_up', [HomePostController::class, 'PostSignUp']);
-//Route::post('/single_blog/{id}', [HomePostController::class, 'SingleBlog']);
 
 
 //admin
@@ -74,14 +74,29 @@ Route::prefix('admin')->middleware(['Admin', 'permission:1'])->group(function ()
     Route::get('/student_edit/{id}', [AdminGetController::class, 'StudentEdit'])->name('admin.backend.student_edit');
     Route::get('/course', [AdminGetController::class, 'Course'])->name('AdminCourse');
     Route::get('/course_edit/{id}', [AdminGetController::class, 'CourseEdit'])->name('admin.backend.course_edit');
+
     Route::get('/blogs', [AdminGetController::class, 'Blogs'])->name('AdminBlogs');
+    Route::post('/blogs', [AdminPostController::class, 'BlogsBlockUnblockDelete']);
     Route::get('/blogs_add', [AdminGetController::class, 'AddBlogs'])->name('BlogsAdd');
+    Route::post('/blogs_add', [AdminPostController::class, 'BlogsAdd'])->name('admin.add.blog');
     Route::get('/blogs_edit/{id}', [AdminGetController::class, 'BlogsEdit'])->name('admin.backend.blogs_edit');
-    Route::get('/blog_comment', [AdminGetController::class, 'BlogComment'])->name('AdminBlogComment');
+    Route::post('/blogs_edit/{id}', [AdminPostController::class, 'BlogsEdit'])->name('admin.edit.blog');
+    Route::post('/blogs_image_delete', [AdminPostController::class, 'BlogsImageDelete']);
+
     Route::get('/blog_category', [AdminGetController::class, 'BlogCategory'])->name('AdminBlogCategory');
+    Route::post('/blog_category', [AdminPostController::class, 'BlogCategoryDelete']);
     Route::get('/blog_category_edit/{id}', [AdminGetController::class, 'BlogCategoryEdit'])->name('admin.backend.blog_category_edit');
+    Route::post('/blog_category_edit/{id}', [AdminPostController::class, 'BlogCategoryEdit']);
     Route::get('/add_blog_category', [AdminGetController::class, 'AddBlogCategory'])->name('AddBlogCategory');
+    Route::post('/add_blog_category', [AdminPostController::class, 'AddBlogCategory']);
+
+    Route::get('/blog_comment', [AdminGetController::class, 'BlogComment'])->name('AdminBlogComment');
+    Route::post('/blog_comment', [AdminPostController::class, 'BlogCommentPublishUnpublishDelete']);
     Route::get('/blog_comment_edit/{id}', [AdminGetController::class, 'BlogCommentEdit'])->name('admin.backend.blog_comment_edit');
+
+
+
+
     Route::get('/admins', [AdminGetController::class, 'AdminsProject'])->name('AdminEdocean');
     Route::get('/add_admins', [AdminGetController::class, 'AddAdmin'])->name('AddAdmin');
     Route::get('/admins_edit/{id}', [AdminGetController::class, 'AdminsEditProject'])->name('admin.backend.admins_edit');
@@ -96,18 +111,9 @@ Route::prefix('admin')->middleware(['Admin', 'permission:1'])->group(function ()
     Route::post('/teacher', [AdminPostController::class, 'TeachersBlockUnblockDelete']);
     Route::post('/student', [AdminPostController::class, 'StudentsBlockUnblockDelete']);
     Route::post('/course', [AdminPostController::class, 'CoursesBlockUnblockDelete']);
-    Route::post('/blogs', [AdminPostController::class, 'BlogsBlockUnblockDelete']);
-    Route::post('/blogs_image_delete', [AdminPostController::class, 'BlogsImageDelete']);
-    Route::post('/blogs_edit/{id}', [AdminPostController::class, 'BlogsEdit'])->name('admin.edit.blog');
-    Route::post('/blogs_add', [AdminPostController::class, 'BlogsAdd'])->name('admin.add.blog');
-    Route::post('/blog_category', [AdminPostController::class, 'BlogCategoryDelete']);
-    Route::post('/blog_category_edit/{id}', [AdminPostController::class, 'BlogCategoryEdit']);
-    Route::post('/add_blog_category', [AdminPostController::class, 'AddBlogCategory']);
     Route::post('/add_admins', [AdminPostController::class, 'AddAdmin']);
     Route::post('/admins', [AdminPostController::class, 'AdminsBlockUnblockDelete']);
     Route::post('/admins_edit/{id}', [AdminPostController::class, 'AdminEdit']);
-    Route::post('/blog_comment', [AdminPostController::class, 'BlogCommentPublishUnpublishDelete']);
-
 });
 
 Route::middleware('auth', 'verified')->group(function () {

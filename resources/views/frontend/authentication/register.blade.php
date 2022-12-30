@@ -66,7 +66,7 @@
                 </div>
                 <div class="btn-and-txt">
                     <button class="btn login-submit" id="submit-btn" type="button">Qeydiyyatdan Keç</button>
-                    <a href="{{url('login')}}">Giriş</a>
+                    <a href="{{route('login')}}">Giriş</a>
                 </div>
             </div>
         </form>
