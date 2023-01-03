@@ -31,8 +31,8 @@
                         <div class="tab-content pt-5">
                             <!--begin::Tab Content-->
                             <div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
-                                <form action="{{route('admin.add.blog')}}" id="myAddBlog" class="form" method="POST" enctype="multipart/form-data">
-                                    {{csrf_field()}}
+                                <form action="{{route('admin.blogs.store')}}" id="myAddBlog" class="form" method="POST" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="col-xl-3"></div>
 
                                     <div class="form-group row">
@@ -155,7 +155,7 @@
                                                 <div class="mr-2">
                                                 </div>
                                                 <div>
-                                                    <a href="{{url('admin/blogs')}}" type="button"
+                                                    <a href="{{route('admin.blogs.index')}}" type="button"
                                                        class="btn btn-success font-weight-bolder text-uppercase px-9 py-4"
                                                        >Back
                                                     </a>
@@ -163,7 +163,6 @@
                                                         class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4"
                                                         >Create
                                                     </button>
-
                                                 </div>
                                             </div>
                                         </div>

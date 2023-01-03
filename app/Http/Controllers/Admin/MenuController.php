@@ -16,7 +16,7 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index():View
+    public function index(): View
     {
         return view('backend.menus.index');
     }
@@ -29,7 +29,7 @@ class MenuController extends Controller
             ->addColumn('options', function ($model) {
                 return
                     '<a class="btn btn-xs btn-primary" href="' . route('admin.menus.edit', $model->id) . '" ><i class="la la-pencil-square-o"></i></a>
-			    	<button data-action="'.route('admin.menus.destroy', $model->id).'" onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger" ><i class="la la-trash"></i></button>';
+			    	<button data-action="' . route('admin.menus.destroy', $model->id) . '" onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger" ><i class="la la-trash"></i></button>';
             })->rawColumns(['options' => true])->make(true);
     }
 
@@ -38,26 +38,40 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create():View
+    public function create(): View
     {
-        return view('backend.menus.create');
+        $menus = Menu::all();
+        return view('backend.menus.create')->with(['menus' => $menus]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //добавить меню
+        $menu = Menu::where('name', $request->name)->first();
+        if ($menu == null) {
+            $menu = new Menu();
+            $menu->name = $request->name;
+            $menu->name_ru = $request->name_ru;
+            $menu->name_en = $request->name_en;
+            $menu->page = $request->page;
+            $menu->slug = $request->name;
+            $menu->status = 1;
+            $menu->save();
+            return response(['title' => 'Ugurlu!', 'message' => 'Yeni Menu elave edildi!', 'status' => 'success']);
+        } else {
+            return response(['title' => 'Ugursuz!', 'message' => 'Yeni Menu elave etmek mumkun olmadi', 'status' => 'error']);
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -68,10 +82,10 @@ class MenuController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id):View
+    public function edit($id): View
     {
         $menu_edit = Menu::find($id);
         return view('backend.menus.edit')->with(['menu_edit' => $menu_edit]);
@@ -80,8 +94,8 @@ class MenuController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Menu $menu, Request $request)
@@ -92,7 +106,7 @@ class MenuController extends Controller
                 'slug' => $request->slug, 'status' => $request->status]);
             return response(['title' => 'Ugurlu!', 'message' => 'Menu update oldu', 'status' => 'success']);
         } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => 'Menu update olmadi'.$exception->getMessage(), 'status' => 'error']);
+            return response(['title' => 'Ugursuz!', 'message' => 'Menu update olmadi' . $exception->getMessage(), 'status' => 'error']);
         }
 
     }
@@ -100,7 +114,7 @@ class MenuController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request)

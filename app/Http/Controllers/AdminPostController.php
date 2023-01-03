@@ -214,137 +214,137 @@ class AdminPostController extends Controller
     //Blogs
 
 
-    public function BlogsAdd(Request $request)
-    {
-        $sekiller = $request->file('image');
-        $prod_image = '';
-        if (!empty($sekiller)) {
-            $i = 0;
-            foreach ($sekiller as $sk) {
-                $sekil_uzanti = $sk->getClientOriginalExtension();
-                $sekil_ad = $i . '.' . $sekil_uzanti;
-                Storage::disk('uploads')->makeDirectory('blogs/');
-                $image = Image::make($sk->getRealPath())->resize(320, 220)->save('uploads/blogs/' . $sekil_ad);
-                Storage::disk('uploads')->deleteDirectory('blogs');
-                $prod_image = $prod_image . $image . '(xx)';
-                $i++;
-            }
-        }
-
-        $blogs = Blogs::where('title', $request->title)->first();
-        if ($blogs == null) {
-            $blogs = new Blogs();
-            $blogs->image = $prod_image;
-            $blogs->title = $request->title;
-            $blogs->title_ru = $request->title_ru;
-            $blogs->title_en = $request->title_en;
-            $blogs->message = $request->message;
-            $blogs->message_ru = $request->message_ru;
-            $blogs->message_en = $request->message_en;
-            $blogs->author = Auth::user()->id;
-            $blogs->category_id = $request->blog_category;
-            $blogs->slug = $request->title;
-            $blogs->status = 1;
-            $blogs->likes = 0;
-            $blogs->dislike = 0;
-            $blogs->see_count = 0;
-            $blogs->save();
-            return response(['title' => 'Ugurlu!', 'message' => 'Yeni Blog elave edildi!', 'status' => 'success']);
-        } else {
-            return response(['title' => 'Ugursuz!', 'message' => 'Yeni Blog elave etmek mumkun olmadi' , 'status' => 'error']);
-        }
-    }
-
-    public function BlogsEdit(Request $request, $id)
-    {
-        try {
-            $blog = Blogs::find($id);
-            $image = $request->file('image');
-            $edit_blog_image = $blog->image;
-
-
-            if (!empty($image)) {
-                $i=0;
-                foreach ($image as $img) {
-                    $sekil_uzanti = $img->getClientOriginalExtension();
-                    $sekil_ad = $i . '.' . $sekil_uzanti;
-                    Storage::disk('uploads')->makeDirectory('blogsEdit/');
-                    $image2 = Image::make($img->getRealPath())->resize(320, 220)->save('uploads/blogsEdit/' . $sekil_ad);
-                    Storage::disk('uploads')->deleteDirectory('blogsEdit');
-                    $edit_blog_image = $edit_blog_image . $image2 . '(xx)';
-                    $i++;
-                }
-                $blog->update(['title' => $request->title, 'title_ru' => $request->title_ru,
-                    'title_en' => $request->title_en, 'message' => $request->message, 'message_ru' => $request->message_ru,
-                    'message_en' => $request->message_en, 'author' => Auth::user()->id, 'category_id' => $request->category_id,
-                    'slug' => $request->title, 'status' => $request->status, 'image' => $edit_blog_image]);
-            } else {
-                $blog->update(['title' => $request->title, 'title_ru' => $request->title_ru,
-                    'title_en' => $request->title_en, 'message' => $request->message, 'message_ru' => $request->message_ru,
-                    'message_en' => $request->message_en, 'author' => Auth::user()->id, 'category_id' => $request->category_id,
-                    'slug' => $request->title, 'status' => $request->status]);
-            }
-            return response(['title' => 'Ugurlu!', 'message' => 'Blog update oldu', 'status' => 'success']);
-        } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => 'Blog update mumkun olmadi' . $exception->getMessage(), 'status' => 'error']);
-        }
-    }
-
-
-    public function BlogsImageDelete(Request $request)
-    {
-        try {
-            $blogs_image = Blogs::find($request->id);
-            $image_name = '';
-            $count_image = 0;
-            foreach (explode('(xx)', $blogs_image->image) as $im) {
-                if ($im != '') {
-                    $count_image++;
-                }
-            }
-            if ($count_image > 1) {
-                foreach (explode('(xx)', $blogs_image->image) as $image) {
-                    if (base64_encode($image) != $request->image_name) {
-                        $image_name = $image_name . $image . '(xx)';
-                    }
-                }
-            } else {
-                $image_name = null;
-            }
-            $blogs_image->image = $image_name;
-            $blogs_image->save();
-            return response(['title' => 'Uğurlu!', 'message' => 'Şəkil uğurla silindi', 'status' => 'success']);
-        } catch (\Exception $exception) {
-            return response(['title' => 'Uğursuz!', 'message' => 'Şəkili silmək mümkün olmadı! Yenidən cəhd edin', 'status' => 'error']);
-        }
-    }
-
-
-    public function BlogsBlockUnblockDelete(Request $request)
-    {
-        try {
-            if ($request->btn_block != null) {
-                if ($request->status == 0) {
-                    Blogs::find($request->id)->update(['status' => 1]);
-                    return response(['title' => 'Ugurlu!', 'message' => 'Blogs blokdan cixdi!', 'status' => 'success']);
-                } else if ($request->status == 1) {
-                    Blogs::find($request->id)->update(['status' => 0]);
-                    return response(['title' => 'Ugurlu!', 'message' => 'Blogs bloklandi!', 'status' => 'success']);
-                } else {
-                    return response(['title' => 'Ugursuz!', 'message' => 'Blogsi bloklamaq mumkun olmadi!', 'status' => 'error']);
-                }
-            } else if ($request->btn_delete != null) {
-                Blogs::where('id', $request->id)->delete();
-                BlogComment::where('blog_id', $request->id)->delete();
-                return response(['title' => 'Ugurlu!', 'message' => 'Blogs ugurlu silindi!', 'status' => 'success']);
-            } else {
-                return response(['title' => 'Ugursuz!', 'message' => 'Blogsi silmek mumkun olmadi!', 'status' => 'error']);
-            }
-        } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => 'Blogsi silmek olmur!', 'status' => 'error']);
-        }
-    }
-    //finish Blogs
+//    public function BlogsAdd(Request $request)
+//    {
+//        $sekiller = $request->file('image');
+//        $prod_image = '';
+//        if (!empty($sekiller)) {
+//            $i = 0;
+//            foreach ($sekiller as $sk) {
+//                $sekil_uzanti = $sk->getClientOriginalExtension();
+//                $sekil_ad = $i . '.' . $sekil_uzanti;
+//                Storage::disk('uploads')->makeDirectory('blogs/');
+//                $image = Image::make($sk->getRealPath())->resize(320, 220)->save('uploads/blogs/' . $sekil_ad);
+//                Storage::disk('uploads')->deleteDirectory('blogs');
+//                $prod_image = $prod_image . $image . '(xx)';
+//                $i++;
+//            }
+//        }
+//
+//        $blogs = Blogs::where('title', $request->title)->first();
+//        if ($blogs == null) {
+//            $blogs = new Blogs();
+//            $blogs->image = $prod_image;
+//            $blogs->title = $request->title;
+//            $blogs->title_ru = $request->title_ru;
+//            $blogs->title_en = $request->title_en;
+//            $blogs->message = $request->message;
+//            $blogs->message_ru = $request->message_ru;
+//            $blogs->message_en = $request->message_en;
+//            $blogs->author = Auth::user()->id;
+//            $blogs->category_id = $request->blog_category;
+//            $blogs->slug = $request->title;
+//            $blogs->status = 1;
+//            $blogs->likes = 0;
+//            $blogs->dislike = 0;
+//            $blogs->see_count = 0;
+//            $blogs->save();
+//            return response(['title' => 'Ugurlu!', 'message' => 'Yeni Blog elave edildi!', 'status' => 'success']);
+//        } else {
+//            return response(['title' => 'Ugursuz!', 'message' => 'Yeni Blog elave etmek mumkun olmadi' , 'status' => 'error']);
+//        }
+//    }
+//
+//    public function BlogsEdit(Request $request, $id)
+//    {
+//        try {
+//            $blog = Blogs::find($id);
+//            $image = $request->file('image');
+//            $edit_blog_image = $blog->image;
+//
+//
+//            if (!empty($image)) {
+//                $i=0;
+//                foreach ($image as $img) {
+//                    $sekil_uzanti = $img->getClientOriginalExtension();
+//                    $sekil_ad = $i . '.' . $sekil_uzanti;
+//                    Storage::disk('uploads')->makeDirectory('blogsEdit/');
+//                    $image2 = Image::make($img->getRealPath())->resize(320, 220)->save('uploads/blogsEdit/' . $sekil_ad);
+//                    Storage::disk('uploads')->deleteDirectory('blogsEdit');
+//                    $edit_blog_image = $edit_blog_image . $image2 . '(xx)';
+//                    $i++;
+//                }
+//                $blog->update(['title' => $request->title, 'title_ru' => $request->title_ru,
+//                    'title_en' => $request->title_en, 'message' => $request->message, 'message_ru' => $request->message_ru,
+//                    'message_en' => $request->message_en, 'author' => Auth::user()->id, 'category_id' => $request->category_id,
+//                    'slug' => $request->title, 'status' => $request->status, 'image' => $edit_blog_image]);
+//            } else {
+//                $blog->update(['title' => $request->title, 'title_ru' => $request->title_ru,
+//                    'title_en' => $request->title_en, 'message' => $request->message, 'message_ru' => $request->message_ru,
+//                    'message_en' => $request->message_en, 'author' => Auth::user()->id, 'category_id' => $request->category_id,
+//                    'slug' => $request->title, 'status' => $request->status]);
+//            }
+//            return response(['title' => 'Ugurlu!', 'message' => 'Blog update oldu', 'status' => 'success']);
+//        } catch (\Exception $exception) {
+//            return response(['title' => 'Ugursuz!', 'message' => 'Blog update mumkun olmadi' . $exception->getMessage(), 'status' => 'error']);
+//        }
+//    }
+//
+//
+//    public function BlogsImageDelete(Request $request)
+//    {
+//        try {
+//            $blogs_image = Blogs::find($request->id);
+//            $image_name = '';
+//            $count_image = 0;
+//            foreach (explode('(xx)', $blogs_image->image) as $im) {
+//                if ($im != '') {
+//                    $count_image++;
+//                }
+//            }
+//            if ($count_image > 1) {
+//                foreach (explode('(xx)', $blogs_image->image) as $image) {
+//                    if (base64_encode($image) != $request->image_name) {
+//                        $image_name = $image_name . $image . '(xx)';
+//                    }
+//                }
+//            } else {
+//                $image_name = null;
+//            }
+//            $blogs_image->image = $image_name;
+//            $blogs_image->save();
+//            return response(['title' => 'Uğurlu!', 'message' => 'Şəkil uğurla silindi', 'status' => 'success']);
+//        } catch (\Exception $exception) {
+//            return response(['title' => 'Uğursuz!', 'message' => 'Şəkili silmək mümkün olmadı! Yenidən cəhd edin', 'status' => 'error']);
+//        }
+//    }
+//
+//
+//    public function BlogsBlockUnblockDelete(Request $request)
+//    {
+//        try {
+//            if ($request->btn_block != null) {
+//                if ($request->status == 0) {
+//                    Blogs::find($request->id)->update(['status' => 1]);
+//                    return response(['title' => 'Ugurlu!', 'message' => 'Blogs blokdan cixdi!', 'status' => 'success']);
+//                } else if ($request->status == 1) {
+//                    Blogs::find($request->id)->update(['status' => 0]);
+//                    return response(['title' => 'Ugurlu!', 'message' => 'Blogs bloklandi!', 'status' => 'success']);
+//                } else {
+//                    return response(['title' => 'Ugursuz!', 'message' => 'Blogsi bloklamaq mumkun olmadi!', 'status' => 'error']);
+//                }
+//            } else if ($request->btn_delete != null) {
+//                Blogs::where('id', $request->id)->delete();
+//                BlogComment::where('blog_id', $request->id)->delete();
+//                return response(['title' => 'Ugurlu!', 'message' => 'Blogs ugurlu silindi!', 'status' => 'success']);
+//            } else {
+//                return response(['title' => 'Ugursuz!', 'message' => 'Blogsi silmek mumkun olmadi!', 'status' => 'error']);
+//            }
+//        } catch (\Exception $exception) {
+//            return response(['title' => 'Ugursuz!', 'message' => 'Blogsi silmek olmur!', 'status' => 'error']);
+//        }
+//    }
+//    //finish Blogs
 
 
     //Blog Category

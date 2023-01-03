@@ -1,12 +1,15 @@
 <?php
 
 use App\Http\Controllers\Admin\{
-    MenuController, SettingController,
-    AboutUsController, ContactUsController,
-    AuthController
+    MenuController,
+    SettingController,
+    AboutUsController,
+    ContactUsController,
+    AuthController,
+    BlogController
 };
 use App\Http\Controllers\Frontend\{
-  ContactUsController as ContactUsFrontController,
+    ContactUsController as ContactUsFrontController,
     AuthController as AuthFrontController
 };
 use App\Http\Controllers\AdminGetController;
@@ -40,8 +43,8 @@ use Illuminate\Support\Facades\Route;
 
 // front end
 Route::get('/', [HomeGetController::class, 'home'])->name('home');
-Route::get('contact_us',[ContactUsFrontController::class, 'index']);
-Route::post('contact_us/send_message',[ContactUsFrontController::class, 'sendMessage'])->name('contact_us.send_message');
+Route::get('contact_us', [ContactUsFrontController::class, 'index']);
+Route::post('contact_us/send_message', [ContactUsFrontController::class, 'sendMessage'])->name('contact_us.send_message');
 Route::get('/login', [AuthFrontController::class, 'login'])->name('login')->middleware('guest');
 Route::get('/register', [AuthFrontController::class, 'register'])->name('register')->middleware('guest');
 Route::get('/logout', [AuthFrontController::class, 'logout'])->name('logout');
@@ -62,8 +65,6 @@ Route::get('/single_student/{id}', [HomeGetController::class, 'SingleStudent'])-
 Route::get('/courses', [HomeGetController::class, 'Courses']);
 
 
-
-
 //admin
 Route::prefix('admin')->middleware(['Admin', 'permission:1'])->group(function () {
     Route::get('/index', [AdminGetController::class, 'home']);
@@ -75,13 +76,6 @@ Route::prefix('admin')->middleware(['Admin', 'permission:1'])->group(function ()
     Route::get('/course', [AdminGetController::class, 'Course'])->name('AdminCourse');
     Route::get('/course_edit/{id}', [AdminGetController::class, 'CourseEdit'])->name('admin.backend.course_edit');
 
-    Route::get('/blogs', [AdminGetController::class, 'Blogs'])->name('AdminBlogs');
-    Route::post('/blogs', [AdminPostController::class, 'BlogsBlockUnblockDelete']);
-    Route::get('/blogs_add', [AdminGetController::class, 'AddBlogs'])->name('BlogsAdd');
-    Route::post('/blogs_add', [AdminPostController::class, 'BlogsAdd'])->name('admin.add.blog');
-    Route::get('/blogs_edit/{id}', [AdminGetController::class, 'BlogsEdit'])->name('admin.backend.blogs_edit');
-    Route::post('/blogs_edit/{id}', [AdminPostController::class, 'BlogsEdit'])->name('admin.edit.blog');
-    Route::post('/blogs_image_delete', [AdminPostController::class, 'BlogsImageDelete']);
 
     Route::get('/blog_category', [AdminGetController::class, 'BlogCategory'])->name('AdminBlogCategory');
     Route::post('/blog_category', [AdminPostController::class, 'BlogCategoryDelete']);
@@ -95,16 +89,24 @@ Route::prefix('admin')->middleware(['Admin', 'permission:1'])->group(function ()
     Route::get('/blog_comment_edit/{id}', [AdminGetController::class, 'BlogCommentEdit'])->name('admin.backend.blog_comment_edit');
 
 
-
-
     Route::get('/admins', [AdminGetController::class, 'AdminsProject'])->name('AdminEdocean');
     Route::get('/add_admins', [AdminGetController::class, 'AddAdmin'])->name('AddAdmin');
     Route::get('/admins_edit/{id}', [AdminGetController::class, 'AdminsEditProject'])->name('admin.backend.admins_edit');
     Route::name('admin.')->group(function () {
+
+//        Route::get('/blogs', [AdminGetController::class, 'Blogs'])->name('AdminBlogs');
+//        Route::get('/blogs_add', [AdminGetController::class, 'AddBlogs'])->name('BlogsAdd');
+//        Route::post('/blogs_add', [AdminPostController::class, 'BlogsAdd'])->name('admin.add.blog');
+//        Route::get('/blogs_edit/{id}', [AdminGetController::class, 'BlogsEdit'])->name('admin.backend.blogs_edit');
+//        Route::post('/blogs_edit/{id}', [AdminPostController::class, 'BlogsEdit'])->name('admin.edit.blog');
+//        Route::post('/blogs_image_delete', [AdminPostController::class, 'BlogsImageDelete']);
+
         Route::resource('menus', MenuController::class);
         Route::resource('setting', SettingController::class);
         Route::resource('about_us', AboutUsController::class);
         Route::resource('contact_us', ContactUsController::class);
+        Route::resource('blogs', BlogController::class);
+        Route::post('/blogs/block_unblock_delete', [BlogController::class, 'BlogsBlockUnblockDelete'])->name('blogs.block_unblock_delete');
     });
 
 

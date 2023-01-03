@@ -22,7 +22,7 @@
                         <div class="tab-content pt-5">
                             <!--begin::Tab Content-->
                             <div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
-                                <form id="AddMenu" class="form" method="POST" >
+                                <form id="AddMenu" class="form" action="{{route('admin.menus.store')}}" method="POST" >
                                     @csrf
                                     <div class="col-xl-3"></div>
 

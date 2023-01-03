@@ -43,13 +43,13 @@
 
                         </div>
                     </div>
-                    <form id="BlogEdit" class="form" method="POST" action="{{route('admin.edit.blog', $blogs_edit->id)}}">
-                        {{csrf_field()}}
+                    <form id="BlogEdit" class="form" method="POST" action="{{route('admin.blogs.update',$blogs_edit->id)}}">
+                        @method('put')
+                        @csrf
                     <div class="card-body">
                         <div class="tab-content pt-5">
                             <!--begin::Tab Content-->
                             <div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
-
                                     <div class="col-xl-3"></div>
 
                                     <div class="form-group row">
@@ -224,7 +224,7 @@
                                                 <div class="mr-2">
                                                 </div>
                                                 <div>
-                                                    <a href="{{route('AdminBlogs')}}" type="button"
+                                                    <a href="{{route('admin.blogs.index')}}" type="button"
                                                        class="btn btn-success font-weight-bolder text-uppercase px-9 py-4"
                                                        data-wizard-type="action-submit">Back
                                                     </a>
@@ -307,7 +307,7 @@
                         }
                     )
                     if (response.status == 'success') {
-                        window.location.href = '/admin/blogs_edit/'+ {{$blogs_edit->id}};
+                        window.location.href = '/admin/blogs/edit/'+ {{$blogs_edit->id}};
                     }
                 },
                 error: function (response) {

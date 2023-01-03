@@ -60,7 +60,7 @@
                         <!--end::Dropdown Menu-->
                     </div>
                     <!--begin::Button-->
-                    <a href="{{route('admin.menus.store')}}" class="btn btn-primary font-weight-bolder">
+                    <a href="{{route('admin.menus.create')}}" class="btn btn-primary font-weight-bolder">
                         <i class="la la-plus"></i>Add Menu</a>
                     <!--end::Button-->
                 </div>
@@ -133,7 +133,6 @@
                             '_token': CSRF_TOKEN,
                             '_method': 'delete'
                         },
-
                         success: function (response) {
                             if (response.status == 'success') {
                                 document.getElementById("kt_datatable").deleteRow(sira);

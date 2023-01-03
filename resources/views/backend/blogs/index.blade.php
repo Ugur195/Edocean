@@ -26,7 +26,8 @@
                                 <!--begin::Dropdown Menu-->
                                 <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
                                     <ul class="nav flex-column nav-hover">
-                                        <li class="nav-header font-weight-bolder text-uppercase text-primary pb-2">Choose an
+                                        <li class="nav-header font-weight-bolder text-uppercase text-primary pb-2">
+                                            Choose an
                                             option:
                                         </li>
                                         <li class="nav-item">
@@ -65,7 +66,7 @@
                             </div>
                             <!--end::Dropdown-->
                             <!--begin::Button-->
-                            <a href="{{ route('BlogsAdd') }}" class="btn btn-primary font-weight-bolder">
+                            <a href="{{ route('admin.blogs.create') }}" class="btn btn-primary font-weight-bolder">
                                 <i class="la la-plus"></i>Add Blog</a>
                             <!--end::Button-->
                         </div>
@@ -179,6 +180,7 @@
 
         function sil(setir, id) {
             var sira = setir.parentNode.parentNode.rowIndex;
+            let action = $(setir).data('action');
             console.log(sira);
             swal.fire({
                 title: 'Silmek Isteyirsinizmi?',
@@ -195,14 +197,13 @@
                     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content')
                     $.ajax({
                         type: "Post",
-                        url: '',
+                        url: action,
                         data: {
                             'id': id,
                             'btn_delete': 'btn_delete',
                             '_token': CSRF_TOKEN
 
                         },
-
                         success: function (response) {
                             if (response.status == 'success') {
                                 document.getElementById("kt_datatable").deleteRow(sira);
@@ -218,7 +219,6 @@
                                     window.location.href = '/admin/blogs';
                                 }, 1000)
                             }
-
                         }
                     })
                 }

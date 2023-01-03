@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\{
-    MenuController,ContactUsController
+    MenuController,ContactUsController,
+    BlogController
 };
 use App\Http\Controllers\AdminGetController;
 use App\Http\Controllers\CourseGetController;
@@ -27,6 +28,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('contact_us', [ContactUsController::class, 'getContactUs']);
 Route::get('menus', [MenuController::class, 'getMenu']);
+Route::get('blogs', [BlogController::class, 'getBlogs']);
 Route::get('teacher', [AdminGetController::class, 'getTeacher']);
 Route::get('student', [AdminGetController::class, 'getStudent']);
 Route::get('student_course', [StudentGetController::class, 'getStudentCourse']);
@@ -35,7 +37,6 @@ Route::get('course_teachers', [CourseGetController::class, 'getCourseTeacherRequ
 Route::get('course', [AdminGetController::class, 'getCourse']);
 Route::get('mycourses', [TeacherGetController::class, 'getCourses']);
 Route::get('mystudents', [TeacherGetController::class, 'getStudents']);
-Route::get('blogs', [AdminGetController::class, 'getBlogs']);
 Route::get('admins', [AdminGetController::class, 'getAdminsProject']);
 Route::get('blog_category', [AdminGetController::class, 'getBlogCategory']);
 Route::get('blog_comment', [AdminGetController::class, 'getBlogComment']);

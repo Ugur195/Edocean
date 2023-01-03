@@ -202,73 +202,73 @@ class AdminGetController extends Controller
 
 
     //Blogs
-    public function getBlogs()
-    {
-//        dd(User::find(55));
-        $blogs = DB::table('edocean.blogs')->select(DB::raw("edocean.users.name as username, edocean.blog_category.name as bg_name,
-         edocean.blogs.id, edocean.blogs.image,edocean.blogs.title,
-        edocean.blogs.message,edocean.blogs.author,edocean.blogs.category_id,edocean.blogs.likes,edocean.blogs.dislike,edocean.blogs.see_count,
-         edocean.blogs.status as st,
-        (CASE edocean.blogs.status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))
-            ->leftJoin('edocean.users', 'edocean.users.id', '=', 'edocean.blogs.author')
-            ->leftJoin('edocean.blog_category', 'edocean.blog_category.id', '=', 'edocean.blogs.category_id')
-            ->get();
-//        dd($blogs);
-        return DataTables::of($blogs)
-            ->editColumn('image', function ($model) {
-                $html = '';
-                foreach (explode('(xx)', $model->image) as $key => $image) {
-                    if($image!=''){
-                        $html .= '<div class="carousel-item ' . ($key == 0 ? 'active' : '') . '">
-                 <img style="display:block;width:100px;height:60px;" class="d-block w-100" src="data:image/jpeg;base64,' . base64_encode($image) . '" alt="First slide">
-                  </div>';
-                    }
-                }
-                return '<div id="carouselExampleControls'.$model->id.'" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">' . $html . '</div>
-                 <a class="carousel-control-prev" href="#carouselExampleControls'.$model->id.'" role="button" data-slide="prev">
-                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                   <span class="sr-only">Previous</span>
-                 </a>
-                 <a class="carousel-control-next" href="#carouselExampleControls'.$model->id.'" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                 </a>
-                 </div>';
-//                return "<img style='display:block;width:80px;height:60px;' src='data:image/jpeg;base64," . base64_encode($model->image) . "'/>";
-            })
-            ->addColumn('options', function ($model) {
-                $return = '<a class="btn btn-xs btn-primary mr-1" href="' . route('admin.backend.blogs_edit', $model->id) . '" ><i class="la la-info"></i></a>';
-                if ($model->st == 0) {
-                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-success mr-1"  name="btn_blok"
-                                        value="btn_blok" ><i class="la la-check"></i></button>';
-                } else if ($model->st == 1) {
-                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-dark mr-1" name="btn_unblok"  value="btn_unblok" ><i class="la la-close"></i></button>';
-                }
-                $return .= '<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger mr-1" ><i class="la la-trash"></i></button>';
-                return $return;
-            })->rawColumns(['options' => true])->make(true);
-    }
-
-    public function BlogsEdit($id)
-    {
-        $blog_category = BlogCategory::all();
-        $blogs_edit = Blogs::where('id', $id)->first();
-        return view('backend.blogs_edit')->with(['blogs_edit' => $blogs_edit, 'blog_category' => $blog_category]);
-    }
-
-    public function Blogs()
-    {
-        return view('backend.blogs');
-    }
-
-    public function AddBlogs()
-    {
-        $blogs = Blogs::all();
-        $blog_category = BlogCategory::where('status', 1)->get();
-        return view('backend.blogs_add')->with(['blog_category' => $blog_category, 'blogs' => $blogs]);
-    }
-    //finish Blogs
+//    public function getBlogs()
+//    {
+////        dd(User::find(55));
+//        $blogs = DB::table('edocean.blogs')->select(DB::raw("edocean.users.name as username, edocean.blog_category.name as bg_name,
+//         edocean.blogs.id, edocean.blogs.image,edocean.blogs.title,
+//        edocean.blogs.message,edocean.blogs.author,edocean.blogs.category_id,edocean.blogs.likes,edocean.blogs.dislike,edocean.blogs.see_count,
+//         edocean.blogs.status as st,
+//        (CASE edocean.blogs.status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))
+//            ->leftJoin('edocean.users', 'edocean.users.id', '=', 'edocean.blogs.author')
+//            ->leftJoin('edocean.blog_category', 'edocean.blog_category.id', '=', 'edocean.blogs.category_id')
+//            ->get();
+////        dd($blogs);
+//        return DataTables::of($blogs)
+//            ->editColumn('image', function ($model) {
+//                $html = '';
+//                foreach (explode('(xx)', $model->image) as $key => $image) {
+//                    if($image!=''){
+//                        $html .= '<div class="carousel-item ' . ($key == 0 ? 'active' : '') . '">
+//                 <img style="display:block;width:100px;height:60px;" class="d-block w-100" src="data:image/jpeg;base64,' . base64_encode($image) . '" alt="First slide">
+//                  </div>';
+//                    }
+//                }
+//                return '<div id="carouselExampleControls'.$model->id.'" class="carousel slide" data-ride="carousel">
+//                <div class="carousel-inner">' . $html . '</div>
+//                 <a class="carousel-control-prev" href="#carouselExampleControls'.$model->id.'" role="button" data-slide="prev">
+//                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+//                   <span class="sr-only">Previous</span>
+//                 </a>
+//                 <a class="carousel-control-next" href="#carouselExampleControls'.$model->id.'" role="button" data-slide="next">
+//                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+//                    <span class="sr-only">Next</span>
+//                 </a>
+//                 </div>';
+////                return "<img style='display:block;width:80px;height:60px;' src='data:image/jpeg;base64," . base64_encode($model->image) . "'/>";
+//            })
+//            ->addColumn('options', function ($model) {
+//                $return = '<a class="btn btn-xs btn-primary mr-1" href="' . route('admin.backend.blogs_edit', $model->id) . '" ><i class="la la-info"></i></a>';
+//                if ($model->st == 0) {
+//                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-success mr-1"  name="btn_blok"
+//                                        value="btn_blok" ><i class="la la-check"></i></button>';
+//                } else if ($model->st == 1) {
+//                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-dark mr-1" name="btn_unblok"  value="btn_unblok" ><i class="la la-close"></i></button>';
+//                }
+//                $return .= '<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger mr-1" ><i class="la la-trash"></i></button>';
+//                return $return;
+//            })->rawColumns(['options' => true])->make(true);
+//    }
+//
+//    public function BlogsEdit($id)
+//    {
+//        $blog_category = BlogCategory::all();
+//        $blogs_edit = Blogs::where('id', $id)->first();
+//        return view('backend.blogs_edit')->with(['blogs_edit' => $blogs_edit, 'blog_category' => $blog_category]);
+//    }
+//
+//    public function Blogs()
+//    {
+//        return view('backend.blogs');
+//    }
+//
+//    public function AddBlogs()
+//    {
+//        $blogs = Blogs::all();
+//        $blog_category = BlogCategory::where('status', 1)->get();
+//        return view('backend.blogs_add')->with(['blog_category' => $blog_category, 'blogs' => $blogs]);
+//    }
+//    //finish Blogs
 
 
     //Blog Category
