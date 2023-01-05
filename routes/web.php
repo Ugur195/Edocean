@@ -94,19 +94,13 @@ Route::prefix('admin')->middleware(['Admin', 'permission:1'])->group(function ()
     Route::get('/admins_edit/{id}', [AdminGetController::class, 'AdminsEditProject'])->name('admin.backend.admins_edit');
     Route::name('admin.')->group(function () {
 
-//        Route::get('/blogs', [AdminGetController::class, 'Blogs'])->name('AdminBlogs');
-//        Route::get('/blogs_add', [AdminGetController::class, 'AddBlogs'])->name('BlogsAdd');
-//        Route::post('/blogs_add', [AdminPostController::class, 'BlogsAdd'])->name('admin.add.blog');
-//        Route::get('/blogs_edit/{id}', [AdminGetController::class, 'BlogsEdit'])->name('admin.backend.blogs_edit');
-//        Route::post('/blogs_edit/{id}', [AdminPostController::class, 'BlogsEdit'])->name('admin.edit.blog');
-//        Route::post('/blogs_image_delete', [AdminPostController::class, 'BlogsImageDelete']);
-
         Route::resource('menus', MenuController::class);
         Route::resource('setting', SettingController::class);
         Route::resource('about_us', AboutUsController::class);
         Route::resource('contact_us', ContactUsController::class);
         Route::resource('blogs', BlogController::class);
         Route::post('/blogs/block_unblock_delete', [BlogController::class, 'BlogsBlockUnblockDelete'])->name('blogs.block_unblock_delete');
+        Route::post('/blogs_image_delete', [BlogController::class, 'BlogsImageDelete'])->name('blogs.image_delete');
     });
 
 

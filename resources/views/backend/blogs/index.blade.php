@@ -119,8 +119,8 @@
     <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/blogs.js?v='.time())}}"></script>
 
     <script>
-        function blokUnblok(status, id) {
-            console.log('basildi' + status);
+        function blokUnblok(element,status, id) {
+            let action = $(element).data('action');
             let title = '';
             let text = '';
             let icon = '';
@@ -151,11 +151,12 @@
                     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content')
                     $.ajax({
                         type: "Post",
-                        url: '',
+                        url: action,
                         data: {
                             'id': id,
                             'status': status,
                             'btn_block': 'btn_block',
+                            'btn_unblock': 'btn_unblock',
                             '_token': CSRF_TOKEN
                         },
 

@@ -64,10 +64,10 @@ class BlogController extends Controller
             ->addColumn('options', function ($model) {
                 $return = '<a class="btn btn-xs btn-primary mr-1" href="' . route('admin.blogs.edit', $model->id) . '" ><i class="la la-info"></i></a>';
                 if ($model->st == 0) {
-                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-success mr-1"  name="btn_blok"
+                    $return .= '<button data-action="' . route('admin.blogs.block_unblock_delete', $model->id) . '" onclick="blokUnblok(this,' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-success mr-1"  name="btn_blok"
                                         value="btn_blok" ><i class="la la-check"></i></button>';
                 } else if ($model->st == 1) {
-                    $return .= '<button  onclick="blokUnblok(' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-dark mr-1" name="btn_unblok"  value="btn_unblok" ><i class="la la-close"></i></button>';
+                    $return .= '<button data-action="' . route('admin.blogs.block_unblock_delete', $model->id) . '"  onclick="blokUnblok(this,' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-dark mr-1" name="btn_unblok"  value="btn_unblok" ><i class="la la-close"></i></button>';
                 }
                 $return .= '<button data-action="' . route('admin.blogs.block_unblock_delete', $model->id) . '" onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger mr-1" ><i class="la la-trash"></i></button>';
                 return $return;
@@ -172,7 +172,6 @@ class BlogController extends Controller
             $image = $request->file('image');
             $edit_blog_image = $blog->image;
 
-
             if (!empty($image)) {
                 $i=0;
                 foreach ($image as $img) {
@@ -235,4 +234,34 @@ class BlogController extends Controller
             return response(['title' => 'Ugursuz!', 'message' => 'Blogsi silmek olmur!', 'status' => 'error']);
         }
     }
+
+
+    public function BlogsImageDelete(Request $request)
+    {
+        try {
+            $blogs_image = Blogs::find($request->id);
+            $image_name = '';
+            $count_image = 0;
+            foreach (explode('(xx)', $blogs_image->image) as $im) {
+                if ($im != '') {
+                    $count_image++;
+                }
+            }
+            if ($count_image > 1) {
+                foreach (explode('(xx)', $blogs_image->image) as $image) {
+                    if (base64_encode($image) != $request->image_name) {
+                        $image_name = $image_name . $image . '(xx)';
+                    }
+                }
+            } else {
+                $image_name = null;
+            }
+            $blogs_image->image = $image_name;
+            $blogs_image->save();
+            return response(['title' => 'Uğurlu!', 'message' => 'Şəkil uğurla silindi', 'status' => 'success']);
+        } catch (\Exception $exception) {
+            return response(['title' => 'Uğursuz!', 'message' => 'Şəkili silmək mümkün olmadı! Yenidən cəhd edin', 'status' => 'error']);
+        }
+    }
+
 }

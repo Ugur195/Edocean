@@ -282,7 +282,7 @@
                                 allowOutsideClick: false
                             });
                             if (response.status == 'success') {
-                                window.location.href = '/admin/blogs_edit/'+id;
+                                window.location.reload();
                             }
                         }
 
@@ -307,7 +307,7 @@
                         }
                     )
                     if (response.status == 'success') {
-                        window.location.href = '/admin/blogs/edit/'+ {{$blogs_edit->id}};
+                        window.location.reload();
                     }
                 },
                 error: function (response) {
