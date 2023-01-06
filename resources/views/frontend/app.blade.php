@@ -5,7 +5,6 @@
     <meta name="csrf-token" content="{{csrf_token()}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <script src="{{asset('js/jquery.js')}}"></script>
     <link rel="stylesheet" href="{{asset('frontendCss/style.css')}}"/>
     <link rel="stylesheet" href="{{asset('frontendCss/bootstrap.css')}}">
 
@@ -196,9 +195,10 @@
         <p>© 2022 Educal, All Rights Reserved. Design By Theme Pure</p>
     </div>
 </footer>
-<script src="{{asset('js/script.js')}}"></script>
-<script src="{{asset('js/tab.js')}}"></script>
+<script src="{{asset('js/jquery.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{asset('js/script.js?v=2')}}"></script>
+<script src="{{asset('js/tab.js')}}"></script>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 @yield('js')

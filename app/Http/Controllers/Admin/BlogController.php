@@ -64,12 +64,12 @@ class BlogController extends Controller
             ->addColumn('options', function ($model) {
                 $return = '<a class="btn btn-xs btn-primary mr-1" href="' . route('admin.blogs.edit', $model->id) . '" ><i class="la la-info"></i></a>';
                 if ($model->st == 0) {
-                    $return .= '<button data-action="' . route('admin.blogs.block_unblock_delete', $model->id) . '" onclick="blokUnblok(this,' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-success mr-1"  name="btn_blok"
+                    $return .= '<button data-action="' . route('admin.blogs.block_unblock', $model->id) . '" onclick="blokUnblok(this,' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-success mr-1"  name="btn_blok"
                                         value="btn_blok" ><i class="la la-check"></i></button>';
                 } else if ($model->st == 1) {
-                    $return .= '<button data-action="' . route('admin.blogs.block_unblock_delete', $model->id) . '"  onclick="blokUnblok(this,' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-dark mr-1" name="btn_unblok"  value="btn_unblok" ><i class="la la-close"></i></button>';
+                    $return .= '<button data-action="' . route('admin.blogs.block_unblock', $model->id) . '"  onclick="blokUnblok(this,' . $model->st . ',' . $model->id . ')"  class="btn btn-xs btn-dark mr-1" name="btn_unblok"  value="btn_unblok" ><i class="la la-close"></i></button>';
                 }
-                $return .= '<button data-action="' . route('admin.blogs.block_unblock_delete', $model->id) . '" onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger mr-1" ><i class="la la-trash"></i></button>';
+                $return .= '<button data-action="' . route('admin.destroy.blog', $model->id) . '" onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger mr-1" ><i class="la la-trash"></i></button>';
                 return $return;
             })->rawColumns(['options' => true])->make(true);
     }
@@ -150,7 +150,7 @@ class BlogController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id):View
+    public function edit($id): View
     {
         $blog_category = BlogCategory::all();
         $blogs_edit = Blogs::where('id', $id)->first();
@@ -173,7 +173,7 @@ class BlogController extends Controller
             $edit_blog_image = $blog->image;
 
             if (!empty($image)) {
-                $i=0;
+                $i = 0;
                 foreach ($image as $img) {
                     $sekil_uzanti = $img->getClientOriginalExtension();
                     $sekil_ad = $i . '.' . $sekil_uzanti;
@@ -210,7 +210,7 @@ class BlogController extends Controller
         //
     }
 
-    public function BlogsBlockUnblockDelete(Request $request)
+    public function changeStatus(Request $request)
     {
         try {
             if ($request->btn_block != null) {
@@ -223,20 +223,30 @@ class BlogController extends Controller
                 } else {
                     return response(['title' => 'Ugursuz!', 'message' => 'Blogsi bloklamaq mumkun olmadi!', 'status' => 'error']);
                 }
-            } else if ($request->btn_delete != null) {
-                Blogs::where('id', $request->id)->delete();
-                BlogComment::where('blog_id', $request->id)->delete();
-                return response(['title' => 'Ugurlu!', 'message' => 'Blogs ugurlu silindi!', 'status' => 'success']);
-            } else {
-                return response(['title' => 'Ugursuz!', 'message' => 'Blogsi silmek mumkun olmadi!', 'status' => 'error']);
             }
         } catch (\Exception $exception) {
             return response(['title' => 'Ugursuz!', 'message' => 'Blogsi silmek olmur!', 'status' => 'error']);
         }
     }
 
+    public function destroyBlog(Request $request)
+    {
+        try {
+            if ($request->btn_delete != null) {
+                Blogs::where('id', $request->id)->delete();
+                BlogComment::where('blog_id', $request->id)->delete();
+                return response(['title' => 'Ugurlu!', 'message' => 'Blog ugurlu silindi!', 'status' => 'success']);
+            } else {
+                return response(['title' => 'Ugursuz!', 'message' => 'Blogu silmek mumkun olmadi!', 'status' => 'error']);
+            }
+        } catch (\Exception $exception) {
+            return response(['title' => 'Ugursuz!', 'message' => 'Blogu silmek olmur!', 'status' => 'error']);
+        }
 
-    public function BlogsImageDelete(Request $request)
+    }
+
+
+    public function destroyBlogImage(Request $request)
     {
         try {
             $blogs_image = Blogs::find($request->id);

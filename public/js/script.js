@@ -5,14 +5,17 @@ function display() {
 let video = document.getElementById("myVideo");
 let muteButton = document.getElementById("muted");
 let modeToggle = document.querySelector(".fabs");
-modeToggle.addEventListener("click", function () {
-    if (video.muted) {
-        video.muted = false;
-    } else {
-        video.muted = true;
-    }
-    modeToggle.classList.toggle("active");
-});
+
+if (modeToggle != null) {
+    modeToggle.addEventListener("click", function () {
+        if (video.muted) {
+            video.muted = false;
+        } else {
+            video.muted = true;
+        }
+        modeToggle.classList.toggle("active");
+    });
+}
 /////////////////////////////// course category //////////////////////////////////////
 $(document).ready(function () {
     $(".categories-course li").click(function () {

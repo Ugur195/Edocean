@@ -22,7 +22,7 @@
             <div class="container">
                 <div class="contact-form">
                     <h3>Bizə mesaj yazın</h3>
-                    <form id="formContactUs" action="{{route('contact_us.send_message')}}" method="POST">
+                    <form id="formContactUs" action="{{route('frontend.contact_us.send_message')}}" method="POST">
                         @csrf
                         <div class="input-and-label">
                             <label for=""> Full name</label>

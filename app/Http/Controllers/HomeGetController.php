@@ -2,10 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AboutUs;
-use App\Models\BlogCategory;
-use App\Models\BlogComment;
-use App\Models\Blogs;
 use App\Models\Course;
 use App\Models\Menu;
 use App\Models\Setting;
@@ -13,12 +9,7 @@ use App\Models\Student;
 use App\Models\SubjectCategory;
 use App\Models\Subjects;
 use App\Models\Teacher;
-use App\Models\TeacherCourse;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
+
 
 class HomeGetController extends Controller
 {
@@ -42,65 +33,21 @@ class HomeGetController extends Controller
     }
     //finish home
 
-//
-//    //SignIn
-//    public function GetSignIn()
+
+    //Blog
+
+//    public function BlogsCategory($category)
 //    {
+//        $setting = Setting::find(1);
 //        $menu = Menu::where('status', 1)->get();
-//        return view('frontend.sign_in')->with(['menus' => $menu]);
+//        $blogs_category = BlogCategory::find($category);
+//        $blogs = Blogs::with('admin')->get();
+//        return view('frontend.teachers_category')->with(['menus' => $menu, 'setting' => $setting, 'blogs_category' => $blogs_category, 'blogs' => $blogs]);
 //    }
-//    //finish SignIn
-//
-//
-//    //SignUp
-//    public function GetSignUp()
-//    {
-//        $menu = Menu::where('status', 1)->get();
-//        return view('frontend.sign_up')->with(['menus' => $menu]);
-//    }
-//    //finish SignUp
-//
-//
-//    //Logout
-//    public function GetLogout()
-//    {
-//        Session::flush();
-//        Auth::logout();
-//        return redirect('/');
-//    }
-//    //finish Logout
 
-    public function Blogs()
-    {
-        $menu = Menu::where('status', 1)->get();
-        $setting = Setting::find(1);
-        $blogs = Blogs::with('admin')->where('status', 1)->get();
-        $blog_category = BlogCategory::all();
-        return view('frontend.blogs')->with(['menus' => $menu, 'setting' => $setting, 'blogs' => $blogs,
-            'blog_category' => $blog_category]);
-    }
+    //finishBlog
 
-    public function BlogsCategory($category)
-    {
-        $setting = Setting::find(1);
-        $menu = Menu::where('status', 1)->get();
-        $blogs_category = BlogCategory::find($category);
-        $blogs = Blogs::with('admin')->get();
-        return view('frontend.teachers_category')->with(['menus' => $menu, 'setting' => $setting, 'blogs_category' => $blogs_category, 'blogs' => $blogs]);
-    }
 
-    public function SingleBlog($id)
-    {
-        $setting = Setting::find(1);
-        $menu = Menu::where('status', 1)->get();
-        $blogs_id = Blogs::find($id);
-        $blogs = Blogs::with('admin')->get();
-        $blog_category = BlogCategory::all();
-        $about_us = AboutUs::all();
-        $blogs_comments = BlogComment::where(['blog_id' => $blogs_id->id, 'status' => 1])->get();
-        return view('frontend.single_blog')->with(['menus' => $menu, 'blogs' => $blogs, 'setting' => $setting,
-            'blog_category' => $blog_category, 'about_us' => $about_us, 'blogs_id' => $blogs_id, 'blogs_comments' => $blogs_comments]);
-    }
 
 
     public function Teachers()

@@ -268,7 +268,7 @@
                     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
                     $.ajax({
                         type: 'POST',
-                        url: '/admin/blogs_image_delete',
+                        url: '/admin/destroy/blog-image',
                         data: {
                             'image_name': image_name,
                             'id': id,

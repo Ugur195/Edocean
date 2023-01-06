@@ -9,7 +9,7 @@
         <img class="man-1" src="./frontendCss/images/man-1.png" alt="">
         <img class="man-2" src="./frontendCss/images/man-2.png" alt="">
         <img class="sign-up-img" src="./frontendCss/images/sign-up.png" alt="">
-        <form id="MySignIn" class="login-form" action="{{route('login.user')}}" method="post">
+        <form id="MySignIn" class="login-form" action="{{route('frontend.login.user')}}" method="post">
             @csrf
             <h2 class="login-h2">Giriş</h2>
             <div class="login-form-div">

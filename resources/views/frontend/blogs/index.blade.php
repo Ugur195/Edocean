@@ -52,20 +52,19 @@
 
                                             </div>
                                             <div class="blog-btn">
-                                                <a href="{{url('single_blog/'.$b->id)}}">
+                                                <a href="{{route('frontend.blogs.edit',$b->id)}}">
                                                     <button>Daha Ətraflı
                                                         <ion-icon name="arrow-forward"></ion-icon>
                                                     </button>
                                                 </a>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-12 col-sm-12 blog-main-right-container"> 
+                    <div class="col-lg-4 col-md-12 col-sm-12 blog-main-right-container">
                         <div class="recent-posts">
                             <h4>Recent posts</h4>
                             @foreach($blogs as $bl)
@@ -77,7 +76,7 @@
                                             @php($vaxt->setLocale('az'))
                                             {{$vaxt->diffForHumans()}}
                                         </p>
-                                        <h5><a href="">{{ $bl->message }}</a></h5>
+                                        <h5><a href="">{{$bl->message}}</a></h5>
                                     </div>
                                 </div>
                             @endforeach

@@ -6,8 +6,9 @@
 
 @section('content')
     <main class="blog-single-main">
-        <form id="mySingleBlog" method="post">
-            {{csrf_field()}}
+        <form id="mySingleBlog" action="{{route('frontend.blogs.update',$blogs_id->id)}}"  method="post">
+            @method('put')
+            @csrf
             <section class="blog-details-bg-img">
                 <div class="blog-details-header-div container ">
                     @foreach($about_us as $ab)
@@ -47,7 +48,6 @@
                                             @foreach(explode('(xx)',$blogs_id->image) as $key => $bimg)
                                                 @if($bimg !="")
                                                     <div class="carousel-item {{$key == 0 ? 'active' : ''}} crtf">
-
                                                         <img
                                                             class="d-block"
                                                             src="data:image/jpeg;base64,{{base64_encode($bimg)}}"
@@ -83,12 +83,11 @@
                                     @if($bc->parent_id==0)
                                         <div class="comment-item d-flex align-items-flex-start mb-3">
                                             @if(isset($user->teacher))
-                                                @php(dd($user))
                                                 <img
                                                     src="@if($user->teacher->image!=null)
                                                         data:image/jpeg;base64,{{base64_encode($user->teacher->image)}}
                                                     @else
-                                                        /frontendCss/images/kanan.png @endif">
+                                                        /frontendCss/images/profil-image.png @endif">
                                                 <div class="comment-detail">
                                                     <h5>
                                                         @if($bc->user_id==0)
@@ -110,7 +109,7 @@
                                                     src="@if($user->student->image!=null)
                                                         data:image/jpeg;base64,{{base64_encode($user->student->image)}}
                                                     @else
-                                                        /frontendCss/images/kanan.png @endif">
+                                                        /frontendCss/images/profil-image.png @endif">
                                                 <div class="comment-detail">
                                                     <h5>
                                                         @if($bc->user_id==0)
@@ -132,7 +131,7 @@
                                                     src="@if($user->course->image!=null)
                                                         data:image/jpeg;base64,{{base64_encode($user->course->image)}}
                                                     @else
-                                                        /frontendCss/images/kanan.png @endif">
+                                                        /frontendCss/images/profil-image.png @endif">
                                                 <div class="comment-detail">
                                                     <h5>
                                                         @if($bc->user_id==0)
@@ -151,7 +150,7 @@
                                                 </div>
                                             @else
                                                 <img
-                                                    src="/frontendCss/images/kanan.png">
+                                                    src="/frontendCss/images/profil-image.png">
                                                 <div class="comment-detail">
                                                     <h5>
                                                         @if($bc->user_id==0)
@@ -174,13 +173,13 @@
                                     @foreach($bc->ParentBlogsComments->where('status',1) as $bb)
                                         @php($user=$bb->UsersComments)
                                         <div
-                                             class="comment-item d-flex align-items-flex-start mb-3 comment-reply">
+                                            class="comment-item d-flex align-items-flex-start mb-3 comment-reply">
                                             @if(isset($user->teacher))
                                                 <img
                                                     src="@if($user->teacher->image!=null)
                                                         data:image/jpeg;base64,{{base64_encode($user->teacher->image)}}
                                                     @else
-                                                        /frontendCss/images/kanan.png @endif">
+                                                        /frontendCss/images/profil-image.png @endif">
                                                 <div class="comment-detail">
                                                     <h5>
                                                         @if($bb->user_id==0)
@@ -202,7 +201,7 @@
                                                     src="@if($user->student->image!=null)
                                                         data:image/jpeg;base64,{{base64_encode($user->student->image)}}
                                                     @else
-                                                        /frontendCss/images/kanan.png @endif">
+                                                        /frontendCss/images/profil-image.png @endif">
                                                 <div class="comment-detail">
                                                     <h5>
                                                         @if($bb->user_id==0)
@@ -224,7 +223,7 @@
                                                     src="@if($user->course->image!=null)
                                                         data:image/jpeg;base64,{{base64_encode($user->course->image)}}
                                                     @else
-                                                        /frontendCss/images/kanan.png @endif">
+                                                        /frontendCss/images/profil-image.png @endif">
                                                 <div class="comment-detail">
                                                     <h5>
                                                         @if($bb->user_id==0)
@@ -243,7 +242,7 @@
                                                 </div>
                                             @else
                                                 <img
-                                                    src="/frontendCss/images/kanan.png">
+                                                    src="/frontendCss/images/profil-image.png">
                                                 <div class="comment-detail">
                                                     <h5>
                                                         @if($bb->user_id==0)
@@ -331,8 +330,8 @@
                     )
                     if (response.status === 'success') {
                         setTimeout(function () {
-                            window.location.href = '/single_blog/{{$blogs_id->id}}';
-                        }, 1000)
+                            window.location.reload();
+                        })
                     }
                 }
             });

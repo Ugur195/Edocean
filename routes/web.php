@@ -10,7 +10,8 @@ use App\Http\Controllers\Admin\{
 };
 use App\Http\Controllers\Frontend\{
     ContactUsController as ContactUsFrontController,
-    AuthController as AuthFrontController
+    AuthController as AuthFrontController,
+    BlogController as BlogFrontController
 };
 use App\Http\Controllers\AdminGetController;
 use App\Http\Controllers\AdminPostController;
@@ -42,27 +43,31 @@ use Illuminate\Support\Facades\Route;
 //});
 
 // front end
-Route::get('/', [HomeGetController::class, 'home'])->name('home');
-Route::get('contact_us', [ContactUsFrontController::class, 'index']);
-Route::post('contact_us/send_message', [ContactUsFrontController::class, 'sendMessage'])->name('contact_us.send_message');
-Route::get('/login', [AuthFrontController::class, 'login'])->name('login')->middleware('guest');
-Route::get('/register', [AuthFrontController::class, 'register'])->name('register')->middleware('guest');
-Route::get('/logout', [AuthFrontController::class, 'logout'])->name('logout');
-Route::post('/login/user', [AuthFrontController::class, 'loginUser'])->name('login.user');
-Route::post('/register/user', [AuthFrontController::class, 'registerUser'])->name('register.user');
+Route::name('frontend.')->group(function() {
+    Route::get('/', [HomeGetController::class, 'home'])->name('home');
+    Route::get('contact_us', [ContactUsFrontController::class, 'index']);
+    Route::post('contact_us/send_message', [ContactUsFrontController::class, 'sendMessage'])->name('contact_us.send_message');
+    Route::get('/login', [AuthFrontController::class, 'login'])->name('login')->middleware('guest');
+    Route::get('/register', [AuthFrontController::class, 'register'])->name('register')->middleware('guest');
+    Route::get('/logout', [AuthFrontController::class, 'logout'])->name('logout');
+    Route::post('/login/user', [AuthFrontController::class, 'loginUser'])->name('login.user');
+    Route::post('/register/user', [AuthFrontController::class, 'registerUser'])->name('register.user');
 
-Route::get('/blogs', [HomeGetController::class, 'Blogs']);
-Route::get('/blogs/category/{category}', [HomeGetController::class, 'BlogsCategory'])->name('blogs_category');
-Route::get('/single_blog/{id}', [HomeGetController::class, 'SingleBlog']);
-Route::post('/single_blog/{id}', [HomePostController::class, 'SingleBlog']);
 
-Route::get('/teachers', [HomeGetController::class, 'Teachers']);
-Route::get('/single_teacher/{id}', [HomeGetController::class, 'SingleTeacher'])->name('single_teacher');
-Route::get('/teachers/category/{category}', [HomeGetController::class, 'TeachersCategory'])->name('subjects_category');
-Route::get('/teachers/subject/{category}', [HomeGetController::class, 'TeachersSubject'])->name('subjects');
-Route::get('/students', [HomeGetController::class, 'Students']);
-Route::get('/single_student/{id}', [HomeGetController::class, 'SingleStudent'])->name('single_student');
-Route::get('/courses', [HomeGetController::class, 'Courses']);
+    Route::resource('blogs',BlogFrontController::class);
+    //Route::get('/blogs/category/{category}', [HomeGetController::class, 'BlogsCategory'])->name('blogs_category');
+
+    Route::get('/teachers', [HomeGetController::class, 'Teachers']);
+    Route::get('/single_teacher/{id}', [HomeGetController::class, 'SingleTeacher'])->name('single_teacher');
+    Route::get('/teachers/category/{category}', [HomeGetController::class, 'TeachersCategory'])->name('subjects_category');
+    Route::get('/teachers/subject/{category}', [HomeGetController::class, 'TeachersSubject'])->name('subjects');
+    Route::get('/students', [HomeGetController::class, 'Students']);
+    Route::get('/single_student/{id}', [HomeGetController::class, 'SingleStudent'])->name('single_student');
+    Route::get('/courses', [HomeGetController::class, 'Courses']);
+});
+
+
+
 
 
 //admin
@@ -77,13 +82,6 @@ Route::prefix('admin')->middleware(['Admin', 'permission:1'])->group(function ()
     Route::get('/course_edit/{id}', [AdminGetController::class, 'CourseEdit'])->name('admin.backend.course_edit');
 
 
-    Route::get('/blog_category', [AdminGetController::class, 'BlogCategory'])->name('AdminBlogCategory');
-    Route::post('/blog_category', [AdminPostController::class, 'BlogCategoryDelete']);
-    Route::get('/blog_category_edit/{id}', [AdminGetController::class, 'BlogCategoryEdit'])->name('admin.backend.blog_category_edit');
-    Route::post('/blog_category_edit/{id}', [AdminPostController::class, 'BlogCategoryEdit']);
-    Route::get('/add_blog_category', [AdminGetController::class, 'AddBlogCategory'])->name('AddBlogCategory');
-    Route::post('/add_blog_category', [AdminPostController::class, 'AddBlogCategory']);
-
     Route::get('/blog_comment', [AdminGetController::class, 'BlogComment'])->name('AdminBlogComment');
     Route::post('/blog_comment', [AdminPostController::class, 'BlogCommentPublishUnpublishDelete']);
     Route::get('/blog_comment_edit/{id}', [AdminGetController::class, 'BlogCommentEdit'])->name('admin.backend.blog_comment_edit');
@@ -92,15 +90,24 @@ Route::prefix('admin')->middleware(['Admin', 'permission:1'])->group(function ()
     Route::get('/admins', [AdminGetController::class, 'AdminsProject'])->name('AdminEdocean');
     Route::get('/add_admins', [AdminGetController::class, 'AddAdmin'])->name('AddAdmin');
     Route::get('/admins_edit/{id}', [AdminGetController::class, 'AdminsEditProject'])->name('admin.backend.admins_edit');
+
     Route::name('admin.')->group(function () {
+
+//        Route::get('/blog_category', [AdminGetController::class, 'BlogCategory'])->name('AdminBlogCategory');
+//        Route::post('/blog_category', [AdminPostController::class, 'BlogCategoryDelete']);
+//        Route::get('/blog_category_edit/{id}', [AdminGetController::class, 'BlogCategoryEdit'])->name('admin.backend.blog_category_edit');
+//        Route::post('/blog_category_edit/{id}', [AdminPostController::class, 'BlogCategoryEdit']);
+//        Route::get('/add_blog_category', [AdminGetController::class, 'AddBlogCategory'])->name('AddBlogCategory');
+//        Route::post('/add_blog_category', [AdminPostController::class, 'AddBlogCategory']);
 
         Route::resource('menus', MenuController::class);
         Route::resource('setting', SettingController::class);
         Route::resource('about_us', AboutUsController::class);
         Route::resource('contact_us', ContactUsController::class);
         Route::resource('blogs', BlogController::class);
-        Route::post('/blogs/block_unblock_delete', [BlogController::class, 'BlogsBlockUnblockDelete'])->name('blogs.block_unblock_delete');
-        Route::post('/blogs_image_delete', [BlogController::class, 'BlogsImageDelete'])->name('blogs.image_delete');
+        Route::post('/blogs/change-status', [BlogController::class, 'changeStatus'])->name('blogs.block_unblock');
+        Route::post('destroy/blog', [BlogController::class, 'destroyBlog'])->name('destroy.blog');
+        Route::post('destroy/blog-image', [BlogController::class, 'destroyBlogImage']);
     });
 
 
