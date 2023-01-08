@@ -66,7 +66,7 @@
                             </div>
                             <!--end::Dropdown-->
                             <!--begin::Button-->
-                            <a href="{{ route('AddBlogCategory') }}" class="btn btn-primary font-weight-bolder">
+                            <a href="{{ route('admin.blog_categories.create') }}" class="btn btn-primary font-weight-bolder">
                                 <i class="la la-plus"></i>Add Category</a>
                             <!--end::Button-->
                         </div>
@@ -108,7 +108,7 @@
 
 @section('js')
     <script src="{{asset('backendCssJs/assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
-    <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/blog_category.js')}}"></script>
+    <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/blog_categories.js')}}"></script>
 
     <script>
         function sil(setir, id) {
@@ -147,16 +147,14 @@
                             })
                             if (response.status === 'success') {
                                 setTimeout(function () {
-                                    window.location.href = '/admin/blog_category';
+                                    window.location.href = '/admin/blog_categories';
                                 }, 1000)
                             }
-
                         }
                     })
                 }
             })
         }
-
     </script>
 @endsection
 

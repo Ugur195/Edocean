@@ -1,12 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\{
-    MenuController,
-    SettingController,
-    AboutUsController,
-    ContactUsController,
-    AuthController,
-    BlogController
+    MenuController, SettingController,
+    AboutUsController, ContactUsController,
+    AuthController, BlogController,
+    BlogCategoryController
 };
 use App\Http\Controllers\Frontend\{
     ContactUsController as ContactUsFrontController,
@@ -108,6 +106,7 @@ Route::prefix('admin')->middleware(['Admin', 'permission:1'])->group(function ()
         Route::post('/blogs/change-status', [BlogController::class, 'changeStatus'])->name('blogs.block_unblock');
         Route::post('destroy/blog', [BlogController::class, 'destroyBlog'])->name('destroy.blog');
         Route::post('destroy/blog-image', [BlogController::class, 'destroyBlogImage']);
+        Route::resource('blog_categories',BlogCategoryController::class);
     });
 
 

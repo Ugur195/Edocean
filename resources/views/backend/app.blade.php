@@ -345,9 +345,9 @@
                         </li>
 
 
-                        <li class="menu-item  @if(Request::url()==url('admin/blog_category')) menu-item-active @endif "
+                        <li class="menu-item  @if(Request::url()==url('admin/blog_categories')) menu-item-active @endif "
                             aria-haspopup="true">
-                            <a href="{{url('admin/blog_category')}}" class="menu-link">
+                            <a href="{{url('admin/blog_categories')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height:22px;">
                                         <g>
@@ -357,7 +357,7 @@
 	                                    </g>
                                     </svg>
                                 </span>
-                                <span class="menu-text">Blog Category</span>
+                                <span class="menu-text">Blog Categories</span>
                             </a>
                         </li>
 

@@ -2,22 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AboutUs;
+
 use App\Models\Admin;
 use App\Models\BlogCategory;
 use App\Models\BlogComment;
-use App\Models\Blogs;
-use App\Models\ContactUs;
 use App\Models\Course;
 use App\Models\CourseTeacher;
-use App\Models\Menu;
-use App\Models\Setting;
 use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 use Yajra\DataTables\DataTables;
 
 class AdminGetController extends Controller
@@ -202,37 +197,38 @@ class AdminGetController extends Controller
 
 
 
-    //Blog Category
-    public function getBlogCategory()
-    {
-        $blog_category = DB::table('edocean.blog_category')->select(DB::raw("id, name, slug,created_at,updated_at,
-        (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
-        return DataTables::of($blog_category)
-            ->addColumn('options', function ($model) {
-                return
-                    '<a class="btn btn-xs btn-primary" href="' . route('admin.backend.blog_category_edit', $model->id) . '" ><i class="la la-pencil-square-o"></i></a>
-			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger" ><i class="la la-trash"></i></button>';
-            })->rawColumns(['options' => true])->make(true);
-    }
-
-    public function AddBlogCategory()
-    {
-        return view('backend.add_blog_category');
-    }
-
-
-    public function BlogCategoryEdit($id)
-    {
-        $blog_category_edit = BlogCategory::where('id', $id)->first();
-        return view('backend.blog_category_edit')->with(['blog_category_edit' => $blog_category_edit]);
-    }
-
-
-    public function BlogCategory()
-    {
-        return view('backend.blog_category');
-    }
-    //finish Blog Category
+//    //Blog Category
+//    public function getBlogCategory()
+//    {
+//        $blog_category = DB::table('edocean.blog_category')->select(DB::raw("id, name, slug,created_at,updated_at,
+//        (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
+//        return DataTables::of($blog_category)
+//            ->addColumn('options', function ($model) {
+//                return
+//                    '<a class="btn btn-xs btn-primary" href="' . route('admin.backend.blog_category_edit', $model->id) . '" ><i class="la la-pencil-square-o"></i></a>
+//			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger" ><i class="la la-trash"></i></button>';
+//            })->rawColumns(['options' => true])->make(true);
+//    }
+//
+//
+//    public function AddBlogCategory()
+//    {
+//        return view('backend.add_blog_category');
+//    }
+//
+//
+//    public function BlogCategoryEdit($id)
+//    {
+//        $blog_category_edit = BlogCategory::where('id', $id)->first();
+//        return view('backend.blog_category_edit')->with(['blog_category_edit' => $blog_category_edit]);
+//    }
+//
+//
+//    public function BlogCategory()
+//    {
+//        return view('backend.blog_category');
+//    }
+//    //finish Blog Category
 
 
     //BlogComment
