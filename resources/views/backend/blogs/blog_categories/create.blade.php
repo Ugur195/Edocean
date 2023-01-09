@@ -22,8 +22,8 @@
                     <div class="tab-content pt-5">
                         <!--begin::Tab Content-->
                         <div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
-                            <form id="AddBlogCategory" class="form" method="POST">
-                                {{csrf_field()}}
+                            <form id="AddBlogCategory" action="{{route('admin.blog_categories.store')}}" class="form" method="POST">
+                                @csrf
                                 <div class="col-xl-3"></div>
 
 
@@ -45,7 +45,7 @@
                                             <div class="mr-2">
                                             </div>
                                             <div>
-                                                <a href="{{url('admin/blog_category')}}" type="button"
+                                                <a href="{{route('admin.blog_categories.index')}}" type="button"
                                                    class="btn btn-success font-weight-bolder text-uppercase px-9 py-4"
                                                    data-wizard-type="action-submit">Back
                                                 </a>
@@ -53,14 +53,12 @@
                                                     class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4"
                                                     data-wizard-type="action-next">Create
                                                 </button>
-
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </form>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -89,7 +87,7 @@
                     )
                     if (response.status === 'success') {
                         setTimeout(function () {
-                            window.location.href = '/admin/blog_category';
+                            window.location.href = '/admin/blog_categories';
                         }, 1000)
                     }
 

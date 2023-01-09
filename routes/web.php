@@ -91,12 +91,6 @@ Route::prefix('admin')->middleware(['Admin', 'permission:1'])->group(function ()
 
     Route::name('admin.')->group(function () {
 
-//        Route::get('/blog_category', [AdminGetController::class, 'BlogCategory'])->name('AdminBlogCategory');
-//        Route::post('/blog_category', [AdminPostController::class, 'BlogCategoryDelete']);
-//        Route::get('/blog_category_edit/{id}', [AdminGetController::class, 'BlogCategoryEdit'])->name('admin.backend.blog_category_edit');
-//        Route::post('/blog_category_edit/{id}', [AdminPostController::class, 'BlogCategoryEdit']);
-//        Route::get('/add_blog_category', [AdminGetController::class, 'AddBlogCategory'])->name('AddBlogCategory');
-//        Route::post('/add_blog_category', [AdminPostController::class, 'AddBlogCategory']);
 
         Route::resource('menus', MenuController::class);
         Route::resource('setting', SettingController::class);

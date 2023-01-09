@@ -197,40 +197,6 @@ class AdminGetController extends Controller
 
 
 
-//    //Blog Category
-//    public function getBlogCategory()
-//    {
-//        $blog_category = DB::table('edocean.blog_category')->select(DB::raw("id, name, slug,created_at,updated_at,
-//        (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
-//        return DataTables::of($blog_category)
-//            ->addColumn('options', function ($model) {
-//                return
-//                    '<a class="btn btn-xs btn-primary" href="' . route('admin.backend.blog_category_edit', $model->id) . '" ><i class="la la-pencil-square-o"></i></a>
-//			    	<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger" ><i class="la la-trash"></i></button>';
-//            })->rawColumns(['options' => true])->make(true);
-//    }
-//
-//
-//    public function AddBlogCategory()
-//    {
-//        return view('backend.add_blog_category');
-//    }
-//
-//
-//    public function BlogCategoryEdit($id)
-//    {
-//        $blog_category_edit = BlogCategory::where('id', $id)->first();
-//        return view('backend.blog_category_edit')->with(['blog_category_edit' => $blog_category_edit]);
-//    }
-//
-//
-//    public function BlogCategory()
-//    {
-//        return view('backend.blog_category');
-//    }
-//    //finish Blog Category
-
-
     //BlogComment
     public function getBlogComment()
     {

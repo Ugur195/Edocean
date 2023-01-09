@@ -113,6 +113,7 @@
     <script>
         function sil(setir, id) {
             var sira = setir.parentNode.parentNode.rowIndex;
+            let action = $(setir).data('action');
             console.log(sira);
             swal.fire({
                 title: 'Silmek Isteyirsinizmi?',
@@ -129,9 +130,10 @@
                     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content')
                     $.ajax({
                         type: "Post",
-                        url: '',
+                        url: action,
                         data: {
                             'id': id,
+                            '_method': 'delete',
                             '_token': CSRF_TOKEN
                         },
 

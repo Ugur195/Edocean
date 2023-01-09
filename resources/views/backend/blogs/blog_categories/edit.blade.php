@@ -12,7 +12,8 @@
                         <div class="card-toolbar">
                             <div class="d-flex align-items-center flex-wrap mr-2">
                                 <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Blog Category Edit</h5>
-                                <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
+                                <div
+                                    class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
                             </div>
 
                         </div>
@@ -21,40 +22,48 @@
                         <div class="tab-content pt-5">
                             <!--begin::Tab Content-->
                             <div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
-                                <form id="BlogCategory" class="form" method="POST">
-                                    {{csrf_field()}}
+                                <form id="BlogCategory" class="form"
+                                      action="{{route('admin.blog_categories.update',$blog_category_edit->id)}}"
+                                      method="POST">
+                                    @method('put')
+                                    @csrf
                                     <div class="col-xl-3"></div>
-
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Name</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input name="name" class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$blog_category_edit->name}}" />
+                                            <input name="name" class="form-control form-control-lg form-control-solid"
+                                                   type="text"
+                                                   value="{{$blog_category_edit->name}}"/>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Slug</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input name="slug" class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$blog_category_edit->slug}}" />
+                                            <input name="slug" class="form-control form-control-lg form-control-solid"
+                                                   type="text"
+                                                   value="{{$blog_category_edit->slug}}"/>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Status</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <select name="status" class="form-control form-control-lg form-control-solid custom-select"
+                                            <select name="status"
+                                                    class="form-control form-control-lg form-control-solid custom-select"
                                                     id="status">
                                                 <option value="0" disabled selected>Select</option>
-                                                <option value="1" @if($blog_category_edit->status==1) selected @endif>Aktiv</option>
-                                                <option value="0" @if($blog_category_edit->status==0) selected @endif>Deaktiv</option>
+                                                <option value="1" @if($blog_category_edit->status==1) selected @endif>
+                                                    Aktiv
+                                                </option>
+                                                <option value="0" @if($blog_category_edit->status==0) selected @endif>
+                                                    Deaktiv
+                                                </option>
                                             </select>
 
                                         </div>
                                     </div>
-
 
 
                                     <div class="col-xl-3"></div>
@@ -66,12 +75,13 @@
                                                 <div class="mr-2">
                                                 </div>
                                                 <div>
-                                                    <a href="{{route('AdminBlogCategory')}}" type="button"
+                                                    <a href="{{route('admin.blog_categories.index')}}" type="button"
                                                        class="btn btn-success font-weight-bolder text-uppercase px-9 py-4"
                                                        data-wizard-type="action-submit">Back
                                                     </a>
-                                                    <button class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4"
-                                                            data-wizard-type="action-next">Update
+                                                    <button
+                                                        class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4"
+                                                        data-wizard-type="action-next">Update
                                                     </button>
                                                 </div>
                                             </div>
@@ -96,7 +106,6 @@
             $('#BlogCategory').ajaxForm({
                 beforeSubmit: function () {
                 },
-
                 success: function (response) {
                     Swal.fire({
                             title: response.title,
@@ -107,16 +116,13 @@
                     )
                     if (response.status === 'success') {
                         setTimeout(function () {
-                            window.location.href = '/admin/blog_category';
+                            window.location.href = '/admin/blog_categories';
                         }, 1000)
                     }
-
                 }
             });
         });
     </script>
-
-
 @endsection
 
 

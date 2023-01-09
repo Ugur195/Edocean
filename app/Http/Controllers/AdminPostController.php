@@ -6,20 +6,13 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use App\Models\BlogCategory;
 use App\Models\BlogComment;
-use App\Models\Blogs;
 use App\Models\Course;
 use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
-use PharIo\Version\Exception;
+
 
 class AdminPostController extends Controller
 {
@@ -210,53 +203,6 @@ class AdminPostController extends Controller
     }
     //finish Admin
 
-
-    //Blog Category
-    public function BlogCategoryEdit(Request $request)
-    {
-        try {
-            BlogCategory::where('id', $request->id)->update(['name' => $request->name,
-                'slug' => $request->slug, 'status' => $request->status]);
-            return response(['title' => 'Ugurlu!', 'message' => 'BlogCategory update oldu', 'status' => 'success']);
-        } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => 'BlogCategory update olmadi', 'status' => 'error']);
-        }
-    }
-
-
-    public function BlogCategoryDelete(Request $request)
-    {
-        try {
-            $blogCategory = BlogCategory::with('comments')->find($request->id);
-
-            DB::transaction(function () use ($blogCategory) {
-                $blogCategory->comments()->delete();
-                $blogCategory->blogs()->delete();
-                $blogCategory->delete();
-            });
-            return response(['title' => 'Ugurlu!', 'message' => 'BlogCategory ugurlu silindi!', 'status' => 'success']);
-        } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => 'BlogCategory silmek mumkun olmadi!', 'status' => 'error']);
-        }
-
-    }
-
-
-    public function AddBlogCategory(Request $request)
-    {
-        $blog_category = BlogCategory::where('name', $request->name)->first();
-        if ($blog_category == null) {
-            $blog_category = new BlogCategory();
-            $blog_category->name = $request->name;
-            $blog_category->slug = $request->name;
-            $blog_category->status = 1;
-            $blog_category->save();
-            return response(['title' => 'Ugurlu!', 'message' => 'Yeni Blog Category elave edildi!', 'status' => 'success']);
-        } else {
-            return response(['title' => 'Ugursuz!', 'message' => 'Yeni Blog Category elave etmek mumkun olmadi', 'status' => 'error']);
-        }
-    }
-    // finish BlogCategory
 
 
     //BlogComment
