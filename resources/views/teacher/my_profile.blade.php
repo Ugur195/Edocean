@@ -337,15 +337,14 @@
                                             <div class="radio-inline">
                                                 <label class="radio radio-primary">
                                                     <input type="radio" name="teaching_time"
-                                                           @if($teacher->teaching_time=='1 saat') checked
-                                                           @endif value="1 hour"/>
+                                                           @if($teacher->teaching_time=='1 saat') checked @endif value="1 saat"/>
                                                     <span></span>
                                                     1 hour
                                                 </label>
                                                 <label class="radio radio-primary">
                                                     <input type="radio" name="teaching_time"
                                                            @if($teacher->teaching_time=='1 saat 30 dəqiqə') checked
-                                                           @endif value="1 hour 30 min"/>
+                                                           @endif value="1 saat 30 dəqiqə'"/>
                                                     <span></span>
                                                     1 hour 30 min
                                                 </label>
@@ -353,7 +352,7 @@
                                                 <label class="radio radio-primary">
                                                     <input type="radio" name="teaching_time"
                                                            @if($teacher->teaching_time=='2 saat') checked
-                                                           @endif value="2 hours"/>
+                                                           @endif value="2 saat"/>
                                                     <span></span>
                                                     2 hours
                                                 </label>

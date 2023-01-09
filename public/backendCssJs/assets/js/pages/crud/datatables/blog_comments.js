@@ -28,9 +28,8 @@ var KTDatatablesSearchOptionsColumnSearch = function () {
             serverSide: true,
             searchable: true,
             ajax: {
-                url: '/api/mystudents',
+                url: '/api/blog_comments',
                 type: 'get',
-                data: {user_id: $('#kt_datatable').data('user-id')},
             },
             columns: [
                 {
@@ -38,20 +37,25 @@ var KTDatatablesSearchOptionsColumnSearch = function () {
                     name: 'id'
                 },
                 {
-                    data: 'course_name',
-                    name: 'course'
+                    data: 'name',
+                    name: 'name'
                 },
                 {
-                    data: 'student_name',
-                    name: 'student'
+                    data: 'email',
+                    name: 'email'
                 },
                 {
-                    data: 'created_at',
-                    name: 'created_at'
+                    data: 'message',
+                    name: 'message'
+                },
+
+                {
+                    data: 'title_name',
+                    name: 'title_name'
                 },
                 {
-                    data: 'updated_at',
-                    name: 'updated_at'
+                    data: 'parent_id',
+                    name: 'parent_id'
                 },
                 {
                     data: 'status',
@@ -72,10 +76,11 @@ var KTDatatablesSearchOptionsColumnSearch = function () {
 
                     switch (column.title()) {
                         case 'ID':
-                        case 'Course':
-                        case 'Student':
-                        case 'Created At':
-                        case 'Updated At':
+                        case 'Name':
+                        case 'Email':
+                        case 'Message':
+                        case 'Blog':
+                        case 'Parent Comment':
                             input = $(`<input type="text" class="form-control form-control-sm form-filter datatable-input" data-col-index="` + column.index() + `"/>`);
                             break;
 

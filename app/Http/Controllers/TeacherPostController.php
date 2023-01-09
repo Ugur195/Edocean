@@ -115,28 +115,5 @@ class TeacherPostController extends Controller
 
     }
 
-// Course
-
-    public function StudentRequestsChangeDelete(Request $request)
-    {
-        try {
-            if ($request->button_accept != null) {
-                if ($request->status == 0) {
-                    TeacherStudent::find($request->id)->update(['status' => 1]);
-                    return response(['title' => 'Ugurlu!', 'message' => 'Student gebul oldu!', 'status' => 'success']);
-                } else {
-                    return response(['title' => 'Ugursuz!', 'message' => 'Student gebul etmek mumkun olmadi!', 'status' => 'error']);
-                }
-            } else if ($request->btn_delete != null) {
-                TeacherStudent::where('id', $request->id)->delete();
-                return response(['title' => 'Ugurlu!', 'message' => 'StudentRequests Silindi', 'status' => 'success']);
-            } else {
-                return response(['title' => 'Ugursuz!', 'message' => 'StudentRequests Silmek mumkun olmadi', 'status' => 'error']);
-            }
-        } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => 'Studenti silmek olmur!', 'status' => 'error']);
-        }
-    }
-
 
 }

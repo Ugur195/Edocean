@@ -11,7 +11,7 @@
                     <div class="card-header card-header-tabs-line">
                         <div class="card-toolbar">
                             <div class="d-flex align-items-center flex-wrap mr-2">
-                                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Course</h5>
+                                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Blog Comment</h5>
                                 <div
                                     class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
                             </div>
@@ -22,87 +22,51 @@
                         <div class="tab-content pt-5">
                             <!--begin::Tab Content-->
                             <div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
-                                <form class="form" method="POST">
-                                    {{csrf_field()}}
+                                <form class="form" action="{{route('admin.blog_comments.edit',$blog_comment_edit->id)}}"
+                                      method="POST">
+                                    @csrf
                                     <div class="col-xl-3"></div>
-
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Image</label>
-                                        <div class="col-lg-9 col-xl-9">
-                                            <div class="image-input image-input-outline" id="kt_contacts_edit_avatar"
-                                                 style="background-size:fill; background-position:center; background-image: url(assets/media/users/blank.png)">
-
-                                                <div class="image-input-wrapper"
-                                                     style="background-size:fill; background-position:center; background-image: url('data:image/jpeg;base64,{{base64_encode($student_course_edit->image)}}')">
-                                                </div>
-                                                <label
-                                                    class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                    data-action="change" data-toggle="tooltip" title=""
-                                                    data-original-title="Change avatar">
-                                                    <i class="fa fa-pen icon-sm text-muted"></i>
-                                                    <input type="file" name="logo" id="file"
-                                                           accept=".png, .jpg, .jpeg"/>
-                                                    <input type="hidden" name="profile_avatar_remove"/>
-                                                </label>
-
-                                                <span
-                                                    class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                    data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
-                                                    <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
 
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Name</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$student_course_edit->name}}" readonly/>
+                                                   value="{{$blog_comment_edit->name}}" readonly/>
                                         </div>
                                     </div>
-
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Email</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$student_course_edit->email}}" readonly/>
+                                                   value="{{$blog_comment_edit->email}}" readonly/>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Phone</label>
+                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Message</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$student_course_edit->phone}}" readonly/>
+                                                   value="{{$blog_comment_edit->message}}" readonly/>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Subjects</label>
+                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Blog</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{\App\Models\Subjects::find($student_course_edit->subjects)->name}}"
+                                                   value="{{\App\Models\Blogs::find($blog_comment_edit->blog_id)->title}}"
                                                    readonly/>
                                         </div>
                                     </div>
 
-
                                     <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Lesson Cost</label>
+                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Parent
+                                            Comment</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$student_course_edit->lesson_cost}}" readonly/>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Balance</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$student_course_edit->balance}}" readonly/>
+                                                   value="{{$blog_comment_edit->parent_id}}" readonly/>
                                         </div>
                                     </div>
 
@@ -116,7 +80,7 @@
                                                 <div class="mr-2">
                                                 </div>
                                                 <div>
-                                                    <a href="{{route('StudentCourse')}}" type="button"
+                                                    <a href="{{route('admin.blog_comments.index')}}" type="button"
                                                        class="btn btn-success font-weight-bolder text-uppercase px-9 py-4"
                                                        data-wizard-type="action-submit">Back
                                                     </a>
@@ -126,6 +90,7 @@
                                     </div>
                                 </form>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -137,6 +102,3 @@
 @section('js')
 
 @endsection
-
-
-

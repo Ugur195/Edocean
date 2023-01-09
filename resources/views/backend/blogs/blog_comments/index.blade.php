@@ -1,6 +1,5 @@
 @extends('backend.app')
 
-
 @section('css')
 @endsection
 
@@ -14,7 +13,7 @@
                 <div class="card card-custom">
                     <div class="card-header">
                         <div class="card-title">
-                            <h3 class="card-label">Admins</h3>
+                            <h3 class="card-label">Blog Comment</h3>
                         </div>
                         <div class="card-toolbar">
                             <!--begin::Dropdown-->
@@ -66,8 +65,8 @@
                             </div>
                             <!--end::Dropdown-->
                             <!--begin::Button-->
-                            <a href="{{ route('AddAdmin') }}" class="btn btn-primary font-weight-bolder">
-                                <i class="la la-plus"></i>Add Admin</a>
+                            <a href="#" class="btn btn-primary font-weight-bolder">
+                                <i class="la la-plus"></i>New Record</a>
                             <!--end::Button-->
                         </div>
                     </div>
@@ -76,12 +75,11 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Image</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Father Name</th>
-                                <th>Birthday</th>
+                                <th>Name</th>
                                 <th>Email</th>
+                                <th>Message</th>
+                                <th>Blog</th>
+                                <th>Parent Comment</th>
                                 <th>Status</th>
                                 <th>Options</th>
                             </tr>
@@ -89,14 +87,13 @@
                             <tfoot>
                             <tr>
                                 <th>ID</th>
-                                <th>IMAGE</th>
-                                <th>FIRST NAME</th>
-                                <th>LAST NAME</th>
-                                <th>FATHER NAME</th>
-                                <th>BIRTHDAY</th>
-                                <th>EMAIL</th>
-                                <th>STATUS</th>
-                                <th>OPTIONS</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Message</th>
+                                <th>Blog</th>
+                                <th>Parent Comment</th>
+                                <th>Status</th>
+                                <th>Options</th>
                             </tr>
                             </tfoot>
                         </table>
@@ -111,26 +108,26 @@
 @endsection
 
 @section('js')
-    <script src="{{asset('backendCssJs/assets/plugins/custom/datatables/datatables.bundle.js?v='.time())}}"></script>
-    <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/admins.js?v='.time())}}"></script>
+    <script src="{{asset('backendCssJs/assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
+    <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/blog_comments.js?v='.time())}}"></script>
 
     <script>
-        function blokUnblok(status, id) {
-            console.log('basildi' + status);
+        function publishUnpublish(element, status, id) {
+            let action = $(element).data('action');
             let title = '';
             let text = '';
             let icon = '';
             let confBtnText = '';
             if (status == 0) {
-                title = 'Blokdan cixartmaq Isteyirsinizmi?';
-                text = 'Unblock etdikden sonra Blok etmek mumkundu!';
-                icon = 'info';
-                confBtnText = 'Blokdan cixart';
-            } else if (status == 1) {
-                title = 'Blok etmek Isteyirsinizmi?';
-                text = 'Blok etdikden sonra Unblock etmek mumkundu!';
+                title = 'Reyin Yayinlamaqin isteyirsiz?';
+                text = 'Bu rey yayinlandiqdan sonra saytda gorunecek!';
                 icon = 'warning';
-                confBtnText = 'Blok et';
+                confBtnText = 'Yayinla';
+            } else if (status == 1) {
+                title = 'Isteyirsiz reyiniz,artiq yayinlanmasin?';
+                text = 'Bu rey saytda artiq  gorunmeyecek!';
+                icon = 'warning';
+                confBtnText = 'Yayinlama';
             }
             swal.fire({
                 title: title,
@@ -139,7 +136,7 @@
                 allowOutsideClick: false,
                 showCancelButton: true,
                 cancelButtonText: 'Bagla',
-                confirmButtonColor: '#3085d6',
+                confirmButtonColor: '#098ca3',
                 cancelButtonColor: '#d33',
                 confirmButtonText: confBtnText,
             }).then((result) => {
@@ -147,11 +144,13 @@
                     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content')
                     $.ajax({
                         type: "Post",
-                        url: '',
+                        url: action,
                         data: {
                             'id': id,
                             'status': status,
-                            'btn_block': 'btn_block',
+                            'btn_publish': 'btn_publish',
+                            'btn_unpublish': 'btn_unpublish',
+                            '_method': 'put',
                             '_token': CSRF_TOKEN
                         },
 
@@ -164,7 +163,7 @@
                             })
                             if (response.status === 'success') {
                                 setTimeout(function () {
-                                    window.location.href = '/admin/admins';
+                                    window.location.reload();
                                 }, 1000)
                             }
 
@@ -176,6 +175,8 @@
 
         function sil(setir, id) {
             var sira = setir.parentNode.parentNode.rowIndex;
+            let action = $(setir).data('action');
+            console.log(id)
             console.log(sira);
             swal.fire({
                 title: 'Silmek Isteyirsinizmi?',
@@ -192,12 +193,11 @@
                     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content')
                     $.ajax({
                         type: "Post",
-                        url: '',
+                        url: action,
                         data: {
                             'id': id,
-                            'btn_delete': 'btn_delete',
+                            '_method': 'delete',
                             '_token': CSRF_TOKEN
-
                         },
 
                         success: function (response) {
@@ -212,8 +212,8 @@
                             })
                             if (response.status === 'success') {
                                 setTimeout(function () {
-                                    window.location.href = '/admin/admins';
-                                }, 500)
+                                    window.location.reload();
+                                }, 1000)
                             }
 
                         }
@@ -222,7 +222,5 @@
             })
         }
     </script>
-
 @endsection
-
 

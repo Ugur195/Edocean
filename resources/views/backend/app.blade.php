@@ -401,9 +401,9 @@
 
 
 
-                        <li class="menu-item  @if(Request::url()==url('admin/blog_comment')) menu-item-active @endif "
+                        <li class="menu-item  @if(Request::url()==url('admin/blog_comments')) menu-item-active @endif "
                             aria-haspopup="true">
-                            <a href="{{url('admin/blog_comment')}}" class="menu-link">
+                            <a href="{{url('admin/blog_comments')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"

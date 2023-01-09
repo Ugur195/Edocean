@@ -2,12 +2,10 @@
 
 use App\Http\Controllers\Admin\{
     MenuController,ContactUsController,
-    BlogController,BlogCategoryController
+    BlogController,BlogCategoryController,
+    BlogCommentsController,AdminController
 };
 use App\Http\Controllers\AdminGetController;
-use App\Http\Controllers\CourseGetController;
-use App\Http\Controllers\StudentGetController;
-use App\Http\Controllers\TeacherGetController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,18 +24,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('admins', [AdminController::class, 'getAdmin']);
 Route::get('contact_us', [ContactUsController::class, 'getContactUs']);
 Route::get('menus', [MenuController::class, 'getMenu']);
 Route::get('blogs', [BlogController::class, 'getBlogs']);
 Route::get('blog_categories', [BlogCategoryController::class, 'blogCategory']);
+Route::get('blog_comments', [BlogCommentsController::class, 'blogComment']);
 Route::get('teacher', [AdminGetController::class, 'getTeacher']);
 Route::get('student', [AdminGetController::class, 'getStudent']);
-Route::get('student_course', [StudentGetController::class, 'getStudentCourse']);
-Route::get('course_students', [CourseGetController::class, 'getCourseStudentRequests']);
-Route::get('course_teachers', [CourseGetController::class, 'getCourseTeacherRequests']);
 Route::get('course', [AdminGetController::class, 'getCourse']);
-Route::get('mycourses', [TeacherGetController::class, 'getCourses']);
-Route::get('mystudents', [TeacherGetController::class, 'getStudents']);
-Route::get('admins', [AdminGetController::class, 'getAdminsProject']);
-Route::get('blog_comment', [AdminGetController::class, 'getBlogComment']);
+
 

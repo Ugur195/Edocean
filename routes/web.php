@@ -4,7 +4,8 @@ use App\Http\Controllers\Admin\{
     MenuController, SettingController,
     AboutUsController, ContactUsController,
     AuthController, BlogController,
-    BlogCategoryController
+    BlogCategoryController,BlogCommentsController,
+    AdminController
 };
 use App\Http\Controllers\Frontend\{
     ContactUsController as ContactUsFrontController,
@@ -17,7 +18,6 @@ use App\Http\Controllers\CourseGetController;
 use App\Http\Controllers\CoursePostController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomeGetController;
-use App\Http\Controllers\HomePostController;
 use App\Http\Controllers\StudentGetController;
 use App\Http\Controllers\StudentPostController;
 use App\Http\Controllers\TeacherGetController;
@@ -80,18 +80,15 @@ Route::prefix('admin')->middleware(['Admin', 'permission:1'])->group(function ()
     Route::get('/course_edit/{id}', [AdminGetController::class, 'CourseEdit'])->name('admin.backend.course_edit');
 
 
-    Route::get('/blog_comment', [AdminGetController::class, 'BlogComment'])->name('AdminBlogComment');
-    Route::post('/blog_comment', [AdminPostController::class, 'BlogCommentPublishUnpublishDelete']);
-    Route::get('/blog_comment_edit/{id}', [AdminGetController::class, 'BlogCommentEdit'])->name('admin.backend.blog_comment_edit');
-
-
-    Route::get('/admins', [AdminGetController::class, 'AdminsProject'])->name('AdminEdocean');
-    Route::get('/add_admins', [AdminGetController::class, 'AddAdmin'])->name('AddAdmin');
-    Route::get('/admins_edit/{id}', [AdminGetController::class, 'AdminsEditProject'])->name('admin.backend.admins_edit');
+//    Route::get('/admins', [AdminGetController::class, 'AdminsProject'])->name('AdminEdocean');
+//    Route::get('/add_admins', [AdminGetController::class, 'AddAdmin'])->name('AddAdmin');
+//    Route::get('/admins_edit/{id}', [AdminGetController::class, 'AdminsEditProject'])->name('admin.backend.admins_edit');
+//    Route::post('/add_admins', [AdminPostController::class, 'AddAdmin']);
+//    Route::post('/admins', [AdminPostController::class, 'AdminsBlockUnblockDelete']);
+//    Route::post('/admins_edit/{id}', [AdminPostController::class, 'AdminEdit']);
 
     Route::name('admin.')->group(function () {
-
-
+        Route::resource('admins',AdminController::class);
         Route::resource('menus', MenuController::class);
         Route::resource('setting', SettingController::class);
         Route::resource('about_us', AboutUsController::class);
@@ -101,15 +98,13 @@ Route::prefix('admin')->middleware(['Admin', 'permission:1'])->group(function ()
         Route::post('destroy/blog', [BlogController::class, 'destroyBlog'])->name('destroy.blog');
         Route::post('destroy/blog-image', [BlogController::class, 'destroyBlogImage']);
         Route::resource('blog_categories',BlogCategoryController::class);
+        Route::resource('blog_comments',BlogCommentsController::class);
     });
 
 
     Route::post('/teacher', [AdminPostController::class, 'TeachersBlockUnblockDelete']);
     Route::post('/student', [AdminPostController::class, 'StudentsBlockUnblockDelete']);
     Route::post('/course', [AdminPostController::class, 'CoursesBlockUnblockDelete']);
-    Route::post('/add_admins', [AdminPostController::class, 'AddAdmin']);
-    Route::post('/admins', [AdminPostController::class, 'AdminsBlockUnblockDelete']);
-    Route::post('/admins_edit/{id}', [AdminPostController::class, 'AdminEdit']);
 });
 
 Route::middleware('auth', 'verified')->group(function () {
@@ -117,9 +112,6 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::prefix('admin/student')->middleware('permission:4')->group(function () {
         Route::get('/my_profile', [StudentGetController::class, 'getMyProfile']);
         Route::get('/index', [StudentGetController::class, 'Student']);
-        Route::get('/student_course', [StudentGetController::class, 'StudentCourse'])->name('StudentCourse');
-        Route::get('/student_course_edit/{id}', [StudentGetController::class, 'StudentCourseEdit'])->name('admin.student_course_edit');
-        Route::get('/teacher_info/{id}', [StudentGetController::class, 'TeacherInfoEdit'])->name('admin.student.teacher_info');
         Route::get('/student_attendance', [StudentGetController::class, 'StudentAttendance']);
         Route::get('/student_schedule', [StudentGetController::class, 'StudentSchedule']);
         Route::get('GetSubCatStuEdit/{id}', [StudentGetController::class, 'GetSubCatStuEdit']);
@@ -133,33 +125,21 @@ Route::middleware('auth', 'verified')->group(function () {
         Route::get('/index', [TeacherGetController::class, 'Teacher']);
         Route::get('/teacher_schedule', [TeacherGetController::class, 'TeacherSchedule']);
         Route::get('GetSubCatTeachEdit/{id}', [TeacherGetController::class, 'GetSubCatTeachEdit']);
-        Route::get('/mycourses', [TeacherGetController::class, 'Courses'])->name('TeacherCourses');
-        Route::get('/cInfo/{id}', [TeacherGetController::class, 'CourseInfo'])->name('admin.teacher_info');
-        Route::get('/mystudents', [TeacherGetController::class, 'Students'])->name('TeacherStudents');
-        Route::get('/sInfo/{id}', [TeacherGetController::class, 'StudentInfo'])->name('admin.student_info');
-
         Route::post('/my_profile', [TeacherPostController::class, 'postTeacherProfile']);
-        Route::post('/mystudents', [TeacherPostController::class, 'StudentRequestsChangeDelete']);
     });
+
+
 
     //course
     Route::prefix('admin/course')->middleware('permission:2')->group(function () {
         Route::get('/my_profile', [CourseGetController::class, 'MyCourse']);
         Route::get('/index', [CourseGetController::class, 'Course']);
-        Route::get('/course_students', [CourseGetController::class, 'CourseStudentRequests'])->name('CourseStudents');
-        Route::get('/course_students_edit/{id}', [CourseGetController::class, 'CourseStudentEdit'])->name('admin.course.course_students_edit');
-        Route::get('/course_teachers', [CourseGetController::class, 'CourseTeacherRequests'])->name('CourseTeacher');
-        Route::get('/course_teachers_edit/{id}', [CourseGetController::class, 'CourseTeacherEdit'])->name('admin.course.course_teachers_edit');
         Route::get('/course_schedule', [CourseGetController::class, 'CourseSchedule']);
         Route::get('GetSubCatEdit/{id}', [CourseGetController::class, 'GetSubCatEdit']);
-
-
         Route::post('/my_profile', [CoursePostController::class, 'postMyProfile']);
-        Route::post('/course_students', [CoursePostController::class, 'StudentRequestsChangeDelete']);
-        Route::post('/course_teachers', [CoursePostController::class, 'TeacherRequestsChangeDelete']);
-
     });
 });
+
 
 
 Auth::routes(['verify' => true]);

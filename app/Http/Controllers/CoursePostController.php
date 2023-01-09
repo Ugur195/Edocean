@@ -104,46 +104,5 @@ class CoursePostController extends Controller
         return back();
     }
 
-    public function StudentRequestsChangeDelete(Request $request)
-    {
-        try {
-            if ($request->button_accept != null) {
-                if ($request->status == 0) {
-                    CourseStudent::find($request->id)->update(['status' => 1]);
-                    return response(['title' => 'Ugurlu!', 'message' => 'Student gebul oldu!', 'status' => 'success']);
-                } else {
-                    return response(['title' => 'Ugursuz!', 'message' => 'Student gebul etmek mumkun olmadi!', 'status' => 'error']);
-                }
-            } else if ($request->btn_delete != null) {
-                CourseStudent::where('id', $request->id)->delete();
-                return response(['title' => 'Ugurlu!', 'message' => 'StudentRequests Silindi', 'status' => 'success']);
-            } else {
-                return response(['title' => 'Ugursuz!', 'message' => 'StudentRequests Silmek mumkun olmadi', 'status' => 'error']);
-            }
-        } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => 'Studenti silmek olmur!', 'status' => 'error']);
-        }
-    }
-
-    public function TeacherRequestsChangeDelete(Request $request)
-    {
-        try {
-            if ($request->button_accept != null) {
-                if ($request->status == 0) {
-                    CourseTeacher::find($request->id)->update(['status' => 1]);
-                    return response(['title' => 'Ugurlu!', 'message' => 'Teacher gebul oldu!', 'status' => 'success']);
-                } else {
-                    return response(['title' => 'Ugursuz!', 'message' => 'Teacher gebul etmek mumkun olmadi!', 'status' => 'error']);
-                }
-            } else if ($request->btn_delete != null) {
-                CourseTeacher::where('id', $request->id)->delete();
-                return response(['title' => 'Ugurlu!', 'message' => 'TeacherRequests Silindi', 'status' => 'success']);
-            } else {
-                return response(['title' => 'Ugursuz!', 'message' => 'TeacherRequests Silmek mumkun olmadi', 'status' => 'error']);
-            }
-        } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => 'Teacheri silmek olmur!', 'status' => 'error']);
-        }
-    }
 
 }
