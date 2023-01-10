@@ -129,7 +129,7 @@
                 <div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1"
                      data-menu-dropdown-timeout="500">
                     <ul class="menu-nav">
-                        <li class="menu-item  @if(Request::url()==url('admin/teacher/index')) menu-item-active @endif "
+                        <li class="menu-item  @if(Request::url()==url('admin/account/teacher/index')) menu-item-active @endif "
                             aria-haspopup="true">
                             <a href="{{url('admin/teacher/index')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
@@ -154,7 +154,7 @@
 
 
 
-                        
+
 
                         <li class="menu-item   @if(Request::url()==url('admin/teacher/teacher_schedule')) menu-item-active @endif ">
                             <a href="{{url('admin/teacher/teacher_schedule')}}" class="menu-link">

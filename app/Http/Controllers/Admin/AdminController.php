@@ -129,47 +129,50 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-//        dd($request->all());
-        $admin_edit = Admin::where('user_id', $id)->first();
-        $userEdit = User::find($id);
-        $image = null;
-        if (isset($request->image)) {
-            $image = file_get_contents($request->file('image')->getRealPath());
-        }
-        if ($admin_edit == null) {
-            Admin::create([
-                'image' => $image,
-                'first_name' => $request->first_name,
-                'last_name' => $request->last_name,
-                'father_name' => $request->father_name,
-                'birthday' => $request->birthday,
-                'email' => $request->email,
-                'user_id' => $id,
-                'password' => $userEdit->password,
-                'status' => 1,
-            ]);
-        } else {
-            $image = $admin_edit->image;
+        try {
+            $admin_edit = Admin::where('user_id', $id)->first();
+            $userEdit = User::find($id);
+            $image = null;
             if (isset($request->image)) {
                 $image = file_get_contents($request->file('image')->getRealPath());
             }
-            $admin_edit->image = $image;
-            $admin_edit->first_name = $request->first_name;
-            $admin_edit->last_name = $request->last_name;
-            $admin_edit->father_name = $request->father_name;
-            $admin_edit->birthday = $request->birthday;
-            $admin_edit->email = $request->email;
-            $admin_edit->user_id = $id;
-            $admin_edit->password = $userEdit->password;
-            $admin_edit->status = 1;
-            $admin_edit->save();
-        }
+            if ($admin_edit == null) {
+                Admin::create([
+                    'image' => $image,
+                    'first_name' => $request->first_name,
+                    'last_name' => $request->last_name,
+                    'father_name' => $request->father_name,
+                    'birthday' => $request->birthday,
+                    'email' => $request->email,
+                    'user_id' => $id,
+                    'password' => $userEdit->password,
+                    'status' => 1,
+                ]);
+            } else {
+                $image = $admin_edit->image;
+                if (isset($request->image)) {
+                    $image = file_get_contents($request->file('image')->getRealPath());
+                }
+                $admin_edit->image = $image;
+                $admin_edit->first_name = $request->first_name;
+                $admin_edit->last_name = $request->last_name;
+                $admin_edit->father_name = $request->father_name;
+                $admin_edit->birthday = $request->birthday;
+                $admin_edit->email = $request->email;
+                $admin_edit->user_id = $id;
+                $admin_edit->password = $userEdit->password;
+                $admin_edit->status = 1;
+                $admin_edit->save();
+            }
 
-        if ($request->first_name !== $userEdit->name) {
-            $userEdit->name = $request->first_name;
-            $userEdit->save();
+            if ($request->first_name !== $userEdit->name) {
+                $userEdit->name = $request->first_name;
+                $userEdit->save();
+            }
+            return response(['title' => 'Ugurlu!', 'message' => 'Admin Update oldu!', 'status' => 'success']);
+        }catch (\Exception $exception) {
+            return response(['title' => 'Ugursuz!', 'message' => 'Admin Update olmadi!'.$exception->getMessage(), 'status' => 'error']);
         }
-        return response(['title' => 'Ugurlu!', 'message' => 'Admin Update oldu!', 'status' => 'success']);
     }
 
     public function changeStatus(Request $request)
