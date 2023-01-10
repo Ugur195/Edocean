@@ -89,6 +89,7 @@ Route::prefix('admin')->middleware(['Admin', 'permission:1'])->group(function ()
 
     Route::name('admin.')->group(function () {
         Route::resource('admins',AdminController::class);
+        Route::post('/admins/change-status', [AdminController::class, 'changeStatus'])->name('admins.block_unblock');
         Route::resource('menus', MenuController::class);
         Route::resource('setting', SettingController::class);
         Route::resource('about_us', AboutUsController::class);

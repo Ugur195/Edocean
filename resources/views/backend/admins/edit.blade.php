@@ -21,8 +21,11 @@
                         <div class="tab-content pt-5">
                             <!--begin::Tab Content-->
                             <div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
-                                <form id="EditAdmin" class="form" method="POST" enctype="multipart/form-data">
-                                    {{csrf_field()}}
+                                <form id="EditAdmin" class="form"
+                                      action="{{route('admin.admins.update',$admins_edit->id)}}" method="POST"
+                                      enctype="multipart/form-data">
+                                    @method('put')
+                                    @csrf
                                     <div class="col-xl-3"></div>
 
                                     <div class="form-group row">
@@ -31,7 +34,8 @@
                                             <div class="image-input image-input-outline" id="kt_contacts_edit_avatar"
                                                  style="background-size:fill; background-position:center; background-image: url(assets/media/users/blank.png)">
                                                 <div class="image-input-wrapper"
-                                                    style="background-size:fill; background-position:center; background-image: url('data:image/jpeg;base64,{{base64_encode($admins_edit->image)}}')">
+                                                     style="background-size:fill;
+                                                      background-position:center; background-image: url('data:image/jpeg;base64,{{base64_encode($admins_edit->image)}}')">
                                                 </div>
                                                 <label
                                                     class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -56,11 +60,12 @@
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">First Name</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" name="first_name" type="text"
-                                                @if ($admins_edit->first_name !== null)
-                                                    value="{{ $admins_edit->first_name }}"
-                                                @else
-                                                    value="{{$admins_edit->name}}"
+                                            <input class="form-control form-control-lg form-control-solid"
+                                                   name="first_name" type="text"
+                                                   @if ($admins_edit->first_name !== null)
+                                                       value="{{ $admins_edit->first_name }}"
+                                                   @else
+                                                       value="{{$admins_edit->name}}"
                                                 @endif
                                             />
                                         </div>
@@ -69,7 +74,8 @@
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Last Name</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" name="last_name" type="text"
+                                            <input class="form-control form-control-lg form-control-solid"
+                                                   name="last_name" type="text"
                                                    value="{{$admins_edit->last_name}}"/>
                                         </div>
                                     </div>
@@ -77,7 +83,8 @@
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Father Name</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" name="father_name" type="text"
+                                            <input class="form-control form-control-lg form-control-solid"
+                                                   name="father_name" type="text"
                                                    value="{{$admins_edit->father_name}}"/>
                                         </div>
                                     </div>
@@ -86,13 +93,13 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Birthday</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <div class="input-group input-group-solid date" id="kt_datetimepicker_3"
-                                                data-target-input="nearest">
+                                                 data-target-input="nearest">
                                                 <input type="text" name="birthday"
-                                                    class="form-control form-control-solid datetimepicker-input"
-                                                    value="{{$admins_edit->birthday}}"
-                                                    data-target="#kt_datetimepicker_3"/>
+                                                       class="form-control form-control-solid datetimepicker-input"
+                                                       value="{{$admins_edit->birthday}}"
+                                                       data-target="#kt_datetimepicker_3"/>
                                                 <div class="input-group-append" data-target="#kt_datetimepicker_3"
-                                                    data-toggle="datetimepicker">
+                                                     data-toggle="datetimepicker">
                                                     <span class="input-group-text"><i class="ki ki-calendar"></i></span>
                                                 </div>
                                             </div>
@@ -103,7 +110,8 @@
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Email</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control form-control-lg form-control-solid" name="email" type="text"
+                                            <input class="form-control form-control-lg form-control-solid" name="email"
+                                                   type="text"
                                                    value="{{$admins_edit->email}}"/>
                                         </div>
                                     </div>
@@ -118,7 +126,7 @@
                                                 <div class="mr-2">
                                                 </div>
                                                 <div>
-                                                    <a href="{{route('AdminEdocean')}}" type="button"
+                                                    <a href="{{route('admin.admins.index')}}" type="button"
                                                        class="btn btn-success font-weight-bolder text-uppercase px-9 py-4"
                                                        data-wizard-type="action-submit">Back
                                                     </a>

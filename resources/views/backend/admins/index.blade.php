@@ -115,8 +115,8 @@
     <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/admins.js?v='.time())}}"></script>
 
     <script>
-        function blokUnblok(status, id) {
-            console.log('basildi' + status);
+        function blokUnblok(element, status, id) {
+            let action = $(element).data('action');
             let title = '';
             let text = '';
             let icon = '';
@@ -147,11 +147,12 @@
                     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content')
                     $.ajax({
                         type: "Post",
-                        url: '',
+                        url: action,
                         data: {
                             'id': id,
                             'status': status,
                             'btn_block': 'btn_block',
+                            'btn_unblock': 'btn_unblock',
                             '_token': CSRF_TOKEN
                         },
 
@@ -176,7 +177,7 @@
 
         function sil(setir, id) {
             var sira = setir.parentNode.parentNode.rowIndex;
-            console.log(sira);
+            let action = $(setir).data('action');
             swal.fire({
                 title: 'Silmek Isteyirsinizmi?',
                 text: 'Sildikden sonra berpa etmek olmayacaq!',
@@ -192,12 +193,11 @@
                     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content')
                     $.ajax({
                         type: "Post",
-                        url: '',
+                        url: action,
                         data: {
                             'id': id,
-                            'btn_delete': 'btn_delete',
+                            '_method': 'delete',
                             '_token': CSRF_TOKEN
-
                         },
 
                         success: function (response) {

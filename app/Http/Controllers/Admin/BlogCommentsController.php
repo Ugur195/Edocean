@@ -46,27 +46,6 @@ class BlogCommentsController extends Controller
             })->rawColumns(['options' => true])->make(true);
     }
 
-
-//    public function changeStatus(Request $request)
-//    {
-//        try {
-//            if ($request->btn_publish != null) {
-//                if ($request->status == 0) {
-//                    BlogComment::find($request->id)->update(['status' => 1]);
-//                    return response(['title' => 'Ugurlu!', 'message' => 'Reyiniz Yayimlandi', 'status' => 'success']);
-//                } else if ($request->status == 1) {
-//                    BlogComment::find($request->id)->update(['status' => 0]);
-//                    return response(['title' => 'Ugurlu!', 'message' => 'Reyiniz Saytda artiq yayinlanmir', 'status' => 'success']);
-//                } else {
-//                    return response(['title' => 'Ugursuz!', 'message' => 'Blogsi bloklamaq mumkun olmadi!', 'status' => 'error']);
-//                }
-//            }
-//        } catch (\Exception $exception) {
-//            return response(['title' => 'Ugursuz!', 'message' => 'BlogsCommenti silmek olmur!', 'status' => 'error']);
-//        }
-//
-//    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -136,6 +115,8 @@ class BlogCommentsController extends Controller
             return response(['title' => 'Ugursuz!', 'message' => 'BlogsCommenti silmek olmur!', 'status' => 'error']);
         }
     }
+
+
 
     /**
      * Remove the specified resource from storage.
