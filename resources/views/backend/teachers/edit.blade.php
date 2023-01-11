@@ -22,7 +22,7 @@
                             <!--begin::Tab Content-->
                             <div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
                                 <form class="form" method="POST">
-                                    {{csrf_field()}}
+                                   @csrf
                                     <div class="col-xl-3"></div>
 
                                     <div class="form-group row">
@@ -129,7 +129,7 @@
                                                 <div class="mr-2">
                                                 </div>
                                                 <div>
-                                                    <a href="{{route('AdminTeacher')}}" type="button"
+                                                    <a href="{{route('admin.teachers.index')}}" type="button"
                                                     class="btn btn-success font-weight-bolder text-uppercase px-9 py-4"
                                                     data-wizard-type="action-submit">Back
                                                     </a>

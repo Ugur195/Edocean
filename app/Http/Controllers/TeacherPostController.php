@@ -66,7 +66,6 @@ class TeacherPostController extends Controller
                 'work_date' => $request->work_date,
                 'lesson_price' => $request->lesson_price,
                 'balance' => $request->balance,
-
             ]);
         } else {
             $image = $teacher->image;
@@ -109,6 +108,7 @@ class TeacherPostController extends Controller
             $teacher->work_date = $request->work_date;
             $teacher->lesson_price = $request->lesson_price;
             $teacher->balance = $request->balance;
+//            $teacher->status = 1;
             $teacher->save();
         }
         return back();

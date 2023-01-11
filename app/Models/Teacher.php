@@ -22,4 +22,9 @@ class Teacher extends Model
     public function category() {
         return $this->hasOne(SubjectCategory::class, 'id', 'subjects_category');
     }
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }

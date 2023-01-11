@@ -130,7 +130,6 @@ class BlogCommentsController extends Controller
             BlogComment::where('id', $request->id)->delete();
             return response(['title' => 'Ugurlu!', 'message' => 'BlogComment Silindi', 'status' => 'success']);
         } catch (\Exception $exception) {
-
             return response(['title' => 'Ugursuz!', 'message' => 'BlogCommenti silmek olmur!', 'status' => 'error']);
         }
     }

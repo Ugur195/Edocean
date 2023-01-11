@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Course;
-use App\Models\CourseTeacher;
 use App\Models\Student;
-use App\Models\Teacher;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 
@@ -19,42 +16,6 @@ class AdminGetController extends Controller
         return view('backend.index');
     }
     //finish Home
-
-
-    //Teacher
-    public function Teacher()
-    {
-        return view('backend.teacher');
-    }
-
-    public function getTeacher()
-    {
-        $teacher = DB::table('edocean.teacher')->select(DB::raw("id,user_id,image,name,surname,gender,email,phone,subjects,lesson_price,balance,status as st,
-        (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
-
-        return DataTables::of($teacher)
-            ->editColumn('image', function ($model) {
-                return "<img style='display:block;width:80px;height:60px;' src='data:image/jpeg;base64," . base64_encode($model->image) . "'/>";
-            })
-            ->addColumn('options', function ($model) {
-                $return = '<a class="btn btn-xs btn-primary mt-1" href="' . route('admin.backend.teacher_edit', $model->id) . '" ><i class="la la-user"></i></a>';
-                if ($model->st == 0) {
-                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->user_id . ')"  class="btn btn-xs btn-success mt-1"  name="btn_blok"
-                                        value="btn_blok" ><i class="la la-check"></i></button>';
-                } else if ($model->st == 1) {
-                    $return .= '<button onclick="blokUnblok(' . $model->st . ',' . $model->user_id . ')"  class="btn btn-xs btn-dark mt-1" name="btn_unblok"  value="btn_unblok" ><i class="la la-close"></i></button>';
-                }
-                $return .= '<button onclick="sil(this,' . $model->id . ')"  class="btn btn-xs btn-danger mt-1" ><i class="la la-trash"></i></button>';
-                return $return;
-            })->rawColumns(['options' => true])->make(true);
-    }
-
-    public function TeacherEdit($id)
-    {
-        $teacher_edit = Teacher::find($id);
-        return view('backend.teacher_edit')->with(['teacher_edit' => $teacher_edit]);
-    }
-    //finish Teacher
 
 
     //Student

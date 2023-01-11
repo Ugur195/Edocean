@@ -240,7 +240,7 @@ class BlogController extends Controller
                 return response(['title' => 'Ugursuz!', 'message' => 'Blogu silmek mumkun olmadi!', 'status' => 'error']);
             }
         } catch (\Exception $exception) {
-            return response(['title' => 'Ugursuz!', 'message' => 'Blogu silmek olmur!', 'status' => 'error']);
+            return response(['title' => 'Ugursuz!', 'message' => 'Blogu silmek mumkun olmadi olmur!', 'status' => 'error']);
         }
 
     }

@@ -1,15 +1,11 @@
 <?php
 
 use App\Http\Controllers\Admin\{
-    MenuController,
-    SettingController,
-    AboutUsController,
-    ContactUsController,
-    AuthController,
-    BlogController,
-    BlogCategoryController,
-    BlogCommentsController,
-    AdminController
+    MenuController, SettingController,
+    AboutUsController, ContactUsController,
+    AuthController, BlogController,
+    BlogCategoryController, BlogCommentsController,
+    AdminController,TeacherController as TeacherAdminController
 };
 use App\Http\Controllers\Frontend\{
     ContactUsController as ContactUsFrontController,
@@ -80,14 +76,15 @@ Route::prefix('admin')->middleware(['Admin', 'permission:1'])->group(function ()
     Route::get('/course_edit/{id}', [AdminGetController::class, 'CourseEdit'])->name('admin.backend.course_edit');
 
 
-    Route::get('/teacher', [AdminGetController::class, 'Teacher'])->name('AdminTeacher');
-    Route::get('/teacher_edit/{id}', [AdminGetController::class, 'TeacherEdit'])->name('admin.backend.teacher_edit');
-    Route::post('/teacher', [AdminPostController::class, 'TeachersBlockUnblockDelete']);
+//    Route::get('/teacher', [AdminGetController::class, 'Teacher'])->name('AdminTeacher');
+//    Route::get('/teacher_edit/{id}', [AdminGetController::class, 'TeacherEdit'])->name('admin.backend.teacher_edit');
+//    Route::post('/teacher', [AdminPostController::class, 'TeachersBlockUnblockDelete']);
 
 
     Route::name('admin.')->group(function () {
         Route::resource('admins', AdminController::class);
         Route::post('/admins/change-status', [AdminController::class, 'changeStatus'])->name('admins.block_unblock');
+        Route::resource('teachers',TeacherAdminController::class);
 
         Route::resource('menus', MenuController::class);
         Route::resource('setting', SettingController::class);

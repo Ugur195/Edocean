@@ -4,8 +4,8 @@
 @endsection
 
 @section('content')
-<div class="d-flex flex-column flex-column-fluid" id="kt_content">
-    <div class="d-flex flex-column-fluid">
+    <div class="d-flex flex-column flex-column-fluid" id="kt_content">
+        <div class="d-flex flex-column-fluid">
             <!--begin::Container-->
             <div class="container">
                 <!--begin::Card-->
@@ -24,7 +24,8 @@
                                 <!--begin::Dropdown Menu-->
                                 <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
                                     <ul class="nav flex-column nav-hover">
-                                        <li class="nav-header font-weight-bolder text-uppercase text-primary pb-2">Choose an
+                                        <li class="nav-header font-weight-bolder text-uppercase text-primary pb-2">
+                                            Choose an
                                             option:
                                         </li>
                                         <li class="nav-item">
@@ -109,18 +110,17 @@
                 <!--end::Card-->
             </div>
             <!--end::Container-->
+        </div>
     </div>
-</div>
 @endsection
 
 @section('js')
     <script src="{{asset('backendCssJs/assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
-    <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/teacher.js')}}"></script>
+    <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/teachers.js')}}"></script>
 
     <script>
-        function blokUnblok(status, id) {
-            console.log(id)
-            console.log('basildi' + status);
+        function blokUnblok(element, status, id) {
+            let action = $(element).data('action');
             let title = '';
             let text = '';
             let icon = '';
@@ -151,11 +151,13 @@
                     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content')
                     $.ajax({
                         type: "Post",
-                        url: '',
+                        url: action,
                         data: {
                             'id': id,
                             'status': status,
                             'btn_block': 'btn_block',
+                            'btn_unblock': 'btn_unblock',
+                            '_method': 'put',
                             '_token': CSRF_TOKEN
                         },
 
@@ -169,7 +171,7 @@
                             })
                             if (response.status === 'success') {
                                 setTimeout(function () {
-                                    window.location.href = '/admin/teacher';
+                                    window.location.href = '/admin/teachers';
                                 }, 1000)
                             }
 
@@ -179,9 +181,9 @@
             })
         }
 
-        function sil(setir, id) {
-            var sira = setir.parentNode.parentNode.rowIndex;
-            console.log(sira);
+        function sil(element) {
+            var sira = element.parentNode.parentNode.rowIndex;
+            let action = $(element).data('action');
             swal.fire({
                 title: 'Silmek Isteyirsinizmi?',
                 text: 'Sildikden sonra berpa etmek olmayacaq!',
@@ -197,12 +199,10 @@
                     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content')
                     $.ajax({
                         type: "Post",
-                        url: '',
+                        url: action,
                         data: {
-                            'id': id,
-                            'btn_delete': 'btn_delete',
+                            '_method': 'delete',
                             '_token': CSRF_TOKEN
-
                         },
 
                         success: function (response) {
@@ -217,7 +217,7 @@
                             })
                             if (response.status === 'success') {
                                 setTimeout(function () {
-                                    window.location.href = '/admin/teacher';
+                                    window.location.href = '/admin/teachers';
                                 }, 1000)
                             }
                         }

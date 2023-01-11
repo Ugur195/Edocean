@@ -262,9 +262,9 @@
                         </li>
 
 
-                        <li class="menu-item  @if(Request::url()==url('admin/teacher')) menu-item-active @endif "
+                        <li class="menu-item  @if(Request::url()==url('admin/teachers')) menu-item-active @endif "
                             aria-haspopup="true">
-                            <a href="{{url('admin/teacher')}}" class="menu-link">
+                            <a href="{{url('admin/teachers')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
                                     <svg class="svg-icon"
                                          style="width: 26px; margin-left: -5px; vertical-align: middle;fill: currentColor;overflow: hidden;"
