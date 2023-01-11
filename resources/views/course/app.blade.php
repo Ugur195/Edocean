@@ -129,9 +129,11 @@
                 <div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1"
                      data-menu-dropdown-timeout="500">
                     <ul class="menu-nav">
-                        <li class="menu-item  @if(Request::url()==url('admin/course/index')) menu-item-active @endif "
+
+
+                        <li class="menu-item  @if(Request::url()==url('account/course/index')) menu-item-active @endif "
                             aria-haspopup="true">
-                            <a href="{{url('admin/course/index')}}" class="menu-link">
+                            <a href="{{url('account/course/index')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
                                     <svg style="width: 20px" version="1.1" id="Capa_1"
                                          xmlns="http://www.w3.org/2000/svg"
@@ -154,10 +156,8 @@
 
 
 
-
-
-                        <li class="menu-item   @if(Request::url()==url('admin/course/course_schedule')) menu-item-active @endif ">
-                            <a href="{{url('admin/course/course_schedule')}}" class="menu-link">
+                        <li class="menu-item   @if(Request::url()==url('account/course/course_schedule')) menu-item-active @endif ">
+                            <a href="{{url('account/course/course_schedule')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
                                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"

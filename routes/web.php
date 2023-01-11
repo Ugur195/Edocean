@@ -58,6 +58,8 @@ Route::name('frontend.')->group(function () {
 
     Route::resource('blogs', BlogFrontController::class);
     //Route::get('/blogs/category/{category}', [HomeGetController::class, 'BlogsCategory'])->name('blogs_category');
+
+
     Route::get('/teachers', [HomeGetController::class, 'Teachers']);
     Route::get('/single_teacher/{id}', [HomeGetController::class, 'SingleTeacher'])->name('single_teacher');
     Route::get('/teachers/category/{category}', [HomeGetController::class, 'TeachersCategory'])->name('subjects_category');
@@ -104,8 +106,7 @@ Route::prefix('admin')->middleware(['Admin', 'permission:1'])->group(function ()
     Route::post('/course', [AdminPostController::class, 'CoursesBlockUnblockDelete']);
 });
 
-Route::middleware('auth', 'verified')->group(function () {
-    Route::prefix('account')->group(function () {
+Route::prefix('account')-> middleware('auth', 'verified')->group(function () {
         //student
         Route::prefix('student')->middleware('permission:4')->group(function () {
             Route::get('/my_profile', [StudentGetController::class, 'getMyProfile']);
@@ -135,7 +136,6 @@ Route::middleware('auth', 'verified')->group(function () {
             Route::get('GetSubCatEdit/{id}', [CourseGetController::class, 'GetSubCatEdit']);
             Route::post('/my_profile', [CoursePostController::class, 'postMyProfile']);
         });
-    });
 });
 
 

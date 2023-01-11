@@ -129,9 +129,9 @@
                 <div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1"
                      data-menu-dropdown-timeout="500">
                     <ul class="menu-nav">
-                        <li class="menu-item  @if(Request::url()==url('admin/student/index')) menu-item-active @endif "
+                        <li class="menu-item  @if(Request::url()==url('account/student/index')) menu-item-active @endif "
                             aria-haspopup="true">
-                            <a href="{{url('admin/student/index')}}" class="menu-link">
+                            <a href="{{url('account/student/index')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
                                     <svg style="width: 20px" version="1.1" id="Capa_1"
                                          xmlns="http://www.w3.org/2000/svg"
@@ -152,8 +152,8 @@
                             </a>
                         </li>
 
-                        <li class="menu-item   @if(Request::url()==url('admin/student/student_attendance')) menu-item-active @endif">
-                            <a href="{{url('admin/student/student_attendance')}}" class="menu-link">
+                        <li class="menu-item   @if(Request::url()==url('account/student/student_attendance')) menu-item-active @endif">
+                            <a href="{{url('account/student/student_attendance')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
                                       <svg style="margin-left:1px" width="16px" height="16px" viewBox="0 0 16 16"
                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -169,8 +169,8 @@
                         </li>
 
 
-                        <li class="menu-item   @if(Request::url()==url('admin/student/student_schedule')) menu-item-active @endif ">
-                            <a href="{{url('admin/student/student_schedule')}}" class="menu-link">
+                        <li class="menu-item   @if(Request::url()==url('account/student/student_schedule')) menu-item-active @endif ">
+                            <a href="{{url('account/student/student_schedule')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
                                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -192,8 +192,6 @@
                                 </span>
                                 <span class="menu-text">Student Schedule</span>
                             </a>
-
-
 
                     </ul>
                 </div>

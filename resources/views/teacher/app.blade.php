@@ -129,9 +129,9 @@
                 <div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1"
                      data-menu-dropdown-timeout="500">
                     <ul class="menu-nav">
-                        <li class="menu-item  @if(Request::url()==url('admin/account/teacher/index')) menu-item-active @endif "
+                        <li class="menu-item  @if(Request::url()==url('account/teacher/index')) menu-item-active @endif "
                             aria-haspopup="true">
-                            <a href="{{url('admin/teacher/index')}}" class="menu-link">
+                            <a href="{{url('account/teacher/index')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
                                     <svg style="width: 20px" version="1.1" id="Capa_1"
                                          xmlns="http://www.w3.org/2000/svg"
@@ -156,8 +156,8 @@
 
 
 
-                        <li class="menu-item   @if(Request::url()==url('admin/teacher/teacher_schedule')) menu-item-active @endif ">
-                            <a href="{{url('admin/teacher/teacher_schedule')}}" class="menu-link">
+                        <li class="menu-item   @if(Request::url()==url('account/teacher/teacher_schedule')) menu-item-active @endif ">
+                            <a href="{{url('account/teacher/teacher_schedule')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
                                         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                                              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -288,7 +288,7 @@
                 align-items-center justify-content-between">
                     <div class="text-dark order-2 order-md-1">
                         <span class="text-muted font-weight-bold mr-2">2022 ©</span>
-                        <a href="https://www.facebook.com/xaqan.turkoglu.9/" target="_blank"
+                        <a href="#" target="_blank"
                            class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">
                             Created by Aztelecom
                         </a>

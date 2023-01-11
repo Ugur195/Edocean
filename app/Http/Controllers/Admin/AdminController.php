@@ -160,7 +160,6 @@ class AdminController extends Controller
                 $admin_edit->birthday = $request->birthday;
                 $admin_edit->email = $request->email;
                 $admin_edit->user_id = $id;
-                $admin_edit->password = $userEdit->password;
                 $admin_edit->status = 1;
                 $admin_edit->save();
             }

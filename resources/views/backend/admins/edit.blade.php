@@ -70,7 +70,8 @@
                             <!--begin::Tab Content-->
                             <div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
                                 <form id="EditAdmin" class="form"
-                                      action="{{route('admin.admins.update',$admins_edit->id)}}" method="POST"
+                                      @if($admins_edit->user_id!=null)action="{{route('admin.admins.update',$admins_edit->user_id)}}"
+                                      @else action="{{route('admin.admins.update',$admins_edit->id)}}" @endif method="POST"
                                       enctype="multipart/form-data">
                                     @method('put')
                                     @csrf
