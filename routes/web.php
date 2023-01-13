@@ -1,16 +1,18 @@
 <?php
 
 use App\Http\Controllers\Admin\{
-    MenuController, SettingController,
-    AboutUsController, ContactUsController,
-    AuthController, BlogController,
-    BlogCategoryController, BlogCommentsController,
-    AdminController,TeacherController as TeacherAdminController
-};
+    AboutUsController, AdminController,
+    AuthController, BlogCategoryController,
+    BlogCommentsController, BlogController,
+    ContactUsController,MenuController, SettingController,
+    TeacherController as TeacherAdminController};
 use App\Http\Controllers\Frontend\{
-    ContactUsController as ContactUsFrontController,
     AuthController as AuthFrontController,
-    BlogController as BlogFrontController
+    BlogController as BlogFrontController,
+    ContactUsController as ContactUsFrontController,
+    TeacherController};
+use App\Http\Controllers\Frontend\Account\{
+    TeacherController as TeacherFrontController
 };
 use App\Http\Controllers\AdminGetController;
 use App\Http\Controllers\AdminPostController;
@@ -20,8 +22,6 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomeGetController;
 use App\Http\Controllers\StudentGetController;
 use App\Http\Controllers\StudentPostController;
-use App\Http\Controllers\TeacherGetController;
-use App\Http\Controllers\TeacherPostController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -50,16 +50,11 @@ Route::name('frontend.')->group(function () {
     Route::get('/logout', [AuthFrontController::class, 'logout'])->name('logout');
     Route::post('/login/user', [AuthFrontController::class, 'loginUser'])->name('login.user');
     Route::post('/register/user', [AuthFrontController::class, 'registerUser'])->name('register.user');
-
-
     Route::resource('blogs', BlogFrontController::class);
-    //Route::get('/blogs/category/{category}', [HomeGetController::class, 'BlogsCategory'])->name('blogs_category');
+    Route::resource('/teachers',TeacherController::class);
 
 
-    Route::get('/teachers', [HomeGetController::class, 'Teachers']);
-    Route::get('/single_teacher/{id}', [HomeGetController::class, 'SingleTeacher'])->name('single_teacher');
-    Route::get('/teachers/category/{category}', [HomeGetController::class, 'TeachersCategory'])->name('subjects_category');
-    Route::get('/teachers/subject/{category}', [HomeGetController::class, 'TeachersSubject'])->name('subjects');
+
     Route::get('/students', [HomeGetController::class, 'Students']);
     Route::get('/single_student/{id}', [HomeGetController::class, 'SingleStudent'])->name('single_student');
     Route::get('/courses', [HomeGetController::class, 'Courses']);
@@ -76,16 +71,10 @@ Route::prefix('admin')->middleware(['Admin', 'permission:1'])->group(function ()
     Route::get('/course_edit/{id}', [AdminGetController::class, 'CourseEdit'])->name('admin.backend.course_edit');
 
 
-//    Route::get('/teacher', [AdminGetController::class, 'Teacher'])->name('AdminTeacher');
-//    Route::get('/teacher_edit/{id}', [AdminGetController::class, 'TeacherEdit'])->name('admin.backend.teacher_edit');
-//    Route::post('/teacher', [AdminPostController::class, 'TeachersBlockUnblockDelete']);
-
-
     Route::name('admin.')->group(function () {
         Route::resource('admins', AdminController::class);
         Route::post('/admins/change-status', [AdminController::class, 'changeStatus'])->name('admins.block_unblock');
         Route::resource('teachers',TeacherAdminController::class);
-
         Route::resource('menus', MenuController::class);
         Route::resource('setting', SettingController::class);
         Route::resource('about_us', AboutUsController::class);
@@ -103,7 +92,8 @@ Route::prefix('admin')->middleware(['Admin', 'permission:1'])->group(function ()
     Route::post('/course', [AdminPostController::class, 'CoursesBlockUnblockDelete']);
 });
 
-Route::prefix('account')-> middleware('auth', 'verified')->group(function () {
+
+Route::prefix('account')->middleware('auth', 'verified')->group(function () {
         //student
         Route::prefix('student')->middleware('permission:4')->group(function () {
             Route::get('/my_profile', [StudentGetController::class, 'getMyProfile']);
@@ -116,12 +106,14 @@ Route::prefix('account')-> middleware('auth', 'verified')->group(function () {
         });
 
         //teacher
-        Route::prefix('teacher')->middleware('permission:3')->group(function () {
-            Route::get('/my_profile', [TeacherGetController::class, 'getTeacherProfile']);
-            Route::get('/index', [TeacherGetController::class, 'Teacher']);
-            Route::get('/teacher_schedule', [TeacherGetController::class, 'TeacherSchedule']);
-            Route::get('GetSubCatTeachEdit/{id}', [TeacherGetController::class, 'GetSubCatTeachEdit']);
-            Route::post('/my_profile', [TeacherPostController::class, 'postTeacherProfile']);
+        Route::prefix('teacher')->name('teacher.')->middleware('permission:3')->group(function () {
+                Route::resource('',TeacherFrontController::class);
+
+//            Route::get('/my_profile', [TeacherGetController::class, 'getTeacherProfile']);
+//            Route::get('/index', [TeacherGetController::class, 'Teacher']);
+//            Route::get('/teacher_schedule', [TeacherGetController::class, 'TeacherSchedule']);
+//            Route::get('GetSubCatTeachEdit/{id}', [TeacherGetController::class, 'GetSubCatTeachEdit']);
+//            Route::post('/my_profile', [TeacherPostController::class, 'postTeacherProfile']);
         });
 
 

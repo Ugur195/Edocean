@@ -49,47 +49,6 @@ class HomeGetController extends Controller
 
 
 
-
-    public function Teachers()
-    {
-        $menu = Menu::where('status', 1)->get();
-        $setting = Setting::find(1);
-        $teachers = Teacher::with('subjects')->get();
-        $categories = SubjectCategory::all();
-        return view('frontend.teachers')->with(['menus' => $menu, 'setting' => $setting,
-            'teacher' => $teachers, 'categories' => $categories]);
-    }
-
-    public function SingleTeacher($id)
-    {
-        $menu = Menu::where('status', 1)->get();
-        $setting = Setting::find(1);
-        $teacher = Teacher::find($id);
-        $categories = SubjectCategory::all();
-        return view('frontend.single_teacher')->with(['menus' => $menu, 'setting' => $setting,
-            'teacher' => $teacher, 'categories' => $categories]);
-    }
-
-    public function TeachersCategory($category)
-    {
-        $setting = Setting::find(1);
-        $menu = Menu::where('status', 1)->get();
-        $subjects_category = SubjectCategory::find($category);
-        $category = Teacher::with('subjects')->get();
-        $categories = SubjectCategory::all();
-        return view('frontend.teachers_category')->with(['menus' => $menu, 'setting' => $setting, 'subjects_category' => $subjects_category, 'category' => $category, 'categories' => $categories]);
-    }
-
-    public function TeachersSubject($category)
-    {
-        $setting = Setting::find(1);
-        $menu = Menu::where('status', 1)->get();
-        $subjects_category = Subjects::find($category);
-        $category = Teacher::with('subjects')->get();
-        $categories = SubjectCategory::all();
-        return view('frontend.teachers_category')->with(['menus' => $menu, 'setting' => $setting, 'subjects_category' => $subjects_category, 'category' => $category, 'categories' => $categories]);
-    }
-
     public function Students()
     {
         $menu = Menu::where('status', 1)->get();
