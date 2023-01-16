@@ -19,7 +19,8 @@ class TeacherController extends Controller
      */
     public function index():View
     {
-        return view('account.teacher.index');
+        $teacher = Teacher::where('user_id', Auth::id())->first();
+        return view('account.teacher.index', compact('teacher'));
     }
 
     /**
@@ -29,7 +30,8 @@ class TeacherController extends Controller
      */
     public function create():View
     {
-        return view('account.teacher.create');
+        $teacher = Teacher::where('user_id', Auth::id())->first();
+        return view('account.teacher.create',compact('teacher'));
     }
 
     /**
@@ -60,6 +62,19 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+//    public function edit():View
+//    {
+//        $teacher = Teacher::where('user_id', Auth::user()->id)->first();
+//        $data = DB::table('subject_category')->get();
+//        $user = null;
+//        if ($teacher == null) {
+//            $user = User::find(Auth::user()->id);
+//        } else {
+//            $user = $teacher;
+//        }
+////        dd( explode(',',$teacher->language));
+//        return view('account.teacher.edit', ['teacher' => $user, 'data' => $data]);
+//    }
     public function edit():View
     {
         $teacher = Teacher::where('user_id', Auth::user()->id)->first();
@@ -71,7 +86,7 @@ class TeacherController extends Controller
             $user = $teacher;
         }
 //        dd( explode(',',$teacher->language));
-        return view('account.teacher.edit', ['teacher' => $user, 'data' => $data]);
+        return view('account.teacher.edit2', ['teacher' => $user, 'data' => $data]);
     }
 
 
@@ -85,6 +100,7 @@ class TeacherController extends Controller
     public function update(Request $request)
     {
         $teacher = Teacher::where('user_id', Auth::user()->id)->first();
+        $user=User::find(Auth::user()->id);
         $langs = '';
 
         if (isset($request->langs)) {
@@ -92,63 +108,56 @@ class TeacherController extends Controller
                 $langs .= ',' . $l;
             }
         }
-
-        if ($teacher == null) {
-            $image = null;
-            if (isset($request->image)) {
-                $image = file_get_contents($request->file('image')->getRealPath());
-            }
-
-
-            Teacher::create([
-                'image' => $image,
-                'name' => $request->name,
-                'surname' => $request->surname,
-                'father_name' => $request->father_name,
-                'email' => $request->email,
-                'teacher_address' => $request->teacher_address,
-                'birthday' => $request->birthday,
-                'user_id' => Auth::user()->id,
-                'language' => $langs,
-                'gender' => $request->gender,
-                'lessons_duration' => $request->lessons_duration,
-                'lessons_intensivity' => $request->lessons_intensivity,
-                'student_level' => $request->student_level,
-                'students_amount' => $request->students_amount,
-                'profile_type' => $request->profile_type,
-                'country' => $request->country,
-                'city' => $request->city,
-                'subjects' => $request->subjects,
-                'subjects_category' => $request->subjects_category,
-                'teaching_time' => $request->teaching_time,
-                'demo_lesson' => $request->demo_lesson,
-                'video_presentation' => $request->video_presentation,
-                'phone' => $request->phone,
-                'skype_id' => $request->skype_id,
-                'profile_title' => $request->profile_title,
-                'about_teacher' => $request->about_teacher,
-                'education_place' => $request->education_place,
-                'speciality' => $request->speciality,
-                'degree' => $request->degree,
-                'certificate' => $request->certificate,
-                'ctf_image' => $request->ctf_image,
-                'work_experience' => $request->work_experience,
-                'work_place' => $request->work_place,
-                'work_position' => $request->work_position,
-                'work_date' => $request->work_date,
-                'lesson_price' => $request->lesson_price,
-                'balance' => $request->balance,
-            ]);
-        } else {
+//
+//        if ($teacher == null) {
+//            $image = null;
+//            if (isset($request->image)) {
+//                $image = file_get_contents($request->file('image')->getRealPath());
+//            }
+//
+//
+//            Teacher::create([
+//                'image' => $image,
+//                'father_name' => $request->father_name,
+//                'teacher_address' => $request->teacher_address,
+//                'birthday' => $request->birthday,
+//                'user_id' => Auth::user()->id,
+//                'language' => $langs,
+//                'gender' => $request->gender,
+//                'lessons_duration' => $request->lessons_duration,
+//                'lessons_intensivity' => $request->lessons_intensivity,
+//                'student_level' => $request->student_level,
+//                'students_amount' => $request->students_amount,
+//                'profile_type' => $request->profile_type,
+//                'country' => $request->country,
+//                'city' => $request->city,
+//                'subjects' => $request->subjects,
+//                'subjects_category' => $request->subjects_category,
+//                'teaching_time' => $request->teaching_time,
+//                'demo_lesson' => $request->demo_lesson,
+//                'video_presentation' => $request->video_presentation,
+//                'phone' => $request->phone,
+//                'profile_title' => $request->profile_title,
+//                'about_teacher' => $request->about_teacher,
+//                'education_place' => $request->education_place,
+//                'speciality' => $request->speciality,
+//                'degree' => $request->degree,
+//                'certificate' => $request->certificate,
+//                'ctf_image' => $request->ctf_image,
+//                'work_experience' => $request->work_experience,
+//                'work_place' => $request->work_place,
+//                'work_position' => $request->work_position,
+//                'work_date' => $request->work_date,
+//                'lesson_price' => $request->lesson_price,
+//                'balance' => $request->balance,
+//            ]);
+//        } else {
             $image = $teacher->image;
             if (isset($request->image)) {
                 $image = file_get_contents($request->file('image')->getRealPath());
             }
             $teacher->image = $image;
-            $teacher->name = $request->name;
-            $teacher->surname = $request->surname;
             $teacher->father_name = $request->father_name;
-            $teacher->email = $request->email;
             $teacher->teacher_address = $request->teacher_address;
             $teacher->birthday = $request->birthday;
             $teacher->language = $langs;
@@ -166,7 +175,6 @@ class TeacherController extends Controller
             $teacher->phone = $request->phone;
             $teacher->country = $request->country;
             $teacher->city = $request->city;
-            $teacher->skype_id = $request->skype_id;
             $teacher->profile_title = $request->profile_title;
             $teacher->about_teacher = $request->about_teacher;
             $teacher->education_place = $request->education_place;
@@ -181,7 +189,16 @@ class TeacherController extends Controller
             $teacher->lesson_price = $request->lesson_price;
             $teacher->balance = $request->balance;
             $teacher->save();
-        }
+
+            if($request->name!= Auth::user()->name){
+                $user->name=$request->name;
+                $user->save();
+            }
+//            if($request->email!= Auth::user()->email){
+//                $user->email=$request->email;
+//                $user->save();
+//            }
+//        }
         return back();
     }
 

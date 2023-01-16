@@ -17,7 +17,7 @@ class StudentGetController extends Controller
 {
     public function Student()
     {
-        return view('student.index');
+        return view('account.student.index');
     }
 
     public function StudentAttendance()

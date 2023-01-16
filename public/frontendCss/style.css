@@ -12,86 +12,238 @@ a {
 }
 
 /* header css */
-.ed-navbar {
-    background-color: white !important;
-    padding: 0 30px;
-    box-shadow: 0 30px 40px #010b3c0f !important;
-}
+/*.ed-navbar {*/
+/*    background-color: white !important;*/
+/*    padding: 0 30px;*/
+/*    box-shadow: 0 30px 40px #010b3c0f !important;*/
+/*}*/
 
-.edocean-logo {
-    width: 70px;
-    height: 70px;
-}
+/*.edocean-logo {*/
+/*    width: 70px;*/
+/*    height: 70px;*/
+/*}*/
 
-.navbar-desktop {
-    width: 100%;
+/*.navbar-desktop {*/
+/*    width: 100%;*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    align-items: center;*/
+/*}*/
+
+/*.Start {*/
+/*    margin-top: 20px;*/
+/*}*/
+
+/*.nav-link {*/
+/*    color: black !important;*/
+/*}*/
+
+/*.search-ed {*/
+/*    position: relative;*/
+/*    !* height: 50px; *!*/
+/*}*/
+
+/*.search-form-and-btn {*/
+/*    display: flex;*/
+/*}*/
+
+/*.login-btnn {*/
+/*    background-color: #14427C !important;*/
+/*    color: white !important;*/
+/*}*/
+
+/*.login-btnn a {*/
+/*    text-decoration: none;*/
+/*    color: white !important;*/
+/*}*/
+
+/*.search-iconn {*/
+/*    position: absolute;*/
+/*    right: 5px;*/
+/*    z-index: 100;*/
+/*}*/
+
+/*.navbar-toggler {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    gap: 5px;*/
+/*}*/
+
+/*.navbar-toggler-icon {*/
+/*    background: none !important;*/
+/*    background-color: black !important;*/
+/*    height: 5px !important;*/
+/*}*/
+
+/*.sticky-top {*/
+/*    position: sticky;*/
+/*}*/
+
+/*.profile-dropdown-img {*/
+/*    width: 30px;*/
+/*    height: 30px;*/
+/*    border-radius: 50%;*/
+/*}*/
+
+/*.prfl-ul {*/
+/*    z-index: 9999 !important;*/
+/*}*/
+
+/*.auth a {*/
+/*    color: #14427C !important;*/
+/*}*/
+
+header{
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 99;
+}
+.ed_nav ul{
+    list-style: none;
+}
+.ed_nav{
+    padding: 10px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
-.Start {
-    margin-top: 20px;
+.ed_nav_logo img{
+    width: 70px;
+    height: 70px;
 }
-
-.nav-link {
-    color: black !important;
+.navbar_links{
+    display: flex;
+    gap: 30px;
+    margin-bottom: 0 !important;
 }
-
-.search-ed {
+.drp_dwn{
+    padding-left: 0;
     position: relative;
-    /* height: 50px; */
 }
-
-.search-form-and-btn {
+#drp_dwn_li{
     display: flex;
-}
-
-.login-btnn {
-    background-color: #14427C !important;
-    color: white !important;
-}
-
-.login-btnn a {
-    text-decoration: none;
-    color: white !important;
-}
-
-.search-iconn {
-    position: absolute;
-    right: 5px;
-    z-index: 100;
-}
-
-.navbar-toggler {
-    display: flex;
-    flex-direction: column;
+    align-items: center;
     gap: 5px;
 }
-
-.navbar-toggler-icon {
-    background: none !important;
-    background-color: black !important;
-    height: 5px !important;
+.nav_link a, .profile_ul li a{
+    font-size: 18px;
+    color: black !important;
+    font-weight: 600;
 }
-
-.sticky-top {
-    position: sticky;
+.nav_link a:hover, .profile_ul li a:hover{
+    color: #1c5ba8 !important;
 }
+.dropdown_ul, .profile_ul{
+    margin-top: 8px;
+    display: none;
+    padding-left: 0;
+    position: absolute;
+    z-index: 100;
+    width: 220px;
+    background-color: white;
+    box-shadow: 0 20px 30px #0417764d;
+    padding: 20px;
+    border-top: 3px solid #1c5ba8;
+    transition: 1s;
+    color: transparent;
 
-.profile-dropdown-img {
+}
+.profile_ul{
+    width: 110px;
+    right: -40px;
+    font-size: 16px;
+}
+.profile_ul li a{
+    font-size: 16px;
+}
+.dropdown_ul li, .profile_ul li{
+    margin-bottom: 5px;
+}
+.dropdown_active{
+    display: block;
+
+}
+.login_profile{
+    position: relative;
+}
+.srch_and_login{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.user_img{
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.hmbrgr_icon{
+    display: none;
+}
+.hmbrgr_icon span{
+    display:block;
+    margin-bottom: 5px;
     width: 30px;
-    height: 30px;
-    border-radius: 50%;
+    height: 3px;
+    background-color: #13287e;
+}
+#close_menu{
+    display: none;
+
+}
+.close_menu ion-icon{
+    font-size: 20px;
+}
+.search_div{
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #13287e;
+    border-radius: 25px;
+    height: 40px;
+    margin-right: 10px;
+}
+.search_icon{
+    position: absolute;
+    right: -16px;
+    background-color: #13287e;
+    width: 42px;
+    height: 40px;
+    border-radius: 100%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: 1px solid #13287e;
+}
+.srch_inp{
+    width: 0;
+    background-color: #13287e;
+    height: 40px;
+    border-style: none;
+    outline: none;
+    font-size: 18px;
+    letter-spacing: 2px;
+    border: 1px solid #13287e;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    color: #fff;
+    transition:  .7s ease;
+
+}
+.search_div:hover .srch_inp{
+    width: 150px;
+    padding: 10px 20px;
+
+}
+.srch_inp::placeholder{
+    color: #fff;
 }
 
-.prfl-ul {
-    z-index: 9999 !important;
-}
-
-.auth a {
-    color: #14427C !important;
-}
 
 #ed-video {
     height: 85vh !important;
@@ -1197,6 +1349,252 @@ ul#tchr_tabs_nav li.active {
     width: 100%;
     border-radius: 10px !important;
 }
+/* about us page */
+.about_us_top{
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #14427c;
+}
+.about_us_top_text h1{
+    font-size: 60px;
+    font-weight: 700;
+    color: white;
+}
+.about_us_top_text p{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+}
+.about_us_top_text p a{
+    color: aqua;
+}
+.about_us_top_text p a:hover{
+    color: #ccc;
+}
+.our-mission-img, .who_we_are_img{
+    height: 400px;
+}
+.our-mission-img img, .who_we_are_img img{
+    height: 100%;
+}
+.our_mission .row, .who_we_are .row{
+    --bs-gutter-x: 0 !important;
+}
+.our_mission_content, .who_we_are_content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 40px !important;
+    background-color: #1c5ba8;
+    height: 400px;
+}
+
+.our_mission_content h2{
+    font-size: 36px;
+    font-weight: 700;
+    color: white;
+}
+.who_we_are{
+    border: 5px solid #1c5ba8;
+    margin-top: -70px;
+    margin-bottom: 70px;
+    padding: 5px !important;
+}
+.about_row{
+    box-shadow: 0 30px 50px 0 rgb(1 1 1 / 18%);
+}
+.our_mission_content p{
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+}
+.who_we_are_content{
+    background-color: #f5f7ff;
+}
+.who_we_are_content h2{
+    color: #1c5ba8;
+    font-weight: 700;
+    font-size: 36px;
+}
+.who_we_are_content p{
+    color: #5f5f5f;
+    font-weight: 500;
+    font-size: 18px;
+}
+.our_team {
+    padding: 50px 0 ;
+    background-color: #f5f7ff;
+}
+.team_header{
+    font-size: 30px;
+    color: #13287e;
+}
+
+.slick-track{
+    padding-bottom: 10px !important;
+}
+.slider{
+    width: 80%;
+    margin: auto;
+}
+.items{
+    box-shadow: 0 0 5px rgb(0 0 0 / 20%);
+    border-radius: 10px;
+    text-align: center;
+    align-items: center;
+    margin-top: 30px;
+    margin: 0px 10px;
+}
+.items img{
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 200px;
+    transition: all linear 0.5s;
+}
+.slick-slide img{
+    display: inline-flex!important;
+}
+.items .textt{
+    text-align: center;
+    margin: auto;
+    position: relative;
+    padding: 50px 30px 30px 30px;
+}
+.items .textt h5{
+    margin-bottom: 0px!important;
+    font-size: 20px;
+    font-weight: 600;
+    color: #13287e;
+}
+.items .textt p{
+    margin-top:12px!important;
+    font-size: 14px;
+    font-weight:500;
+}
+
+.slider .slick-center img{
+    transform: scale(1.15);
+}
+.slick-prev:before {
+    content: '←';
+}
+.slick-next:before {
+    content: '→';
+}
+.slick-prev:before, .slick-next:before {
+    font-family: 'slick';
+    font-size: 20px;
+    line-height: 1;
+    opacity: .75;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+}
+.slick-prev:before, .slick-next:before {
+    color: transparent !important;
+}
+.slick-prev {
+    margin-left:-25px;
+}
+.slick-next {
+    margin-right: -25px;
+}
+.slick-prev {
+    background: url(../images/Previous.webp) no-repeat !important;
+    width: 45px !important;
+    height: 40px !important;
+    left: -42px !important;
+    background-size: 100% 100% !important;
+}
+.slick-next {
+    background: url(../images/Next.webp) no-repeat !important;
+    width: 45px !important;
+    height: 40px !important;
+    right: -42px !important;
+    background-size: 100% 100% !important;
+    transform: rotate(180deg);
+}
+.slick-prev, .slick-next {
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+.our_videos {
+    padding: 60px 0;
+    background-color: #1c5ba8 !important;
+}
+.video_header{
+    font-size: 36px;
+    color: white;
+    font-weight: 700;
+}
+.our-video-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    width: 49%;
+}
+
+.our-video-description h1 {
+    color: white;
+    width: 80%;
+    font-weight: 800;
+}
+
+.our-video-description p {
+    color: white;
+    font-size: 18px;
+    width: 80%;
+    font-weight: 600;
+}
+
+.our-video-description button {
+    width: 200px;
+    padding: 15px 0;
+    border: none;
+    border-radius: 6px;
+}
+
+.our-video-description button a {
+    color: #5f5f5f;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+}
+.our-video-slider-control-buttons {
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.our-video-slider-control-buttons .carousel-control-prev,
+.our-video-slider-control-buttons .carousel-control-next {
+    width: auto !important;
+    position: inherit !important;
+}
+
+.our-video-slider-control-buttons .carousel-control-next {
+    margin-left: 20px;
+}
+
 /* Login  and Register css */
 
 .login-page {
@@ -1348,15 +1746,62 @@ ion-icon[name="eye-off"] {
 }
 
 @media (min-width: 992px) {
-    .ed-navbar {
-        font-size: 1.3vw !important;
-    }
+    /*.ed-navbar {*/
+    /*    font-size: 1.3vw !important;*/
+    /*}*/
 }
 
 @media (max-width: 992px) {
-    .navbar-desktop {
-        display: none !important;
+    /* navbar */
+    .navbar_links{
+        visibility: hidden;
+        transform: translateX(-300px);
+        padding: 50px 20px;
+        width: 250px;
+        position: absolute;
+        flex-direction: column;
+        background-color: white;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        gap: 20px;
+        z-index: 101;
+        transition: 1s;
     }
+    .nav_link{
+        /* margin-bottom: 10px; */
+        font-size: 20px;
+    }
+    .dropdown_ul{
+        position: inherit;
+        box-shadow: none;
+        width: auto;
+        padding-left: 0;
+        padding-bottom: 0;
+    }
+    #close_menu{
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 30px;
+        font-size: 24px;
+        color: #1c5ba8 !important;
+    }
+
+    .hmbrgr_icon{
+        display: block;
+        color: #1c5ba8 !important;
+    }
+    .menu_open{
+        visibility: visible;
+        /* width: 100%; */
+        transform: translateX(0);
+
+
+    }
+
+    /* navbar end */
 
     .contact-form form {
         width: 90%;
@@ -1379,6 +1824,13 @@ ion-icon[name="eye-off"] {
     }
     .crtf img{
         height: 400px;
+    }
+    /* about-us */
+    .who_we_are_content h2, .our_mission_content h2{
+        font-size: 28px;
+    }
+    .who_we_are_content p, .our_mission_content p{
+        font-size: 16px;
     }
 }
 
@@ -1446,6 +1898,15 @@ ion-icon[name="eye-off"] {
     .crtf img{
         width: 85%;
         height: 300px;
+    }
+    /* about us page */
+    .who_we_are{
+        padding-top: 50px ;
+        margin-top: 0;
+    }
+    .who_we_are_row{
+        flex-direction: column-reverse;
+        margin-bottom: 30px;
     }
 }
 

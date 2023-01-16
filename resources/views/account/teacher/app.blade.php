@@ -5,7 +5,7 @@
 <head>
     <base href="">
     <meta charset="utf-8"/>
-    <meta name="csrf-token" content="{{csrf_token()}}">
+{{--    <meta name="csrf-token" content="{{csrf_token()}}">--}}
     <title>Admin Panel | Teacher</title>
     <meta name="description"
           content="Metronic admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets."/>
@@ -403,7 +403,7 @@
                         </div>
                     </div>
                     <div class="navi-text">
-                        <div  class="font-weight-bold"><a target="_blank" href="{{url('account/teacher/edit')}}" >Profilim</a></div>
+                        <div  class="font-weight-bold"><a target="_blank" href="{{route('account.teacher.edit', $teacher->id)}}" >Profilim</a></div>
                         <div class="text-muted">Hesab tənzimləmələri və başqaları</div>
                     </div>
                 </div>

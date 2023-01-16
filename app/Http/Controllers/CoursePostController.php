@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
-use App\Models\CourseStudent;
-use App\Models\CourseTeacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,14 +26,11 @@ class CoursePostController extends Controller
             }
             Course::create([
                 'image' => $image,
-                'name' => $request->name,
                 'video_presentation' => $request->video_presentation,
                 'certificate' => $request->certificate,
                 'mmc' => $request->mmc,
                 'address' => $request->address,
-                'email' => $request->email,
                 'phone' => $request->phone,
-                'skype_id' => $request->	skype_id,
                 'profile_title' => $request->profile_title,
                 'about_course' => $request->about_course,
                 'subjects' => $request->subjects,
@@ -46,13 +41,12 @@ class CoursePostController extends Controller
                 'rating' => $request->rating,
                 'student_mission' => $request->student_mission,
                 'payment' => $request->payment,
-                'rating' => $request->rating,
                 'likes' => $request->likes,
                 'dislike' => $request->dislike,
                 'see_count' => $request->see_count,
                 'course_type' => $request->course_type,
                 'language' => $language,
-                'lessons_duration' => $request->	lessons_duration,
+                'lessons_duration' => $request->lessons_duration,
                 'lessons_intensivity' => $request->lessons_intensivity,
                 'students_amount' => $request->students_amount,
                 'slug' => $request->slug,
@@ -61,8 +55,6 @@ class CoursePostController extends Controller
                 'user_id' => Auth::user()->id,
                 'verified_status' => $request->verified_status,
                 'status' => $request->status
-
-
             ]);
         } else {
             $image=$course->image;
@@ -70,16 +62,13 @@ class CoursePostController extends Controller
                 $image= file_get_contents($request->file('image')->getRealPath());
             }
             $course->image = $image;
-            $course->name = $request->name;
             $course->video_presentation = $request->video_presentation;
             $course->certificate = $request->certificate;
             $course->mmc = $request->mmc;
             $course->address = $request->address;
-            $course->email = $request->email;
             $course->phone = $request->phone;
-            $course->skype_id = $request->skype_id;
             $course->profile_title = $request->profile_title;
-            $course->about_course = $request->	about_course;
+            $course->about_course = $request->about_course;
             $course->subjects = $request->subjects;
             $course->subjects_category = $request->subjects_category;
             $course->demo_lesson = $request->demo_lesson;

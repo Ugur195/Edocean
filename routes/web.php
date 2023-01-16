@@ -1,16 +1,23 @@
 <?php
 
 use App\Http\Controllers\Admin\{
-    AboutUsController, AdminController,
-    AuthController, BlogCategoryController,
-    BlogCommentsController, BlogController,
-    ContactUsController,MenuController, SettingController,
-    TeacherController as TeacherAdminController};
+    AboutUsController,
+    AdminController,
+    AuthController,
+    BlogCategoryController,
+    BlogCommentsController,
+    BlogController,
+    ContactUsController,
+    MenuController,
+    SettingController,
+    TeacherController as TeacherAdminController
+};
 use App\Http\Controllers\Frontend\{
     AuthController as AuthFrontController,
     BlogController as BlogFrontController,
     ContactUsController as ContactUsFrontController,
-    TeacherController};
+    TeacherController,AboutUsController as AboutUsFrontController
+};
 use App\Http\Controllers\Frontend\Account\{
     TeacherController as TeacherFrontController
 };
@@ -50,9 +57,9 @@ Route::name('frontend.')->group(function () {
     Route::get('/logout', [AuthFrontController::class, 'logout'])->name('logout');
     Route::post('/login/user', [AuthFrontController::class, 'loginUser'])->name('login.user');
     Route::post('/register/user', [AuthFrontController::class, 'registerUser'])->name('register.user');
+    Route::get('/about_us',[AboutUsFrontController::class,'index']);
     Route::resource('blogs', BlogFrontController::class);
-    Route::resource('/teachers',TeacherController::class);
-
+    Route::resource('/teachers', TeacherController::class);
 
 
     Route::get('/students', [HomeGetController::class, 'Students']);
@@ -74,7 +81,7 @@ Route::prefix('admin')->middleware(['Admin', 'permission:1'])->group(function ()
     Route::name('admin.')->group(function () {
         Route::resource('admins', AdminController::class);
         Route::post('/admins/change-status', [AdminController::class, 'changeStatus'])->name('admins.block_unblock');
-        Route::resource('teachers',TeacherAdminController::class);
+        Route::resource('teachers', TeacherAdminController::class);
         Route::resource('menus', MenuController::class);
         Route::resource('setting', SettingController::class);
         Route::resource('about_us', AboutUsController::class);
@@ -93,38 +100,40 @@ Route::prefix('admin')->middleware(['Admin', 'permission:1'])->group(function ()
 });
 
 
-Route::prefix('account')->middleware('auth', 'verified')->group(function () {
-        //student
-        Route::prefix('student')->middleware('permission:4')->group(function () {
-            Route::get('/my_profile', [StudentGetController::class, 'getMyProfile']);
-            Route::get('/index', [StudentGetController::class, 'Student']);
-            Route::get('/student_attendance', [StudentGetController::class, 'StudentAttendance']);
-            Route::get('/student_schedule', [StudentGetController::class, 'StudentSchedule']);
-            Route::get('GetSubCatStuEdit/{id}', [StudentGetController::class, 'GetSubCatStuEdit']);
-            Route::post('/my_profile', [StudentPostController::class, 'postMyProfile']);
+Route::prefix('account')->name('account.')->middleware('auth', 'verified')->group(function () {
+    //student
+    Route::prefix('student')->middleware('permission:4')->group(function () {
+        Route::get('/my_profile', [StudentGetController::class, 'getMyProfile']);
+        Route::get('/index', [StudentGetController::class, 'Student']);
+        Route::get('/student_attendance', [StudentGetController::class, 'StudentAttendance']);
+        Route::get('/student_schedule', [StudentGetController::class, 'StudentSchedule']);
+        Route::get('GetSubCatStuEdit/{id}', [StudentGetController::class, 'GetSubCatStuEdit']);
+        Route::post('/my_profile', [StudentPostController::class, 'postMyProfile']);
 
-        });
+    });
 
-        //teacher
-        Route::prefix('teacher')->name('teacher.')->middleware('permission:3')->group(function () {
-                Route::resource('',TeacherFrontController::class);
+    //teacher
+    Route::middleware('permission:3')->group(function () {
+        Route::resource('teacher', TeacherFrontController::class);
+        Route::prefix('teacher')->name('teacher.')->group(function () {
 
 //            Route::get('/my_profile', [TeacherGetController::class, 'getTeacherProfile']);
 //            Route::get('/index', [TeacherGetController::class, 'Teacher']);
-//            Route::get('/teacher_schedule', [TeacherGetController::class, 'TeacherSchedule']);
+//            Route::get('schedule', [TeacherGetController::class, 'TeacherSchedule']);
 //            Route::get('GetSubCatTeachEdit/{id}', [TeacherGetController::class, 'GetSubCatTeachEdit']);
 //            Route::post('/my_profile', [TeacherPostController::class, 'postTeacherProfile']);
         });
+    });
 
 
-        //course
-        Route::prefix('course')->middleware('permission:2')->group(function () {
-            Route::get('/my_profile', [CourseGetController::class, 'MyCourse']);
-            Route::get('/index', [CourseGetController::class, 'Course']);
-            Route::get('/course_schedule', [CourseGetController::class, 'CourseSchedule']);
-            Route::get('GetSubCatEdit/{id}', [CourseGetController::class, 'GetSubCatEdit']);
-            Route::post('/my_profile', [CoursePostController::class, 'postMyProfile']);
-        });
+    //course
+    Route::prefix('course')->middleware('permission:2')->group(function () {
+        Route::get('/my_profile', [CourseGetController::class, 'MyCourse']);
+        Route::get('/index', [CourseGetController::class, 'Course']);
+        Route::get('/course_schedule', [CourseGetController::class, 'CourseSchedule']);
+        Route::get('GetSubCatEdit/{id}', [CourseGetController::class, 'GetSubCatEdit']);
+        Route::post('/my_profile', [CoursePostController::class, 'postMyProfile']);
+    });
 });
 
 

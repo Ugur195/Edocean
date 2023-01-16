@@ -12,3 +12,44 @@ $('#tchr_tabs_nav li').click(function(){
     $(activeTab).fadeIn();
     return false;
 });
+
+
+$(function(){
+    $('.multiple-items').slick({
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        arrows:true,
+        autoplay: true,
+        autoplaySpeed: 1500,
+        dots:false,
+        centerPadding:'0',
+        responsive: [
+            {
+                breakpoint: 1180,
+                settings: {
+                    arrows: true,
+                    centerPadding: '0px',
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 880,
+                settings: {
+                    arrows: true,
+                    centerPadding: '0px',
+                    slidesToShow: 2
+                }
+            },
+            {
+                breakpoint: 580,
+                settings: {
+                    arrows: true,
+                    centerPadding: '0px',
+                    slidesToShow: 1
+                }
+            }
+        ]
+    });
+
+})

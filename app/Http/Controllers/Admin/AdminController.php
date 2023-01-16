@@ -85,6 +85,7 @@ class AdminController extends Controller
             $add_admin->slug = $request->name;
             $add_admin->status = 1;
             $add_admin->save();
+
             return response(['title' => 'Ugurlu!', 'message' => 'Yeni Admin elave edildi!', 'status' => 'success']);
         } else {
             return response(['title' => 'Ugursuz!', 'message' => 'Yeni Admin elave etmek mumkun olmadi', 'status' => 'error']);

@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
+use App\Models\Course;
 use App\Models\Menu;
+use App\Models\Student;
+use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -80,16 +84,30 @@ class AuthController extends Controller
 
         try {
             DB::beginTransaction();
-            $user = new User();
-            $user->fin = $request->fin;
-            $user->author = $request->author;
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->password = Hash::make($request->password);
-            $user->slug = Str::slug($request->name);
-            $user->status = 1;
-            $user->save();
+            $user = User::create([
+                'fin' => $request->fin,
+                'author' => $request->author,
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'slug' => Str::slug($request->name),
+                'status' => 1
+            ]);
 
+            if ($request->author == 2) {
+                $course = new Course();
+            }
+
+            if ($request->author == 3) {
+                $teacher = new Teacher();
+                $teacher->user_id=$user->id;
+                $teacher->save();
+            }
+            if ($request->author == 4) {
+                $student = new Student();
+                $student->user_id=$user->id;
+                $student->save();
+            }
             DB::commit();
             return response(['title' => 'Ugurlu!', 'message' => 'Qeydiyyatdan ugurlu kecdiz', 'status' => 'success']);
 

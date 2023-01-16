@@ -8,9 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     protected $table = 'edocean.student';
-    protected $fillable = ['id', 'image', 'name', 'surname', 'father_name', 'birthday', 'gender', 'language', 'email', 'password', 'country',
-        'city', 'phone', 'skype_id', 'parent', 'subjects', 'subjects_category', 'education_level', 'lesson_duration', 'lessons_intensivity', 'address', 'teacher_status',
-        'teacher_gender', 'students_amount', 'student_mission', 'payment', 'balance', 'verified_status', 'user_id', 'status'];
+    protected $fillable = ['id', 'image','father_name', 'birthday', 'gender', 'language','country',
+        'city', 'phone', 'parent', 'subjects', 'subjects_category', 'education_level',
+        'lesson_duration', 'lessons_intensivity', 'address', 'teacher_status', 'teacher_gender',
+        'students_amount', 'student_mission', 'payment', 'balance', 'verified_status', 'user_id', 'status'];
 
 
     public function subjects() {

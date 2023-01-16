@@ -27,8 +27,6 @@ class StudentPostController extends Controller
             }
             Student::create([
                 'image' => $image,
-                'name' => $request->name,
-                'surname' => $request->surname,
                 'father_name' => $request->father_name,
                 'birthday' => $request->birthday,
                 'user_id' => Auth::user()->id,
@@ -45,10 +43,8 @@ class StudentPostController extends Controller
                 'parent' => $request->parent,
                 'subjects' => $request->subjects,
                 'subjects_category' => $request->subjects_category,
-                'email' => $request->email,
                 'address' => $request->address,
                 'phone' => $request->phone,
-                'skype_id' => $request->skype_id,
                 'student_mission' => $request->student_mission,
                 'payment' => $request->payment,
                 'balance' => $request->balance,
@@ -60,8 +56,6 @@ class StudentPostController extends Controller
                 $image = file_get_contents($request->file('image')->getRealPath());
             }
             $student->image = $image;
-            $student->name = $request->name;
-            $student->surname = $request->surname;
             $student->father_name = $request->father_name;
             $student->birthday = $request->birthday;
             $student->language = $langs;
@@ -75,12 +69,10 @@ class StudentPostController extends Controller
             $student->parent = $request->parent;
             $student->subjects = $request->subjects;
             $student->subjects_category = $request->subjects_category;
-            $student->email = $request->email;
             $student->address = $request->address;
             $student->phone = $request->phone;
             $student->country = $request->country;
             $student->city = $request->city;
-            $student->skype_id = $request->skype_id;
             $student->student_mission = $request->student_mission;
             $student->payment = $request->payment;
             $student->balance = $request->balance;

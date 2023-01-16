@@ -40,21 +40,10 @@ var KTDatatablesSearchOptionsColumnSearch = function () {
                     data: 'image',
                     name: 'image'
                 },
-                {
-                    data: 'name',
-                    name: 'name'
-                },
-                {
-                    data: 'surname',
-                    name: 'surname'
-                },
+
                 {
                     data: 'gender',
                     name: 'gender'
-                },
-                {
-                    data: 'email',
-                    name: 'email'
                 },
                 {
                     data: 'phone',
@@ -91,10 +80,7 @@ var KTDatatablesSearchOptionsColumnSearch = function () {
 
                     switch (column.title()) {
                         case 'ID':
-                        case 'Name':
-                        case 'Surname':
                         case 'Gender':
-                        case 'Email':
                         case 'Phone':
                         case 'Subject':
                         case 'Lesson Price':

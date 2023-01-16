@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="{{asset('frontendCss/style.css')}}"/>
+    <link rel="stylesheet" href="{{asset('frontendCss/slick.css')}}"/>
     <link rel="stylesheet" href="{{asset('frontendCss/bootstrap.css')}}">
 
     @yield('css')
@@ -13,119 +14,65 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg  sticky-top ed-navbar">
-    <div class="container">
-        <a href="/"><img class="edocean-logo" src="/frontendCss/images/edocean-logo.jpeg" alt=""></a>
-        <div class="navbar-desktop">
-            <ul class="navbar-nav pe-3">
-                @foreach($menus as $m)
-                    <li class="nav-item">
-                        <a class="nav-link" href="/{{$m->page}}">{{$m->name}} </a>
-                    </li>
-                @endforeach
-            </ul>
-            <div class="search-form-and-btn">
-                <form class="d-flex search-ed">
-                    <input class="form-control me-2" type="text" placeholder="Axtar...">
-                    <button class="btn search-iconn" type="button">
-                        <ion-icon name="search-outline"></ion-icon>
-                    </button>
-                </form>
-
-
-
-                @if(Auth::check())
-
-                    <div class="dropdown">
-                        <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-{{--                                {{  Auth::user()->id }}--}}
-                            <img class="profile-dropdown-img" style="object-fit: contain" src="data:image/jpeg;base64,{{base64_encode(auth()->user()->type()->image)}}">
-                        </button>
-                        <ul class="dropdown-menu prfl-ul" aria-labelledby="dropdownMenu2">
-                            <li><a  class="dropdown-item" href="">My Profile</a></li>
-                            @if(Auth::user()->author==1)
-                                <li><a target="_blank" class="dropdown-item" href="{{url('/admin/index')}}">Admin Page</a></li>
-                            @elseif(Auth::user()->author==2)
-                                <li><a target="_blank" class="dropdown-item" href="{{url('/admin/course/index')}}">Course Profile</a>
-                                </li>
-                            @elseif(Auth::user()->author==3)
-                                <li><a target="_blank" class="dropdown-item" href="{{url('/admin/teacher/index')}}">Teacher Profile</a>
-                                </li>
-                            @elseif(Auth::user()->author==4)
-                                <li><a target="_blank" class="dropdown-item" href="{{url('/admin/student/index')}}">Student Profile</a>
-                                </li>
-                            @endif
-                            <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
-                        </ul>
-                    </div>
-                @else
-                    <button class="btn login-btnn" type="button"><a href="{{route('login')}}">Daxil ol</a></button>
-                @endif
-            </div>
+<header>
+    <nav class="container ed_nav">
+        <div class="ed_nav_logo">
+            <img src="/frontendCss/images/edocean-logo.jpeg" alt="">
         </div>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                aria-controls="offcanvasNavbar">
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-header">
-                <a href=""><img class="edocean-logo" src="./frontendCss/images/edocean-logo.jpeg" alt=""></a>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-                        aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <ul class="navbar-nav flex-grow-1 pe-3">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Ana Səhifə</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Müəllimlər</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Kurslar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Tələbələr</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Haqqımızda</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">Bloqlar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Əlaqə</a>
-                    </li>
-                    <div class="search-form-and-btn">
-                        <form class="d-flex search-ed">
-                            <input class="form-control me-2" type="text" placeholder="Axtar...">
-                            <button class="btn search-iconn" type="button">
-                                <ion-icon name="search-outline"></ion-icon>
-                            </button>
-
-                        </form>
-                        <button class="btn login-btnn" type="button"><a href="./login.html">Daxil ol</a></button>
-                        <div class="dropdown">
-                            <button class="btn dropdown-toggle" type="button" id="dropdownMenu2"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                <img class="profile-dropdown-img" src="./frontendCss/images/edocean-logo.jpeg" alt="">
-                            </button>
-                            <ul class="dropdown-menu prfl-ul" aria-labelledby="dropdownMenu2">
-                                <li><a class="dropdown-item" href="">Profile</a></li>
-                                <li><a class="dropdown-item" href=""> Lorem, ipsum.</a></li>
-                                <li><a class="dropdown-item" href="">Logout</a></li>
-                            </ul>
-                        </div>
-                    </div>
+        <ul class="navbar_links">
+          <span id="close_menu">
+            <ion-icon name="close-circle-outline"></ion-icon>
+          </span>
+            @foreach($menus as $menu)
+                <li class="nav_link"><a href="/{{$menu->page}}">{{$menu->name}}</a></li>
+            @endforeach
+            <ul class="drp_dwn">
+                <li class="nav_link" id="drp_dwn_li"><a href="">Elanlar</a>
+                    <ion-icon class="drp-icn" name="chevron-down-outline"></ion-icon>
+                </li>
+                <ul class="dropdown_ul">
+                    <li class="nav_link"><a href="{{url('/teachers')}}">Müəllim Elanları</a></li>
+                    <li class="nav_link"><a href="{{url('/courses')}}">Kurs Elanları</a></li>
+                    <li class="nav_link"><a href="{{url('/students')}}">Tələbə Elanları</a></li>
                 </ul>
+            </ul>
+        </ul>
+        <div class="srch_and_login">
+            <div class="search_div">
+                <input class="srch_inp" type="text" placeholder="Axtar...">
+                <button class="search_icon" type="button">
+                    <ion-icon name="search-outline"></ion-icon>
+                </button>
             </div>
+
+            @if(Auth::check())
+                <div class="login_profile">
+                    <a class="user_img_a" href="">
+                        <img class="user_img" src="data:image/jpeg;base64,{{base64_encode(auth()->user()->type()->image)}}"
+                             alt=""></a>
+                    <ul class="profile_ul">
+                        @if(Auth::user()->author==1)
+                            <li><a href="{{url('/admin/index')}}">Admin Page</a></li>
+                        @elseif(Auth::user()->author==2)
+                            <li><a href="{{url('/admin/course/index')}}">Course Page</a></li>
+                        @elseif(Auth::user()->author==3)
+                            <li><a href="{{url('/account/teacher')}}">Teacher Page</a></li>
+                        @elseif(Auth::user()->author==4)
+                            <li><a href="{{url('/admin/students/index')}}">Student Page</a></li>
+                        @endif
+                        <li><a href="{{route('logout')}}">Logout</a></li>
+                    </ul>
+                </div>
+            @else
+                <button class="btn login-btnn" type="button"><a href="{{route('login')}}">Daxil ol</a></button>
+                <div class="hmbrgr_icon">
+                    <span></span>
+                </div>
+            @endif
         </div>
-    </div>
-</nav>
+
+    </nav>
+</header>
 
 @yield('content')
 
@@ -199,6 +146,8 @@
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/script.js?v=2')}}"></script>
 <script src="{{asset('js/tab.js')}}"></script>
+<script src="{{asset('js/slick.min.js.js')}}"></script>
+<script src="{{asset('js/navbar.js')}}"></script>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 @yield('js')

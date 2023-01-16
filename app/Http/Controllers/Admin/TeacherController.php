@@ -25,7 +25,7 @@ class TeacherController extends Controller
 
     public function getTeacher()
     {
-        $teacher = DB::table('edocean.teacher')->select(DB::raw("id,user_id,image,name,surname,gender,email,phone,subjects,lesson_price,balance,status as st,
+        $teacher = DB::table('edocean.teacher')->select(DB::raw("id,user_id,image,gender,phone,subjects,lesson_price,balance,status as st,
         (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
 
         return DataTables::of($teacher)

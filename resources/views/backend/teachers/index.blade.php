@@ -75,10 +75,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Image</th>
-                                <th>Name</th>
-                                <th>Surname</th>
                                 <th>Gender</th>
-                                <th>Email</th>
                                 <th>Phone</th>
                                 <th>Subject</th>
                                 <th>Lesson Price</th>
@@ -91,10 +88,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>IMAGE</th>
-                                <th>NAME</th>
-                                <th>SURNAME</th>
                                 <th>GENDER</th>
-                                <th>EMAIL</th>
                                 <th>PHONE</th>
                                 <th>SUBJECT</th>
                                 <th>LESSON PRICE</th>

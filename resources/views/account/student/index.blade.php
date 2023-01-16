@@ -1,4 +1,4 @@
-@extends('student.app')
+@extends('account.student.app')
 @section('css')
 @endsection
 
