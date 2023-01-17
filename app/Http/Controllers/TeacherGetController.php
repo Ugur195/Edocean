@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Student;
 use App\Models\Teacher;
-use App\Models\TeacherCourse;
-use App\Models\TeacherStudent;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

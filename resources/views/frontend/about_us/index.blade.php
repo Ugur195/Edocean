@@ -10,7 +10,7 @@
             <div class="about_us_top_text container text-center">
                 <h1>Haqqımızda</h1>
                 <p>
-                    <a href="../index.html"> Ana Səhifə</a
+                    <a href="{{url("/")}}"> Ana Səhifə</a
                     ><ion-icon name="arrow-forward-outline"></ion-icon>Haqqımızda
                 </p>
             </div>
@@ -30,12 +30,12 @@
                         </p>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 who_we_are_img">
-                        <img class="w-100" src="../images/who-we-are.jpeg" alt="" />
+                        <img class="w-100" src="frontendCss/images/about_us/who-we-are.jpeg" alt="" />
                     </div>
                 </div>
                 <div class="row our_mission_row">
                     <div class="col-lg-6 col-md-6 col-sm-12 our-mission-img">
-                        <img class="w-100" src="../images/our_mission.webp" alt="" />
+                        <img class="w-100" src="frontendCss/images/about_us/our_mission.webp" alt="" />
                     </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-12 our_mission_content">

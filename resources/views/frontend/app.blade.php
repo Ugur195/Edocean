@@ -25,17 +25,19 @@
           </span>
             @foreach($menus as $menu)
                 <li class="nav_link"><a href="/{{$menu->page}}">{{$menu->name}}</a></li>
+                @if($menu->slug === 'home-2022')
+                    <ul class="drp_dwn">
+                        <li class="nav_link" id="drp_dwn_li"><a href="">Elanlar</a>
+                            <ion-icon class="drp-icn" name="chevron-down-outline"></ion-icon>
+                        </li>
+                        <ul class="dropdown_ul">
+                            <li class="nav_link"><a href="{{url('/teachers')}}">Müəllim Elanları</a></li>
+                            <li class="nav_link"><a href="{{url('/courses')}}">Kurs Elanları</a></li>
+                            <li class="nav_link"><a href="{{url('/students')}}">Tələbə Elanları</a></li>
+                        </ul>
+                    </ul>
+                @endif
             @endforeach
-            <ul class="drp_dwn">
-                <li class="nav_link" id="drp_dwn_li"><a href="">Elanlar</a>
-                    <ion-icon class="drp-icn" name="chevron-down-outline"></ion-icon>
-                </li>
-                <ul class="dropdown_ul">
-                    <li class="nav_link"><a href="{{url('/teachers')}}">Müəllim Elanları</a></li>
-                    <li class="nav_link"><a href="{{url('/courses')}}">Kurs Elanları</a></li>
-                    <li class="nav_link"><a href="{{url('/students')}}">Tələbə Elanları</a></li>
-                </ul>
-            </ul>
         </ul>
         <div class="srch_and_login">
             <div class="search_div">
@@ -48,7 +50,8 @@
             @if(Auth::check())
                 <div class="login_profile">
                     <a class="user_img_a" href="">
-                        <img class="user_img" src="data:image/jpeg;base64,{{base64_encode(auth()->user()->type()->image)}}"
+                        <img class="user_img"
+                             src="data:image/jpeg;base64,{{base64_encode(auth()->user()->type()->image)}}"
                              alt=""></a>
                     <ul class="profile_ul">
                         @if(Auth::user()->author==1)
@@ -146,7 +149,7 @@
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/script.js?v=2')}}"></script>
 <script src="{{asset('js/tab.js')}}"></script>
-<script src="{{asset('js/slick.min.js.js')}}"></script>
+<script src="{{asset('js/slick.min.js')}}"></script>
 <script src="{{asset('js/navbar.js')}}"></script>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

@@ -1,22 +1,19 @@
 <?php
 
 use App\Http\Controllers\Admin\{
-    AboutUsController,
-    AdminController,
-    AuthController,
-    BlogCategoryController,
-    BlogCommentsController,
-    BlogController,
-    ContactUsController,
-    MenuController,
-    SettingController,
-    TeacherController as TeacherAdminController
+    AboutUsController, AdminController,
+    AuthController, BlogCategoryController,
+    BlogCommentsController, BlogController,
+    ContactUsController, MenuController,
+    TeacherController as TeacherAdminController,
+    SettingController
 };
 use App\Http\Controllers\Frontend\{
     AuthController as AuthFrontController,
     BlogController as BlogFrontController,
     ContactUsController as ContactUsFrontController,
-    TeacherController,AboutUsController as AboutUsFrontController
+    AboutUsController as AboutUsFrontController,
+    TeacherController
 };
 use App\Http\Controllers\Frontend\Account\{
     TeacherController as TeacherFrontController
@@ -50,15 +47,15 @@ use Illuminate\Support\Facades\Route;
 // front end
 Route::name('frontend.')->group(function () {
     Route::get('/', [HomeGetController::class, 'home'])->name('home');
-    Route::get('contact_us', [ContactUsFrontController::class, 'index']);
+    Route::get('/contact_us', [ContactUsFrontController::class, 'index']);
     Route::post('contact_us/send_message', [ContactUsFrontController::class, 'sendMessage'])->name('contact_us.send_message');
     Route::get('/login', [AuthFrontController::class, 'login'])->name('login')->middleware('guest');
     Route::get('/register', [AuthFrontController::class, 'register'])->name('register')->middleware('guest');
     Route::get('/logout', [AuthFrontController::class, 'logout'])->name('logout');
     Route::post('/login/user', [AuthFrontController::class, 'loginUser'])->name('login.user');
     Route::post('/register/user', [AuthFrontController::class, 'registerUser'])->name('register.user');
-    Route::get('/about_us',[AboutUsFrontController::class,'index']);
-    Route::resource('blogs', BlogFrontController::class);
+    Route::get('/about_us', [AboutUsFrontController::class, 'index']);
+    Route::resource('/blogs', BlogFrontController::class);
     Route::resource('/teachers', TeacherController::class);
 
 
@@ -116,12 +113,8 @@ Route::prefix('account')->name('account.')->middleware('auth', 'verified')->grou
     Route::middleware('permission:3')->group(function () {
         Route::resource('teacher', TeacherFrontController::class);
         Route::prefix('teacher')->name('teacher.')->group(function () {
-
-//            Route::get('/my_profile', [TeacherGetController::class, 'getTeacherProfile']);
-//            Route::get('/index', [TeacherGetController::class, 'Teacher']);
-//            Route::get('schedule', [TeacherGetController::class, 'TeacherSchedule']);
+            Route::get('category/{id}/subjects', [TeacherFrontController::class, 'getSubjectsByCategoryId'])->name('list.category-subjects');
 //            Route::get('GetSubCatTeachEdit/{id}', [TeacherGetController::class, 'GetSubCatTeachEdit']);
-//            Route::post('/my_profile', [TeacherPostController::class, 'postTeacherProfile']);
         });
     });
 

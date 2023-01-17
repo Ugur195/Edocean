@@ -100,12 +100,12 @@ class AuthController extends Controller
 
             if ($request->author == 3) {
                 $teacher = new Teacher();
-                $teacher->user_id=$user->id;
+                $teacher->user_id = $user->id;
                 $teacher->save();
             }
             if ($request->author == 4) {
                 $student = new Student();
-                $student->user_id=$user->id;
+                $student->user_id = $user->id;
                 $student->save();
             }
             DB::commit();

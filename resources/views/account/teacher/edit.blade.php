@@ -224,12 +224,34 @@
                                     </div>
 
                                     <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Surname</label>
+                                        <div class="col-lg-9 col-xl-6">
+                                            <input name="surname"
+                                                   class="form-control form-control-lg form-control-solid"
+                                                   type="text"
+                                                   value="{{$teacher->surname}}"/>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Father Name</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input name="father_name"
                                                    class="form-control form-control-lg form-control-solid"
                                                    type="text"
                                                    value="{{$teacher->father_name}}"/>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Email</label>
+                                        <div class="col-lg-9 col-xl-6">
+                                            <input name="email"
+                                                   class="form-control form-control-lg form-control-solid"
+                                                   type="text"
+                                                   value="{{Auth::user()->email}}"/>
                                         </div>
                                     </div>
 
@@ -243,8 +265,6 @@
                                                    value="{{$teacher->teacher_address}}"/>
                                         </div>
                                     </div>
-
-
 
 
                                     <div class="form-group row">
@@ -608,8 +628,8 @@
                                                 <option value="0" disabled selected>Select Category</option>
                                                 @foreach ($data as $categories)
                                                     <option @if($categories->id == $teacher->subjects_category) selected
-                                                            @endif value="{{ $categories->id }}">
-                                                        {{ ucfirst($categories->name) }}
+                                                            @endif value="{{$categories->id}}">
+                                                        {{ucfirst($categories->name)}}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -793,7 +813,6 @@
                                         </div>
                                     </div>
 
-
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Lesson Price</label>
                                         <div class="col-lg-9 col-xl-6">
@@ -801,28 +820,6 @@
                                                    class="form-control form-control-lg form-control-solid"
                                                    type="text"
                                                    value="{{$teacher->lesson_price}}"/>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Balance</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input name="balance"
-                                                   class="form-control form-control-lg form-control-solid"
-                                                   type="text"
-                                                   value="{{$teacher->balance}}"/>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Verified
-                                            Status</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input name="verified_status"
-                                                   class="form-control form-control-lg form-control-solid"
-                                                   type="text"
-                                                   value="{{$teacher->verified_status}}"/>
                                         </div>
                                     </div>
 
@@ -885,7 +882,7 @@
             $('#subjects').append(`<option value="0" disabled selected>Processing...</option>`);
             $.ajax({
                 type: 'GET',
-                url: 'GetSubCatTeachEdit/' + categoryId,
+                url: '/account/teacher/category/'+categoryId+'/subjects',
                 success: function (response) {
                     var response = JSON.parse(response);
                     $('#subjects').empty();
