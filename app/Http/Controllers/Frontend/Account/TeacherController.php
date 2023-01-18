@@ -64,25 +64,7 @@ class TeacherController extends Controller
      */
 
 
-    public function edit(): View
-    {
-        $teacher = Teacher::where('user_id', Auth::user()->id)->first();
-        $data = DB::table('subject_category')->get();
-        $user = null;
-        if ($teacher == null) {
-            $user = User::find(Auth::user()->id);
-        } else {
-            $user = $teacher;
-        }
-        return view('account.teacher.edit', ['teacher' => $user, 'data' => $data]);
-    }
-
-    public function getSubjectsByCategoryId($id)
-    {
-        echo json_encode(DB::table('subjects')->where('subject_category_id', $id)->get());
-    }
-
-//    public function edit():View
+//    public function edit(): View
 //    {
 //        $teacher = Teacher::where('user_id', Auth::user()->id)->first();
 //        $data = DB::table('subject_category')->get();
@@ -92,9 +74,27 @@ class TeacherController extends Controller
 //        } else {
 //            $user = $teacher;
 //        }
-////        dd( explode(',',$teacher->language));
-//        return view('account.teacher.edit2', ['teacher' => $user, 'data' => $data]);
+//        return view('account.teacher.edit', ['teacher' => $user, 'data' => $data]);
 //    }
+
+    public function getSubjectsByCategoryId($id)
+    {
+        echo json_encode(DB::table('subjects')->where('subject_category_id', $id)->get());
+    }
+
+    public function edit():View
+    {
+        $teacher = Teacher::where('user_id', Auth::user()->id)->first();
+        $data = DB::table('subject_category')->get();
+        $user = null;
+        if ($teacher == null) {
+            $user = User::find(Auth::user()->id);
+        } else {
+            $user = $teacher;
+        }
+//        dd( explode(',',$teacher->language));
+        return view('account.teacher.edit2', ['teacher' => $user, 'data' => $data]);
+    }
 
 
     /**

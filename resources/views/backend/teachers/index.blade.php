@@ -75,6 +75,9 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Image</th>
+                                <th>Name</th>
+                                <th>Surname</th>
+                                <th>Email</th>
                                 <th>Gender</th>
                                 <th>Phone</th>
                                 <th>Subject</th>
@@ -88,6 +91,9 @@
                             <tr>
                                 <th>ID</th>
                                 <th>IMAGE</th>
+                                <th>NAME</th>
+                                <th>SURNAME</th>
+                                <th>Email</th>
                                 <th>GENDER</th>
                                 <th>PHONE</th>
                                 <th>SUBJECT</th>
@@ -110,7 +116,7 @@
 
 @section('js')
     <script src="{{asset('backendCssJs/assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
-    <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/teachers.js')}}"></script>
+    <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/teachers.js?v='.time())}}"></script>
 
     <script>
         function blokUnblok(element, status, id) {

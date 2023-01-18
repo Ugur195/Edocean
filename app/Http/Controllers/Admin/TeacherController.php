@@ -25,9 +25,15 @@ class TeacherController extends Controller
 
     public function getTeacher()
     {
-        $teacher = DB::table('edocean.teacher')->select(DB::raw("id,user_id,image,gender,phone,subjects,lesson_price,balance,status as st,
-        (CASE status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))->get();
-
+//        dd(User::find(168));
+        $teacher = DB::table('edocean.teacher')->select(DB::raw("edocean.users.name as username, edocean.subjects.name as subjects_name,
+         edocean.teacher.id, edocean.teacher.image, edocean.teacher.user_id, edocean.teacher.surname, edocean.users.email, edocean.teacher.gender,edocean.teacher.phone,
+         edocean.teacher.subjects, edocean.teacher.lesson_price, edocean.teacher.balance, edocean.teacher.status as st,
+        (CASE edocean.teacher.status WHEN 0 then 'Deaktiv' WHEN 1 then 'Aktiv' END) as status"))
+            ->leftJoin('edocean.users', 'edocean.users.id', '=', 'edocean.teacher.user_id')
+            ->leftJoin('edocean.subjects', 'edocean.subjects.id', '=', 'edocean.teacher.subjects')
+            ->get();
+//        dd($teacher);
         return DataTables::of($teacher)
             ->editColumn('image', function ($model) {
                 return "<img style='display:block;width:80px;height:60px;' src='data:image/jpeg;base64," . base64_encode($model->image) . "'/>";

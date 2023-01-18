@@ -114,7 +114,6 @@ Route::prefix('account')->name('account.')->middleware('auth', 'verified')->grou
         Route::resource('teacher', TeacherFrontController::class);
         Route::prefix('teacher')->name('teacher.')->group(function () {
             Route::get('category/{id}/subjects', [TeacherFrontController::class, 'getSubjectsByCategoryId'])->name('list.category-subjects');
-//            Route::get('GetSubCatTeachEdit/{id}', [TeacherGetController::class, 'GetSubCatTeachEdit']);
         });
     });
 

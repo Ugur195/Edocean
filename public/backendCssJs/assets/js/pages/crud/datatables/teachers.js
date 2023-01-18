@@ -36,9 +36,25 @@ var KTDatatablesSearchOptionsColumnSearch = function () {
                     data: 'id',
                     name: 'id'
                 },
+
                 {
                     data: 'image',
                     name: 'image'
+                },
+
+                {
+                    data: 'username',
+                    name: 'username'
+                },
+
+                {
+                    data: 'surname',
+                    name: 'surname'
+                },
+
+                {
+                    data: 'email',
+                    name: 'email'
                 },
 
                 {
@@ -50,8 +66,8 @@ var KTDatatablesSearchOptionsColumnSearch = function () {
                     name: 'phone'
                 },
                 {
-                    data: 'subjects',
-                    name: 'subjects'
+                    data: 'subjects_name',
+                    name: 'subjects_name'
                 },
                 {
                     data: 'lesson_price',
@@ -80,6 +96,9 @@ var KTDatatablesSearchOptionsColumnSearch = function () {
 
                     switch (column.title()) {
                         case 'ID':
+                        case 'Name':
+                        case 'Surname':
+                        case 'Email':
                         case 'Gender':
                         case 'Phone':
                         case 'Subject':

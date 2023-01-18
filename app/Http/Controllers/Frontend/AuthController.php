@@ -40,7 +40,6 @@ class AuthController extends Controller
     }
 
 
-    //SignIn
     public function loginUser(Request $request)
     {
         $validate = Validator::make($request->all(), [
@@ -63,8 +62,6 @@ class AuthController extends Controller
     }
 
 
-    //finish SignIn
-
     public function registerUser(Request $request)
     {
         $validate = Validator::make($request->all(), [
@@ -75,7 +72,6 @@ class AuthController extends Controller
             'password_confirmation' => 'required|min:6',
             'author' => 'required|numeric'
         ]);
-
 
         if ($validate->fails()) {
             return response(['title' => 'Ugursuz!', 'message' => 'Melumat gondermek mumkun olmadi', 'status' => 'validation-error',
@@ -94,9 +90,9 @@ class AuthController extends Controller
                 'status' => 1
             ]);
 
-            if ($request->author == 2) {
-                $course = new Course();
-            }
+//            if ($request->author == 2) {
+//                $course = new Course();
+//            }
 
             if ($request->author == 3) {
                 $teacher = new Teacher();
@@ -117,7 +113,5 @@ class AuthController extends Controller
         }
 
     }
-    //finish SignUp
-
 
 }
