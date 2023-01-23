@@ -457,19 +457,9 @@
 
 
                                     <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Profile Title</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input name="profile_title"
-                                                   class="form-control form-control-lg form-control-solid"
-                                                   type="text"
-                                                   value="{{$teacher->profile_title}}"/>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">About Teacher</label>
                                         <div class="col-lg-9 col-xl-6">
-                                 <textarea name="about_teacher" class="form-control form-control-lg form-control-solid"
+                                              <textarea name="about_teacher" class="form-control form-control-lg form-control-solid"
                                            cols="30"
                                            rows="5">{{$teacher->about_teacher}}</textarea>
                                         </div>
@@ -813,16 +803,6 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Lesson Price</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input name="lesson_price"
-                                                   class="form-control form-control-lg form-control-solid"
-                                                   type="text"
-                                                   value="{{$teacher->lesson_price}}"/>
-                                        </div>
-                                    </div>
-
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label"></label>
@@ -843,6 +823,8 @@
                                             </div>
                                         </div>
                                     </div>
+
+
                                 </form>
                             </div>
                         </div>

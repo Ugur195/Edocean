@@ -23,6 +23,12 @@ class TeacherController extends Controller
         return view('account.teacher.index', compact('teacher'));
     }
 
+    public function showChangePassword()
+    {
+        $teacher = Teacher::where('user_id', Auth::id())->first();
+        return view('account.teacher.change-password', compact('teacher'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -115,12 +121,17 @@ class TeacherController extends Controller
                 $langs .= ',' . $l;
             }
         }
+
         $image = $teacher->image;
         if (isset($request->image)) {
             $image = file_get_contents($request->file('image')->getRealPath());
         }
+
         $teacher->image = $image;
         $teacher->surname = $request->surname;
+        $teacher->whatsapp = $request->whatsapp;
+        $teacher->facebook = $request->facebook;
+        $teacher->instagram = $request->instagram;
         $teacher->father_name = $request->father_name;
         $teacher->teacher_address = $request->teacher_address;
         $teacher->birthday = $request->birthday;
@@ -139,7 +150,6 @@ class TeacherController extends Controller
         $teacher->phone = $request->phone;
         $teacher->country = $request->country;
         $teacher->city = $request->city;
-        $teacher->profile_title = $request->profile_title;
         $teacher->about_teacher = $request->about_teacher;
         $teacher->education_place = $request->education_place;
         $teacher->speciality = $request->speciality;
