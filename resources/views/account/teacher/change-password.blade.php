@@ -48,9 +48,8 @@
 
 
                     <div class="card-body">
-                        <form class="form" action="{{route('account.teacher.update',$teacher->id)}}"
-                              method="POST"  id="kt_form">
-                            @method('put')
+                        <form class="form" action="{{route('account.teacher.changePassword',$teacher->id)}}"
+                              method="POST"  id="ChangePassword">
                             @csrf
                             <div class="tab-content">
 
@@ -83,7 +82,7 @@
                                                         <div class="col-9">
                                                             <input
                                                                 class="form-control form-control-lg form-control-solid mb-1"
-                                                                type="text" value="Current password"/>
+                                                                type="password" name="current-password" required />
                                                         </div>
                                                     </div>
 
@@ -93,7 +92,7 @@
                                                             Password</label>
                                                         <div class="col-9">
                                                             <input class="form-control form-control-lg form-control-solid"
-                                                                   type="text" value="New password"/>
+                                                                   type="password" name="new-password" required />
                                                         </div>
                                                     </div>
 
@@ -103,7 +102,7 @@
                                                             Password</label>
                                                         <div class="col-9">
                                                             <input class="form-control form-control-lg form-control-solid"
-                                                                   type="text" value="Verify password"/>
+                                                                   type="password"  name="new-password_confirmation" required/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -152,5 +151,30 @@
 @section('js')
     <script src={{asset('backendCssJs/assets/js/pages/custom/user/edit-user.js')}}></script>
     <script src="{{asset('jsValidate/jquery.form.js')}}"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#ChangePassword').ajaxForm({
+                beforeSubmit: function () {
+                },
+                success: function (response) {
+                    Swal.fire({
+                            title: response.title,
+                            text: response.message,
+                            icon: response.status,
+                            allowOutsideClick: false
+                        }
+                    )
+                    if (response.status === 'success') {
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 1000)
+                    }
+                }
+            });
+        });
+    </script>
+
+
 @endsection
 

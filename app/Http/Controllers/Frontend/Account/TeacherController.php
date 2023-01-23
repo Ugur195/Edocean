@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 
 class TeacherController extends Controller
@@ -70,25 +71,7 @@ class TeacherController extends Controller
      */
 
 
-//    public function edit(): View
-//    {
-//        $teacher = Teacher::where('user_id', Auth::user()->id)->first();
-//        $data = DB::table('subject_category')->get();
-//        $user = null;
-//        if ($teacher == null) {
-//            $user = User::find(Auth::user()->id);
-//        } else {
-//            $user = $teacher;
-//        }
-//        return view('account.teacher.edit', ['teacher' => $user, 'data' => $data]);
-//    }
-
-    public function getSubjectsByCategoryId($id)
-    {
-        echo json_encode(DB::table('subjects')->where('subject_category_id', $id)->get());
-    }
-
-    public function edit():View
+    public function edit(): View
     {
         $teacher = Teacher::where('user_id', Auth::user()->id)->first();
         $data = DB::table('subject_category')->get();
@@ -98,8 +81,12 @@ class TeacherController extends Controller
         } else {
             $user = $teacher;
         }
-//        dd( explode(',',$teacher->language));
-        return view('account.teacher.edit2', ['teacher' => $user, 'data' => $data]);
+        return view('account.teacher.edit', ['teacher' => $user, 'data' => $data]);
+    }
+
+    public function getSubjectsByCategoryId($id)
+    {
+        echo json_encode(DB::table('subjects')->where('subject_category_id', $id)->get());
     }
 
 
@@ -174,6 +161,32 @@ class TeacherController extends Controller
         }
 
         return back();
+    }
+
+
+    public function ChangePassword(Request $request)
+    {
+        if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
+            // The passwords matches
+            return response(['title' => 'Ugursuz!', 'message' => 'Cari parolunuz təqdim etdiyiniz parolla uyğun gəlmir. Zəhmət olmasa bir daha cəhd edin', 'status' => 'error']);
+        }
+
+        if(strcmp($request->get('current-password'), $request->get('new-password')) == 0){
+            //Current password and new password are same
+            return response(['title' => 'Ugursuz!', 'message' => 'Yeni Parol cari parolunuzla eyni ola bilməz. Fərqli parol seçin!', 'status' => 'error']);
+        }
+
+        $validatedData = $request->validate([
+            'current-password' => 'required',
+            'new-password' => 'required|string|min:6|confirmed',
+        ]);
+
+        //Change Password
+        $user = Auth::user();
+        $user->password = bcrypt($request->get('new-password'));
+        $user->save();
+
+        return response(['title' => 'Ugurlu!', 'message' => 'Parol uğurla dəyişdirildi!', 'status' => 'success']);
     }
 
 

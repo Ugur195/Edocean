@@ -115,6 +115,7 @@ Route::prefix('account')->name('account.')->middleware('auth', 'verified')->grou
         Route::prefix('teacher')->name('teacher.')->group(function () {
             Route::get('category/{id}/subjects', [TeacherFrontController::class, 'getSubjectsByCategoryId'])->name('list.category-subjects');
             Route::get('change/password',[TeacherFrontController::class,'showChangePassword'])->name('change-password');
+            Route::post('change/password',[TeacherFrontController::class,'ChangePassword'])->name('changePassword');
         });
     });
 
