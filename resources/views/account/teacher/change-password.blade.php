@@ -48,12 +48,10 @@
 
 
                     <div class="card-body">
-                        <form class="form" action="{{route('account.teacher.changePassword',$teacher->id)}}"
-                              method="POST"  id="ChangePassword">
+                        <form  id="ChangePassword"  action="{{route('account.teacher.changePassword',$teacher->id)}}"
+                              method="POST" class="form needs-validation" novalidate >
                             @csrf
                             <div class="tab-content">
-
-
                                     <div class="tab-pane show active px-7" id="kt_user_edit_tab_1" role="tabpanel">
                                         <div class="card-body">
                                             <div class="row">
@@ -62,10 +60,8 @@
                                                     <div class="row mb-5">
                                                         <label class="col-3"></label>
                                                         <div class="col-9">
-
                                                         </div>
                                                     </div>
-
 
                                                     <div class="row">
                                                         <label class="col-3"></label>
@@ -81,8 +77,9 @@
                                                             Password</label>
                                                         <div class="col-9">
                                                             <input
-                                                                class="form-control form-control-lg form-control-solid mb-1"
+                                                                class="form-control form-control-lg form-control-solid"
                                                                 type="password" name="current-password" required />
+                                                            <div class="invalid-feedback">Write your Password correct.</div>
                                                         </div>
                                                     </div>
 
@@ -93,6 +90,7 @@
                                                         <div class="col-9">
                                                             <input class="form-control form-control-lg form-control-solid"
                                                                    type="password" name="new-password" required />
+                                                            <div class="invalid-feedback">Write your Password correct.</div>
                                                         </div>
                                                     </div>
 
@@ -103,6 +101,7 @@
                                                         <div class="col-9">
                                                             <input class="form-control form-control-lg form-control-solid"
                                                                    type="password"  name="new-password_confirmation" required/>
+                                                            <div class="invalid-feedback">Write your Password correct.</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -173,6 +172,22 @@
                 }
             });
         });
+
+        const forms = document.querySelectorAll('.needs-validation');
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms).forEach((form) => {
+            form.addEventListener('submit', (event) => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+
+
+
     </script>
 
 

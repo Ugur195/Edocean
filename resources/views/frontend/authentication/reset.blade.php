@@ -8,7 +8,7 @@
         <img class="man-1" src="./frontendCss/images/man-1.png" alt="">
         <img class="man-2" src="./frontendCss/images/man-2.png" alt="">
         <img class="sign-up-img" src="./frontendCss/images/sign-up.png" alt="">
-        <form id="MySignIn" class="login-form" action="{{route('verification.resend')}}" method="post">
+        <form  class="login-form" action="{{ route('password.request') }}" method="post">
             @csrf
             <h2 class="login-h2">Elektron unvanini tesdiqle</h2>
             <div class="login-form-div">
@@ -23,6 +23,8 @@
             </div>
         </form>
     </section>
+
+
 @endsection
 
 @section('js')

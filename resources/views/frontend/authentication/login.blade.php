@@ -25,6 +25,13 @@
                     <label for="">Şifrə</label>
                     <input type="password" name="password">
                 </div>
+
+                @if (Route::has('password.request'))
+                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                        {{ __('Forgot Your Password?') }}
+                    </a>
+                @endif
+                
                 <div class="btn-and-txt">
                     <input class="login-submit" id="submit-btn"  type="submit" value="Daxil ol">
                     <a href="{{route('register')}}">Qeydiyyat</a>

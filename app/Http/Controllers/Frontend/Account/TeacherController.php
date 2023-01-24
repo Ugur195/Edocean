@@ -171,20 +171,28 @@ class TeacherController extends Controller
             return response(['title' => 'Ugursuz!', 'message' => 'Cari parolunuz təqdim etdiyiniz parolla uyğun gəlmir. Zəhmət olmasa bir daha cəhd edin', 'status' => 'error']);
         }
 
-        if(strcmp($request->get('current-password'), $request->get('new-password')) == 0){
+        if (strcmp($request->get('current-password'), $request->get('new-password')) == 0) {
             //Current password and new password are same
             return response(['title' => 'Ugursuz!', 'message' => 'Yeni Parol cari parolunuzla eyni ola bilməz. Fərqli parol seçin!', 'status' => 'error']);
+        }
+
+        if(($request->get('new-password')!== $request->get('new-password_confirmation'))){
+            //New password and new password confirmation are same
+            return response(['title' => 'Ugursuz!', 'message' => 'Yeni parol və yeni təsdiqlənmiş parol uyğun gəlmir!', 'status' => 'error']);
         }
 
         $validatedData = $request->validate([
             'current-password' => 'required',
             'new-password' => 'required|string|min:6|confirmed',
+            'new-password_confirmation' => 'required|string|min:6|confirmed',
         ]);
+
 
         //Change Password
         $user = Auth::user();
         $user->password = bcrypt($request->get('new-password'));
         $user->save();
+
 
         return response(['title' => 'Ugurlu!', 'message' => 'Parol uğurla dəyişdirildi!', 'status' => 'success']);
     }

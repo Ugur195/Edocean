@@ -5,7 +5,7 @@
 <head>
     <base href="">
     <meta charset="utf-8"/>
-{{--    <meta name="csrf-token" content="{{csrf_token()}}">--}}
+    {{--    <meta name="csrf-token" content="{{csrf_token()}}">--}}
     <title>Admin Panel | Teacher</title>
     <meta name="description"
           content="Metronic admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets."/>
@@ -153,9 +153,6 @@
                         </li>
 
 
-
-
-
                         <li class="menu-item   @if(Request::url()==url('account/teacher/create/')) menu-item-active @endif ">
                             <a href="{{url('account/teacher/create/')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
@@ -190,30 +187,6 @@
                                 <span class="menu-text">Teacher Schedule</span>
                             </a>
                         </li>
-
-
-                        <li class="menu-item   @if(Request::url()==url('account/teacher/change/password/')) menu-item-active @endif ">
-                            <a href="{{url('account/teacher/change/password/')}}" class="menu-link">
-                                <span class="svg-icon menu-icon">
-                                        <svg fill="#000000" width="800px" height="800px" viewBox="-13.39 0 122.88 122.88" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  enable-background="new 0 0 96.108 122.88" xml:space="preserve">
-                                            <g>
-                                               <path fill-rule="evenodd" clip-rule="evenodd" d="M2.892,56.036h8.959v-1.075V37.117c0-10.205,4.177-19.484,
-                                                       10.898-26.207v-0.009 C29.473,4.177,38.754,0,48.966,0C59.17,0,68.449,4.177,75.173,10.901l0.01,0.009c6.721,
-                                                        6.723,10.898,16.002,10.898,26.207v17.844 v1.075h7.136c1.59,0,2.892,1.302,2.892,2.891v61.062c0,1.589-1.302,
-                                                        2.891-2.892,2.891H2.892c-1.59,0-2.892-1.302-2.892-2.891 V58.927C0,57.338,1.302,56.036,2.892,56.036L2.892,
-                                                        56.036z M26.271,56.036h45.387v-1.075V36.911c0-6.24-2.554-11.917-6.662-16.03 l-0.005,
-                                                         0.004c-4.111-4.114-9.787-6.669-16.025-6.669c-6.241,0-11.917,2.554-16.033,6.665c-4.109,
-                                                        4.113-6.662,9.79-6.662,16.03 v18.051V56.036L26.271,56.036z M49.149,89.448l4.581,
-                                                        21.139l-12.557,0.053l3.685-21.423c-3.431-1.1-5.918-4.315-5.918-8.111 c0-4.701,
-                                                        3.81-8.511,8.513-8.511c4.698,0,8.511,3.81,8.511,8.511C55.964,85.226,53.036,
-                                                        88.663,49.149,89.448L49.149,89.448z" fill="#000000"/>
-                                            </g>
-                                        </svg>
-                                </span>
-                                <span class="menu-text">Change Password</span>
-                            </a>
-                        </li>
-
 
                     </ul>
                 </div>
@@ -279,7 +252,7 @@
                                     <span class="symbol-label font-size-h5 font-weight-bold">
                                         <img class="entry-logo img-responsive" style="width: 30px; height: 30px"
                                              src="data:image/jpeg;base64,{{base64_encode(auth()->user()->type()->image)}}"
-                                                                                     alt="logo" title="logo"/>
+                                             alt="logo" title="logo"/>
                                     </span>
                                 </span>
                             </div>
@@ -287,9 +260,9 @@
                     </div>
                 </div>
             </div>
-        @yield('content')
+            @yield('content')
 
-        <!--begin::Scrolltop-->
+            <!--begin::Scrolltop-->
             <div id="kt_scrolltop" class="scrolltop">
 			<span class="svg-icon">
 				<!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Up-2.svg-->
@@ -396,13 +369,11 @@
                 </div>
             </div>
         </div>
-        <!--end::Header-->
-        <!--begin::Separator-->
+
         <div class="separator separator-dashed mt-8 mb-5"></div>
-        <!--end::Separator-->
-        <!--begin::Nav-->
+
         <div class="navi navi-spacer-x-0 p-0">
-            <!--begin::Item-->
+
             <a href="#" class="navi-item">
                 <div class="navi-link" style="display: flex; align-items: center; padding: 15px 0;">
                     <div class="symbol symbol-40 bg-light mr-3">
@@ -428,13 +399,47 @@
                         </div>
                     </div>
                     <div class="navi-text">
-                        <div  class="font-weight-bold"><a target="_blank" href="{{route('account.teacher.edit', $teacher->id)}}" >Profilim</a></div>
+                        <div class="font-weight-bold"><a target="_blank"
+                                                         href="{{route('account.teacher.edit', $teacher->id)}}">Profilim</a>
+                        </div>
                         <div class="text-muted">Hesab tənzimləmələri və başqaları</div>
                     </div>
                 </div>
             </a>
-            <!--end:Item-->
-            <!--begin::Item-->
+
+            <a href="#" class="navi-item">
+                <div class="navi-link" style="display: flex; align-items: center; padding: 15px 0;">
+                    <div class="symbol symbol-40 bg-light mr-3">
+                        <div class="symbol-label">
+                            <span class="svg-icon svg-icon-md svg-icon-success">
+                               <svg fill="#000000" width="800px" height="800px" viewBox="-13.39 0 122.88 122.88" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  enable-background="new 0 0 96.108 122.88" xml:space="preserve">
+                                  <g>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M2.892,56.036h8.959v-1.075V37.117c0-10.205,
+                                    4.177-19.484,10.898-26.207v-0.009 C29.473,4.177,38.754,0,48.966,0C59.17,0,68.449,4.177,
+                                    75.173,10.901l0.01,0.009c6.721,6.723,10.898,16.002,10.898,26.207v17.844 v1.075h7.136c1.59,
+                                    0,2.892,1.302,2.892,2.891v61.062c0,1.589-1.302,2.891-2.892,2.891H2.892c-1.59,
+                                    0-2.892-1.302-2.892-2.891 V58.927C0,57.338,1.302,56.036,2.892,56.036L2.892,
+                                    56.036z M26.271,56.036h45.387v-1.075V36.911c0-6.24-2.554-11.917-6.662-16.03 l-0.005,
+                                    0.004c-4.111-4.114-9.787-6.669-16.025-6.669c-6.241,0-11.917,2.554-16.033,6.665c-4.109,
+                                    4.113-6.662,9.79-6.662,16.03 v18.051V56.036L26.271,56.036z M49.149,89.448l4.581,
+                                    21.139l-12.557,0.053l3.685-21.423c-3.431-1.1-5.918-4.315-5.918-8.111 c0-4.701,
+                                    3.81-8.511,8.513-8.511c4.698,0,8.511,3.81,8.511,8.511C55.964,85.226,53.036,
+                                    88.663,49.149,89.448L49.149,89.448z" fill="#000000"/>
+                                  </g>
+                               </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="navi-text">
+                        <div class="font-weight-bold">
+                            <a target="_blank" href="{{route('account.teacher.changePassword',$teacher->id)}}">Şifre</a>
+                        </div>
+                        <div class="text-muted">Şifrə yeniləmək</div>
+                    </div>
+                </div>
+            </a>
+
+
             <a href="#" class="navi-item" target="_blank">
                 <div class="navi-link" style="display: flex; align-items: center; padding: 15px 0;">
                     <div class="symbol symbol-40 bg-light mr-3">
@@ -445,7 +450,7 @@
                         </div>
                     </div>
                     <div class="navi-text">
-                        <div  class="font-weight-bold"><a target="_blank" href="{{url('/')}}">Saytı ziyarət et</a></div>
+                        <div class="font-weight-bold"><a target="_blank" href="{{url('/')}}">Saytı ziyarət et</a></div>
                         <div class="text-muted">Əlavələrinizi vəya tanzimləməlrinizi yoxlayın</div>
                     </div>
                 </div>
