@@ -135,9 +135,9 @@
                      data-menu-dropdown-timeout="500">
 
                     <ul class="menu-nav">
-                        <li class="menu-item  @if(Request::url()==url('admin/index')) menu-item-active @endif "
+                        <li class="menu-item  @if(Request::url()==url('admin/home')) menu-item-active @endif "
                             aria-haspopup="true">
-                            <a href="{{url('admin/index')}}" class="menu-link">
+                            <a href="{{url('admin/home')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
                                       <svg style="width: 24px" version="1.1" id="Capa_1"
                                            xmlns="http://www.w3.org/2000/svg"
@@ -284,9 +284,9 @@
                         </li>
 
 
-                        <li class="menu-item  @if(Request::url()==url('admin/student')) menu-item-active @endif "
+                        <li class="menu-item  @if(Request::url()==url('admin/students')) menu-item-active @endif "
                             aria-haspopup="true">
-                            <a href="{{url('admin/student')}}" class="menu-link">
+                            <a href="{{url('admin/students')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
                                     <svg version="1.1" id="Layer_1"
                                          xmlns="http://www.w3.org/2000/svg"
@@ -306,9 +306,9 @@
                         </li>
 
 
-                        <li class="menu-item  @if(Request::url()==url('admin/course')) menu-item-active @endif "
+                        <li class="menu-item  @if(Request::url()==url('admin/courses')) menu-item-active @endif "
                             aria-haspopup="true">
-                            <a href="{{url('admin/course')}}" class="menu-link">
+                            <a href="{{url('admin/courses')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
                                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                                          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"

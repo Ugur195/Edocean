@@ -31,7 +31,7 @@
                         {{ __('Forgot Your Password?') }}
                     </a>
                 @endif
-                
+
                 <div class="btn-and-txt">
                     <input class="login-submit" id="submit-btn"  type="submit" value="Daxil ol">
                     <a href="{{route('register')}}">Qeydiyyat</a>

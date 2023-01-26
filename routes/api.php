@@ -4,7 +4,7 @@ use App\Http\Controllers\Admin\{
     MenuController,ContactUsController,
     BlogController,BlogCategoryController,
     BlogCommentsController,AdminController,
-    TeacherController
+    TeacherController,StudentController
 };
 use App\Http\Controllers\AdminGetController;
 use Illuminate\Http\Request;
@@ -32,7 +32,7 @@ Route::get('blogs', [BlogController::class, 'getBlogs']);
 Route::get('blog_categories', [BlogCategoryController::class, 'blogCategory']);
 Route::get('blog_comments', [BlogCommentsController::class, 'blogComment']);
 Route::get('teachers', [TeacherController::class, 'getTeacher']);
-Route::get('student', [AdminGetController::class, 'getStudent']);
+Route::get('students', [StudentController::class, 'getStudent']);
 Route::get('course', [AdminGetController::class, 'getCourse']);
 
 

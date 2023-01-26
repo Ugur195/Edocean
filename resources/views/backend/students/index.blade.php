@@ -79,8 +79,8 @@
                                 <th>Image</th>
                                 <th>Name</th>
                                 <th>Surname</th>
-                                <th>Gender</th>
                                 <th>Email</th>
+                                <th>Gender</th>
                                 <th>Phone</th>
                                 <th>Parent</th>
                                 <th>Payment</th>
@@ -95,8 +95,8 @@
                                 <th>IMAGE</th>
                                 <th>NAME</th>
                                 <th>SURNAME</th>
-                                <th>GENDER</th>
                                 <th>EMAIL</th>
+                                <th>GENDER</th>
                                 <th>PHONE</th>
                                 <th>PARENT</th>
                                 <th>PAYMENT</th>
@@ -118,25 +118,25 @@
 
 @section('js')
     <script src="{{asset('backendCssJs/assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
-    <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/student.js')}}"></script>
+    <script src="{{asset('backendCssJs/assets/js/pages/crud/datatables/students.js?v='.time())}}"></script>
 
     <script>
-        function blokUnblok(status, id) {
-            console.log('basildi' + status);
+        function blokUnblok(element, status, id) {
+            let action = $(element).data('action');
             let title = '';
             let text = '';
             let icon = '';
-            let confBtnText='';
+            let confBtnText = '';
             if (status == 0) {
                 title = 'Blokdan cixartmaq Isteyirsinizmi?';
                 text = 'Unblock etdikden sonra Blok etmek mumkundu!';
-                icon = 'warning';
-                confBtnText='Blokdan cixart';
+                icon = 'info';
+                confBtnText = 'Blokdan cixart';
             } else if (status == 1) {
                 title = 'Blok etmek Isteyirsinizmi?';
                 text = 'Blok etdikden sonra Unblock etmek mumkundu!';
                 icon = 'warning';
-                confBtnText='Blok et';
+                confBtnText = 'Blok et';
             }
             swal.fire({
                 title: title,
@@ -153,15 +153,18 @@
                     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content')
                     $.ajax({
                         type: "Post",
-                        url: '',
+                        url: action,
                         data: {
                             'id': id,
                             'status': status,
                             'btn_block': 'btn_block',
+                            'btn_unblock': 'btn_unblock',
+                            '_method': 'put',
                             '_token': CSRF_TOKEN
                         },
 
                         success: function (response) {
+                            console.log(response)
                             swal.fire({
                                 title: response.title,
                                 text: response.message,
@@ -170,7 +173,7 @@
                             })
                             if (response.status === 'success') {
                                 setTimeout(function () {
-                                    window.location.href = '/admin/student';
+                                    window.location.href = '/admin/students';
                                 }, 1000)
                             }
 
@@ -180,9 +183,9 @@
             })
         }
 
-        function sil(setir, id) {
-            var sira = setir.parentNode.parentNode.rowIndex;
-            console.log(sira);
+        function sil(element) {
+            var sira = element.parentNode.parentNode.rowIndex;
+            let action = $(element).data('action');
             swal.fire({
                 title: 'Silmek Isteyirsinizmi?',
                 text: 'Sildikden sonra berpa etmek olmayacaq!',
@@ -198,10 +201,9 @@
                     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content')
                     $.ajax({
                         type: "Post",
-                        url: '',
+                        url: action,
                         data: {
-                            'id': id,
-                            'btn_delete': 'btn_delete',
+                            '_method': 'delete',
                             '_token': CSRF_TOKEN
                         },
 
@@ -217,10 +219,9 @@
                             })
                             if (response.status === 'success') {
                                 setTimeout(function () {
-                                    window.location.href = '/admin/student';
-                                }, 500)
+                                    window.location.href = '/admin/students';
+                                }, 1000)
                             }
-
                         }
                     })
                 }

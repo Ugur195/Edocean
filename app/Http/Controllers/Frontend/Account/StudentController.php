@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend\Account;
 
 use App\Http\Controllers\Controller;
+use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 
-class TeacherController extends Controller
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,14 +21,20 @@ class TeacherController extends Controller
      */
     public function index(): View
     {
-        $teacher = Teacher::where('user_id', Auth::id())->first();
-        return view('account.teacher.index', compact('teacher'));
+        $student = Student::where('user_id', Auth::id())->first();
+        return view('account.student.index', compact('student'));
+    }
+
+    public function showStudentSchedule()
+    {
+        $student = Student::where('user_id', Auth::id())->first();
+        return view('account.student.student_schedule', compact('student'));
     }
 
     public function showChangePassword()
     {
-        $teacher = Teacher::where('user_id', Auth::id())->first();
-        return view('account.teacher.change-password', compact('teacher'));
+        $student = Student::where('user_id', Auth::id())->first();
+        return view('account.student.change-password', compact('student'));
     }
 
     /**
@@ -35,10 +42,9 @@ class TeacherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(): View
+    public function create()
     {
-        $teacher = Teacher::where('user_id', Auth::id())->first();
-        return view('account.teacher.create', compact('teacher'));
+        //
     }
 
     /**
@@ -58,7 +64,7 @@ class TeacherController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
         //
     }
@@ -69,26 +75,23 @@ class TeacherController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-
-
     public function edit(): View
     {
-        $teacher = Teacher::where('user_id', Auth::user()->id)->first();
+        $student = Student::where('user_id', Auth::user()->id)->first();
         $data = DB::table('subject_category')->get();
         $user = null;
-        if ($teacher == null) {
+        if ($student == null) {
             $user = User::find(Auth::user()->id);
         } else {
-            $user = $teacher;
+            $user = $student;
         }
-        return view('account.teacher.edit', ['teacher' => $user, 'data' => $data]);
+        return view('account.student.edit', ['student' => $user, 'data' => $data]);
     }
 
     public function getSubjectsByCategoryId($id)
     {
         echo json_encode(DB::table('subjects')->where('subject_category_id', $id)->get());
     }
-
 
     /**
      * Update the specified resource in storage.
@@ -99,7 +102,7 @@ class TeacherController extends Controller
      */
     public function update(Request $request)
     {
-        $teacher = Teacher::where('user_id', Auth::user()->id)->first();
+        $student = Student::where('user_id', Auth::user()->id)->first();
         $user = User::find(Auth::user()->id);
         $langs = '';
 
@@ -108,47 +111,33 @@ class TeacherController extends Controller
                 $langs .= ',' . $l;
             }
         }
-
-        $image = $teacher->image;
+        $image = $student->image;
         if (isset($request->image)) {
             $image = file_get_contents($request->file('image')->getRealPath());
         }
 
-        $teacher->image = $image;
-        $teacher->surname = $request->surname;
-        $teacher->whatsapp = $request->whatsapp;
-        $teacher->facebook = $request->facebook;
-        $teacher->instagram = $request->instagram;
-        $teacher->father_name = $request->father_name;
-        $teacher->teacher_address = $request->teacher_address;
-        $teacher->birthday = $request->birthday;
-        $teacher->language = $langs;
-        $teacher->gender = $request->gender;
-        $teacher->lessons_duration = $request->lessons_duration;
-        $teacher->lessons_intensivity = $request->lessons_intensivity;
-        $teacher->student_level = $request->student_level;
-        $teacher->students_amount = $request->students_amount;
-        $teacher->profile_type = $request->profile_type;
-        $teacher->subjects = $request->subjects;
-        $teacher->subjects_category = $request->subjects_category;
-        $teacher->teaching_time = $request->teaching_time;
-        $teacher->demo_lesson = $request->demo_lesson;
-        $teacher->video_presentation = $request->video_presentation;
-        $teacher->phone = $request->phone;
-        $teacher->country = $request->country;
-        $teacher->city = $request->city;
-        $teacher->about_teacher = $request->about_teacher;
-        $teacher->education_place = $request->education_place;
-        $teacher->speciality = $request->speciality;
-        $teacher->degree = $request->degree;
-        $teacher->certificate = $request->certificate;
-        $teacher->ctf_image = $request->ctf_image;
-        $teacher->work_experience = $request->work_experience;
-        $teacher->work_place = $request->work_place;
-        $teacher->work_position = $request->work_position;
-        $teacher->work_date = $request->work_date;
-        $teacher->lesson_price = $request->lesson_price;
-        $teacher->save();
+        $student->image = $image;
+        $student->surname = $request->surname;
+        $student->father_name = $request->father_name;
+        $student->birthday = $request->birthday;
+        $student->language = $langs;
+        $student->gender = $request->gender;
+        $student->education_level = $request->education_level;
+        $student->lesson_duration = $request->lesson_duration;
+        $student->lessons_intensivity = $request->lessons_intensivity;
+        $student->students_amount = $request->students_amount;
+        $student->teacher_gender = $request->teacher_gender;
+        $student->teacher_status = $request->teacher_status;
+        $student->parent = $request->parent;
+        $student->subjects = $request->subjects;
+        $student->subjects_category = $request->subjects_category;
+        $student->address = $request->address;
+        $student->phone = $request->phone;
+        $student->country = $request->country;
+        $student->city = $request->city;
+        $student->student_mission = $request->student_mission;
+        $student->payment = $request->payment;
+        $student->save();
 
         if ($request->name != Auth::user()->name) {
             $user->name = $request->name;
@@ -161,8 +150,8 @@ class TeacherController extends Controller
         }
 
         return back();
-    }
 
+    }
 
     public function ChangePassword(Request $request)
     {
@@ -176,7 +165,7 @@ class TeacherController extends Controller
             return response(['title' => 'Ugursuz!', 'message' => 'Yeni Parol cari parolunuzla eyni ola bilməz. Fərqli parol seçin!', 'status' => 'error']);
         }
 
-        if(($request->get('new-password')!== $request->get('new-password_confirmation'))){
+        if (($request->get('new-password') !== $request->get('new-password_confirmation'))) {
             //New password and new password confirmation are same
             return response(['title' => 'Ugursuz!', 'message' => 'Yeni parol və yeni təsdiqlənmiş parol uyğun gəlmir!', 'status' => 'error']);
         }
@@ -195,7 +184,6 @@ class TeacherController extends Controller
 
         return response(['title' => 'Ugurlu!', 'message' => 'Parol uğurla dəyişdirildi!', 'status' => 'success']);
     }
-
 
     /**
      * Remove the specified resource from storage.

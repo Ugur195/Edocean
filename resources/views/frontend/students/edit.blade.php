@@ -88,7 +88,7 @@
                             <div class="about_tchr_row">
                                 <div class="row">
                                     <h5 class="col-lg-3">Email:</h5>
-                                    <p class="col-lg-9">{{$student->email}}</p>
+                                    <p class="col-lg-9">{{Auth::user()->email}}</p>
                                 </div>
                             </div>
 

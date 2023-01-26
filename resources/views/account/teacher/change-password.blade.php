@@ -48,7 +48,7 @@
 
 
                     <div class="card-body">
-                        <form  id="ChangePassword"  action="{{route('account.teacher.changePassword',$teacher->id)}}"
+                        <form  id="ChangePassword"  action="{{route('account.teacher.changePassword', $teacher->id)}}"
                               method="POST" class="form needs-validation" novalidate >
                             @csrf
                             <div class="tab-content">
@@ -79,7 +79,7 @@
                                                             <input
                                                                 class="form-control form-control-lg form-control-solid"
                                                                 type="password" name="current-password" required />
-                                                            <div class="invalid-feedback">Write your Password correct.</div>
+                                                            <div class="invalid-feedback">Write your Current Password correct.</div>
                                                         </div>
                                                     </div>
 
@@ -90,7 +90,7 @@
                                                         <div class="col-9">
                                                             <input class="form-control form-control-lg form-control-solid"
                                                                    type="password" name="new-password" required />
-                                                            <div class="invalid-feedback">Write your Password correct.</div>
+                                                            <div class="invalid-feedback">Write your New Password  correct.</div>
                                                         </div>
                                                     </div>
 
@@ -101,7 +101,7 @@
                                                         <div class="col-9">
                                                             <input class="form-control form-control-lg form-control-solid"
                                                                    type="password"  name="new-password_confirmation" required/>
-                                                            <div class="invalid-feedback">Write your Password correct.</div>
+                                                            <div class="invalid-feedback">Write your New Confirmation Password correct.</div>
                                                         </div>
                                                     </div>
                                                 </div>

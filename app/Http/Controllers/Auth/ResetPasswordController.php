@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Menu;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
@@ -33,9 +34,7 @@ class ResetPasswordController extends Controller
 //    public function showResetForm(Request $request)
 //    {
 //        $token = $request->route()->parameter('token');
-//
-//        return view('frontend.authentication.reset')->with(
-//            ['token' => $token, 'email' => $request->email]
-//        );
+//        $menu = Menu::where('status', 1)->get();;
+//        return view('frontend.authentication.reset')->with(['token' => $token, 'menu' => $menu, 'email' => $request->email]);
 //    }
 }

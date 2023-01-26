@@ -55,13 +55,13 @@
                              alt=""></a>
                     <ul class="profile_ul">
                         @if(Auth::user()->author==1)
-                            <li><a href="{{url('/admin/index')}}">Admin Page</a></li>
+                            <li><a href="{{url('/admin/home')}}">Admin Page</a></li>
                         @elseif(Auth::user()->author==2)
                             <li><a href="{{url('/admin/course/index')}}">Course Page</a></li>
                         @elseif(Auth::user()->author==3)
                             <li><a href="{{url('/account/teacher')}}">Teacher Page</a></li>
                         @elseif(Auth::user()->author==4)
-                            <li><a href="{{url('/admin/students/index')}}">Student Page</a></li>
+                            <li><a href="{{url('/account/student')}}">Student Page</a></li>
                         @endif
                         <li><a href="{{route('logout')}}">Logout</a></li>
                     </ul>

@@ -23,6 +23,11 @@ class AdminController extends Controller
         return view('backend.admins.index');
     }
 
+    public function home()
+    {
+        return view('backend.admins.home');
+    }
+
     public function getAdmin()
     {
         $admins_project = DB::table('edocean.users')->select(DB::raw("edocean.users.id, edocean.admin.image,

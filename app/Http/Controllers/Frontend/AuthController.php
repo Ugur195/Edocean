@@ -20,6 +20,14 @@ use Illuminate\Support\Str;
 class AuthController extends Controller
 {
 
+    public function home()
+    {
+        $course = Course::all();
+        $teacher = Teacher::all();
+        $menu = Menu::where('status', 1)->get();
+        return view('frontend.authentication.index')->with(['course' => $course, 'teacher' => $teacher, 'menus' => $menu]);
+    }
+
     public function login()
     {
         $menu = Menu::where('status', 1)->get();

@@ -28,7 +28,7 @@ var KTDatatablesSearchOptionsColumnSearch = function () {
             serverSide: true,
             searchable: true,
             ajax: {
-                url: '/api/student',
+                url: '/api/students',
                 type: 'get',
             },
             columns: [
@@ -41,20 +41,21 @@ var KTDatatablesSearchOptionsColumnSearch = function () {
                     name: 'image'
                 },
                 {
-                    data: 'name',
-                    name: 'name'
+                    data: 'username',
+                    name: 'username'
                 },
+
                 {
                     data: 'surname',
                     name: 'surname'
                 },
                 {
-                    data: 'gender',
-                    name: 'gender'
-                },
-                {
                     data: 'email',
                     name: 'email'
+                },
+                {
+                    data: 'gender',
+                    name: 'gender'
                 },
                 {
                     data: 'phone',
@@ -93,8 +94,8 @@ var KTDatatablesSearchOptionsColumnSearch = function () {
                         case 'ID':
                         case 'Name':
                         case 'Surname':
-                        case 'Gender':
                         case 'Email':
+                        case 'Gender':
                         case 'Phone':
                         case 'Parent':
                         case 'Payment':

@@ -129,9 +129,9 @@
                 <div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1"
                      data-menu-dropdown-timeout="500">
                     <ul class="menu-nav">
-                        <li class="menu-item  @if(Request::url()==url('account/student/index')) menu-item-active @endif "
+                        <li class="menu-item  @if(Request::url()==url('account/student')) menu-item-active @endif "
                             aria-haspopup="true">
-                            <a href="{{url('account/student/index')}}" class="menu-link">
+                            <a href="{{url('account/student')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
                                     <svg style="width: 20px" version="1.1" id="Capa_1"
                                          xmlns="http://www.w3.org/2000/svg"
@@ -152,25 +152,25 @@
                             </a>
                         </li>
 
-                        <li class="menu-item   @if(Request::url()==url('account/student/student_attendance')) menu-item-active @endif">
-                            <a href="{{url('account/student/student_attendance')}}" class="menu-link">
-                                <span class="svg-icon menu-icon">
-                                      <svg style="margin-left:1px" width="16px" height="16px" viewBox="0 0 16 16"
-                                           xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                           class="bi bi-person-check-fill ">
-                                           <path fill-rule="evenodd"
-                                                 d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
-                                           <path
-                                               d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                                      </svg>
-                                </span>
-                                <span class="menu-text">Student Attendance</span>
-                            </a>
-                        </li>
+                        {{--                        <li class="menu-item   @if(Request::url()==url('account/student/student_attendance')) menu-item-active @endif">--}}
+                        {{--                            <a href="{{url('account/student/student_attendance')}}" class="menu-link">--}}
+                        {{--                                <span class="svg-icon menu-icon">--}}
+                        {{--                                      <svg style="margin-left:1px" width="16px" height="16px" viewBox="0 0 16 16"--}}
+                        {{--                                           xmlns="http://www.w3.org/2000/svg" fill="currentColor"--}}
+                        {{--                                           class="bi bi-person-check-fill ">--}}
+                        {{--                                           <path fill-rule="evenodd"--}}
+                        {{--                                                 d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>--}}
+                        {{--                                           <path--}}
+                        {{--                                               d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>--}}
+                        {{--                                      </svg>--}}
+                        {{--                                </span>--}}
+                        {{--                                <span class="menu-text">Student Attendance</span>--}}
+                        {{--                            </a>--}}
+                        {{--                        </li>--}}
 
 
-                        <li class="menu-item   @if(Request::url()==url('account/student/student_schedule')) menu-item-active @endif ">
-                            <a href="{{url('account/student/student_schedule')}}" class="menu-link">
+                        <li class="menu-item   @if(Request::url()==route('account.student.student.schedule')) menu-item-active @endif ">
+                            <a href="{{route('account.student.student.schedule')}}" class="menu-link">
                                 <span class="svg-icon menu-icon">
                                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -265,9 +265,9 @@
                     </div>
                 </div>
             </div>
-        @yield('content')
+            @yield('content')
 
-        <!--begin::Scrolltop-->
+            <!--begin::Scrolltop-->
             <div id="kt_scrolltop" class="scrolltop">
 			<span class="svg-icon">
 				<!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Up-2.svg-->
@@ -406,14 +406,49 @@
                         </div>
                     </div>
                     <div class="navi-text">
-                        <div class="font-weight-bold"><a target="_blank" href="{{url('admin/student/my_profile')}}">Profilim</a>
+                        <div class="font-weight-bold"><a target="_blank"
+                                                         href="{{route('account.student.edit', $student->id)}}">Profilim</a>
                         </div>
                         <div class="text-muted">Hesab tənzimləmələri və başqaları</div>
                     </div>
                 </div>
             </a>
-            <!--end:Item-->
-            <!--begin::Item-->
+
+            <a href="#" class="navi-item">
+                <div class="navi-link" style="display: flex; align-items: center; padding: 15px 0;">
+                    <div class="symbol symbol-40 bg-light mr-3">
+                        <div class="symbol-label">
+                            <span class="svg-icon svg-icon-md svg-icon-success">
+                               <svg fill="#000000" width="800px" height="800px" viewBox="-13.39 0 122.88 122.88"
+                                    version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 96.108 122.88"
+                                    xml:space="preserve">
+                                  <g>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M2.892,56.036h8.959v-1.075V37.117c0-10.205,
+                                    4.177-19.484,10.898-26.207v-0.009 C29.473,4.177,38.754,0,48.966,0C59.17,0,68.449,4.177,
+                                    75.173,10.901l0.01,0.009c6.721,6.723,10.898,16.002,10.898,26.207v17.844 v1.075h7.136c1.59,
+                                    0,2.892,1.302,2.892,2.891v61.062c0,1.589-1.302,2.891-2.892,2.891H2.892c-1.59,
+                                    0-2.892-1.302-2.892-2.891 V58.927C0,57.338,1.302,56.036,2.892,56.036L2.892,
+                                    56.036z M26.271,56.036h45.387v-1.075V36.911c0-6.24-2.554-11.917-6.662-16.03 l-0.005,
+                                    0.004c-4.111-4.114-9.787-6.669-16.025-6.669c-6.241,0-11.917,2.554-16.033,6.665c-4.109,
+                                    4.113-6.662,9.79-6.662,16.03 v18.051V56.036L26.271,56.036z M49.149,89.448l4.581,
+                                    21.139l-12.557,0.053l3.685-21.423c-3.431-1.1-5.918-4.315-5.918-8.111 c0-4.701,
+                                    3.81-8.511,8.513-8.511c4.698,0,8.511,3.81,8.511,8.511C55.964,85.226,53.036,
+                                    88.663,49.149,89.448L49.149,89.448z" fill="#000000"/>
+                                  </g>
+                               </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="navi-text">
+                        <div class="font-weight-bold">
+                            <a target="_blank" href="{{route('account.student.changePassword',$student->id)}}">Şifre</a>
+                        </div>
+                        <div class="text-muted">Şifrə yeniləmək</div>
+                    </div>
+                </div>
+            </a>
+
             <a href="#" class="navi-item" target="_blank">
                 <div class="navi-link" style="display: flex; align-items: center; padding: 15px 0;">
                     <div class="symbol symbol-40 bg-light mr-3">

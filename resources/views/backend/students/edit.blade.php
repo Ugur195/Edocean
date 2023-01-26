@@ -22,7 +22,7 @@
                             <!--begin::Tab Content-->
                             <div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
                                 <form  class="form" method="POST">
-                                    {{csrf_field()}}
+                                    @csrf
                                     <div class="col-xl-3"></div>
 
                                     <div class="form-group row">
@@ -58,7 +58,7 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Name</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$student_edit->name}}" readonly/>
+                                                   value="{{\App\Models\User::find($student_edit->user_id)->name}}" readonly/>
                                         </div>
                                     </div>
 
@@ -131,7 +131,7 @@
                                                 <div class="mr-2">
                                                 </div>
                                                 <div>
-                                                    <a href="{{route('AdminStudent')}}" type="button"
+                                                    <a href="{{route('admin.students.index')}}" type="button"
                                                        class="btn btn-success font-weight-bolder text-uppercase px-9 py-4"
                                                        data-wizard-type="action-submit">Back
                                                     </a>
