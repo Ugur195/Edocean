@@ -28,6 +28,11 @@ class Student extends Model
     {
         return $this->hasOne(User::class, 'id', 'user_id');
     }
+
+    public function studentUser()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }
 
 

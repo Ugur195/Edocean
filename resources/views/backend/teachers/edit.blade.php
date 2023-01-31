@@ -1,4 +1,5 @@
 @extends('backend.app')
+
 @section('css')
 @endsection
 
@@ -20,7 +21,6 @@
                     </div>
                     <div class="card-body">
                         <div class="tab-content pt-5">
-                            <!--begin::Tab Content-->
                             <div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
                                 <form class="form" method="POST">
                                     @csrf
@@ -86,8 +86,7 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Email</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input class="form-control form-control-lg form-control-solid" type="text"
-                                              value="{{Auth::user()->email}}" readonly/>
-                                            //исправить
+                                              value="{{$teacher_edit->teacherUser->email}}" readonly/>
                                         </div>
                                     </div>
 
@@ -127,7 +126,6 @@
 
 
                                     <div class="col-xl-3"></div>
-                                    <!--begin::Actions-->
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label"></label>
                                         <div class="col-lg-9 col-xl-6">
@@ -154,6 +152,5 @@
 @endsection
 
 @section('js')
-
 @endsection
 

@@ -111,6 +111,7 @@ class ContactUsController extends Controller
                 return response(['title' => 'Ugursuz!', 'message' => 'Melumat gondermek mumkun olmadi', 'status' => 'validation-error',
                     'errors' => $validate->errors()]);
             }
+
             $contact_us = new ContactUs();
             $contact_us->full_name = $request->full_name;
             $contact_us->subject = $request->subject;

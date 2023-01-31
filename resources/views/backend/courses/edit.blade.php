@@ -23,7 +23,7 @@
                             <!--begin::Tab Content-->
                             <div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
                                 <form class="form" method="POST">
-                                    {{csrf_field()}}
+                                    @csrf
                                     <div class="col-xl-3"></div>
 
                                     <div class="form-group row">
@@ -59,7 +59,7 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Name</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$course_edit->name}}" readonly/>
+                                                   value="{{\App\Models\User::find($course_edit->user_id)->name}}" readonly/>
                                         </div>
                                     </div>
 
@@ -68,7 +68,7 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Email</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$course_edit->email}}" readonly/>
+                                                   value="{{$course_edit->courseUser->email}}" readonly/>
                                         </div>
                                     </div>
 
@@ -77,6 +77,15 @@
                                         <div class="col-lg-9 col-xl-6">
                                             <input class="form-control form-control-lg form-control-solid" type="text"
                                                    value="{{$course_edit->phone}}" readonly/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 text-right col-form-label">Category</label>
+                                        <div class="col-lg-9 col-xl-6">
+                                            <input class="form-control form-control-lg form-control-solid" type="text"
+                                                   value="{{\App\Models\SubjectCategory::find($course_edit->subjects_category)->name}}"
+                                                   readonly/>
                                         </div>
                                     </div>
 
@@ -116,7 +125,7 @@
                                                 <div class="mr-2">
                                                 </div>
                                                 <div>
-                                                    <a href="{{route('AdminCourse')}}" type="button"
+                                                    <a href="{{route('admin.courses.index')}}" type="button"
                                                        class="btn btn-success font-weight-bolder text-uppercase px-9 py-4"
                                                        data-wizard-type="action-submit">Back
                                                     </a>

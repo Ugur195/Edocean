@@ -14,7 +14,6 @@
     </style>
 @endsection
 
-{{--//--}}
 @section('content')
     <main class="ed-main">
         <section class="video-section">

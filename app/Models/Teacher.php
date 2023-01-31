@@ -28,4 +28,9 @@ class Teacher extends Model
         return $this->hasOne(User::class, 'id', 'user_id');
     }
 
+    public function teacherUser()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
 }

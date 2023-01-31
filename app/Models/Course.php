@@ -22,4 +22,13 @@ class Course extends Model
         return $this->hasOne(SubjectCategory::class, 'id', 'subjects_category');
     }
 
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
+    public function courseUser(){
+        return $this->hasOne(User::class,'id','user_id');
+    }
+
 }

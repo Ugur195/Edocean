@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\{
     MenuController,
     TeacherController as TeacherAdminController,
     StudentController as StudentAdminController,
+    CourseController as CourseAdminController,
     SettingController
 };
 use App\Http\Controllers\Frontend\{
@@ -64,22 +65,19 @@ Route::name('frontend.')->group(function () {
     Route::resource('/students',StudentController::class);
 
 
-
     Route::get('/courses', [HomeGetController::class, 'Courses']);
 });
 
 
 //admin
 Route::prefix('admin')->middleware(['Admin', 'permission:1'])->group(function () {
-    Route::get('/course', [AdminGetController::class, 'Course'])->name('AdminCourse');
-    Route::get('/course_edit/{id}', [AdminGetController::class, 'CourseEdit'])->name('admin.backend.course_edit');
-
-
     Route::name('admin.')->group(function () {
         Route::get('/home', [AdminController::class, 'home']);
         Route::resource('admins', AdminController::class);
         Route::post('/admins/change-status', [AdminController::class, 'changeStatus'])->name('admins.block_unblock');
         Route::resource('teachers', TeacherAdminController::class);
+        Route::resource('students', StudentAdminController::class);
+        Route::resource('courses',CourseAdminController::class);
         Route::resource('menus', MenuController::class);
         Route::resource('setting', SettingController::class);
         Route::resource('about_us', AboutUsController::class);
@@ -90,12 +88,7 @@ Route::prefix('admin')->middleware(['Admin', 'permission:1'])->group(function ()
         Route::post('destroy/blog-image', [BlogController::class, 'destroyBlogImage']);
         Route::resource('blog_categories', BlogCategoryController::class);
         Route::resource('blog_comments', BlogCommentsController::class);
-        Route::resource('students', StudentAdminController::class);
-
     });
-
-
-    Route::post('/course', [AdminPostController::class, 'CoursesBlockUnblockDelete']);
 });
 
 

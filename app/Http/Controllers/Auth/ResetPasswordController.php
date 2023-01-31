@@ -31,10 +31,10 @@ class ResetPasswordController extends Controller
     protected $redirectTo = RouteServiceProvider::HOME;
 
 
-//    public function showResetForm(Request $request)
-//    {
-//        $token = $request->route()->parameter('token');
-//        $menu = Menu::where('status', 1)->get();;
-//        return view('frontend.authentication.reset')->with(['token' => $token, 'menu' => $menu, 'email' => $request->email]);
-//    }
+    public function showResetForm(Request $request)
+    {
+        $token = $request->route()->parameter('token');
+        $menu = Menu::where('status', 1)->get();;
+        return view('frontend.authentication.passwords.reset')->with(['token' => $token, 'menu' => $menu, 'email' => $request->email]);
+    }
 }

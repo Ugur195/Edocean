@@ -84,7 +84,7 @@
                                         <label class="col-xl-3 col-lg-3 text-right col-form-label">Email</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <input class="form-control form-control-lg form-control-solid" type="text"
-                                                   value="{{$student_edit->email}}" readonly/>
+                                                   value="{{$student_edit->studentUser->email}}" readonly/>
                                         </div>
                                     </div>
 
